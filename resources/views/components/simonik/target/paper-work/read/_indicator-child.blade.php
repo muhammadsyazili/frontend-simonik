@@ -1,0 +1,164 @@
+@foreach ($indicators as $indicator)
+    <tr style="background-color: rgb({{ $background_color['red'] }}, {{ $background_color['green'] }}, {{ $background_color['blue'] }}); @if (($background_color['red'] < 127.5) && ($background_color['green'] < 127.5) && ($background_color['blue'] < 127.5)) color: white; @endif">
+        <td>
+            <strong> {{ empty($prefix) ? "$loop->iteration." : "$prefix.$loop->iteration." }} </strong>{{ $indicator->indicator }}
+        </td>
+        <td class="small">
+            {{ $indicator->formula }}
+        </td>
+        <td class="text-center">
+            {{ $indicator->measure }}
+        </td>
+        <td class="text-center">
+            @forelse ($indicator->weight as $key => $value)
+                <span class="badge badge-success">{{ $key }} : {{ $value }}</span>
+            @empty
+                <p>-</p>
+            @endforelse
+        </td>
+        <td class="text-center">
+            @forelse ($indicator->validity as $key => $value)
+                <span class="badge badge-success">{{ $key }} : {{ $value }}</span>
+            @empty
+                <p>-</p>
+            @endforelse
+        </td>
+        <td class="text-center">
+            <span class="badge badge-dark">
+                {!! $indicator->polarity !!}
+            </span>
+        </td>
+
+        {{-- ------------------------------------------------------------------------------ --}}
+        @php $match = false; @endphp
+        @forelse ($indicator->targets as $target)
+            @if ($target->month === 'jan') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="target[{{ $iter }}]['jan']" value="{{ $target->value }}" style="width: 100px;"></td> @endif
+        @empty
+            <td class="text-center"></td>
+        @endforelse
+        @if ($match == false && !empty($indicator->targets))
+            <td class="text-center"></td>
+        @endif
+
+        @php $match = false; @endphp
+        @forelse ($indicator->targets as $target)
+            @if ($target->month === 'feb') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="target[{{ $iter }}]['feb']" value="{{ $target->value }}" style="width: 100px;"></td> @endif
+        @empty
+            <td class="text-center"></td>
+        @endforelse
+        @if ($match == false && !empty($indicator->targets))
+            <td class="text-center"></td>
+        @endif
+
+        @php $match = false; @endphp
+        @forelse ($indicator->targets as $target)
+            @if ($target->month === 'mar') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="target[{{ $iter }}]['mar']" value="{{ $target->value }}" style="width: 100px;"></td> @endif
+        @empty
+            <td class="text-center"></td>
+        @endforelse
+        @if ($match == false && !empty($indicator->targets))
+            <td class="text-center"></td>
+        @endif
+
+        @php $match = false; @endphp
+        @forelse ($indicator->targets as $target)
+            @if ($target->month === 'apr') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="target[{{ $iter }}]['apr']" value="{{ $target->value }}" style="width: 100px;"></td> @endif
+        @empty
+            <td class="text-center"></td>
+        @endforelse
+        @if ($match == false && !empty($indicator->targets))
+            <td class="text-center"></td>
+        @endif
+
+        @php $match = false; @endphp
+        @forelse ($indicator->targets as $target)
+            @if ($target->month === 'may') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="target[{{ $iter }}]['may']" value="{{ $target->value }}" style="width: 100px;"></td> @endif
+        @empty
+            <td class="text-center"></td>
+        @endforelse
+        @if ($match == false && !empty($indicator->targets))
+            <td class="text-center"></td>
+        @endif
+
+        @php $match = false; @endphp
+        @forelse ($indicator->targets as $target)
+            @if ($target->month === 'jun') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="target[{{ $iter }}]['jun']" value="{{ $target->value }}" style="width: 100px;"></td> @endif
+        @empty
+            <td class="text-center"></td>
+        @endforelse
+        @if ($match == false && !empty($indicator->targets))
+            <td class="text-center"></td>
+        @endif
+
+        @php $match = false; @endphp
+        @forelse ($indicator->targets as $target)
+            @if ($target->month === 'jul') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="target[{{ $iter }}]['jul']" value="{{ $target->value }}" style="width: 100px;"></td> @endif
+        @empty
+            <td class="text-center"></td>
+        @endforelse
+        @if ($match == false && !empty($indicator->targets))
+            <td class="text-center"></td>
+        @endif
+
+        @php $match = false; @endphp
+        @forelse ($indicator->targets as $target)
+            @if ($target->month === 'aug') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="target[{{ $iter }}]['aug']" value="{{ $target->value }}" style="width: 100px;"></td> @endif
+        @empty
+            <td class="text-center"></td>
+        @endforelse
+        @if ($match == false && !empty($indicator->targets))
+            <td class="text-center"></td>
+        @endif
+
+        @php $match = false; @endphp
+        @forelse ($indicator->targets as $target)
+            @if ($target->month === 'sep') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="target[{{ $iter }}]['sep']" value="{{ $target->value }}" style="width: 100px;"></td> @endif
+        @empty
+            <td class="text-center"></td>
+        @endforelse
+        @if ($match == false && !empty($indicator->targets))
+            <td class="text-center"></td>
+        @endif
+
+        @php $match = false; @endphp
+        @forelse ($indicator->targets as $target)
+            @if ($target->month === 'oct') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="target[{{ $iter }}]['oct']" value="{{ $target->value }}" style="width: 100px;"></td> @endif
+        @empty
+            <td class="text-center"></td>
+        @endforelse
+        @if ($match == false && !empty($indicator->targets))
+            <td class="text-center"></td>
+        @endif
+
+        @php $match = false; @endphp
+        @forelse ($indicator->targets as $target)
+            @if ($target->month === 'nov') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="target[{{ $iter }}]['nov']" value="{{ $target->value }}" style="width: 100px;"></td> @endif
+        @empty
+            <td class="text-center"></td>
+        @endforelse
+        @if ($match == false && !empty($indicator->targets))
+            <td class="text-center"></td>
+        @endif
+
+        @php $match = false; @endphp
+        @forelse ($indicator->targets as $target)
+            @if ($target->month === 'dec') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="target[{{ $iter }}]['dec']" value="{{ $target->value }}" style="width: 100px;"></td> @endif
+        @empty
+            <td class="text-center"></td>
+        @endforelse
+        @if ($match == false && !empty($indicator->targets))
+            <td class="text-center"></td>
+        @endif
+        {{-- ------------------------------------------------------------------------------ --}}
+    </tr>
+
+    @notEmpty($indicator->validity) @php $iter++; @endphp @endNotEmpty
+
+    @notEmpty($indicator->childs_horizontal_recursive)
+        @include('components.simonik.target.paper-work.read._indicator-child', [
+            'indicators' => $indicator->childs_horizontal_recursive,
+            'background_color' => ['red' => $background_color['red']-15, 'green' => $background_color['green']-15, 'blue' => $background_color['blue']-15],
+            'prefix' => empty($prefix) ? "$loop->iteration" : "$prefix.$loop->iteration",
+        ])
+    @endNotEmpty
+@endforeach
