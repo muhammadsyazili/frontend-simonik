@@ -10,8 +10,7 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.3",
         "laravel/framework": "^8.40",
-        "laravel/tinker": "^2.5",
-        "yajra/laravel-datatables-oracle": "~9.0"
+        "laravel/tinker": "^2.5"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -27,9 +26,6 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         },
-        "classmap": [
-            "app/facades"
-        ],
         "files": [
             "app/helpers.php"
         ]
