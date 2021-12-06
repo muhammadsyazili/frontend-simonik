@@ -58,6 +58,20 @@ class IndicatorController extends Controller
             'weight' => ['nullable'],
         ];
 
+        $messages = [
+            'required' => ':attribute tidak boleh kosong.',
+            'max' => [
+                'numeric' => ':attribute tidak boleh lebih besar dari :max.',
+                'file'    => ':attribute tidak boleh lebih besar dari :max kilobytes.',
+                'string'  => ':attribute tidak boleh lebih besar dari :max characters.',
+                'array'   => ':attribute tidak boleh lebih dari :max items.',
+            ],
+            'boolean' => ':attribute harus true atau false.',
+            'required_if' => ':attribute tidak boleh kosong.',
+            'in' => ':attribute yang dipilih tidak sah.',
+            'numeric' => ':attribute harus numerik.',
+        ];
+
         if (!is_null($request->post('validity'))) {
             foreach ($request->post('validity') as $key => $value) {
                 $attributes["validity.$key"] = ['in:aman,1'];
@@ -70,7 +84,7 @@ class IndicatorController extends Controller
             }
         }
 
-        $request->validate($attributes);
+        $request->validate($attributes, $messages);
 
         $data = [
             'indicator' => $request->post('indicator'),
@@ -139,6 +153,20 @@ class IndicatorController extends Controller
             'weight' => ['nullable'],
         ];
 
+        $messages = [
+            'required' => ':attribute tidak boleh kosong.',
+            'max' => [
+                'numeric' => ':attribute tidak boleh lebih besar dari :max.',
+                'file'    => ':attribute tidak boleh lebih besar dari :max kilobytes.',
+                'string'  => ':attribute tidak boleh lebih besar dari :max characters.',
+                'array'   => ':attribute tidak boleh lebih dari :max items.',
+            ],
+            'boolean' => ':attribute harus true atau false.',
+            'required_if' => ':attribute tidak boleh kosong.',
+            'in' => ':attribute yang dipilih tidak sah.',
+            'numeric' => ':attribute harus numerik.',
+        ];
+
         if (!is_null($request->post('validity'))) {
             foreach ($request->post('validity') as $key => $value) {
                 $attributes["validity.$key"] = ['in:aman,1'];
@@ -151,7 +179,7 @@ class IndicatorController extends Controller
             }
         }
 
-        $request->validate($attributes);
+        $request->validate($attributes, $messages);
 
         $data = [
             'indicator' => $request->post('indicator'),

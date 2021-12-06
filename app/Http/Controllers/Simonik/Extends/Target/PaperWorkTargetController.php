@@ -35,7 +35,12 @@ class PaperWorkTargetController extends Controller
                 'tahun' => ['required', 'string', 'date_format:Y'],
             ];
 
-            $validated = $request->validate($attributes);
+            $messages = [
+                'required' => ':attribute tidak boleh kosong.',
+                'date_format' => ':attribute harus berformat yyyy.',
+            ];
+
+            $validated = $request->validate($attributes, $messages);
 
             $response = callSIMONIK_Sevices('/targets/paper-work/edit', 'get', $validated);
 

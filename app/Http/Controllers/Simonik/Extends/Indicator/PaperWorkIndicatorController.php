@@ -35,7 +35,13 @@ class PaperWorkIndicatorController extends Controller
                 'tahun' => ['nullable', 'required_unless:level,super-master', 'string', 'date_format:Y'],
             ];
 
-            $validated = $request->validate($attributes);
+            $messages = [
+                'required' => ':attribute tidak boleh kosong.',
+                'required_unless' => ':attribute tidak boleh kosong.',
+                'date_format' => ':attribute harus berformat yyyy.',
+            ];
+
+            $validated = $request->validate($attributes, $messages);
 
             $response = callSIMONIK_Sevices('/indicators/paper-work', 'get', $validated);
 
@@ -87,7 +93,13 @@ class PaperWorkIndicatorController extends Controller
             'year' => ['required', 'string', 'date_format:Y'],
         ];
 
-        $validated = $request->validate($attributes);
+        $messages = [
+            'required' => ':attribute tidak boleh kosong.',
+            'uuid' => ':attribute harus UUID format.',
+            'date_format' => ':attribute harus berformat yyyy.',
+        ];
+
+        $validated = $request->validate($attributes, $messages);
 
         $response = callSIMONIK_Sevices('/indicators/paper-work', 'post', $validated);
 

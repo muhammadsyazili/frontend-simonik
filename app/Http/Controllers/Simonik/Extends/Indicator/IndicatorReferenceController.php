@@ -43,7 +43,12 @@ class IndicatorReferenceController extends Controller
             'preferences.*' => ['required'],
         ];
 
-        $validated = $request->validate($attributes);
+        $messages = [
+            'required' => ':attribute tidak boleh kosong.',
+            'uuid' => ':attribute harus UUID format.',
+        ];
+
+        $validated = $request->validate($attributes, $messages);
 
         $response = callSIMONIK_Sevices('/indicators/reference', 'post', $validated);
 
@@ -74,7 +79,13 @@ class IndicatorReferenceController extends Controller
             'tahun' => ['required_unless:level,super-master', 'string', 'date_format:Y'],
         ];
 
-        $validated = $request->validate($attributes);
+        $messages = [
+            'required' => ':attribute tidak boleh kosong.',
+            'required_unless' => ':attribute tidak boleh kosong.',
+            'date_format' => ':attribute harus berformat yyyy.',
+        ];
+
+        $validated = $request->validate($attributes, $messages);
 
         $response = callSIMONIK_Sevices('/indicators/reference/edit', 'get', $validated);
 
@@ -107,7 +118,14 @@ class IndicatorReferenceController extends Controller
             'tahun' => ['required_unless:level,super-master', 'string', 'date_format:Y'],
         ];
 
-        $validated = $request->validate($attributes);
+        $messages = [
+            'required' => ':attribute tidak boleh kosong.',
+            'required_unless' => ':attribute tidak boleh kosong.',
+            'uuid' => ':attribute harus UUID format.',
+            'date_format' => ':attribute harus berformat yyyy.',
+        ];
+
+        $validated = $request->validate($attributes, $messages);
 
         $response = callSIMONIK_Sevices('/indicators/reference', 'put', $validated);
 

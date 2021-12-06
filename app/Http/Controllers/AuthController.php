@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use CustomAuth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Cookie;
 
 class AuthController extends Controller
 {
@@ -25,7 +24,12 @@ class AuthController extends Controller
             'app' => ['required', 'in:simonik,fdx'],
         ];
 
-        $validated = $request->validate($attributes);
+        $messages = [
+            'required' => ':attribute tidak boleh kosong.',
+            'in' => ':attribute yang dipilih tidak sah.',
+        ];
+
+        $validated = $request->validate($attributes, $messages);
 
         $attempt = CustomAuth::attempt($validated['username'], $validated['password'], $validated['app']);
 
