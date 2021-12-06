@@ -187,6 +187,47 @@
         @if (session()->has('danger_message'))
             @include('_danger-message-card',['message' => session()->get('danger_message')])
         @else
+            @if (session()->has('info_message'))
+            <div class="col-md-12">
+                <div class="card border-0 shadow rounded">
+                    <!-- card-header -->
+                    <div class="card-header">
+                        <h3 class="card-title">Info</h3>
+                    </div>
+                    <!-- end : card-header -->
+
+                    <!-- card-body -->
+                    <div class="card-body">
+                        @include('_info-message-card',['message' => session()->get('info_message')])
+                    </div>
+                    <!-- end : card-body -->
+                </div>
+            </div>
+            @endif
+
+            @if ($errors->any())
+            <div class="col-md-12">
+                <div class="card border-0 shadow rounded">
+                    <!-- card-header -->
+                    <div class="card-header">
+                        <h3 class="card-title">Error(s)</h3>
+                    </div>
+                    <!-- end : card-header -->
+
+                    <!-- card-body -->
+                    <div class="card-body">
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- end : card-body -->
+                </div>
+            </div>
+            @endif
 
             {{-- section: feature --}}
             <div class="col-md-12">
@@ -200,24 +241,6 @@
                     <!-- card-body -->
                     <div class="card-body">
                         <div class="row">
-
-                            @if (session()->has('info_message'))
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    @include('_info-message-card',['message' => session()->get('info_message')])
-                                </div>
-                            @endif
-
-                            @if ($errors->any())
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </div>
-                            @endif
 
                             @if (!empty($response->object()->data->permissions) && $response->object()->data->permissions->indicator->create)
                                 <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">

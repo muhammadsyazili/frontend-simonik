@@ -96,6 +96,30 @@
         @if (session()->has('danger_message'))
             @include('_danger-message-card',['message' => session()->get('danger_message')])
         @else
+            @if ($errors->any())
+            <div class="col-md-12">
+                <div class="card border-0 shadow rounded">
+                    <!-- card-header -->
+                    <div class="card-header">
+                        <h3 class="card-title">Error(s)</h3>
+                    </div>
+                    <!-- end : card-header -->
+
+                    <!-- card-body -->
+                    <div class="card-body">
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- end : card-body -->
+                </div>
+            </div>
+            @endif
+
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
@@ -112,18 +136,6 @@
                                     <h3 class="text-center font-weight-bold">Empty Data</h3>
                                 </div>
                             @else
-                                @if ($errors->any())
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </div>
-                                @endif
-
                                 <form action="{{ route('simonik.indicators.paper-work.store') }}" method="post">
                                     @csrf
                                     @method('post')

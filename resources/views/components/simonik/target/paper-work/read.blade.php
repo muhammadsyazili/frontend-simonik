@@ -139,148 +139,172 @@
 
 @section('content')
     <div class="content-wrapper pt-3">
+        @if (session()->has('danger_message'))
+            @include('_danger-message-card',['message' => session()->get('danger_message')])
+        @else
+            @if ($errors->any())
+            <div class="col-md-12">
+                <div class="card border-0 shadow rounded">
+                    <!-- card-header -->
+                    <div class="card-header">
+                        <h3 class="card-title">Error(s)</h3>
+                    </div>
+                    <!-- end : card-header -->
 
-        {{-- section: template download/upload --}}
-        <div class="col-md-12">
-            <div class="card border-0 shadow rounded">
-                <!-- card-header -->
-                <div class="card-header">
-                    <h3 class="card-title">Add (excel)</h3>
-                </div>
-                <!-- end : card-header -->
-
-                <!-- card-body -->
-                <div class="card-body">
-                    <div class="row mb-3">
-                        <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                            <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="buttom" title="Download Template"><i class="fas fa-file-download"></i></button>
-                        </div>
-                        <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                            <form action="#" method="post">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="template">
-                                        <label class="custom-file-label" for="template">Choose file</label>
-                                        </div>
-                                        <div class="input-group-append">
-                                        <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="buttom" title="Upload Template"><i class="fas fa-file-upload"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                    <!-- card-body -->
+                    <div class="card-body">
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
                     </div>
+                    <!-- end : card-body -->
                 </div>
-                <!-- end : card-body -->
             </div>
-        </div>
-        {{-- end section: template download/upload --}}
+            @endif
 
-        {{-- section: table --}}
-        <div class="col-md-12">
-            <div class="card border-0 shadow rounded">
-                <!-- card-header -->
-                <div class="card-header">
-                    <h3 class="card-title">Paper Work / Target / Level : {{ request()->query('level') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('level'))) }} / Unit : {{ request()->query('unit') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('unit'))) }} / Tahun : {{ request()->query('tahun') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('tahun'))) }}</h3>
-                </div>
-                <!-- end : card-header -->
+            {{-- section: template download/upload --}}
+            <div class="col-md-12">
+                <div class="card border-0 shadow rounded">
+                    <!-- card-header -->
+                    <div class="card-header">
+                        <h3 class="card-title">Add (excel)</h3>
+                    </div>
+                    <!-- end : card-header -->
 
-                <!-- card-body -->
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <form action="{{ route('simonik.targets.paper-work.index') }}" method="get">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-append">
-                                        <span class="input-group-text">Level</span>
-                                    </span>
-
-                                    <select class="custom-select" name="level">
-                                        @include('components.simonik.target.paper-work.read._level-child', [
-                                            'levels' => empty($response->object()->data->levels) ? $response->object()->data : $response->object()->data->levels
-                                        ])
-                                    </select>
-
-                                    <span class="input-group-append">
-                                        <span class="input-group-text">Unit</span>
-                                    </span>
-
-                                    <select class="custom-select" name="unit"></select>
-
-                                    <span class="input-group-append">
-                                        <span class="input-group-text">Tahun</span>
-                                    </span>
-
-                                    <input type="text" class="form-control" name="tahun"/>
-
-                                    <span class="input-group-append">
-                                        <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip" data-placement="buttom" title="Search"><i class="fas fa-search"></i></button>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            @if (empty($response->object()->data->indicators))
-                                <h3 class="text-center font-weight-bold">Empty Data</h3>
-                            @else
-                                <form action="{{ route('simonik.targets.paper-work.update') }}" method="post">
-                                    @csrf
-                                    @method('post')
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="drag-drop-table-sorting">
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                    <th class="text-center" rowspan="2">Indikator</th>
-                                                    <th class="text-center" rowspan="2">Formula</th>
-                                                    <th class="text-center" rowspan="2">Satuan</th>
-                                                    <th class="text-center" rowspan="2">Bobot</th>
-                                                    <th class="text-center" rowspan="2">Berlaku</th>
-                                                    <th class="text-center" rowspan="2">Polaritas</th>
-                                                    <th class="text-center" colspan="12">Target</th>
-                                                </tr>
-                                                <tr>
-                                                    <th class="text-center">Jan</th>
-                                                    <th class="text-center">Feb</th>
-                                                    <th class="text-center">Mar</th>
-                                                    <th class="text-center">Apr</th>
-                                                    <th class="text-center">May</th>
-                                                    <th class="text-center">Jun</th>
-                                                    <th class="text-center">Jul</th>
-                                                    <th class="text-center">Aug</th>
-                                                    <th class="text-center">Sep</th>
-                                                    <th class="text-center">Oct</th>
-                                                    <th class="text-center">Nov</th>
-                                                    <th class="text-center">Dec</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="text-nowrap">
-                                                @include('components.simonik.target.paper-work.read._indicator-child',[
-                                                    'indicators' => $response->object()->data->indicators,
-                                                    'background_color' => ['red' => 255, 'green' => 255, 'blue' => 255],
-                                                    'iter' => 0,
-                                                ])
-                                            </tbody>
-                                        </table>
+                    <!-- card-body -->
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                                <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="buttom" title="Download Template"><i class="fas fa-file-download"></i></button>
+                            </div>
+                            <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                                <form action="#" method="post">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="template">
+                                            <label class="custom-file-label" for="template">Choose file</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                            <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="buttom" title="Upload Template"><i class="fas fa-file-upload"></i></button>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <button type="submit" class="btn btn-info btn-sm float-right mt-3">Save</button>
                                 </form>
-                            @endif
+                            </div>
                         </div>
                     </div>
-
-
+                    <!-- end : card-body -->
                 </div>
-                <!-- end : card-body -->
-
-                <!-- card-footer -->
-                <div class="card-footer clearfix"></div>
-                <!-- end : card-footer -->
             </div>
-        </div>
-        {{-- end section: table --}}
+            {{-- end section: template download/upload --}}
 
+            {{-- section: table --}}
+            <div class="col-md-12">
+                <div class="card border-0 shadow rounded">
+                    <!-- card-header -->
+                    <div class="card-header">
+                        <h3 class="card-title">Paper Work / Target / Level : {{ request()->query('level') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('level'))) }} / Unit : {{ request()->query('unit') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('unit'))) }} / Tahun : {{ request()->query('tahun') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('tahun'))) }}</h3>
+                    </div>
+                    <!-- end : card-header -->
+
+                    <!-- card-body -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <form action="{{ route('simonik.targets.paper-work.index') }}" method="get">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-append">
+                                            <span class="input-group-text">Level</span>
+                                        </span>
+
+                                        <select class="custom-select" name="level">
+                                            @include('components.simonik.target.paper-work.read._level-child', [
+                                                'levels' => empty($response->object()->data->levels) ? $response->object()->data : $response->object()->data->levels
+                                            ])
+                                        </select>
+
+                                        <span class="input-group-append">
+                                            <span class="input-group-text">Unit</span>
+                                        </span>
+
+                                        <select class="custom-select" name="unit"></select>
+
+                                        <span class="input-group-append">
+                                            <span class="input-group-text">Tahun</span>
+                                        </span>
+
+                                        <input type="text" class="form-control" name="tahun"/>
+
+                                        <span class="input-group-append">
+                                            <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip" data-placement="buttom" title="Search"><i class="fas fa-search"></i></button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                @if (empty($response->object()->data->indicators))
+                                    <h3 class="text-center font-weight-bold">Empty Data</h3>
+                                @else
+                                    <form action="{{ route('simonik.targets.paper-work.update') }}" method="post">
+                                        @csrf
+                                        @method('post')
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered" id="drag-drop-table-sorting">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th class="text-center" rowspan="2">Indikator</th>
+                                                        <th class="text-center" rowspan="2">Formula</th>
+                                                        <th class="text-center" rowspan="2">Satuan</th>
+                                                        <th class="text-center" rowspan="2">Bobot</th>
+                                                        <th class="text-center" rowspan="2">Berlaku</th>
+                                                        <th class="text-center" rowspan="2">Polaritas</th>
+                                                        <th class="text-center" colspan="12">Target</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="text-center">Jan</th>
+                                                        <th class="text-center">Feb</th>
+                                                        <th class="text-center">Mar</th>
+                                                        <th class="text-center">Apr</th>
+                                                        <th class="text-center">May</th>
+                                                        <th class="text-center">Jun</th>
+                                                        <th class="text-center">Jul</th>
+                                                        <th class="text-center">Aug</th>
+                                                        <th class="text-center">Sep</th>
+                                                        <th class="text-center">Oct</th>
+                                                        <th class="text-center">Nov</th>
+                                                        <th class="text-center">Dec</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="text-nowrap">
+                                                    @include('components.simonik.target.paper-work.read._indicator-child',[
+                                                        'indicators' => $response->object()->data->indicators,
+                                                        'background_color' => ['red' => 255, 'green' => 255, 'blue' => 255],
+                                                        'iter' => 0,
+                                                    ])
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-info btn-sm float-right mt-3">Save</button>
+                                    </form>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end : card-body -->
+
+                    <!-- card-footer -->
+                    <div class="card-footer clearfix"></div>
+                    <!-- end : card-footer -->
+                </div>
+            </div>
+            {{-- end section: table --}}
+        @endif
     </div>
 @endsection
