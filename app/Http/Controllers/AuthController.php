@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use CustomAuth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Cookie;
 
 class AuthController extends Controller
 {

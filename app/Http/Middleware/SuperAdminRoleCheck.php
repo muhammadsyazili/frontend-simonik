@@ -17,6 +17,6 @@ class SuperAdminRoleCheck
      */
     public function handle(Request $request, Closure $next)
     {
-        return Hash::check('super-admin', session()->get('role_hash')) ? $next($request) : redirect()->route('simonik.dashboard');
+        return $request->cookie('X-Role') === 'super-admin' ? $next($request) : redirect()->route('simonik.dashboard');
     }
 }

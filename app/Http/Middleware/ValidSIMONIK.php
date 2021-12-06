@@ -16,6 +16,6 @@ class ValidSIMONIK
      */
     public function handle(Request $request, Closure $next)
     {
-        return session('app') == 'simonik' ? $next($request) : redirect()->route('logout');
+        return $request->cookie('X-App') === 'simonik' ? $next($request) : redirect()->route('logout');
     }
 }

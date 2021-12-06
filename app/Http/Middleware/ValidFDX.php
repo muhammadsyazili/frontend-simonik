@@ -16,6 +16,6 @@ class ValidFDX
      */
     public function handle(Request $request, Closure $next)
     {
-        return session('app') == 'fdx' ? $next($request) : redirect()->route('logout');
+        return $request->cookie('X-App') === 'fdx' ? $next($request) : redirect()->route('logout');
     }
 }

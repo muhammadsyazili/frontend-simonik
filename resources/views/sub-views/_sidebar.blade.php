@@ -14,8 +14,8 @@
         <img src="{{ asset('template/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block"><small>@ {{ $_COOKIE['X-Username'] }}</small></a>
-        <a href="#" class="d-block"><small>({{ $_COOKIE['X-Role'] }})</small></a>
+        <a href="#" class="d-block"><small>@ {{ request()->cookie('X-Username') }}</small></a>
+        <a href="#" class="d-block"><small>({{ request()->cookie('X-Role') }})</small></a>
       </div>
     </div>
     <!-- End Sidebar User Panel -->
@@ -24,7 +24,7 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent text-sm" data-widget="treeview" role="menu" data-accordion="false">
 
-        @if ($_COOKIE['X-App'] === 'simonik')
+        @if (request()->cookie('X-App') === 'simonik')
             <li class="nav-header">SIMONIK</li>
             <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link">
@@ -96,7 +96,7 @@
             </li>
         @endif
 
-        @if ($_COOKIE['X-App'] === '4dx')
+        @if (request()->cookie('X-App') === '4dx')
             <li class="nav-header">4 DX</li>
             <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link">

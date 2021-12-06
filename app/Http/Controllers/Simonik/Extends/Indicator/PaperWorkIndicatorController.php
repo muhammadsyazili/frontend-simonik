@@ -18,7 +18,7 @@ class PaperWorkIndicatorController extends Controller
     {
         $response = null;
         if (is_null($request->query('level'))) {
-            $response = callSIMONIK_Sevices(sprintf('/user/%s/levels', $_COOKIE['X-User-Id']), 'get', ['with-super-master' => true]);
+            $response = callSIMONIK_Sevices(sprintf('/user/%s/levels', $request->cookie('X-User-Id')), 'get', ['with-super-master' => true]);
 
             if ($response->clientError()) {
                 return redirect()->back()->withErrors($response->object()->errors);
