@@ -96,11 +96,9 @@
                     <!-- card-body -->
                     <div class="card-body">
                         <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
+                            @foreach ($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
                         </div>
                     </div>
                     <!-- end : card-body -->
