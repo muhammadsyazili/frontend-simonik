@@ -1,5 +1,5 @@
 <div class="col-md-12">
-    <div class="card border-0 shadow rounded">}
+    <div class="card border-0 shadow rounded">
         <div class="card-header">
             <h3 class="card-title">Message</h3>
         </div>
