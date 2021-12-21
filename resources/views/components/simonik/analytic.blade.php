@@ -136,7 +136,7 @@
             type: 'line'
         },
         title: {
-            text: 'Key Performance Indicator'
+            text: 'Key Performance Indikator'
         },
         subtitle: {
             text: '- Intensifikasi'

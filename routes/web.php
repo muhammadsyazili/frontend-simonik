@@ -66,6 +66,9 @@ Route::middleware([App\Http\Middleware\LoginCheck::class])->group(function () {
         Route::put('/simonik/indicators/{id}', [App\Http\Controllers\Simonik\IndicatorController::class, 'update'])
         ->name('simonik.indicators.update');
 
+        Route::get('/simonik/indicators/{id}/delete', [App\Http\Controllers\Simonik\IndicatorController::class, 'delete'])
+        ->name('simonik.indicators.delete');
+
         Route::delete('/simonik/indicators/{id}', [App\Http\Controllers\Simonik\IndicatorController::class, 'destroy'])
         ->name('simonik.indicators.destroy');
 
@@ -84,6 +87,9 @@ Route::middleware([App\Http\Middleware\LoginCheck::class])->group(function () {
 
         Route::put('/simonik/indicators/paper-work/{level}/{unit}/{tahun}', [App\Http\Controllers\Simonik\Extends\Indicator\PaperWorkIndicatorController::class, 'update'])
         ->name('simonik.indicators.paper-work.update');
+
+        Route::get('/simonik/indicators/paper-work/{level}/{unit}/{tahun}/delete', [App\Http\Controllers\Simonik\Extends\Indicator\PaperWorkIndicatorController::class, 'delete'])
+        ->name('simonik.indicators.paper-work.delete');
 
         Route::delete('/simonik/indicators/paper-work/{level}/{unit}/{tahun}', [App\Http\Controllers\Simonik\Extends\Indicator\PaperWorkIndicatorController::class, 'destroy'])
         ->name('simonik.indicators.paper-work.destroy');

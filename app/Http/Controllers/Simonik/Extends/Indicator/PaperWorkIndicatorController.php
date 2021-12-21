@@ -144,6 +144,19 @@ class PaperWorkIndicatorController extends Controller
     }
 
     /**
+     * Show the form for deleting the specified resource.
+     *
+     * @param  string  $level
+     * @param  string  $unit
+     * @param  string  $tahun
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($level, $unit, $tahun)
+    {
+        return view('components.simonik.indicator.paper-work.delete', compact(['level', 'unit', 'tahun']));
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  string  $level

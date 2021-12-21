@@ -1,6 +1,6 @@
 @extends('layouts/after-login')
 
-@section('title', 'Indicators - Reference - Edit')
+@section('title', 'Indikator - Referensi KPI - Edit')
 
 {{-- ========================================================== --}}
 
@@ -111,7 +111,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Error(s)</h3>
+                        <h3 class="card-title">Info</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -132,7 +132,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Indicators / Reference / Level : {{ strtoupper(str_replace("-", " ", request()->query('level'))) }} / Unit : {{ request()->query('unit') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('unit'))) }} / Tahun : {{ request()->query('tahun') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('tahun'))) }}</h3>
+                        <h3 class="card-title">Indikator / Referensi KPI / Level : {{ strtoupper(str_replace("-", " ", request()->query('level'))) }} / Unit : {{ request()->query('unit') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('unit'))) }} / Tahun : {{ request()->query('tahun') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('tahun'))) }}</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -163,7 +163,7 @@
                                                         <th class="text-center">Bobot</th>
                                                         <th class="text-center">Berlaku</th>
                                                         <th class="text-center">Polaritas</th>
-                                                        <th class="text-center">Reference</th>
+                                                        <th class="text-center">Referensi KPI</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>

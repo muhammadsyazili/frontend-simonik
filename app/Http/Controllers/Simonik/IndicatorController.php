@@ -108,7 +108,7 @@ class IndicatorController extends Controller
             return redirect()->back();
         }
 
-        Session::flash('info_message', sprintf("%s, Silakan lanjut ke menu <a href=\"%s\">Create - Reference</a>", $response->object()->message, route('simonik.indicators.paper-work.reference.create')));
+        Session::flash('info_message', sprintf("%s, Silakan lanjut ke menu <a href=\"%s\">Referensi KPI - Create</a>", $response->object()->message, route('simonik.indicators.paper-work.reference.create')));
         return redirect()->route('simonik.indicators.paper-work.index', defaultQueryParams());
     }
 
@@ -120,7 +120,7 @@ class IndicatorController extends Controller
      */
     public function edit($id)
     {
-        $response = callSIMONIK_Sevices("/indicator/$id", 'get');
+        $response = callSIMONIK_Sevices("/indicator/$id/edit", 'get');
 
         if ($response->clientError()) {
             return redirect()->back()->withErrors($response->object()->errors);
@@ -208,6 +208,17 @@ class IndicatorController extends Controller
     }
 
     /**
+     * Show the form for deleting the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+        return view('components.simonik.indicator.delete', compact(['id']));
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -215,7 +226,7 @@ class IndicatorController extends Controller
      */
     public function destroy($id)
     {
-        $response = callSIMONIK_Sevices("/indicators/$id", 'delete');
+        $response = callSIMONIK_Sevices("/indicator/$id", 'delete');
 
         if ($response->clientError()) {
             return redirect()->back()->withErrors($response->object()->errors);

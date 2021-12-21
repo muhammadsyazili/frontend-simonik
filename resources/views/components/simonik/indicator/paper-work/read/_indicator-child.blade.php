@@ -34,11 +34,7 @@
                     <a href="{{ route('simonik.indicators.edit', ['id' => $indicator->id]) }}" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></a>
                 @endif
                 @if ($permissions['delete'])
-                    <form action="{{ route('simonik.indicators.destroy', ['id' => $indicator->id]) }}" method="post">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="buttom" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                    </form>
+                    <a href="{{ route('simonik.indicators.delete', ['id' => $indicator->id]) }}" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></a>
                 @endif
             </div>
 

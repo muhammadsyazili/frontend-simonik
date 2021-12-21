@@ -1,6 +1,6 @@
 @extends('layouts/after-login')
 
-@section('title', 'Indicator - Edit')
+@section('title', 'Indikator - Edit')
 
 {{-- ========================================================== --}}
 
@@ -89,7 +89,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Error(s)</h3>
+                        <h3 class="card-title">Info</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -110,7 +110,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Indicator / Edit</h3>
+                        <h3 class="card-title">Indikator / Edit</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -123,45 +123,45 @@
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label>Indikator</label>
+                                        <label>Indikator <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" name="indicator" value="{{ $response->object()->data->indicator }}">
                                     </div>
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-                                    <label>Dummy</label>
+                                    <label>Indikator Dummy ? <span class="text-danger">*</span></label>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
                                     <div class="form-group clearfix">
                                         <div class="d-inline">
-                                            <input type="radio" name="dummy" value="0" @if ($response->object()->data->dummy == 0) checked @endif>
+                                            <input type="radio" name="dummy" value="0" @if ($response->object()->data->dummy === false) checked @endif>
                                             <label>Tidak</label>
                                         </div>
                                         <div class="d-inline">
-                                            <input type="radio" name="dummy" value="1" @if ($response->object()->data->dummy == 1) checked @endif>
+                                            <input type="radio" name="dummy" value="1" @if ($response->object()->data->dummy === true) checked @endif>
                                             <label>Ya</label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-                                    <label>Faktor Pengurang</label>
+                                    <label>Faktor Pengurang ? <span class="text-danger">*</span></label>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
                                     <div class="form-group clearfix">
                                         <div class="d-inline">
-                                            <input type="radio" name="reducing_factor" value="0" @if (!$response->object()->data->reducing_factor) checked @endif>
+                                            <input type="radio" name="reducing_factor" value="0" @if ($response->object()->data->reducing_factor === false) checked @endif>
                                             <label>Tidak</label>
                                         </div>
                                         <div class="d-inline">
-                                            <input type="radio" name="reducing_factor" value="1" @if ($response->object()->data->reducing_factor) checked @endif>
+                                            <input type="radio" name="reducing_factor" value="1" @if ($response->object()->data->reducing_factor === true) checked @endif>
                                             <label>Ya</label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-                                    <label>Polaritas</label>
+                                    <label>Polaritas <span class="text-danger">*</span></label>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
                                     <div class="form-group clearfix">
@@ -191,13 +191,13 @@
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <p class="text-center font-weight-bold">Masa Berlaku</p>
+                                    <p class="text-center font-weight-bold">Masa Berlaku <span class="text-danger">*</span></p>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['jan']" value="1" @if (!is_null($response->object()->data->validity)) @if (property_exists($response->object()->data->validity, 'jan') && $response->object()->data->validity->jan) checked @endif @endif>Jan
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity['jan']" value="1" @if (array_key_exists('jan', (array) $response->object()->data->validity)) checked @endif>Jan
                                             </label>
                                         </div>
                                     </div>
@@ -206,7 +206,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['feb']" value="1" @if (!is_null($response->object()->data->validity)) @if (property_exists($response->object()->data->validity, 'feb') && $response->object()->data->validity->feb) checked @endif @endif>Feb
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity['feb']" value="1" @if (array_key_exists('feb', (array) $response->object()->data->validity)) checked @endif>Feb
                                             </label>
                                         </div>
                                     </div>
@@ -215,7 +215,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['mar']" value="1" @if (!is_null($response->object()->data->validity)) @if (property_exists($response->object()->data->validity, 'mar') && $response->object()->data->validity->mar) checked @endif @endif>Mar
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity['mar']" value="1" @if (array_key_exists('mar', (array) $response->object()->data->validity)) checked @endif>Mar
                                             </label>
                                         </div>
                                     </div>
@@ -224,7 +224,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['apr']" value="1" @if (!is_null($response->object()->data->validity)) @if (property_exists($response->object()->data->validity, 'apr') && $response->object()->data->validity->apr) checked @endif @endif>Apr
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity['apr']" value="1" @if (array_key_exists('apr', (array) $response->object()->data->validity)) checked @endif>Apr
                                             </label>
                                         </div>
                                     </div>
@@ -233,7 +233,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['may']" value="1" @if (!is_null($response->object()->data->validity)) @if (property_exists($response->object()->data->validity, 'may') && $response->object()->data->validity->may) checked @endif @endif>May
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity['may']" value="1" @if (array_key_exists('may', (array) $response->object()->data->validity)) checked @endif>May
                                             </label>
                                         </div>
                                     </div>
@@ -242,7 +242,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['jun']" value="1" @if (!is_null($response->object()->data->validity)) @if (property_exists($response->object()->data->validity, 'jun') && $response->object()->data->validity->jun) checked @endif @endif>Jun
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity['jun']" value="1" @if (array_key_exists('jun', (array) $response->object()->data->validity)) checked @endif>Jun
                                             </label>
                                         </div>
                                     </div>
@@ -251,7 +251,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['jul']" value="1" @if (!is_null($response->object()->data->validity)) @if (property_exists($response->object()->data->validity, 'jul') && $response->object()->data->validity->jul) checked @endif @endif>Jul
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity['jul']" value="1" @if (array_key_exists('jul', (array) $response->object()->data->validity)) checked @endif>Jul
                                             </label>
                                         </div>
                                     </div>
@@ -260,7 +260,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['aug']" value="1" @if (!is_null($response->object()->data->validity)) @if (property_exists($response->object()->data->validity, 'aug') && $response->object()->data->validity->aug) checked @endif @endif>Aug
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity['aug']" value="1" @if (array_key_exists('aug', (array) $response->object()->data->validity)) checked @endif>Aug
                                             </label>
                                         </div>
                                     </div>
@@ -269,7 +269,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['sep']" value="1" @if (!is_null($response->object()->data->validity)) @if (property_exists($response->object()->data->validity, 'sep') && $response->object()->data->validity->sep) checked @endif @endif>Sep
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity['sep']" value="1" @if (array_key_exists('sep', (array) $response->object()->data->validity)) checked @endif>Sep
                                             </label>
                                         </div>
                                     </div>
@@ -278,7 +278,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['oct']" value="1" @if (!is_null($response->object()->data->validity)) @if (property_exists($response->object()->data->validity, 'oct') && $response->object()->data->validity->oct) checked @endif @endif>Oct
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity['oct']" value="1" @if (array_key_exists('oct', (array) $response->object()->data->validity)) checked @endif>Oct
                                             </label>
                                         </div>
                                     </div>
@@ -287,7 +287,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['nov']" value="1" @if (!is_null($response->object()->data->validity)) @if (property_exists($response->object()->data->validity, 'nov') && $response->object()->data->validity->nov) checked @endif @endif>Nov
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity['nov']" value="1" @if (array_key_exists('nov', (array) $response->object()->data->validity)) checked @endif>Nov
                                             </label>
                                         </div>
                                     </div>
@@ -296,88 +296,88 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['dec']" value="1" @if (!is_null($response->object()->data->validity)) @if (property_exists($response->object()->data->validity, 'dec') && $response->object()->data->validity->dec) checked @endif @endif>Dec
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity['dec']" value="1" @if (array_key_exists('dec', (array) $response->object()->data->validity)) checked @endif>Dec
                                             </label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <p class="text-center font-weight-bold">Bobot</p>
+                                    <p class="text-center font-weight-bold">Bobot <span class="text-danger">*</span></p>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <p class="text-center text-info"><small>(bobot akan diabaikan jika masa berlaku tidak dipilih)</small></p>
+                                    <p class="text-center text-info"><small><strong>Noted!</strong> bobot akan diabaikan jika masa berlaku tidak dipilih</small></p>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">Jan</p>
-                                        <input type="number" class="form-control weight-group" name="weight['jan']" @if (!is_null($response->object()->data->weight)) @if (property_exists($response->object()->data->weight, 'jan')) value="{{ $response->object()->data->weight->jan }}" @else value="0" @endif @endif>
+                                        <input type="number" class="form-control weight-group" name="weight['jan']" @if (array_key_exists('jan', (array) $response->object()->data->weight)) value="{{ $response->object()->data->weight->jan }}" @else value="0" @endif>
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">Feb</p>
-                                        <input type="number" class="form-control weight-group" name="weight['feb']" @if (!is_null($response->object()->data->weight)) @if (property_exists($response->object()->data->weight, 'feb')) value="{{ $response->object()->data->weight->feb }}" @else value="0" @endif @endif>
+                                        <input type="number" class="form-control weight-group" name="weight['feb']" @if (array_key_exists('feb', (array) $response->object()->data->weight)) value="{{ $response->object()->data->weight->feb }}" @else value="0" @endif>
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">Mar</p>
-                                        <input type="number" class="form-control weight-group" name="weight['mar']" @if (!is_null($response->object()->data->weight)) @if (property_exists($response->object()->data->weight, 'mar')) value="{{ $response->object()->data->weight->mar }}" @else value="0" @endif @endif>
+                                        <input type="number" class="form-control weight-group" name="weight['mar']" @if (array_key_exists('mar', (array) $response->object()->data->weight)) value="{{ $response->object()->data->weight->mar }}" @else value="0" @endif>
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">Apr</p>
-                                        <input type="number" class="form-control weight-group" name="weight['apr']" @if (!is_null($response->object()->data->weight)) @if (property_exists($response->object()->data->weight, 'apr')) value="{{ $response->object()->data->weight->apr }}" @else value="0" @endif @endif>
+                                        <input type="number" class="form-control weight-group" name="weight['apr']" @if (array_key_exists('apr', (array) $response->object()->data->weight)) value="{{ $response->object()->data->weight->apr }}" @else value="0" @endif>
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">May</p>
-                                        <input type="number" class="form-control weight-group" name="weight['may']" @if (!is_null($response->object()->data->weight)) @if (property_exists($response->object()->data->weight, 'may')) value="{{ $response->object()->data->weight->may }}" @else value="0" @endif @endif>
+                                        <input type="number" class="form-control weight-group" name="weight['may']" @if (array_key_exists('may', (array) $response->object()->data->weight)) value="{{ $response->object()->data->weight->may }}" @else value="0" @endif>
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">Jun</p>
-                                        <input type="number" class="form-control weight-group" name="weight['jun']" @if (!is_null($response->object()->data->weight)) @if (property_exists($response->object()->data->weight, 'jun')) value="{{ $response->object()->data->weight->jun }}" @else value="0" @endif @endif>
+                                        <input type="number" class="form-control weight-group" name="weight['jun']" @if (array_key_exists('jun', (array) $response->object()->data->weight)) value="{{ $response->object()->data->weight->jun }}" @else value="0" @endif>
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">Jul</p>
-                                        <input type="number" class="form-control weight-group" name="weight['jul']" @if (!is_null($response->object()->data->weight)) @if (property_exists($response->object()->data->weight, 'jul')) value="{{ $response->object()->data->weight->jul }}" @else value="0" @endif @endif>
+                                        <input type="number" class="form-control weight-group" name="weight['jul']" @if (array_key_exists('jul', (array) $response->object()->data->weight)) value="{{ $response->object()->data->weight->jul }}" @else value="0" @endif>
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">Aug</p>
-                                        <input type="number" class="form-control weight-group" name="weight['aug']" @if (!is_null($response->object()->data->weight)) @if (property_exists($response->object()->data->weight, 'aug')) value="{{ $response->object()->data->weight->aug }}" @else value="0" @endif @endif>
+                                        <input type="number" class="form-control weight-group" name="weight['aug']" @if (array_key_exists('aug', (array) $response->object()->data->weight)) value="{{ $response->object()->data->weight->aug }}" @else value="0" @endif>
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">Sep</p>
-                                        <input type="number" class="form-control weight-group" name="weight['sep']" @if (!is_null($response->object()->data->weight)) @if (property_exists($response->object()->data->weight, 'sep')) value="{{ $response->object()->data->weight->sep }}" @else value="0" @endif @endif>
+                                        <input type="number" class="form-control weight-group" name="weight['sep']" @if (array_key_exists('sep', (array) $response->object()->data->weight)) value="{{ $response->object()->data->weight->sep }}" @else value="0" @endif>
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">Oct</p>
-                                        <input type="number" class="form-control weight-group" name="weight['oct']" @if (!is_null($response->object()->data->weight)) @if (property_exists($response->object()->data->weight, 'oct')) value="{{ $response->object()->data->weight->oct }}" @else value="0" @endif @endif>
+                                        <input type="number" class="form-control weight-group" name="weight['oct']" @if (array_key_exists('oct', (array) $response->object()->data->weight)) value="{{ $response->object()->data->weight->oct }}" @else value="0" @endif>
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">Nov</p>
-                                        <input type="number" class="form-control weight-group" name="weight['nov']" @if (!is_null($response->object()->data->weight)) @if (property_exists($response->object()->data->weight, 'nov')) value="{{ $response->object()->data->weight->nov }}" @else value="0" @endif @endif>
+                                        <input type="number" class="form-control weight-group" name="weight['nov']" @if (array_key_exists('nov', (array) $response->object()->data->weight)) value="{{ $response->object()->data->weight->nov }}" @else value="0" @endif>
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">Dec</p>
-                                        <input type="number" class="form-control weight-group" name="weight['dec']" @if (!is_null($response->object()->data->weight)) @if (property_exists($response->object()->data->weight, 'dec')) value="{{ $response->object()->data->weight->dec }}" @else value="0" @endif @endif>
+                                        <input type="number" class="form-control weight-group" name="weight['dec']" @if (array_key_exists('dec', (array) $response->object()->data->weight)) value="{{ $response->object()->data->weight->dec }}" @else value="0" @endif>
                                     </div>
                                 </div>
                             </div>

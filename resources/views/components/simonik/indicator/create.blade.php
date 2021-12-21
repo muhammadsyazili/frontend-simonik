@@ -1,6 +1,6 @@
 @extends('layouts/after-login')
 
-@section('title', 'Indicator - Create')
+@section('title', 'Indikator - Create')
 
 {{-- ========================================================== --}}
 
@@ -89,7 +89,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Error(s)</h3>
+                        <h3 class="card-title">Info</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -110,7 +110,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Indicator / Create</h3>
+                        <h3 class="card-title">Indikator / Create</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -123,13 +123,13 @@
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label>Indikator</label>
+                                        <label>Indikator <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" name="indicator">
                                     </div>
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-                                    <label>Dummy</label>
+                                    <label>Indikator Dummy ? <span class="text-danger">*</span></label>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
                                     <div class="form-group clearfix">
@@ -145,7 +145,7 @@
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-                                    <label>Faktor Pengurang</label>
+                                    <label>Faktor Pengurang ? <span class="text-danger">*</span></label>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
                                     <div class="form-group clearfix">
@@ -161,7 +161,7 @@
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-                                    <label>Polaritas</label>
+                                    <label>Polaritas <span class="text-danger">*</span></label>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
                                     <div class="form-group clearfix">
@@ -191,7 +191,7 @@
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <p class="text-center font-weight-bold">Masa Berlaku</p>
+                                    <p class="text-center font-weight-bold">Masa Berlaku <span class="text-danger">*</span></p>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
@@ -303,10 +303,10 @@
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <p class="text-center font-weight-bold">Bobot</p>
+                                    <p class="text-center font-weight-bold">Bobot <span class="text-danger">*</span></p>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <p class="text-center text-info"><small>(bobot akan diabaikan jika masa berlaku tidak dipilih)</small></p>
+                                    <p class="text-center text-info"><small><strong>Noted!</strong> bobot akan diabaikan jika masa berlaku tidak dipilih</small></p>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">

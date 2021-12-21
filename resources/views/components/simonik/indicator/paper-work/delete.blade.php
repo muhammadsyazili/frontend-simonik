@@ -1,15 +1,12 @@
 @extends('layouts/after-login')
 
-@section('title', 'Indikator - Kertas Kerja - Create')
+@section('title', 'Indikator - Kertas Kerja - Delete')
 
 {{-- ========================================================== --}}
 
 @push('style')
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('template/plugins/fontawesome-free/css/all.min.css') }}"> {{-- required --}}
-    <!-- Select2 -->
-    <link rel="stylesheet" href="{{ asset('template/plugins/select2/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('template/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     <!-- Theme Style -->
     <link rel="stylesheet" href="{{ asset('template/dist/css/adminlte.min.css') }}"> {{-- required --}}
     <!-- Google Font: Source Sans Pro -->
@@ -39,30 +36,6 @@
         }
     </style>
     <!-- End : Custom Style for Navbar -->
-
-    {{-- Change Color Row Table on Click --}}
-    <style>
-        .table tbody tr.highlight td {
-            background-color: rgb(0, 0, 0);
-            color: rgb(255, 255, 255);
-        }
-    </style>
-    {{-- End : Change Color Row Table on Click --}}
-
-    {{-- Table Header Fixed --}}
-    <style>
-        .table-responsive{
-            height:400px;
-            overflow:scroll;
-        }
-        thead tr:nth-child(1) th{
-            background: white;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-    </style>
-    {{-- End : Table Header Fixed --}}
 @endpush
 
 {{-- ========================================================== --}}
@@ -71,6 +44,8 @@
     <!-- jQuery -->
     <script src="{{ asset('template/plugins/jquery/jquery.js') }}"></script> {{-- required --}}
     <script src="{{ asset('template/plugins/jquery/jquery.min.js') }}"></script> {{-- required --}}
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -79,14 +54,6 @@
     <script src="{{ asset('template/dist/js/adminlte.min.js') }}"></script> {{-- required --}}
     <!-- AdminLTE For Demo Purposes -->
     <script src="{{ asset('template/dist/js/demo.js') }}"></script> {{-- required --}}
-
-    {{-- Change Color Row Table on Click --}}
-    <script>
-        $('#drag-drop-table-sorting').on('click', 'tbody tr', function(event) {
-            $(this).addClass('highlight').siblings().removeClass('highlight');
-        });
-    </script>
-    {{-- End : Change Color Row Table on Click --}}
 @endpush
 
 {{-- ========================================================== --}}
@@ -96,6 +63,24 @@
         @if (session()->has('danger_message'))
             @include('_danger-message-card',['message' => session()->get('danger_message')])
         @else
+            @if (session()->has('info_message'))
+            <div class="col-md-12">
+                <div class="card border-0 shadow rounded">
+                    <!-- card-header -->
+                    <div class="card-header">
+                        <h3 class="card-title">Info</h3>
+                    </div>
+                    <!-- end : card-header -->
+
+                    <!-- card-body -->
+                    <div class="card-body">
+                        @include('_info-message-card',['message' => session()->get('info_message')])
+                    </div>
+                    <!-- end : card-body -->
+                </div>
+            </div>
+            @endif
+
             @if ($errors->any())
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
@@ -122,78 +107,43 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Kertas Kerja / Indikator / Create</h3>
+                        <h3 class="card-title text-danger"><strong>Danger Zone!</strong></h3>
                     </div>
                     <!-- end : card-header -->
 
                     <!-- card-body -->
                     <div class="card-body">
                         <div class="row">
-                            @if (empty($response->object()->data->indicators))
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <h3 class="text-center font-weight-bold">Empty Data</h3>
-                                </div>
-                            @else
-                                <form action="{{ route('simonik.indicators.paper-work.store') }}" method="post">
-                                    @csrf
-                                    @method('post')
 
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                        <div class="table-responsive-sm mb-3">
-                                            <table class="table table-bordered">
-                                                <thead class="thead-dark">
-                                                    <tr>
-                                                        <th class="text-center"></th>
-                                                        <th class="text-center">Indikator</th>
-                                                        <th class="text-center">Formula</th>
-                                                        <th class="text-center">Satuan</th>
-                                                        <th class="text-center">Bobot</th>
-                                                        <th class="text-center">Berlaku</th>
-                                                        <th class="text-center">Polaritas</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @include('components.simonik.indicator.paper-work.create._indicator-child',[
-                                                        'indicators' => $response->object()->data->indicators,
-                                                        'background_color' => ['red' => 255, 'green' => 255, 'blue' => 255]
-                                                    ])
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <h1 class="text-center text-danger"><i class="fas fa-exclamation-triangle"></i></h1>
+                                <h5 class="text-center">Anda yakin ingin menghapus kertas kerja indikator <strong>Level: {{ strtoupper(str_replace("-", " ", $level)) }} - Unit: {{ strtoupper(str_replace("-", " ", $unit)) }} - Tahun: {{ strtoupper(str_replace("-", " ", $tahun)) }}</strong> ?</h5>
+                                @if ($unit === 'master') <p class="text-center"><strong>Noted!</strong> Aksi ini akan menyebabkan terhapusnya semua kertas kerja indikator, target & realisasi pada level: <strong>{{ strtoupper(str_replace("-", " ", $level)) }}</strong></p> @endif
+                            </div>
 
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                        <div class="form-group">
-                                            <label for="level">Level</label>
-                                            <select class="custom-select" name="level" id="level">
-                                                @include('components.simonik.indicator.paper-work.create._level-child',[
-                                                    'levels' => $response->object()->data->levels
-                                                ])
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                        <div class="form-group">
-                                            <label for="year">Tahun</label>
-                                            <input type="text" class="form-control" name="year" id="year" value="{{ now()->year }}">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                        <button type="submit" class="btn btn-sm btn-info float-right">Save</button>
-                                    </div>
-                                </form>
-                            @endif
                         </div>
                     </div>
                     <!-- end : card-body -->
 
                     <!-- card-footer -->
-                    <div class="card-footer clearfix"></div>
+                    <div class="card-footer clearfix">
+                        <div class="row">
+                            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <a href="{{ route('simonik.indicators.paper-work.index', ['level' => $level, 'unit' => $unit, 'tahun' => $tahun]) }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="No">No</a>
+                            </div>
+                            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <form action="{{ route('simonik.indicators.paper-work.destroy', ['level' => $level, 'unit' => $unit, 'tahun' => $tahun]) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-block btn-danger btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Yes">Yes</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <!-- end : card-footer -->
                 </div>
             </div>
+
         @endif
     </div>
 @endsection

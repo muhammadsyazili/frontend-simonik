@@ -1,6 +1,6 @@
 @extends('layouts/after-login')
 
-@section('title', 'Target - Paper Work - Read')
+@section('title', 'Target - Kertas Kerja - Read')
 
 {{-- ========================================================== --}}
 @push('metadata')
@@ -147,7 +147,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Error(s)</h3>
+                        <h3 class="card-title">Info</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -206,7 +206,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Paper Work / Target / Level : {{ request()->query('level') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('level'))) }} / Unit : {{ request()->query('unit') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('unit'))) }} / Tahun : {{ request()->query('tahun') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('tahun'))) }}</h3>
+                        <h3 class="card-title">Kertas Kerja / Target / Level : {{ request()->query('level') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('level'))) }} / Unit : {{ request()->query('unit') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('unit'))) }} / Tahun : {{ request()->query('tahun') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('tahun'))) }}</h3>
                     </div>
                     <!-- end : card-header -->
 
