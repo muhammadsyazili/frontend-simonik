@@ -96,6 +96,25 @@
         @if (session()->has('danger_message'))
             @include('_danger-message-card',['message' => session()->get('danger_message')])
         @else
+
+            @if (session()->has('info_message'))
+            <div class="col-md-12">
+                <div class="card border-0 shadow rounded">
+                    <!-- card-header -->
+                    <div class="card-header">
+                        <h3 class="card-title">Info</h3>
+                    </div>
+                    <!-- end : card-header -->
+
+                    <!-- card-body -->
+                    <div class="card-body">
+                        @include('_info-message-card',['message' => session()->get('info_message')])
+                    </div>
+                    <!-- end : card-body -->
+                </div>
+            </div>
+            @endif
+
             @if ($errors->any())
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">

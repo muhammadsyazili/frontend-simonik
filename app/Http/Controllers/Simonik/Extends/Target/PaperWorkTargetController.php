@@ -18,7 +18,7 @@ class PaperWorkTargetController extends Controller
     {
         $response = null;
         if (is_null($request->query('level')) || is_null($request->query('unit')) || is_null($request->query('tahun'))) {
-            $response = callSIMONIK_Sevices(sprintf('/user/%s/levels', $request->cookie('X-User-Id')), 'get');
+            $response = callSIMONIK_Sevices(sprintf('/user/%s/levels', $request->cookie('X-User-Id')), 'get', ['with-super-master' => 'false']);
 
             if ($response->clientError()) {
                 return redirect()->back()->withErrors($response->object()->errors);
@@ -29,20 +29,11 @@ class PaperWorkTargetController extends Controller
                 return redirect()->back();
             }
         } else {
-            $attributes = [
-                'level' => ['required', 'string'],
-                'unit' => ['required', 'string'],
-                'tahun' => ['required', 'string', 'date_format:Y'],
-            ];
-
-            $messages = [
-                'required' => ':attribute tidak boleh kosong.',
-                'date_format' => ':attribute harus berformat yyyy.',
-            ];
-
-            $validated = $request->validate($attributes, $messages);
-
-            $response = callSIMONIK_Sevices('/targets/paper-work/edit', 'get', $validated);
+            $response = callSIMONIK_Sevices('/targets/paper-work/edit', 'get', [
+                'level' => $request->query('level'),
+                'unit' => $request->query('unit'),
+                'tahun' => $request->query('tahun'),
+            ]);
 
             if ($response->clientError()) {
                 return redirect()->back()->withErrors($response->object()->errors);
@@ -107,9 +98,24 @@ class PaperWorkTargetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $response = callSIMONIK_Sevices('/targets/paper-work', 'put', [
+            'id' => $request->post('id'),
+            'target' => $request->post('target'),
+        ]);
+
+        if ($response->clientError()) {
+            return redirect()->back()->withErrors($response->object()->errors);
+        }
+
+        if ($response->serverError()) {
+            Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
+            return redirect()->back();
+        }
+
+        Session::flash('info_message', $response->object()->message);
+        return redirect()->route('simonik.targets.paper-work.index');
     }
 
     /**

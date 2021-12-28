@@ -119,7 +119,7 @@
                         $('.dynamic-option').remove();
 
                         if (res.data.length > 0) {
-                            let html = '<option class="dynamic-option" value="master">-- Master --</option>';
+                            let html = '<option class="dynamic-option" value="master">-- Semua --</option>';
                             for (let i = 0; i < res.data.length; i++) {
                                 html += `<option class="dynamic-option" value="${res.data[i].slug}">${res.data[i].name}</option>`;
                             }
@@ -142,6 +142,24 @@
         @if (session()->has('danger_message'))
             @include('_danger-message-card',['message' => session()->get('danger_message')])
         @else
+            @if (session()->has('info_message'))
+            <div class="col-md-12">
+                <div class="card border-0 shadow rounded">
+                    <!-- card-header -->
+                    <div class="card-header">
+                        <h3 class="card-title">Info</h3>
+                    </div>
+                    <!-- end : card-header -->
+
+                    <!-- card-body -->
+                    <div class="card-body">
+                        @include('_info-message-card',['message' => session()->get('info_message')])
+                    </div>
+                    <!-- end : card-body -->
+                </div>
+            </div>
+            @endif
+
             @if ($errors->any())
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
@@ -251,7 +269,7 @@
                                 @else
                                     <form action="{{ route('simonik.targets.paper-work.update') }}" method="post">
                                         @csrf
-                                        @method('post')
+                                        @method('put')
                                         <div class="table-responsive">
                                             <table class="table table-bordered" id="drag-drop-table-sorting">
                                                 <thead class="thead-dark">

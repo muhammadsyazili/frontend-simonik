@@ -84,6 +84,25 @@
         @if (session()->has('danger_message'))
             @include('_danger-message-card',['message' => session()->get('danger_message')])
         @else
+
+            @if (session()->has('info_message'))
+            <div class="col-md-12">
+                <div class="card border-0 shadow rounded">
+                    <!-- card-header -->
+                    <div class="card-header">
+                        <h3 class="card-title">Info</h3>
+                    </div>
+                    <!-- end : card-header -->
+
+                    <!-- card-body -->
+                    <div class="card-body">
+                        @include('_info-message-card',['message' => session()->get('info_message')])
+                    </div>
+                    <!-- end : card-body -->
+                </div>
+            </div>
+            @endif
+
             @if ($errors->any())
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
@@ -197,7 +216,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['jan']" value="1">Jan
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity[jan]" value="1">Jan
                                             </label>
                                         </div>
                                     </div>
@@ -206,7 +225,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['feb']" value="1">Feb
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity[feb]" value="1">Feb
                                             </label>
                                         </div>
                                     </div>
@@ -215,7 +234,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['mar']" value="1">Mar
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity[mar]" value="1">Mar
                                             </label>
                                         </div>
                                     </div>
@@ -224,7 +243,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['apr']" value="1">Apr
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity[apr]" value="1">Apr
                                             </label>
                                         </div>
                                     </div>
@@ -233,7 +252,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['may']" value="1">May
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity[may]" value="1">May
                                             </label>
                                         </div>
                                     </div>
@@ -242,7 +261,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['jun']" value="1">Jun
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity[jun]" value="1">Jun
                                             </label>
                                         </div>
                                     </div>
@@ -251,7 +270,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['jul']" value="1">Jul
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity[jul]" value="1">Jul
                                             </label>
                                         </div>
                                     </div>
@@ -260,7 +279,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['aug']" value="1">Aug
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity[aug]" value="1">Aug
                                             </label>
                                         </div>
                                     </div>
@@ -269,7 +288,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['sep']" value="1">Sep
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity[sep]" value="1">Sep
                                             </label>
                                         </div>
                                     </div>
@@ -278,7 +297,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['oct']" value="1">Oct
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity[oct]" value="1">Oct
                                             </label>
                                         </div>
                                     </div>
@@ -287,7 +306,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['nov']" value="1">Nov
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity[nov]" value="1">Nov
                                             </label>
                                         </div>
                                     </div>
@@ -296,7 +315,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity['dec']" value="1">Dec
+                                                <input type="checkbox" class="form-check-input validity-group" name="validity[dec]" value="1">Dec
                                             </label>
                                         </div>
                                     </div>
@@ -311,73 +330,73 @@
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">Jan</p>
-                                        <input type="number" class="form-control weight-group" name="weight['jan']" value="0">
+                                        <input type="number" class="form-control weight-group" name="weight[jan]" value="0">
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">Feb</p>
-                                        <input type="number" class="form-control weight-group" name="weight['feb']" value="0">
+                                        <input type="number" class="form-control weight-group" name="weight[feb]" value="0">
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">Mar</p>
-                                        <input type="number" class="form-control weight-group" name="weight['mar']" value="0">
+                                        <input type="number" class="form-control weight-group" name="weight[mar]" value="0">
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">Apr</p>
-                                        <input type="number" class="form-control weight-group" name="weight['apr']" value="0">
+                                        <input type="number" class="form-control weight-group" name="weight[apr]" value="0">
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">May</p>
-                                        <input type="number" class="form-control weight-group" name="weight['may']" value="0">
+                                        <input type="number" class="form-control weight-group" name="weight[may]" value="0">
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">Jun</p>
-                                        <input type="number" class="form-control weight-group" name="weight['jun']" value="0">
+                                        <input type="number" class="form-control weight-group" name="weight[jun]" value="0">
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">Jul</p>
-                                        <input type="number" class="form-control weight-group" name="weight['jul']" value="0">
+                                        <input type="number" class="form-control weight-group" name="weight[jul]" value="0">
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">Aug</p>
-                                        <input type="number" class="form-control weight-group" name="weight['aug']" value="0">
+                                        <input type="number" class="form-control weight-group" name="weight[aug]" value="0">
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">Sep</p>
-                                        <input type="number" class="form-control weight-group" name="weight['sep']" value="0">
+                                        <input type="number" class="form-control weight-group" name="weight[sep]" value="0">
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">Oct</p>
-                                        <input type="number" class="form-control weight-group" name="weight['oct']" value="0">
+                                        <input type="number" class="form-control weight-group" name="weight[oct]" value="0">
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">Nov</p>
-                                        <input type="number" class="form-control weight-group" name="weight['nov']" value="0">
+                                        <input type="number" class="form-control weight-group" name="weight[nov]" value="0">
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center">Dec</p>
-                                        <input type="number" class="form-control weight-group" name="weight['dec']" value="0">
+                                        <input type="number" class="form-control weight-group" name="weight[dec]" value="0">
                                     </div>
                                 </div>
                             </div>

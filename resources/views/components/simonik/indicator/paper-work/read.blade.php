@@ -8,6 +8,7 @@
     <meta name="level" content="{{ request()->query('level') }}">
     <meta name="unit" content="{{ request()->query('unit') }}">
     <meta name="year" content="{{ request()->query('tahun') }}">
+    <meta name="x-user-id" content="{{ request()->cookie('X-User-Id') }}">
 @endpush
 
 {{-- ========================================================== --}}
@@ -166,6 +167,9 @@
                 let host = $('meta[name="host"]').attr('content');
                 $.ajax({
                     type: 'GET',
+                    headers: {
+                        'X-User-Id': $('meta[name="x-user-id"]').attr('content')
+                    },
                     url: `${host}/level/${level}/units`,
                     success: function(res) {
                         $('.dynamic-option').remove();

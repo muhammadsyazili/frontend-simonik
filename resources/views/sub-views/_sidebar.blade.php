@@ -10,10 +10,13 @@
   <div class="sidebar">
     <!-- Sidebar User Panel -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="info">
-        <a href="#" class="d-block"><small>@ {{ request()->cookie('X-Username') }}</small></a>
-        <a href="#" class="d-block"><small>({{ request()->cookie('X-Role') }})</small></a>
-      </div>
+        <div class="image">
+            <h1 class="text-center"><i class="nav-icon fas fa-user"></i></h1>
+        </div>
+        <div class="info">
+            <a href="#" class="d-block"><small>@ {{ request()->cookie('X-Username') }}</small></a>
+            <a href="#" class="d-block"><small>({{ request()->cookie('X-Role') }})</small></a>
+        </div>
     </div>
     <!-- End Sidebar User Panel -->
 
