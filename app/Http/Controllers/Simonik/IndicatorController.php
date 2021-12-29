@@ -10,16 +10,6 @@ use Symfony\Component\HttpFoundation\Response;
 class IndicatorController extends Controller
 {
     /**
-     * Instantiate a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-
-    }
-
-    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -130,6 +120,7 @@ class IndicatorController extends Controller
             Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
             return redirect()->back();
         }
+
         return view('components.simonik.indicator.edit', compact('response'));
     }
 

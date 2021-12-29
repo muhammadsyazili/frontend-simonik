@@ -119,7 +119,7 @@
                         $('.dynamic-option').remove();
 
                         if (res.data.length > 0) {
-                            let html = '<option class="dynamic-option" value="master">-- Semua --</option>';
+                            let html = '<option class="dynamic-option" value="master">-- Master --</option>';
                             for (let i = 0; i < res.data.length; i++) {
                                 html += `<option class="dynamic-option" value="${res.data[i].slug}">${res.data[i].name}</option>`;
                             }

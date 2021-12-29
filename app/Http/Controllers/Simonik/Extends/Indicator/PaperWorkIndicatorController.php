@@ -126,7 +126,20 @@ class PaperWorkIndicatorController extends Controller
      */
     public function edit($level, $unit, $tahun)
     {
+        $response = callSIMONIK_Sevices("/indicators/paper-work/$level/$unit/$tahun/edit", 'get');
 
+        if ($response->clientError()) {
+            return redirect()->back()->withErrors($response->object()->errors);
+        }
+
+        if ($response->serverError()) {
+            Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
+            return redirect()->back();
+        }
+
+        //dd($response->object()->data);
+
+        return view('components.simonik.indicator.paper-work.edit', compact(['response', 'level', 'unit', 'tahun']));
     }
 
     /**
