@@ -124,7 +124,7 @@ class PaperWorkIndicatorController extends Controller
      * @param  string  $tahun
      * @return \Illuminate\Http\Response
      */
-    public function edit($level, $unit, $tahun)
+    public function edit($level, string $unit, string $tahun)
     {
         $response = callSIMONIK_Sevices("/indicators/paper-work/$level/$unit/$tahun/edit", 'get');
 
@@ -151,9 +151,32 @@ class PaperWorkIndicatorController extends Controller
      * @param  string  $tahun
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $level, $unit, $tahun)
+    public function update(Request $request, string $level, string $unit, string $tahun)
     {
+        $attributes = [
+            'indicators.*' => ['required', 'uuid'],
+        ];
 
+        $messages = [
+            'required' => ':attribute tidak boleh kosong.',
+            'uuid' => ':attribute harus UUID format.',
+        ];
+
+        $validated = $request->validate($attributes, $messages);
+
+        $response = callSIMONIK_Sevices("/indicators/paper-work/$level/$unit/$tahun", 'put', $validated);
+
+        if ($response->clientError()) {
+            return redirect()->back()->withErrors($response->object()->errors);
+        }
+
+        if ($response->serverError()) {
+            Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
+            return redirect()->back();
+        }
+
+        Session::flash('info_message', $response->object()->message);
+        return redirect()->route('simonik.indicators.paper-work.index', defaultQueryParams());
     }
 
     /**

@@ -1,50 +1,26 @@
 @foreach ($super_master_indicators as $indicator)
     <tr style="background-color: rgb({{ $background_color['red'] }}, {{ $background_color['green'] }}, {{ $background_color['blue'] }}); @if (($background_color['red'] < 127.5) && ($background_color['green'] < 127.5) && ($background_color['blue'] < 127.5)) color: white; @endif">
         <td>
-            @php $filtered = $indicators->where('code', $indicator->id)->all(); @endphp
-            <input type="checkbox" name="indicators[]" value="{{ $indicator->id }}" @if (count($filtered) > 0) checked @endif>
+            @php $filtered = $indicators->firstWhere('code', $indicator->id); @endphp
+            <input type="checkbox" name="indicators[]" value="@if (!is_null($filtered)){{ $filtered->id }}@else{{ $indicator->id }}@endif" @if (!is_null($filtered)){{ 'checked' }}@endif>
         </td>
         <td>
-            <p>
-                <strong>{{ empty($iter) ? "$loop->iteration." : "$iter.$loop->iteration." }}</strong>
-                @if (count($filtered) > 0)
-                    @foreach ($filtered as $item)
-                        {{ $item->indicator }}
-                    @endforeach
-                @else
-                    {{ $indicator->indicator }}
-                @endif
-            </p>
+            <strong>{{ empty($iter) ? "$loop->iteration." : "$iter.$loop->iteration." }}</strong>
+            @if (!is_null($filtered)){{ $filtered->indicator }}@else{{ $indicator->indicator }}@endif
         </td>
         <td class="small">
-            <p>
-                @if (count($filtered) > 0)
-                    @foreach ($filtered as $item)
-                        {{ $item->formula }}
-                    @endforeach
-                @else
-                    {{ $indicator->formula }}
-                @endif
-            </p>
+            @if (!is_null($filtered)){{ $filtered->formula }}@else{{ $indicator->formula }}@endif
         </td>
         <td class="text-center">
-            @if (count($filtered) > 0)
-                @foreach ($filtered as $item)
-                    {{ $item->measure }}
-                @endforeach
-            @else
-                {{ $indicator->measure }}
-            @endif
+            @if (!is_null($filtered)){{ $filtered->measure }}@else{{ $indicator->measure }}@endif
         </td>
         <td class="text-center">
-            @if (count($filtered) > 0)
-                @foreach ($filtered as $item)
-                    @forelse ($item->weight as $key => $value)
-                        <span class="badge badge-success">{{ $key }} : {{ $value }}</span>
-                    @empty
-                        <p>-</p>
-                    @endforelse
-                @endforeach
+            @if (!is_null($filtered))
+                @forelse ($filtered->weight as $key => $value)
+                    <span class="badge badge-success">{{ $key }} : {{ $value }}</span>
+                @empty
+                    <p>-</p>
+                @endforelse
             @else
                 @forelse ($indicator->weight as $key => $value)
                     <span class="badge badge-success">{{ $key }} : {{ $value }}</span>
@@ -54,14 +30,12 @@
             @endif
         </td>
         <td class="text-center">
-            @if (count($filtered) > 0)
-                @foreach ($filtered as $item)
-                    @forelse ($item->validity as $key => $value)
-                        <span class="badge badge-info">{{ $key }}</span>
-                    @empty
-                        <p>-</p>
-                    @endforelse
-                @endforeach
+            @if (!is_null($filtered))
+                @forelse ($filtered->validity as $key => $value)
+                    <span class="badge badge-info">{{ $key }}</span>
+                @empty
+                    <p>-</p>
+                @endforelse
             @else
                 @forelse ($indicator->validity as $key => $value)
                     <span class="badge badge-info">{{ $key }}</span>
@@ -71,12 +45,10 @@
             @endif
         </td>
         <td class="text-center">
-            @if (count($filtered) > 0)
-                @foreach ($filtered as $item)
-                    <span class="badge badge-dark">
-                        {!! $item->polarity !!}
-                    </span>
-                @endforeach
+            @if (!is_null($filtered))
+                <span class="badge badge-dark">
+                    {!! $filtered->polarity !!}
+                </span>
             @else
                 <span class="badge badge-dark">
                     {!! $indicator->polarity !!}

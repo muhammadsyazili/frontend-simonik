@@ -183,6 +183,12 @@
                                     </div>
 
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <h1 class="text-center text-danger"><i class="fas fa-exclamation-triangle"></i></h1>
+                                        <h5 class="text-center text-danger"><strong>Danger Zone!</strong></h5>
+                                        <p class="text-center"><small><strong>Noted!</strong> Aksi ini akan menambahkan indikator, target & realisasi <strong>checked</strong> dan menghapus indikator, target & realisasi <strong>un-checked</strong> pada <strong>(level: {{ $level }})</strong> <strong>(unit: {{ $unit }})</strong> <strong>(tahun: {{ $tahun }})</strong>.</small></p>
+                                    </div>
+
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                         <button type="submit" class="btn btn-sm btn-info float-right">Save</button>
                                     </div>
                                 </form>
