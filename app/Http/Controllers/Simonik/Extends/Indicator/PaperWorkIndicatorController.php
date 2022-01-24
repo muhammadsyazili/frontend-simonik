@@ -216,4 +216,27 @@ class PaperWorkIndicatorController extends Controller
         Session::flash('info_message', $response->object()->message);
         return redirect()->route('simonik.indicators.paper-work.index', defaultQueryParams());
     }
+
+    /**
+     * Reorder the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function reorder(Request $request)
+    {
+        $response = $request->query('level') === 'super-master' ? callSIMONIK_Sevices("/indicators/paper-work/reorder", 'put', ['indicators' => $request->post('indicators'), 'level' => $request->query('level')]) : callSIMONIK_Sevices("/indicators/paper-work/reorder", 'put', ['indicators' => $request->post('indicators'), 'level' => $request->query('level'), 'unit' => $request->query('unit'), 'year' => $request->query('tahun')]);
+
+        if ($response->clientError()) {
+            return redirect()->back()->withErrors($response->object()->errors);
+        }
+
+        if ($response->serverError()) {
+            Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
+            return redirect()->back();
+        }
+
+        Session::flash('info_message', $response->object()->message);
+        return redirect()->route('simonik.indicators.paper-work.index', defaultQueryParams());
+    }
 }

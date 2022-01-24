@@ -1,6 +1,6 @@
 @extends('layouts/after-login')
 
-@section('title', 'Indikator - Kertas Kerja - Read')
+@section('title', 'Kertas Kerja - KPI')
 
 {{-- ========================================================== --}}
 @push('metadata')
@@ -244,7 +244,7 @@
                     <div class="card border-0 shadow rounded">
                         <!-- card-header -->
                         <div class="card-header">
-                            <h3 class="card-title">Feature</h3>
+                            <h3 class="card-title">Fitur</h3>
                         </div>
                         <!-- end : card-header -->
 
@@ -255,8 +255,8 @@
                                 @if (!empty($response->object()->data->permissions) && $response->object()->data->permissions->indicator->create)
                                     <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
                                         <fieldset class="scheduler-border">
-                                            <legend class="scheduler-border"><i class="fas fa-key"></i> Indikator</legend>
-                                            <a href="{{ route('simonik.indicators.create') }}" class="btn btn-block btn-success btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Add - Indikator">Create</a>
+                                            <legend class="scheduler-border"><i class="fas fa-key"></i> KPI</legend>
+                                            <a href="{{ route('simonik.indicators.create') }}" class="btn btn-block btn-success btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Add - KPI">Create</a>
                                         </fieldset>
                                     </div>
                                 @endif
@@ -264,7 +264,7 @@
                                 @if ((!empty($response->object()->data->permissions) && $response->object()->data->permissions->reference->create) || (!empty($response->object()->data->permissions) && $response->object()->data->permissions->reference->edit))
                                     <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                         <fieldset class="scheduler-border">
-                                            <legend class="scheduler-border"><i class="fas fa-link"></i> Referensi KPI</legend>
+                                            <legend class="scheduler-border"><i class="fas fa-link"></i> Referensi - KPI</legend>
 
                                             <div class="row">
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -285,7 +285,7 @@
                                 @if ((!empty($response->object()->data->permissions) && $response->object()->data->permissions->paper_work->indicator->create) || (!empty($response->object()->data->permissions) && $response->object()->data->permissions->paper_work->indicator->edit) || (!empty($response->object()->data->permissions) && $response->object()->data->permissions->paper_work->indicator->delete))
                                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                         <fieldset class="scheduler-border">
-                                            <legend class="scheduler-border"><i class="fas fa-list-ol"></i> Kertas Kerja (Indikator)</legend>
+                                            <legend class="scheduler-border"><i class="fas fa-list-ol"></i> Kertas Kerja - KPI</legend>
 
                                             <div class="row">
                                                 <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
@@ -328,7 +328,7 @@
 
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Kertas Kerja / Indikator / Level : {{ strtoupper(str_replace("-", " ", request()->query('level'))) }} / Unit : {{ request()->query('unit') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('unit'))) }} / Tahun : {{ request()->query('tahun') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('tahun'))) }}</h3>
+                        <h3 class="card-title">Kertas Kerja - KPI / Level : {{ strtoupper(str_replace("-", " ", request()->query('level'))) }} / Unit : {{ request()->query('unit') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('unit'))) }} / Tahun : {{ request()->query('tahun') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('tahun'))) }}</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -372,12 +372,12 @@
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 @if (empty($response->object()->data->indicators))
                                     @if (is_null(request()->query('level')))
-                                        <h3 class="text-center font-weight-bold">Please Do Filter</h3>
+                                        <h3 class="text-center font-weight-bold">Lakukan Filter</h3>
                                     @else
-                                        <h3 class="text-center font-weight-bold">Empty Data</h3>
+                                        <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                     @endif
                                 @else
-                                    <form action="{{ route('simonik.indicators.paper-work.order.update', ['level' => request()->query('level'), 'unit' => request()->query('unit'), 'tahun' => request()->query('tahun')]) }}" method="post">
+                                    <form action="{{ route('simonik.indicators.paper-work.reorder', ['level' => request()->query('level'), 'unit' => request()->query('unit'), 'tahun' => request()->query('tahun')]) }}" method="post">
                                         @csrf
                                         @method('put')
 
@@ -385,7 +385,7 @@
                                             <table class="table table-bordered" id="drag-drop-table-sorting">
                                                 <thead class="thead-dark">
                                                     <tr>
-                                                        <th class="text-center">Indikator</th>
+                                                        <th class="text-center">KPI</th>
                                                         <th class="text-center">Formula</th>
                                                         <th class="text-center">Satuan</th>
                                                         <th class="text-center">Bobot</th>
@@ -405,7 +405,7 @@
                                         </div>
 
                                         @if ($response->object()->data->permissions->indicator->changes_order)
-                                            <button type="submit" class="btn btn-sm btn-info float-right">Change Order</button>
+                                            <button type="submit" class="btn btn-sm btn-info float-right"><strong>Urutkan ulang KPI</strong></button>
                                         @endif
                                     </form>
                                 @endif

@@ -1,6 +1,6 @@
 @extends('layouts/after-login')
 
-@section('title', 'Indikator - Kertas Kerja - Create')
+@section('title', 'Tambah :: Kertas Kerja - KPI')
 
 {{-- ========================================================== --}}
 
@@ -141,7 +141,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Kertas Kerja / Indikator / Create</h3>
+                        <h3 class="card-title">Tambah Kertas Kerja - KPI</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -150,7 +150,7 @@
                         <div class="row">
                             @if (empty($response->object()->data->indicators))
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <h3 class="text-center font-weight-bold">Empty Data</h3>
+                                    <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                 </div>
                             @else
                                 <form action="{{ route('simonik.indicators.paper-work.store') }}" method="post">
@@ -163,7 +163,7 @@
                                                 <thead class="thead-dark">
                                                     <tr>
                                                         <th class="text-center"></th>
-                                                        <th class="text-center">Indikator</th>
+                                                        <th class="text-center">KPI</th>
                                                         <th class="text-center">Formula</th>
                                                         <th class="text-center">Satuan</th>
                                                         <th class="text-center">Bobot</th>

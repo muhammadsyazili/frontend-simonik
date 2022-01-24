@@ -57,12 +57,12 @@
         </td>
     </tr>
 
-    @notEmpty($indicator->childs_horizontal_recursive)
+    @if (!empty($indicator->childs_horizontal_recursive))
         @include('components.simonik.indicator.paper-work.edit._indicator-child', [
             'super_master_indicators' => $indicator->childs_horizontal_recursive,
             'indicators' => $indicators,
             'background_color' => ['red' => $background_color['red']-15, 'green' => $background_color['green']-15, 'blue' => $background_color['blue']-15],
             'iter' => empty($iter) ? "$loop->iteration" : "$iter.$loop->iteration"
         ])
-    @endNotEmpty
+    @endif
 @endforeach

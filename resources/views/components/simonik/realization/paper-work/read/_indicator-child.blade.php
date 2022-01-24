@@ -156,7 +156,7 @@
     @if (!empty($indicator->validity)) @php $iter++; @endphp @endif
 
     @if (!empty($indicator->childs_horizontal_recursive))
-        @include('components.simonik.target.paper-work.read._indicator-child', [
+        @include('components.simonik.realization.paper-work.read._indicator-child', [
             'indicators' => $indicator->childs_horizontal_recursive,
             'background_color' => ['red' => $background_color['red']-15, 'green' => $background_color['green']-15, 'blue' => $background_color['blue']-15],
             'prefix' => empty($prefix) ? "$loop->iteration" : "$prefix.$loop->iteration",

@@ -38,7 +38,7 @@
                 <li class="nav-item">
                     <a href="{{ route('simonik.indicators.paper-work.index') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Indikator</p>
+                    <p>KPI</p>
                     </a>
                 </li>
                 <li class="nav-item">

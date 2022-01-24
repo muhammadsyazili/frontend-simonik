@@ -17,7 +17,7 @@ class PaperWorkTargetController extends Controller
     public function index(Request $request)
     {
         $response = null;
-        if (is_null($request->query('level')) || is_null($request->query('unit')) || is_null($request->query('tahun'))) {
+        if (is_null($request->query('level')) && is_null($request->query('unit')) && is_null($request->query('tahun'))) {
             $response = callSIMONIK_Sevices(sprintf('/user/%s/levels', $request->cookie('X-User-Id')), 'get', ['with-super-master' => 'false']);
 
             if ($response->clientError()) {

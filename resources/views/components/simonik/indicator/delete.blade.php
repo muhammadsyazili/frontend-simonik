@@ -1,6 +1,6 @@
 @extends('layouts/after-login')
 
-@section('title', 'Indikator - Delete')
+@section('title', 'Hapus :: KPI')
 
 {{-- ========================================================== --}}
 
@@ -114,7 +114,7 @@
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <h1 class="text-center text-danger"><i class="fas fa-exclamation-triangle"></i></h1>
-                                <h5 class="text-center">Anda yakin ingin menghapus indikator ?</h5>
+                                <h5 class="text-center">Anda yakin ingin menghapus KPI ?</h5>
                             </div>
                         </div>
                     </div>

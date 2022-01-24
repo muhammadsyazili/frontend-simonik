@@ -1,6 +1,6 @@
 @extends('layouts/after-login')
 
-@section('title', 'Kertas Kerja - Target')
+@section('title', 'Kertas Kerja - Realisasi')
 
 {{-- ========================================================== --}}
 @push('metadata')
@@ -119,7 +119,7 @@
                         $('.dynamic-option').remove();
 
                         if (res.data.length > 0) {
-                            let html = '<option class="dynamic-option" value="master">-- Master --</option>';
+                            let html;
                             for (let i = 0; i < res.data.length; i++) {
                                 html += `<option class="dynamic-option" value="${res.data[i].slug}">${res.data[i].name}</option>`;
                             }
@@ -224,7 +224,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Kertas Kerja - Target / Level : {{ request()->query('level') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('level'))) }} / Unit : {{ request()->query('unit') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('unit'))) }} / Tahun : {{ request()->query('tahun') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('tahun'))) }}</h3>
+                        <h3 class="card-title">Kertas Kerja - Realisasi / Level : {{ request()->query('level') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('level'))) }} / Unit : {{ request()->query('unit') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('unit'))) }} / Tahun : {{ request()->query('tahun') == null ? '-' : strtoupper(str_replace("-", " ", request()->query('tahun'))) }}</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -232,14 +232,14 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                <form action="{{ route('simonik.targets.paper-work.index') }}" method="get">
+                                <form action="{{ route('simonik.realizations.paper-work.index') }}" method="get">
                                     <div class="input-group mb-3">
                                         <span class="input-group-append">
                                             <span class="input-group-text">Level</span>
                                         </span>
 
                                         <select class="custom-select" name="level">
-                                            @include('components.simonik.target.paper-work.read._level-child', [
+                                            @include('components.simonik.realization.paper-work.read._level-child', [
                                                 'levels' => empty($response->object()->data->levels) ? $response->object()->data : $response->object()->data->levels
                                             ])
                                         </select>
@@ -267,7 +267,7 @@
                                 @if (empty($response->object()->data->indicators))
                                     <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                 @else
-                                    <form action="{{ route('simonik.targets.paper-work.update') }}" method="post">
+                                    <form action="{{ route('simonik.realizations.paper-work.update') }}" method="post">
                                         @csrf
                                         @method('put')
                                         <div class="table-responsive">
@@ -280,7 +280,7 @@
                                                         <th class="text-center" rowspan="2">Bobot</th>
                                                         <th class="text-center" rowspan="2">Berlaku</th>
                                                         <th class="text-center" rowspan="2">Polaritas</th>
-                                                        <th class="text-center" colspan="12">Target</th>
+                                                        <th class="text-center" colspan="12">Realisasi</th>
                                                     </tr>
                                                     <tr>
                                                         <th class="text-center">Jan</th>
@@ -298,7 +298,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody class="text-nowrap">
-                                                    @include('components.simonik.target.paper-work.read._indicator-child',[
+                                                    @include('components.simonik.realization.paper-work.read._indicator-child',[
                                                         'indicators' => $response->object()->data->indicators,
                                                         'background_color' => ['red' => 255, 'green' => 255, 'blue' => 255],
                                                         'iter' => 0,

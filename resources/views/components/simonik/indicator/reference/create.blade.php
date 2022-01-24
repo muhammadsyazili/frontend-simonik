@@ -1,6 +1,6 @@
 @extends('layouts/after-login')
 
-@section('title', 'Indikator - Referensi KPI - Create')
+@section('title', 'Referensi - KPI')
 
 {{-- ========================================================== --}}
 
@@ -124,7 +124,7 @@
                 </div>
             </div>
             @endif
-            
+
             @if ($errors->any())
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
@@ -151,7 +151,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Indikator / Referensi KPI</h3>
+                        <h3 class="card-title">Referensi - KPI</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -164,7 +164,7 @@
                             <div class="row">
                                 @if (empty($response->object()->data->indicators))
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                        <h3 class="text-center font-weight-bold">Empty Data</h3>
+                                        <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                     </div>
                                 @else
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -172,7 +172,7 @@
                                             <table class="table table-bordered">
                                                 <thead class="thead-dark">
                                                     <tr>
-                                                        <th class="text-center">Indikator</th>
+                                                        <th class="text-center">KPI</th>
                                                         <th class="text-center">Formula</th>
                                                         <th class="text-center">Satuan</th>
                                                         <th class="text-center">Bobot</th>

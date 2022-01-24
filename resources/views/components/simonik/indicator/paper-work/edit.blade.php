@@ -1,6 +1,6 @@
 @extends('layouts/after-login')
 
-@section('title', 'Indikator - Kertas Kerja - Edit')
+@section('title', 'Ubah :: Kertas Kerja - KPI')
 
 {{-- ========================================================== --}}
 
@@ -141,7 +141,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Kertas Kerja / Indikator / Edit</h3>
+                        <h3 class="card-title">Ubah Kertas Kerja - KPI / Level : {{ strtoupper(str_replace("-", " ", $level)) }} / Unit : {{ $level === 'super-master' ? '-' : strtoupper(str_replace("-", " ", $unit)) }} / Tahun : {{ $level === 'super-master' ? '-' : strtoupper(str_replace("-", " ", $tahun)) }}</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -150,7 +150,7 @@
                         <div class="row">
                             @if (empty($response->object()->data->super_master_indicators))
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <h3 class="text-center font-weight-bold">Empty Data</h3>
+                                    <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                 </div>
                             @else
                                 <form action="{{ route('simonik.indicators.paper-work.update', ['level' => $level, 'unit' => $unit, 'tahun' => $tahun]) }}" method="post">
@@ -163,7 +163,7 @@
                                                 <thead class="thead-dark">
                                                     <tr>
                                                         <th class="text-center"></th>
-                                                        <th class="text-center">Indikator</th>
+                                                        <th class="text-center">KPI</th>
                                                         <th class="text-center">Formula</th>
                                                         <th class="text-center">Satuan</th>
                                                         <th class="text-center">Bobot</th>
@@ -185,7 +185,7 @@
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                         <h1 class="text-center text-danger"><i class="fas fa-exclamation-triangle"></i></h1>
                                         <h5 class="text-center text-danger"><strong>Danger Zone!</strong></h5>
-                                        <p class="text-center"><small><strong>Noted!</strong> Aksi ini akan menambahkan indikator, target & realisasi <strong>checked</strong> dan menghapus indikator, target & realisasi <strong>un-checked</strong> pada <strong>(level: {{ $level }})</strong> <strong>(unit: {{ $unit }})</strong> <strong>(tahun: {{ $tahun }})</strong>.</small></p>
+                                        <p class="text-center"><small><strong>Noted!</strong> Aksi ini akan menambahkan KPI beserta target & realisasi pada KPI <strong>checked</strong> dan menghapus KPI beserta target & realisasi pada KPI <strong>un-checked</strong> di <strong>Level: {{ strtoupper(str_replace("-", " ", $level)) }} - Unit: @if ($unit === 'master'){{ 'SEMUA' }}@else{{ strtoupper(str_replace("-", " ", $unit)) }}@endif - Tahun: {{ strtoupper(str_replace("-", " ", $tahun)) }}</strong>.</small></p>
                                     </div>
 
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">

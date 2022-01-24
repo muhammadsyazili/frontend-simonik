@@ -93,9 +93,9 @@ Route::middleware([App\Http\Middleware\LoginCheck::class])->group(function () {
         Route::delete('/simonik/indicators/paper-work/{level}/{unit}/{tahun}', [App\Http\Controllers\Simonik\Extends\Indicator\PaperWorkIndicatorController::class, 'destroy'])
         ->name('simonik.indicators.paper-work.destroy');
 
-        //order
-        Route::put('/simonik/indicators/paper-work/{level}/{unit?}/{tahun?}/order', [App\Http\Controllers\Simonik\Extends\Indicator\PaperWorkIndicatorController::class, 'updateOrder'])
-        ->name('simonik.indicators.paper-work.order.update');
+        //reorder
+        Route::put('/simonik/indicators/paper-work/reorder', [App\Http\Controllers\Simonik\Extends\Indicator\PaperWorkIndicatorController::class, 'reorder'])
+        ->name('simonik.indicators.paper-work.reorder');
 
         //reference
         Route::get('/simonik/indicators/paper-work/reference/create', [App\Http\Controllers\Simonik\Extends\Indicator\IndicatorReferenceController::class, 'create'])

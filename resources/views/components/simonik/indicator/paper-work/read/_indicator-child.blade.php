@@ -38,16 +38,16 @@
                 @endif
             </div>
 
-            <input type="hidden" name="id[]" value="{{ $indicator->id }}">
+            <input type="hidden" name="indicators[]" value="{{ $indicator->id }}">
         </td>
     </tr>
 
-    @notEmpty($indicator->childs_horizontal_recursive)
+    @if (!empty($indicator->childs_horizontal_recursive))
         @include('components.simonik.indicator.paper-work.read._indicator-child', [
             'indicators' => $indicator->childs_horizontal_recursive,
             'permissions' => ['edit' => $permissions['edit'], 'delete' => $permissions['delete']],
             'background_color' => ['red' => $background_color['red']-15, 'green' => $background_color['green']-15, 'blue' => $background_color['blue']-15],
             'iter' => empty($iter) ? "$loop->iteration" : "$iter.$loop->iteration"
         ])
-    @endNotEmpty
+    @endif
 @endforeach

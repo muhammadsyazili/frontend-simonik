@@ -1,6 +1,6 @@
 @extends('layouts/after-login')
 
-@section('title', 'Indikator - Edit')
+@section('title', 'Ubah :: KPI')
 
 {{-- ========================================================== --}}
 
@@ -129,7 +129,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Indikator / Edit</h3>
+                        <h3 class="card-title">Ubah - KPI</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -142,15 +142,15 @@
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label>Indikator <span class="text-danger">*</span></label>
+                                        <label>KPI <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" name="indicator" value="{{ $response->object()->data->indicator }}">
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-                                    <label>Indikator Dummy ? <span class="text-danger">*</span></label>
+                                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                                    <label>KPI Dummy <small class="text-info">(KPI tidak memiliki bobot)</small> ? <span class="text-danger">*</span></label>
                                 </div>
-                                <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
+                                <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
                                     <div class="form-group clearfix">
                                         <div class="d-inline">
                                             <input type="radio" name="dummy" value="0" @if ($response->object()->data->dummy === false) checked @endif>
@@ -163,10 +163,10 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                                     <label>Faktor Pengurang ? <span class="text-danger">*</span></label>
                                 </div>
-                                <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
+                                <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
                                     <div class="form-group clearfix">
                                         <div class="d-inline">
                                             <input type="radio" name="reducing_factor" value="0" @if ($response->object()->data->reducing_factor === false) checked @endif>
@@ -179,10 +179,10 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                                     <label>Polaritas <span class="text-danger">*</span></label>
                                 </div>
-                                <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
+                                <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
                                     <div class="form-group clearfix">
                                         <div class="d-inline">
                                         <input type="radio" name="polarity" value="1" @if ($response->object()->data->original_polarity === '1') checked @endif>
@@ -403,7 +403,7 @@
                                     @if ($response->object()->data->label === 'master')
                                         <h1 class="text-center text-danger"><i class="fas fa-exclamation-triangle"></i></h1>
                                         <h5 class="text-center text-danger"><strong>Danger Zone!</strong></h5>
-                                        <p class="text-center"><small><strong>Noted!</strong> Aksi ini akan mengubah semua indikator yang bersesuaian pada unit kerja level: <strong>{{ $response->object()->data->level->name }}</strong>, termasuk target & realisasi akan menyesuaikan dengan masa berlaku setelah diubah.</small></p>
+                                        <p class="text-center"><small><strong>Noted!</strong> Aksi ini akan mengubah semua KPI beserta target & realisasi yang bersesuaian di semua unit kerja di level: <strong>{{ $response->object()->data->level->name }}</strong>.</small></p>
                                     @endif
                                 </div>
                             </div>

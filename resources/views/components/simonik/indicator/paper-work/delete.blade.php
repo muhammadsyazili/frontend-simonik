@@ -1,6 +1,6 @@
 @extends('layouts/after-login')
 
-@section('title', 'Indikator - Kertas Kerja - Delete')
+@section('title', 'Hapus :: Kertas Kerja - KPI')
 
 {{-- ========================================================== --}}
 
@@ -117,8 +117,8 @@
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <h1 class="text-center text-danger"><i class="fas fa-exclamation-triangle"></i></h1>
-                                <h5 class="text-center">Anda yakin ingin menghapus kertas kerja indikator <strong>Level: {{ strtoupper(str_replace("-", " ", $level)) }} - Unit: {{ strtoupper(str_replace("-", " ", $unit)) }} - Tahun: {{ strtoupper(str_replace("-", " ", $tahun)) }}</strong> ?</h5>
-                                @if ($unit === 'master') <p class="text-center"><strong>Noted!</strong> Aksi ini akan menghapus semua kertas kerja indikator, target & realisasi pada level: <strong>{{ strtoupper(str_replace("-", " ", $level)) }}</strong>.</p> @endif
+                                <h5 class="text-center">Anda yakin ingin menghapus kertas kerja KPI <strong>Level: {{ strtoupper(str_replace("-", " ", $level)) }} - Unit: @if ($unit === 'master'){{ 'SEMUA' }}@else{{ strtoupper(str_replace("-", " ", $unit)) }}@endif - Tahun: {{ strtoupper(str_replace("-", " ", $tahun)) }}</strong> ?</h5>
+                                @if ($unit === 'master') <p class="text-center"><strong>Noted!</strong> Aksi ini akan menghapus semua kertas kerja KPI beserta target & realisasi di semua unit kerja level: <strong>{{ strtoupper(str_replace("-", " ", $level)) }}</strong>.</p> @endif
                             </div>
 
                         </div>
