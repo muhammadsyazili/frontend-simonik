@@ -45,6 +45,28 @@
 </style>
 <!-- End : Custom Style for Navbar -->
 
+{{-- Table Header Fixed --}}
+<style>
+    .table-responsive{
+        height:500px;
+        overflow:scroll;
+    }
+    thead tr.first th, thead tr.first td{
+        background: white;
+        position: sticky;
+        position: -webkit-sticky; /* Safari */
+        top: 0;
+        z-index: 10;
+    }
+    thead tr.second th, thead tr.second td {
+        background: white;
+        position: sticky;
+        position: -webkit-sticky; /* Safari */
+        z-index: 10;
+   }
+</style>
+{{-- End : Table Header Fixed --}}
+
 <!-- Custom Style for Content -->
 <style>
     .table tbody tr.highlight td {
@@ -81,6 +103,15 @@
     });
 </script>
 {{-- End : Change Color Row Table on Click --}}
+
+{{-- Table Header Fixed --}}
+<script>
+    $(document).ready(function() {
+        let firstheight = $('.first').height();
+        $("thead tr.second th, thead tr.second td").css("top", firstheight);
+    });
+</script>
+{{-- End : Table Header Fixed --}}
 @endpush
 
 {{-- ========================================================== --}}
@@ -273,16 +304,16 @@
                                         <div class="table-responsive">
                                             <table class="table table-bordered" id="drag-drop-table-sorting">
                                                 <thead class="thead-dark">
-                                                    <tr>
+                                                    <tr class="first">
                                                         <th class="text-center" rowspan="2">KPI</th>
                                                         <th class="text-center" rowspan="2">Formula</th>
                                                         <th class="text-center" rowspan="2">Satuan</th>
                                                         <th class="text-center" rowspan="2">Bobot</th>
                                                         <th class="text-center" rowspan="2">Berlaku</th>
                                                         <th class="text-center" rowspan="2">Polaritas</th>
-                                                        <th class="text-center" colspan="12">Realisasi</th>
+                                                        <th class="text-center" colspan="12">Target (T) & Realisasi (R)</th>
                                                     </tr>
-                                                    <tr>
+                                                    <tr class="second">
                                                         <th class="text-center">Jan</th>
                                                         <th class="text-center">Feb</th>
                                                         <th class="text-center">Mar</th>
@@ -307,6 +338,9 @@
                                             </table>
                                         </div>
 
+                                        <input type="hidden" name="level" value="{{ request()->query('level') }}">
+                                        <input type="hidden" name="unit" value="{{ request()->query('unit') }}">
+                                        <input type="hidden" name="tahun" value="{{ request()->query('tahun') }}">
                                         <button type="submit" class="btn btn-info btn-sm float-right mt-3">Save</button>
                                     </form>
                                 @endif

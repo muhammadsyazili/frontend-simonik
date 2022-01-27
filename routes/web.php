@@ -118,10 +118,7 @@ Route::middleware([App\Http\Middleware\LoginCheck::class])->group(function () {
         Route::get('/simonik/realizations/paper-work', [App\Http\Controllers\Simonik\Extends\Realization\PaperWorkRealizationController::class, 'index'])
         ->name('simonik.realizations.paper-work.index');
 
-        Route::get('/simonik/realizations/paper-work/{level}/{unit}/{tahun}/edit', [App\Http\Controllers\Simonik\Extends\Realization\PaperWorkRealizationController::class, 'edit'])
-        ->name('simonik.realizations.paper-work.edit');
-
-        Route::put('/simonik/realizations/paper-work/{level}/{unit}/{tahun}', [App\Http\Controllers\Simonik\Extends\Realization\PaperWorkRealizationController::class, 'update'])
+        Route::put('/simonik/realizations/paper-work', [App\Http\Controllers\Simonik\Extends\Realization\PaperWorkRealizationController::class, 'update'])
         ->name('simonik.realizations.paper-work.update');
 
         //paper work - target

@@ -273,7 +273,7 @@
                                                     @endif
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                    @if (!empty($response->object()->data->permissions) && $response->object()->data->permissions->reference->edit)
+                                                    @if (!empty($response->object()->data->permissions) && $response->object()->data->permissions->reference->edit && (request()->query('level') === 'super-master' || request()->query('unit') === 'master'))
                                                         <a href="{{ route('simonik.indicators.paper-work.reference.edit', ['level' => request()->query('level'), 'unit' => request()->query('unit'), 'tahun' => request()->query('tahun')]) }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Edit">Edit</a>
                                                     @endif
                                                 </div>

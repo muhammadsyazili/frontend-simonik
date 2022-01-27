@@ -95,12 +95,29 @@ class PaperWorkRealizationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $response = callSIMONIK_Sevices('/realizations/paper-work', 'put', [
+            'level' => $request->post('level'),
+            'unit' => $request->post('unit'),
+            'tahun' => $request->post('tahun'),
+            'id' => $request->post('id'),
+            'realization' => $request->post('realization'),
+        ]);
+
+        if ($response->clientError()) {
+            return redirect()->back()->withErrors($response->object()->errors);
+        }
+
+        if ($response->serverError()) {
+            Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
+            return redirect()->back();
+        }
+
+        Session::flash('info_message', $response->object()->message);
+        return redirect()->route('simonik.realizations.paper-work.index');
     }
 
     /**

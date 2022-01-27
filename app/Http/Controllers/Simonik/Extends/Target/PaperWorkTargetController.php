@@ -95,14 +95,16 @@ class PaperWorkTargetController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
         $response = callSIMONIK_Sevices('/targets/paper-work', 'put', [
-            'id' => $request->post('id'),
-            'target' => $request->post('target'),
+            'level' => $request->post('level'),
+            'unit' => $request->post('unit'),
+            'tahun' => $request->post('tahun'),
+            'indicators' => $request->post('indicators'),
+            'targets' => $request->post('targets'),
         ]);
 
         if ($response->clientError()) {
