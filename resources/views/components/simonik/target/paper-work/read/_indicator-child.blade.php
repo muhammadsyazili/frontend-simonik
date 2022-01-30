@@ -5,7 +5,6 @@
         </td>
         <td class="small">
             {{ $indicator->formula }}
-            <input type="hidden" name="indicators[{{ $iter }}]" value="{{ $indicator->id }}">
         </td>
         <td class="text-center">
             {{ $indicator->measure }}
@@ -33,7 +32,12 @@
         {{-- ------------------------------------------------------------------------------ --}}
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
-            @if ($target->month === 'jan') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="targets[{{ $indicator->id }}][jan]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif></td> @endif
+            @if ($target->month === 'jan')
+                @php $match = true; @endphp
+                <td class="text-center">
+                    <input type="number" step="any" min="0" class="form-control" name="targets[{{ $indicator->id }}][jan]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                </td>
+            @endif
         @empty
             <td class="text-center"></td>
         @endforelse
@@ -43,7 +47,12 @@
 
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
-            @if ($target->month === 'feb') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="targets[{{ $indicator->id }}][feb]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif></td> @endif
+            @if ($target->month === 'feb')
+                @php $match = true; @endphp
+                <td class="text-center">
+                    <input type="number" step="any" min="0" class="form-control" name="targets[{{ $indicator->id }}][feb]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                </td>
+            @endif
         @empty
             <td class="text-center"></td>
         @endforelse
@@ -53,7 +62,12 @@
 
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
-            @if ($target->month === 'mar') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="targets[{{ $indicator->id }}][mar]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif></td> @endif
+            @if ($target->month === 'mar')
+                @php $match = true; @endphp
+                <td class="text-center">
+                    <input type="number" step="any" min="0" class="form-control" name="targets[{{ $indicator->id }}][mar]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                </td>
+            @endif
         @empty
             <td class="text-center"></td>
         @endforelse
@@ -63,7 +77,12 @@
 
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
-            @if ($target->month === 'apr') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="targets[{{ $indicator->id }}][apr]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif></td> @endif
+            @if ($target->month === 'apr')
+                @php $match = true; @endphp
+                <td class="text-center">
+                    <input type="number" step="any" min="0" class="form-control" name="targets[{{ $indicator->id }}][apr]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                </td>
+            @endif
         @empty
             <td class="text-center"></td>
         @endforelse
@@ -73,7 +92,12 @@
 
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
-            @if ($target->month === 'may') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="targets[{{ $indicator->id }}][may]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif></td> @endif
+            @if ($target->month === 'may')
+                @php $match = true; @endphp
+                <td class="text-center">
+                    <input type="number" step="any" min="0" class="form-control" name="targets[{{ $indicator->id }}][may]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                </td>
+            @endif
         @empty
             <td class="text-center"></td>
         @endforelse
@@ -83,7 +107,12 @@
 
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
-            @if ($target->month === 'jun') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="targets[{{ $indicator->id }}][jun]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif></td> @endif
+            @if ($target->month === 'jun')
+                @php $match = true; @endphp
+                <td class="text-center">
+                    <input type="number" step="any" min="0" class="form-control" name="targets[{{ $indicator->id }}][jun]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                </td>
+            @endif
         @empty
             <td class="text-center"></td>
         @endforelse
@@ -93,7 +122,12 @@
 
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
-            @if ($target->month === 'jul') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="targets[{{ $indicator->id }}][jul]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif></td> @endif
+            @if ($target->month === 'jul')
+                @php $match = true; @endphp
+                <td class="text-center">
+                    <input type="number" step="any" min="0" class="form-control" name="targets[{{ $indicator->id }}][jul]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                </td>
+            @endif
         @empty
             <td class="text-center"></td>
         @endforelse
@@ -103,7 +137,12 @@
 
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
-            @if ($target->month === 'aug') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="targets[{{ $indicator->id }}][aug]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif></td> @endif
+            @if ($target->month === 'aug')
+                @php $match = true; @endphp
+                <td class="text-center">
+                    <input type="number" step="any" min="0" class="form-control" name="targets[{{ $indicator->id }}][aug]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                </td>
+            @endif
         @empty
             <td class="text-center"></td>
         @endforelse
@@ -113,7 +152,12 @@
 
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
-            @if ($target->month === 'sep') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="targets[{{ $indicator->id }}][sep]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif></td> @endif
+            @if ($target->month === 'sep')
+                @php $match = true; @endphp
+                <td class="text-center">
+                    <input type="number" step="any" min="0" class="form-control" name="targets[{{ $indicator->id }}][sep]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                </td>
+            @endif
         @empty
             <td class="text-center"></td>
         @endforelse
@@ -123,7 +167,12 @@
 
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
-            @if ($target->month === 'oct') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="targets[{{ $indicator->id }}][oct]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif></td> @endif
+            @if ($target->month === 'oct')
+                @php $match = true; @endphp
+                <td class="text-center">
+                    <input type="number" step="any" min="0" class="form-control" name="targets[{{ $indicator->id }}][oct]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                </td>
+            @endif
         @empty
             <td class="text-center"></td>
         @endforelse
@@ -133,7 +182,12 @@
 
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
-            @if ($target->month === 'nov') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="targets[{{ $indicator->id }}][nov]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif></td> @endif
+            @if ($target->month === 'nov')
+                @php $match = true; @endphp
+                <td class="text-center">
+                    <input type="number" step="any" min="0" class="form-control" name="targets[{{ $indicator->id }}][nov]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                </td>
+            @endif
         @empty
             <td class="text-center"></td>
         @endforelse
@@ -143,7 +197,12 @@
 
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
-            @if ($target->month === 'dec') @php $match = true; @endphp <td class="text-center"><input type="number" class="form-control" name="targets[{{ $indicator->id }}][dec]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif></td> @endif
+            @if ($target->month === 'dec')
+                @php $match = true; @endphp
+                <td class="text-center">
+                    <input type="number" step="any" min="0" class="form-control" name="targets[{{ $indicator->id }}][dec]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                </td>
+            @endif
         @empty
             <td class="text-center"></td>
         @endforelse

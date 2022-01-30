@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cookie;
 
-function defaultQueryParams()
+function params()
 {
     $query = null;
     if (is_null(request()->query('level'))) {
@@ -27,7 +27,7 @@ function defaultQueryParams()
     return $query;
 }
 
-function callSIMONIK_Sevices($endpoint, $method, $data = [], $withToken = true)
+function SIMONIK_sevices($endpoint, $method, $data = [], $withToken = true)
 {
     $host = env('HOST_SIMONIK');
     $token = Cookie::get('X-Token') ?? null;
@@ -35,7 +35,7 @@ function callSIMONIK_Sevices($endpoint, $method, $data = [], $withToken = true)
     return $withToken === false ? Http::$method("$host$endpoint", $data) : Http::withToken($token)->withHeaders(['X-User-Id' => Cookie::get('X-User-Id') ?? null])->$method("$host$endpoint", $data);
 }
 
-function callFDX_Sevices($endpoint, $method, $data = [], $withToken = true)
+function FDX_sevices($endpoint, $method, $data = [], $withToken = true)
 {
     $host = env('HOST_FDX');
     $token = Cookie::get('X-Token') ?? null;

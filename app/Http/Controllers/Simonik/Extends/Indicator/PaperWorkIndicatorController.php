@@ -18,7 +18,7 @@ class PaperWorkIndicatorController extends Controller
     {
         $response = null;
         if (is_null($request->query('level'))) {
-            $response = callSIMONIK_Sevices(sprintf('/user/%s/levels', $request->cookie('X-User-Id')), 'get', ['with-super-master' => 'true']);
+            $response = SIMONIK_sevices(sprintf('/user/%s/levels', $request->cookie('X-User-Id')), 'get', ['with-super-master' => 'true']);
 
             if ($response->clientError()) {
                 return redirect()->back()->withErrors($response->object()->errors);
@@ -43,7 +43,7 @@ class PaperWorkIndicatorController extends Controller
 
             $validated = $request->validate($attributes, $messages);
 
-            $response = callSIMONIK_Sevices('/indicators/paper-work', 'get', $validated);
+            $response = SIMONIK_sevices('/indicators/paper-work', 'get', $validated);
 
             if ($response->clientError()) {
                 return redirect()->back()->withErrors($response->object()->errors);
@@ -65,7 +65,7 @@ class PaperWorkIndicatorController extends Controller
      */
     public function create()
     {
-        $response = callSIMONIK_Sevices('/indicators/paper-work/create', 'get');
+        $response = SIMONIK_sevices('/indicators/paper-work/create', 'get');
 
         if ($response->clientError()) {
             return redirect()->back()->withErrors($response->object()->errors);
@@ -101,7 +101,7 @@ class PaperWorkIndicatorController extends Controller
 
         $validated = $request->validate($attributes, $messages);
 
-        $response = callSIMONIK_Sevices('/indicators/paper-work', 'post', $validated);
+        $response = SIMONIK_sevices('/indicators/paper-work', 'post', $validated);
 
         if ($response->clientError()) {
             return redirect()->back()->withErrors($response->object()->errors);
@@ -113,7 +113,7 @@ class PaperWorkIndicatorController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.indicators.paper-work.index', defaultQueryParams());
+        return redirect()->route('simonik.indicators.paper-work.index', ['level' => $request->level, 'unit' => 'master', 'tahun' => $request->year]);
     }
 
     /**
@@ -126,7 +126,7 @@ class PaperWorkIndicatorController extends Controller
      */
     public function edit($level, string $unit, string $tahun)
     {
-        $response = callSIMONIK_Sevices("/indicators/paper-work/$level/$unit/$tahun/edit", 'get');
+        $response = SIMONIK_sevices("/indicators/paper-work/$level/$unit/$tahun/edit", 'get');
 
         if ($response->clientError()) {
             return redirect()->back()->withErrors($response->object()->errors);
@@ -164,7 +164,7 @@ class PaperWorkIndicatorController extends Controller
 
         $validated = $request->validate($attributes, $messages);
 
-        $response = callSIMONIK_Sevices("/indicators/paper-work/$level/$unit/$tahun", 'put', $validated);
+        $response = SIMONIK_sevices("/indicators/paper-work/$level/$unit/$tahun", 'put', $validated);
 
         if ($response->clientError()) {
             return redirect()->back()->withErrors($response->object()->errors);
@@ -176,7 +176,7 @@ class PaperWorkIndicatorController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.indicators.paper-work.index', defaultQueryParams());
+        return redirect()->route('simonik.indicators.paper-work.index', ['level' => $level, 'unit' => $unit, 'tahun' => $tahun]);
     }
 
     /**
@@ -202,7 +202,7 @@ class PaperWorkIndicatorController extends Controller
      */
     public function destroy($level, $unit, $tahun)
     {
-        $response = callSIMONIK_Sevices("/indicators/paper-work/$level/$unit/$tahun", 'delete');
+        $response = SIMONIK_sevices("/indicators/paper-work/$level/$unit/$tahun", 'delete');
 
         if ($response->clientError()) {
             return redirect()->back()->withErrors($response->object()->errors);
@@ -214,7 +214,7 @@ class PaperWorkIndicatorController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.indicators.paper-work.index', defaultQueryParams());
+        return redirect()->route('simonik.indicators.paper-work.index', ['level' => $level, 'unit' => $unit, 'tahun' => $tahun]);
     }
 
     /**
@@ -225,7 +225,7 @@ class PaperWorkIndicatorController extends Controller
      */
     public function reorder(Request $request)
     {
-        $response = $request->query('level') === 'super-master' ? callSIMONIK_Sevices("/indicators/paper-work/reorder", 'put', ['indicators' => $request->post('indicators'), 'level' => $request->query('level')]) : callSIMONIK_Sevices("/indicators/paper-work/reorder", 'put', ['indicators' => $request->post('indicators'), 'level' => $request->query('level'), 'unit' => $request->query('unit'), 'year' => $request->query('tahun')]);
+        $response = $request->query('level') === 'super-master' ? SIMONIK_sevices("/indicators/paper-work/reorder", 'put', ['indicators' => $request->post('indicators'), 'level' => $request->query('level')]) : SIMONIK_sevices("/indicators/paper-work/reorder", 'put', ['indicators' => $request->post('indicators'), 'level' => $request->query('level'), 'unit' => $request->query('unit'), 'year' => $request->query('tahun')]);
 
         if ($response->clientError()) {
             return redirect()->back()->withErrors($response->object()->errors);
@@ -237,6 +237,6 @@ class PaperWorkIndicatorController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.indicators.paper-work.index', defaultQueryParams());
+        return redirect()->route('simonik.indicators.paper-work.index', $request->level === 'super-master' ? ['level' => $request->level] : ['level' => $request->level, 'unit' => $request->unit, 'tahun' => $request->tahun]);
     }
 }

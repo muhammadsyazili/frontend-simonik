@@ -87,7 +87,7 @@ class IndicatorController extends Controller
             'weight' => $request->post('weight'),
         ];
 
-        $response = callSIMONIK_Sevices('/indicator', 'post', $data);
+        $response = SIMONIK_sevices('/indicator', 'post', $data);
 
         if ($response->clientError()) {
             return redirect()->back()->withErrors($response->object()->errors);
@@ -99,7 +99,7 @@ class IndicatorController extends Controller
         }
 
         Session::flash('info_message', sprintf("%s, Silakan lanjut ke menu <a href=\"%s\">Referensi - KPI: Create</a>", $response->object()->message, route('simonik.indicators.paper-work.reference.create')));
-        return redirect()->route('simonik.indicators.paper-work.index', defaultQueryParams());
+        return redirect()->route('simonik.indicators.paper-work.index', ['level' => $request->level]);
     }
 
     /**
@@ -110,7 +110,7 @@ class IndicatorController extends Controller
      */
     public function edit($id)
     {
-        $response = callSIMONIK_Sevices("/indicator/$id/edit", 'get');
+        $response = SIMONIK_sevices("/indicator/$id/edit", 'get');
 
         if ($response->clientError()) {
             return redirect()->back()->withErrors($response->object()->errors);
@@ -183,7 +183,7 @@ class IndicatorController extends Controller
             'weight' => $request->post('weight'),
         ];
 
-        $response = callSIMONIK_Sevices("/indicator/$id", 'put', $data);
+        $response = SIMONIK_sevices("/indicator/$id", 'put', $data);
 
         if ($response->clientError()) {
             return redirect()->back()->withErrors($response->object()->errors);
@@ -195,7 +195,7 @@ class IndicatorController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.indicators.paper-work.index', defaultQueryParams());
+        return redirect()->route('simonik.indicators.paper-work.index', params());
     }
 
     /**
@@ -217,7 +217,7 @@ class IndicatorController extends Controller
      */
     public function destroy($id)
     {
-        $response = callSIMONIK_Sevices("/indicator/$id", 'delete');
+        $response = SIMONIK_sevices("/indicator/$id", 'delete');
 
         if ($response->clientError()) {
             return redirect()->back()->withErrors($response->object()->errors);
@@ -229,6 +229,6 @@ class IndicatorController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.indicators.paper-work.index', defaultQueryParams());
+        return redirect()->route('simonik.indicators.paper-work.index', params());
     }
 }

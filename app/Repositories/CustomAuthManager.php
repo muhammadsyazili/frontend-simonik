@@ -17,10 +17,10 @@ class CustomAuthManager {
 
         switch ($app) {
             case "simonik":
-                $response = callSIMONIK_Sevices('/login', 'post', ['username' => $username, 'password' => $password], false);
+                $response = SIMONIK_sevices('/login', 'post', ['username' => $username, 'password' => $password], false);
                 break;
             case "fdx":
-                $response = callFDX_Sevices('/login', 'post', ['username' => $username, 'password' => $password], false);
+                $response = FDX_sevices('/login', 'post', ['username' => $username, 'password' => $password], false);
                 break;
             default:
                 return false;
@@ -64,9 +64,9 @@ class CustomAuthManager {
     public function destroy() : bool
     {
         if (Cookie::get('X-App') === 'simonik') {
-            $response = callSIMONIK_Sevices('/logout', 'get');
+            $response = SIMONIK_sevices('/logout', 'get');
         } else if (Cookie::get('X-App') === 'fdx') {
-            $response = callFDX_Sevices('/logout', 'get');
+            $response = FDX_sevices('/logout', 'get');
         } else {
             return false;
         }

@@ -196,44 +196,48 @@
 @section('content')
     <div class="content-wrapper pt-3">
         @if (session()->has('danger_message'))
-            @include('_danger-message-card',['message' => session()->get('danger_message')])
+            @include('_alert-danger',['message' => session()->get('danger_message')])
         @else
             @if (session()->has('info_message'))
             <div class="col-md-12">
-                <div class="card border-0 shadow rounded">
-                    <!-- card-header -->
+                <div class="card bg-info">
                     <div class="card-header">
                         <h3 class="card-title">Info</h3>
-                    </div>
-                    <!-- end : card-header -->
 
-                    <!-- card-body -->
-                    <div class="card-body">
-                        @include('_info-message-card',['message' => session()->get('info_message')])
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <!-- /.card-tools -->
                     </div>
-                    <!-- end : card-body -->
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        @include('_alert-info',['message' => session()->get('info_message')])
+                    </div>
+                    <!-- /.card-body -->
                 </div>
             </div>
             @endif
 
             @if ($errors->any())
             <div class="col-md-12">
-                <div class="card border-0 shadow rounded">
-                    <!-- card-header -->
+                <div class="card bg-danger">
                     <div class="card-header">
-                        <h3 class="card-title">Info</h3>
-                    </div>
-                    <!-- end : card-header -->
+                        <h3 class="card-title">Client Error</h3>
 
-                    <!-- card-body -->
-                    <div class="card-body">
-                        <div class="alert alert-danger">
-                            @foreach ($errors->all() as $error)
-                                <p>{{ $error }}</p>
-                            @endforeach
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+                            </button>
                         </div>
+                        <!-- /.card-tools -->
                     </div>
-                    <!-- end : card-body -->
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        @foreach ($errors->all() as $error)
+                            {{ $error }}
+                        @endforeach
+                    </div>
+                    <!-- /.card-body -->
                 </div>
             </div>
             @endif

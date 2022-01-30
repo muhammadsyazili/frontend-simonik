@@ -16,7 +16,7 @@ class IndicatorReferenceController extends Controller
      */
     public function create(Request $request)
     {
-        $response = callSIMONIK_Sevices('/indicators/reference/create', 'get');
+        $response = SIMONIK_sevices('/indicators/reference/create', 'get');
 
         if ($response->clientError()) {
             return redirect()->back()->withErrors($response->object()->errors);
@@ -50,7 +50,7 @@ class IndicatorReferenceController extends Controller
 
         $validated = $request->validate($attributes, $messages);
 
-        $response = callSIMONIK_Sevices('/indicators/reference', 'post', $validated);
+        $response = SIMONIK_sevices('/indicators/reference', 'post', $validated);
 
         if ($response->clientError()) {
             return redirect()->back()->withErrors($response->object()->errors);
@@ -62,7 +62,7 @@ class IndicatorReferenceController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.indicators.paper-work.index', defaultQueryParams());
+        return redirect()->route('simonik.indicators.paper-work.index', ['level' => $request->level]);
     }
 
     /**
@@ -87,7 +87,7 @@ class IndicatorReferenceController extends Controller
 
         $validated = $request->validate($attributes, $messages);
 
-        $response = callSIMONIK_Sevices('/indicators/reference/edit', 'get', $validated);
+        $response = SIMONIK_sevices('/indicators/reference/edit', 'get', $validated);
 
         if ($response->clientError()) {
             return redirect()->back()->withErrors($response->object()->errors);
@@ -131,7 +131,7 @@ class IndicatorReferenceController extends Controller
 
         $validated = $request->validate($attributes, $messages);
 
-        $response = callSIMONIK_Sevices('/indicators/reference', 'put', $validated);
+        $response = SIMONIK_sevices('/indicators/reference', 'put', $validated);
 
         if ($response->clientError()) {
             return redirect()->back()->withErrors($response->object()->errors);
@@ -143,6 +143,6 @@ class IndicatorReferenceController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.indicators.paper-work.index', defaultQueryParams());
+        return redirect()->route('simonik.indicators.paper-work.index', $request->level === 'super-master' ? ['level' => $request->level] : ['level' => $request->level, 'unit' => $request->unit, 'tahun' => $request->tahun]);
     }
 }

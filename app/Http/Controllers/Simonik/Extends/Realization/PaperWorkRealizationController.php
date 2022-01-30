@@ -18,7 +18,7 @@ class PaperWorkRealizationController extends Controller
     {
         $response = null;
         if (is_null($request->query('level')) && is_null($request->query('unit')) && is_null($request->query('tahun'))) {
-            $response = callSIMONIK_Sevices(sprintf('/user/%s/levels', $request->cookie('X-User-Id')), 'get', ['with-super-master' => 'false']);
+            $response = SIMONIK_sevices(sprintf('/user/%s/levels', $request->cookie('X-User-Id')), 'get', ['with-super-master' => 'false']);
 
             if ($response->clientError()) {
                 return redirect()->back()->withErrors($response->object()->errors);
@@ -29,7 +29,7 @@ class PaperWorkRealizationController extends Controller
                 return redirect()->back();
             }
         } else {
-            $response = callSIMONIK_Sevices('/realizations/paper-work/edit', 'get', [
+            $response = SIMONIK_sevices('/realizations/paper-work/edit', 'get', [
                 'level' => $request->query('level'),
                 'unit' => $request->query('unit'),
                 'tahun' => $request->query('tahun'),
@@ -99,7 +99,7 @@ class PaperWorkRealizationController extends Controller
      */
     public function update(Request $request)
     {
-        $response = callSIMONIK_Sevices('/realizations/paper-work', 'put', [
+        $response = SIMONIK_sevices('/realizations/paper-work', 'put', [
             'level' => $request->post('level'),
             'unit' => $request->post('unit'),
             'tahun' => $request->post('tahun'),

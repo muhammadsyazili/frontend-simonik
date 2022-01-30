@@ -18,7 +18,7 @@ class PaperWorkTargetController extends Controller
     {
         $response = null;
         if (is_null($request->query('level')) && is_null($request->query('unit')) && is_null($request->query('tahun'))) {
-            $response = callSIMONIK_Sevices(sprintf('/user/%s/levels', $request->cookie('X-User-Id')), 'get', ['with-super-master' => 'false']);
+            $response = SIMONIK_sevices(sprintf('/user/%s/levels', $request->cookie('X-User-Id')), 'get', ['with-super-master' => 'false']);
 
             if ($response->clientError()) {
                 return redirect()->back()->withErrors($response->object()->errors);
@@ -29,7 +29,7 @@ class PaperWorkTargetController extends Controller
                 return redirect()->back();
             }
         } else {
-            $response = callSIMONIK_Sevices('/targets/paper-work/edit', 'get', [
+            $response = SIMONIK_sevices('/targets/paper-work/edit', 'get', [
                 'level' => $request->query('level'),
                 'unit' => $request->query('unit'),
                 'tahun' => $request->query('tahun'),
@@ -99,12 +99,18 @@ class PaperWorkTargetController extends Controller
      */
     public function update(Request $request)
     {
-        $response = callSIMONIK_Sevices('/targets/paper-work', 'put', [
+        $targets = [];
+        foreach ($request->post('targets') as $targetK => $targetV) {
+            foreach ($targetV as $K => $V) {
+                $targets[$targetK][$K] = (float) $V;
+            }
+        }
+
+        $response = SIMONIK_sevices('/targets/paper-work', 'put', [
             'level' => $request->post('level'),
             'unit' => $request->post('unit'),
             'tahun' => $request->post('tahun'),
-            'indicators' => $request->post('indicators'),
-            'targets' => $request->post('targets'),
+            'targets' => $targets,
         ]);
 
         if ($response->clientError()) {
@@ -117,7 +123,7 @@ class PaperWorkTargetController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.targets.paper-work.index');
+        return redirect()->route('simonik.targets.paper-work.index', ['level' => $request->level, 'unit' => $request->unit, 'tahun' => $request->tahun]);
     }
 
     /**
