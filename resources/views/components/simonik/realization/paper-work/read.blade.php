@@ -112,6 +112,17 @@
     });
 </script>
 {{-- End : Table Header Fixed --}}
+
+<script>
+$(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+        let value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+});
+</script>
 @endpush
 
 {{-- ========================================================== --}}
@@ -302,6 +313,8 @@
                                 @if (empty($response->object()->data->indicators))
                                     <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                 @else
+                                    <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari KPI..">
+
                                     <form action="{{ route('simonik.realizations.paper-work.update') }}" method="post">
                                         @csrf
                                         @method('put')
@@ -332,7 +345,7 @@
                                                         <th class="text-center">Dec</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody class="text-nowrap">
+                                                <tbody class="text-nowrap" id="myTable">
                                                     @include('components.simonik.realization.paper-work.read._indicator-child',[
                                                         'indicators' => $response->object()->data->indicators,
                                                         'background_color' => ['red' => 255, 'green' => 255, 'blue' => 255],

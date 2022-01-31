@@ -99,12 +99,18 @@ class PaperWorkRealizationController extends Controller
      */
     public function update(Request $request)
     {
+        $realizations = [];
+        foreach ($request->post('realizations') as $realizationK => $realizationV) {
+            foreach ($realizationV as $K => $V) {
+                $realizations[$realizationK][$K] = (float) $V;
+            }
+        }
+
         $response = SIMONIK_sevices('/realizations/paper-work', 'put', [
             'level' => $request->post('level'),
             'unit' => $request->post('unit'),
             'tahun' => $request->post('tahun'),
-            'id' => $request->post('id'),
-            'realization' => $request->post('realization'),
+            'realizations' => $realizations,
         ]);
 
         if ($response->clientError()) {
@@ -117,7 +123,7 @@ class PaperWorkRealizationController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.realizations.paper-work.index');
+        return redirect()->route('simonik.realizations.paper-work.index', ['level' => $request->level, 'unit' => $request->unit, 'tahun' => $request->tahun]);
     }
 
     /**

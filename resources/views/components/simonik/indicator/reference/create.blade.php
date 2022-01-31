@@ -181,7 +181,7 @@
                                                         <th class="text-center">Bobot</th>
                                                         <th class="text-center">Berlaku</th>
                                                         <th class="text-center">Polaritas</th>
-                                                        <th class="text-center">Referensi KPI <span class="badge badge-pill badge-light" data-toggle="tooltip" data-placement="right" title="Not referenced">&#128681;</span></th>
+                                                        <th class="text-center">Referensi KPI <span class="badge badge-pill badge-light" data-toggle="tooltip" data-placement="right" title="Not referenced">&#128681; (belum direferensikan)</span></th>
                                                         <th class="text-center"></th>
                                                     </tr>
                                                 </thead>

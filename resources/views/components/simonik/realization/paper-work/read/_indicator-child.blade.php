@@ -5,7 +5,6 @@
         </td>
         <td class="small">
             {{ $indicator->formula }}
-            <input type="hidden" name="id[{{ $iter }}]" value="{{ $indicator->id }}">
         </td>
         <td class="text-center">
             {{ $indicator->measure }}
@@ -44,7 +43,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
-                                <input type="number" class="form-control" value="{{ $target->value }}" style="width: 100px;" readonly>
+                                <input type="number" step="any" min="0" class="form-control" value="{{ $target->value }}" style="width: 200px;" readonly>
                             </div>
                         @endif
                     @endforeach
@@ -54,7 +53,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" class="form-control" name="realization[{{ $indicator->id }}][jan]" value="{{ $realization->value }}" style="width: 100px;" @if ($realization->locked || now()->month < 1) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][jan]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 1) readonly @endif>
                     </div>
                 </td>
             @endif
@@ -79,7 +78,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
-                                <input type="number" class="form-control" value="{{ $target->value }}" style="width: 100px;" readonly>
+                                <input type="number" step="any" min="0" class="form-control" value="{{ $target->value }}" style="width: 200px;" readonly>
                             </div>
                         @endif
                     @endforeach
@@ -89,7 +88,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" class="form-control" name="realization[{{ $indicator->id }}][feb]" value="{{ $realization->value }}" style="width: 100px;" @if ($realization->locked || now()->month < 2) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][feb]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 2) readonly @endif>
                     </div>
                 </td>
             @endif
@@ -114,7 +113,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
-                                <input type="number" class="form-control" value="{{ $target->value }}" style="width: 100px;" readonly>
+                                <input type="number" step="any" min="0" class="form-control" value="{{ $target->value }}" style="width: 200px;" readonly>
                             </div>
                         @endif
                     @endforeach
@@ -124,7 +123,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" class="form-control" name="realization[{{ $indicator->id }}][mar]" value="{{ $realization->value }}" style="width: 100px;" @if ($realization->locked || now()->month < 3) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][mar]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 3) readonly @endif>
                     </div>
                 </td>
             @endif
@@ -149,7 +148,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
-                                <input type="number" class="form-control" value="{{ $target->value }}" style="width: 100px;" readonly>
+                                <input type="number" step="any" min="0" class="form-control" value="{{ $target->value }}" style="width: 200px;" readonly>
                             </div>
                         @endif
                     @endforeach
@@ -159,7 +158,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" class="form-control" name="realization[{{ $indicator->id }}][apr]" value="{{ $realization->value }}" style="width: 100px;" @if ($realization->locked || now()->month < 4) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][apr]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 4) readonly @endif>
                     </div>
                 </td>
             @endif
@@ -184,7 +183,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
-                                <input type="number" class="form-control" value="{{ $target->value }}" style="width: 100px;" readonly>
+                                <input type="number" step="any" min="0" class="form-control" value="{{ $target->value }}" style="width: 200px;" readonly>
                             </div>
                         @endif
                     @endforeach
@@ -194,7 +193,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" class="form-control" name="realization[{{ $indicator->id }}][may]" value="{{ $realization->value }}" style="width: 100px;" @if ($realization->locked || now()->month < 5) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][may]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 5) readonly @endif>
                     </div>
                 </td>
             @endif
@@ -219,7 +218,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
-                                <input type="number" class="form-control" value="{{ $target->value }}" style="width: 100px;" readonly>
+                                <input type="number" step="any" min="0" class="form-control" value="{{ $target->value }}" style="width: 200px;" readonly>
                             </div>
                         @endif
                     @endforeach
@@ -229,7 +228,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" class="form-control" name="realization[{{ $indicator->id }}][jun]" value="{{ $realization->value }}" style="width: 100px;" @if ($realization->locked || now()->month < 6) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][jun]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 6) readonly @endif>
                     </div>
                 </td>
             @endif
@@ -254,7 +253,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
-                                <input type="number" class="form-control" value="{{ $target->value }}" style="width: 100px;" readonly>
+                                <input type="number" step="any" min="0" class="form-control" value="{{ $target->value }}" style="width: 200px;" readonly>
                             </div>
                         @endif
                     @endforeach
@@ -264,7 +263,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" class="form-control" name="realization[{{ $indicator->id }}][jul]" value="{{ $realization->value }}" style="width: 100px;" @if ($realization->locked || now()->month < 7) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][jul]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 7) readonly @endif>
                     </div>
                 </td>
             @endif
@@ -289,7 +288,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
-                                <input type="number" class="form-control" value="{{ $target->value }}" style="width: 100px;" readonly>
+                                <input type="number" step="any" min="0" class="form-control" value="{{ $target->value }}" style="width: 200px;" readonly>
                             </div>
                         @endif
                     @endforeach
@@ -299,7 +298,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" class="form-control" name="realization[{{ $indicator->id }}][aug]" value="{{ $realization->value }}" style="width: 100px;" @if ($realization->locked || now()->month < 8) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][aug]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 8) readonly @endif>
                     </div>
                 </td>
             @endif
@@ -324,7 +323,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
-                                <input type="number" class="form-control" value="{{ $target->value }}" style="width: 100px;" readonly>
+                                <input type="number" step="any" min="0" class="form-control" value="{{ $target->value }}" style="width: 200px;" readonly>
                             </div>
                         @endif
                     @endforeach
@@ -334,7 +333,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" class="form-control" name="realization[{{ $indicator->id }}][sep]" value="{{ $realization->value }}" style="width: 100px;" @if ($realization->locked || now()->month < 9) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][sep]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 9) readonly @endif>
                     </div>
                 </td>
             @endif
@@ -359,7 +358,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
-                                <input type="number" class="form-control" value="{{ $target->value }}" style="width: 100px;" readonly>
+                                <input type="number" step="any" min="0" class="form-control" value="{{ $target->value }}" style="width: 200px;" readonly>
                             </div>
                         @endif
                     @endforeach
@@ -369,7 +368,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" class="form-control" name="realization[{{ $indicator->id }}][oct]" value="{{ $realization->value }}" style="width: 100px;" @if ($realization->locked || now()->month < 10) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][oct]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 10) readonly @endif>
                     </div>
                 </td>
             @endif
@@ -394,7 +393,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
-                                <input type="number" class="form-control" value="{{ $target->value }}" style="width: 100px;" readonly>
+                                <input type="number" step="any" min="0" class="form-control" value="{{ $target->value }}" style="width: 200px;" readonly>
                             </div>
                         @endif
                     @endforeach
@@ -404,7 +403,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" class="form-control" name="realization[{{ $indicator->id }}][nov]" value="{{ $realization->value }}" style="width: 100px;" @if ($realization->locked || now()->month < 11) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][nov]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 11) readonly @endif>
                     </div>
                 </td>
             @endif
@@ -429,7 +428,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
-                                <input type="number" class="form-control" value="{{ $target->value }}" style="width: 100px;" readonly>
+                                <input type="number" step="any" min="0" class="form-control" value="{{ $target->value }}" style="width: 200px;" readonly>
                             </div>
                         @endif
                     @endforeach
@@ -439,7 +438,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" class="form-control" name="realization[{{ $indicator->id }}][dec]" value="{{ $realization->value }}" style="width: 100px;" @if ($realization->locked || now()->month < 12) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][dec]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 12) readonly @endif>
                     </div>
                 </td>
             @endif
