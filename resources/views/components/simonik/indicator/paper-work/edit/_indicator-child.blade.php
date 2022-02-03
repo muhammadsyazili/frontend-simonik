@@ -17,13 +17,13 @@
         <td class="text-center">
             @if (!is_null($filtered))
                 @forelse ($filtered->weight as $key => $value)
-                    <span class="badge badge-success">{{ $key }} : {{ $value }}</span>
+                    <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span>
                 @empty
                     <p>-</p>
                 @endforelse
             @else
                 @forelse ($indicator->weight as $key => $value)
-                    <span class="badge badge-success">{{ $key }} : {{ $value }}</span>
+                    <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span>
                 @empty
                     <p>-</p>
                 @endforelse
@@ -32,13 +32,13 @@
         <td class="text-center">
             @if (!is_null($filtered))
                 @forelse ($filtered->validity as $key => $value)
-                    <span class="badge badge-info">{{ $key }}</span>
+                    <span class="badge badge-secondary">{{ $key }}</span>
                 @empty
                     <p>-</p>
                 @endforelse
             @else
                 @forelse ($indicator->validity as $key => $value)
-                    <span class="badge badge-info">{{ $key }}</span>
+                    <span class="badge badge-secondary">{{ $key }}</span>
                 @empty
                     <p>-</p>
                 @endforelse
@@ -46,11 +46,11 @@
         </td>
         <td class="text-center">
             @if (!is_null($filtered))
-                <span class="badge badge-dark">
+                <span class="badge badge-secondary">
                     {!! $filtered->polarity !!}
                 </span>
             @else
-                <span class="badge badge-dark">
+                <span class="badge badge-secondary">
                     {!! $indicator->polarity !!}
                 </span>
             @endif

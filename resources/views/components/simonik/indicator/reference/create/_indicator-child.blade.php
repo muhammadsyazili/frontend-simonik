@@ -11,20 +11,20 @@
         </td>
         <td class="text-center">
             @forelse ($indicator->weight as $key => $value)
-                <span class="badge badge-success">{{ $key }} : {{ $value }}</span>
+                <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span>
             @empty
                 <p>-</p>
             @endforelse
         </td>
         <td class="text-center">
             @forelse ($indicator->validity as $key => $value)
-                <span class="badge badge-success">{{ $key }}</span>
+                <span class="badge badge-secondary">{{ $key }}</span>
             @empty
                 <p>-</p>
             @endforelse
         </td>
         <td class="text-center">
-            <span class="badge badge-dark">
+            <span class="badge badge-secondary">
                 {!! $indicator->polarity !!}
             </span>
         </td>
@@ -40,8 +40,8 @@
         </td>
         <td class="text-center">
             <div class="btn-group">
-                <a href="{{ route('simonik.indicators.edit', ['id' => $indicator->id]) }}" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></a>
-                <a href="{{ route('simonik.indicators.delete', ['id' => $indicator->id]) }}" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></a>
+                <a href="{{ route('simonik.indicators.edit', ['id' => $indicator->id]) }}" class="btn btn-sm btn-outline-info" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></a>
+                <a href="{{ route('simonik.indicators.delete', ['id' => $indicator->id]) }}" class="btn btn-sm btn-outline-info" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></a>
             </div>
 
             <input type="hidden" name="indicators[]" value="{{ $indicator->id }}">

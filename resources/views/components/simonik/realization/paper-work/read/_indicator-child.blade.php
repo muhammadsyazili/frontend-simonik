@@ -11,20 +11,20 @@
         </td>
         <td class="text-center">
             @forelse ($indicator->weight as $key => $value)
-                <span class="badge badge-success">{{ $key }} : {{ $value }}</span>
+                <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span>
             @empty
                 <p>-</p>
             @endforelse
         </td>
         <td class="text-center">
             @forelse ($indicator->validity as $key => $value)
-                <span class="badge badge-success">{{ $key }}</span>
+                <span class="badge badge-secondary">{{ $key }}</span>
             @empty
                 <p>-</p>
             @endforelse
         </td>
         <td class="text-center">
-            <span class="badge badge-dark">
+            <span class="badge badge-secondary">
                 {!! $indicator->polarity !!}
             </span>
         </td>
@@ -39,7 +39,7 @@
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'jan')
-                            <div class="input-group mb-3">
+                            <div class="input-group input-group-sm mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
@@ -49,11 +49,16 @@
                     @endforeach
                     {{-- end load target --}}
 
-                    <div class="input-group mb-3">
+                    <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][jan]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 1) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][jan]" value="{{ $realization->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($realization->locked) @if (now()->month !== 1) readonly @endif @endif @endif>
+                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                            <div class="input-group-append">
+                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="jan" data-toggle="tooltip" data-placement="bottom" title="@if ($realization->locked) ststus: locked @else status: un-locked @endif">@if ($realization->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                            </div>
+                        @endif
                     </div>
                 </td>
             @endif
@@ -74,7 +79,7 @@
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'feb')
-                            <div class="input-group mb-3">
+                            <div class="input-group input-group-sm mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
@@ -84,11 +89,16 @@
                     @endforeach
                     {{-- end load target --}}
 
-                    <div class="input-group mb-3">
+                    <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][feb]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 2) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][feb]" value="{{ $realization->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($realization->locked) @if (now()->month !== 2) readonly @endif @endif @endif>
+                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                            <div class="input-group-append">
+                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="feb" data-toggle="tooltip" data-placement="bottom" title="@if ($realization->locked) ststus: locked @else status: un-locked @endif">@if ($realization->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                            </div>
+                        @endif
                     </div>
                 </td>
             @endif
@@ -109,7 +119,7 @@
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'mar')
-                            <div class="input-group mb-3">
+                            <div class="input-group input-group-sm mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
@@ -119,11 +129,16 @@
                     @endforeach
                     {{-- end load target --}}
 
-                    <div class="input-group mb-3">
+                    <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][mar]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 3) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][mar]" value="{{ $realization->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($realization->locked) @if (now()->month !== 3) readonly @endif @endif @endif>
+                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                            <div class="input-group-append">
+                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="mar" data-toggle="tooltip" data-placement="bottom" title="@if ($realization->locked) ststus: locked @else status: un-locked @endif">@if ($realization->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                            </div>
+                        @endif
                     </div>
                 </td>
             @endif
@@ -144,7 +159,7 @@
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'apr')
-                            <div class="input-group mb-3">
+                            <div class="input-group input-group-sm mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
@@ -154,11 +169,16 @@
                     @endforeach
                     {{-- end load target --}}
 
-                    <div class="input-group mb-3">
+                    <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][apr]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 4) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][apr]" value="{{ $realization->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($realization->locked) @if (now()->month !== 4) readonly @endif @endif @endif>
+                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                            <div class="input-group-append">
+                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="apr" data-toggle="tooltip" data-placement="bottom" title="@if ($realization->locked) ststus: locked @else status: un-locked @endif">@if ($realization->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                            </div>
+                        @endif
                     </div>
                 </td>
             @endif
@@ -179,7 +199,7 @@
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'may')
-                            <div class="input-group mb-3">
+                            <div class="input-group input-group-sm mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
@@ -189,11 +209,16 @@
                     @endforeach
                     {{-- end load target --}}
 
-                    <div class="input-group mb-3">
+                    <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][may]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 5) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][may]" value="{{ $realization->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($realization->locked) @if (now()->month !== 5) readonly @endif @endif @endif>
+                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                            <div class="input-group-append">
+                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="may" data-toggle="tooltip" data-placement="bottom" title="@if ($realization->locked) ststus: locked @else status: un-locked @endif">@if ($realization->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                            </div>
+                        @endif
                     </div>
                 </td>
             @endif
@@ -214,7 +239,7 @@
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'jun')
-                            <div class="input-group mb-3">
+                            <div class="input-group input-group-sm mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
@@ -224,11 +249,16 @@
                     @endforeach
                     {{-- end load target --}}
 
-                    <div class="input-group mb-3">
+                    <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][jun]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 6) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][jun]" value="{{ $realization->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($realization->locked) @if (now()->month !== 6) readonly @endif @endif @endif>
+                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                            <div class="input-group-append">
+                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="jun" data-toggle="tooltip" data-placement="bottom" title="@if ($realization->locked) ststus: locked @else status: un-locked @endif">@if ($realization->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                            </div>
+                        @endif
                     </div>
                 </td>
             @endif
@@ -249,7 +279,7 @@
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'jul')
-                            <div class="input-group mb-3">
+                            <div class="input-group input-group-sm mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
@@ -259,11 +289,16 @@
                     @endforeach
                     {{-- end load target --}}
 
-                    <div class="input-group mb-3">
+                    <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][jul]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 7) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][jul]" value="{{ $realization->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($realization->locked) @if (now()->month !== 7) readonly @endif @endif @endif>
+                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                            <div class="input-group-append">
+                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="jul" data-toggle="tooltip" data-placement="bottom" title="@if ($realization->locked) ststus: locked @else status: un-locked @endif">@if ($realization->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                            </div>
+                        @endif
                     </div>
                 </td>
             @endif
@@ -284,7 +319,7 @@
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'aug')
-                            <div class="input-group mb-3">
+                            <div class="input-group input-group-sm mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
@@ -294,11 +329,16 @@
                     @endforeach
                     {{-- end load target --}}
 
-                    <div class="input-group mb-3">
+                    <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][aug]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 8) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][aug]" value="{{ $realization->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($realization->locked) @if (now()->month !== 8) readonly @endif @endif @endif>
+                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                            <div class="input-group-append">
+                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="aug" data-toggle="tooltip" data-placement="bottom" title="@if ($realization->locked) ststus: locked @else status: un-locked @endif">@if ($realization->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                            </div>
+                        @endif
                     </div>
                 </td>
             @endif
@@ -319,7 +359,7 @@
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'sep')
-                            <div class="input-group mb-3">
+                            <div class="input-group input-group-sm mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
@@ -329,11 +369,16 @@
                     @endforeach
                     {{-- end load target --}}
 
-                    <div class="input-group mb-3">
+                    <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][sep]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 9) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][sep]" value="{{ $realization->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($realization->locked) @if (now()->month !== 9) readonly @endif @endif @endif>
+                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                            <div class="input-group-append">
+                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="sep" data-toggle="tooltip" data-placement="bottom" title="@if ($realization->locked) ststus: locked @else status: un-locked @endif">@if ($realization->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                            </div>
+                        @endif
                     </div>
                 </td>
             @endif
@@ -354,7 +399,7 @@
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'oct')
-                            <div class="input-group mb-3">
+                            <div class="input-group input-group-sm mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
@@ -364,11 +409,16 @@
                     @endforeach
                     {{-- end load target --}}
 
-                    <div class="input-group mb-3">
+                    <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][oct]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 10) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][oct]" value="{{ $realization->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($realization->locked) @if (now()->month !== 10) readonly @endif @endif @endif>
+                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                            <div class="input-group-append">
+                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="oct" data-toggle="tooltip" data-placement="bottom" title="@if ($realization->locked) ststus: locked @else status: un-locked @endif">@if ($realization->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                            </div>
+                        @endif
                     </div>
                 </td>
             @endif
@@ -389,7 +439,7 @@
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'nov')
-                            <div class="input-group mb-3">
+                            <div class="input-group input-group-sm mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
@@ -399,11 +449,16 @@
                     @endforeach
                     {{-- end load target --}}
 
-                    <div class="input-group mb-3">
+                    <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][nov]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 11) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][nov]" value="{{ $realization->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($realization->locked) @if (now()->month !== 11) readonly @endif @endif @endif>
+                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                            <div class="input-group-append">
+                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="nov" data-toggle="tooltip" data-placement="bottom" title="@if ($realization->locked) ststus: locked @else status: un-locked @endif">@if ($realization->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                            </div>
+                        @endif
                     </div>
                 </td>
             @endif
@@ -424,7 +479,7 @@
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'dec')
-                            <div class="input-group mb-3">
+                            <div class="input-group input-group-sm mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">T</span>
                                 </div>
@@ -434,11 +489,16 @@
                     @endforeach
                     {{-- end load target --}}
 
-                    <div class="input-group mb-3">
+                    <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][dec]" value="{{ $realization->value }}" style="width: 200px;" @if ($realization->locked || now()->month < 12) readonly @endif>
+                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][dec]" value="{{ $realization->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($realization->locked) @if (now()->month !== 12) readonly @endif @endif @endif>
+                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                            <div class="input-group-append">
+                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="dec" data-toggle="tooltip" data-placement="bottom" title="@if ($realization->locked) ststus: locked @else status: un-locked @endif">@if ($realization->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                            </div>
+                        @endif
                     </div>
                 </td>
             @endif

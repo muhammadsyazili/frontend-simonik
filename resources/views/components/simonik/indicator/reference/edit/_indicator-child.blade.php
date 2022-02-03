@@ -11,20 +11,20 @@
         </td>
         <td class="text-center">
             @forelse ($indicator->weight as $key => $value)
-                <span class="badge badge-success">{{ $key }} : {{ $value }}</span>
+                <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span>
             @empty
                 <p>-</p>
             @endforelse
         </td>
         <td class="text-center">
             @forelse ($indicator->validity as $key => $value)
-                <span class="badge badge-success">{{ $key }}</span>
+                <span class="badge badge-secondary">{{ $key }}</span>
             @empty
                 <p>-</p>
             @endforelse
         </td>
         <td class="text-center">
-            <span class="badge badge-dark">
+            <span class="badge badge-secondary">
                 {!! $indicator->polarity !!}
             </span>
         </td>
