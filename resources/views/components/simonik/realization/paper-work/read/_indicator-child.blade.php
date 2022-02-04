@@ -60,6 +60,8 @@
                             </div>
                         @endif
                     </div>
+
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($realization->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
@@ -100,6 +102,8 @@
                             </div>
                         @endif
                     </div>
+
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($realization->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
@@ -140,6 +144,8 @@
                             </div>
                         @endif
                     </div>
+
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($realization->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
@@ -180,6 +186,8 @@
                             </div>
                         @endif
                     </div>
+
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($realization->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
@@ -220,6 +228,8 @@
                             </div>
                         @endif
                     </div>
+
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($realization->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
@@ -260,6 +270,8 @@
                             </div>
                         @endif
                     </div>
+
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($realization->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
@@ -300,6 +312,8 @@
                             </div>
                         @endif
                     </div>
+
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($realization->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
@@ -340,6 +354,8 @@
                             </div>
                         @endif
                     </div>
+
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($realization->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
@@ -380,6 +396,8 @@
                             </div>
                         @endif
                     </div>
+
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($realization->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
@@ -420,6 +438,8 @@
                             </div>
                         @endif
                     </div>
+
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($realization->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
@@ -460,6 +480,8 @@
                             </div>
                         @endif
                     </div>
+
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($realization->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
@@ -500,6 +522,8 @@
                             </div>
                         @endif
                     </div>
+
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($realization->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty

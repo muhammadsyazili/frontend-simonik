@@ -35,7 +35,8 @@
             @if ($target->month === 'jan')
                 @php $match = true; @endphp
                 <td class="text-center">
-                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][jan]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][jan]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
@@ -50,7 +51,8 @@
             @if ($target->month === 'feb')
                 @php $match = true; @endphp
                 <td class="text-center">
-                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][feb]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][feb]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
@@ -65,7 +67,8 @@
             @if ($target->month === 'mar')
                 @php $match = true; @endphp
                 <td class="text-center">
-                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][mar]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][mar]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
@@ -80,7 +83,8 @@
             @if ($target->month === 'apr')
                 @php $match = true; @endphp
                 <td class="text-center">
-                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][apr]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][apr]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
@@ -95,7 +99,8 @@
             @if ($target->month === 'may')
                 @php $match = true; @endphp
                 <td class="text-center">
-                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][may]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][may]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
@@ -110,7 +115,8 @@
             @if ($target->month === 'jun')
                 @php $match = true; @endphp
                 <td class="text-center">
-                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][jun]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][jun]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
@@ -125,7 +131,8 @@
             @if ($target->month === 'jul')
                 @php $match = true; @endphp
                 <td class="text-center">
-                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][jul]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][jul]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
@@ -140,7 +147,8 @@
             @if ($target->month === 'aug')
                 @php $match = true; @endphp
                 <td class="text-center">
-                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][aug]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][aug]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
@@ -155,7 +163,8 @@
             @if ($target->month === 'sep')
                 @php $match = true; @endphp
                 <td class="text-center">
-                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][sep]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][sep]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
@@ -170,7 +179,8 @@
             @if ($target->month === 'oct')
                 @php $match = true; @endphp
                 <td class="text-center">
-                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][oct]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][oct]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
@@ -185,7 +195,8 @@
             @if ($target->month === 'nov')
                 @php $match = true; @endphp
                 <td class="text-center">
-                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][nov]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][nov]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
@@ -200,7 +211,8 @@
             @if ($target->month === 'dec')
                 @php $match = true; @endphp
                 <td class="text-center">
-                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][dec]" value="{{ $target->value }}" style="width: 100px;" @if ($target->locked) readonly @endif>
+                    <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][dec]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
+                    <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
