@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\SIMONIK;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
-class SuperAdminRoleCheck
+class IsSuperAdminOrAdminOrDataEntry
 {
     /**
      * Handle an incoming request.
@@ -17,6 +16,6 @@ class SuperAdminRoleCheck
      */
     public function handle(Request $request, Closure $next)
     {
-        return $request->cookie('X-Role') === 'super-admin' ? $next($request) : redirect()->route('simonik.dashboard');
+        return $request->cookie('X-Role') === 'super-admin' || $request->cookie('X-Role') === 'admin' || $request->cookie('X-Role') === 'data-entry' ? $next($request) : redirect()->back();
     }
 }

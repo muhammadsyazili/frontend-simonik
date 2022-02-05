@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\SIMONIK;
 
 use Closure;
 use Illuminate\Http\Request;
 
-class ValidFDX
+class IsSuperAdmin
 {
     /**
      * Handle an incoming request.
@@ -16,6 +16,6 @@ class ValidFDX
      */
     public function handle(Request $request, Closure $next)
     {
-        return $request->cookie('X-App') === 'fdx' ? $next($request) : redirect()->route('logout');
+        return $request->cookie('X-Role') === 'super-admin' ? $next($request) : redirect()->back();
     }
 }

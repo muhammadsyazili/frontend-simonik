@@ -14,7 +14,7 @@ class UnitController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(\App\Http\Middleware\ValidSIMONIK::class);
+        //
     }
 
     /**
@@ -49,17 +49,6 @@ class UnitController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -78,6 +67,17 @@ class UnitController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for deleting the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
     {
         //
     }

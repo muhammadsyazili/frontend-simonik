@@ -65,9 +65,15 @@
                 </a>
                 <ul class="nav nav-treeview" style="display: block;">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('simonik.targets.paper-work.index') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>User</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Level</p>
                     </a>
                 </li>
                 <li class="nav-item">

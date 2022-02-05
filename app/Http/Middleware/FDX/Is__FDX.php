@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\FDX;
 
-use CustomAuth;
 use Closure;
 use Illuminate\Http\Request;
 
-class LoginCheck
+class Is__FDX
 {
     /**
      * Handle an incoming request.
@@ -17,6 +16,6 @@ class LoginCheck
      */
     public function handle(Request $request, Closure $next)
     {
-        return CustomAuth::check() ? $next($request) : redirect()->route('login');
+        return $request->cookie('X-App') === 'fdx' ? $next($request) : redirect()->route('logout');
     }
 }

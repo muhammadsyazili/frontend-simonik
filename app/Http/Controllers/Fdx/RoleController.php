@@ -15,7 +15,7 @@ class RoleController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(\App\Http\Middleware\ValidFDX::class);
+        //
     }
 
     /**

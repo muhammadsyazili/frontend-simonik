@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Fdx;
+namespace App\Http\Controllers\Simonik;
 
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Validator;
 
-class IndicatorController extends Controller
+class LevelController extends Controller
 {
     /**
      * Instantiate a new controller instance.
@@ -27,7 +24,7 @@ class IndicatorController extends Controller
      */
     public function index()
     {
-
+        //
     }
 
     /**
@@ -47,17 +44,6 @@ class IndicatorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
     {
         //
     }
@@ -82,7 +68,18 @@ class IndicatorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //
+    }
 
+    /**
+     * Show the form for deleting the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+        //
     }
 
     /**

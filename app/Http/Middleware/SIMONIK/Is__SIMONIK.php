@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\SIMONIK;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
-class AdminRoleCheck
+class Is__SIMONIK
 {
     /**
      * Handle an incoming request.
@@ -17,6 +16,6 @@ class AdminRoleCheck
      */
     public function handle(Request $request, Closure $next)
     {
-        return $request->cookie('X-Role') === 'super-admin' || $request->cookie('X-Role') === 'admin' ? $next($request) : redirect()->route('simonik.dashboard');
+        return $request->cookie('X-App') === 'simonik' ? $next($request) : redirect()->route('logout');
     }
 }
