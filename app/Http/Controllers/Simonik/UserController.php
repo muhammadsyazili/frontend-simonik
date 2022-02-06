@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Simonik;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
@@ -24,7 +26,18 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $response = SIMONIK_sevices('/users', 'get');
+
+        if ($response->clientError()) {
+            return redirect()->back()->withErrors($response->object()->errors);
+        }
+
+        if ($response->serverError()) {
+            Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
+            return redirect()->back();
+        }
+
+        return view('components.simonik.user.read', compact('response'));
     }
 
     /**
@@ -34,7 +47,18 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $response = SIMONIK_sevices('/user/create', 'get');
+
+        if ($response->clientError()) {
+            return redirect()->back()->withErrors($response->object()->errors);
+        }
+
+        if ($response->serverError()) {
+            Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
+            return redirect()->back();
+        }
+
+        return view('components.simonik.user.create', compact('response'));
     }
 
     /**
@@ -45,7 +69,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $response = SIMONIK_sevices("/user", 'post', []);
+
+        if ($response->clientError()) {
+            return redirect()->back()->withErrors($response->object()->errors);
+        }
+
+        if ($response->serverError()) {
+            Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
+            return redirect()->back();
+        }
+
+        Session::flash('info_message', $response->object()->message);
+        return redirect()->route('simonik.users.index');
     }
 
     /**
@@ -56,7 +92,18 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $response = SIMONIK_sevices("/user/$id/edit", 'get');
+
+        if ($response->clientError()) {
+            return redirect()->back()->withErrors($response->object()->errors);
+        }
+
+        if ($response->serverError()) {
+            Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
+            return redirect()->back();
+        }
+
+        return view('components.simonik.user.edit', compact('response'));
     }
 
     /**
@@ -68,7 +115,19 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $response = SIMONIK_sevices("/user/$id", 'put', []);
+
+        if ($response->clientError()) {
+            return redirect()->back()->withErrors($response->object()->errors);
+        }
+
+        if ($response->serverError()) {
+            Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
+            return redirect()->back();
+        }
+
+        Session::flash('info_message', $response->object()->message);
+        return redirect()->route('simonik.users.index');
     }
 
     /**
@@ -79,7 +138,7 @@ class UserController extends Controller
      */
     public function delete($id)
     {
-        //
+        return view('components.simonik.user.delete', compact(['id']));
     }
 
     /**
@@ -90,6 +149,18 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $response = SIMONIK_sevices("/user/$id", 'delete', []);
+
+        if ($response->clientError()) {
+            return redirect()->back()->withErrors($response->object()->errors);
+        }
+
+        if ($response->serverError()) {
+            Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
+            return redirect()->back();
+        }
+
+        Session::flash('info_message', $response->object()->message);
+        return redirect()->route('simonik.users.index');
     }
 }
