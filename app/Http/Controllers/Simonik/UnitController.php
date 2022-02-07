@@ -81,7 +81,7 @@ class UnitController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.units.index');
+        return redirect()->route('simonik.unit.index');
     }
 
     /**
@@ -127,7 +127,7 @@ class UnitController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.units.index');
+        return redirect()->route('simonik.unit.index');
     }
 
     /**
@@ -161,6 +161,6 @@ class UnitController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.units.index');
+        return redirect()->route('simonik.unit.index');
     }
 }

@@ -81,7 +81,7 @@ class LevelController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.levels.index');
+        return redirect()->route('simonik.level.index');
     }
 
     /**
@@ -127,7 +127,7 @@ class LevelController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.levels.index');
+        return redirect()->route('simonik.level.index');
     }
 
     /**
@@ -161,6 +161,6 @@ class LevelController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.levels.index');
+        return redirect()->route('simonik.level.index');
     }
 }

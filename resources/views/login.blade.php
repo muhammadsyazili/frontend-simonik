@@ -183,7 +183,7 @@
                 </div>
             </div>
 
-            <div class="form-group text-left row">
+            {{-- <div class="form-group text-left row">
                 <div class="offset-sm-2 col-sm-10">
                     <div class="form-check-inline">
                         <label class="form-check-label">
@@ -196,10 +196,11 @@
                         </label>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="form-group text-left row">
                 <div class="offset-sm-2 col-sm-10">
+                    <input type="hidden" name="app" value="simonik">
                     <button type="submit" class="btn btn-info btn-sm font-weight-bold">Sign In</button>
                 </div>
             </div>

@@ -1,29 +1,29 @@
 @foreach ($indicators as $indicator)
     <tr style="background-color: rgb({{ $background_color['red'] }}, {{ $background_color['green'] }}, {{ $background_color['blue'] }}); @if (($background_color['red'] < 127.5) && ($background_color['green'] < 127.5) && ($background_color['blue'] < 127.5)) color: white; @endif">
-        <td>
+        <td class="small">
             <strong> {{ empty($prefix) ? "$loop->iteration." : "$prefix.$loop->iteration." }} </strong>{{ $indicator->indicator }}
         </td>
         <td class="small">
-            {{ $indicator->formula }}
+            <small>{{ $indicator->formula }}</small>
         </td>
-        <td class="text-center">
+        <td class="text-center small">
             {{ $indicator->measure }}
         </td>
-        <td class="text-center">
+        <td class="text-center small">
             @forelse ($indicator->weight as $key => $value)
                 <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span>
             @empty
                 <p>-</p>
             @endforelse
         </td>
-        <td class="text-center">
+        <td class="text-center small">
             @forelse ($indicator->validity as $key => $value)
                 <span class="badge badge-secondary">{{ $key }}</span>
             @empty
                 <p>-</p>
             @endforelse
         </td>
-        <td class="text-center">
+        <td class="text-center small">
             <span class="badge badge-secondary">
                 {!! $indicator->polarity !!}
             </span>
@@ -34,192 +34,192 @@
         @forelse ($indicator->targets as $target)
             @if ($target->month === 'jan')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][jan]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
                     <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->targets))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
 
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
             @if ($target->month === 'feb')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][feb]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
                     <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->targets))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
 
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
             @if ($target->month === 'mar')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][mar]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
                     <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->targets))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
 
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
             @if ($target->month === 'apr')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][apr]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
                     <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->targets))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
 
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
             @if ($target->month === 'may')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][may]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
                     <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->targets))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
 
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
             @if ($target->month === 'jun')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][jun]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
                     <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->targets))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
 
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
             @if ($target->month === 'jul')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][jul]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
                     <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->targets))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
 
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
             @if ($target->month === 'aug')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][aug]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
                     <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->targets))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
 
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
             @if ($target->month === 'sep')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][sep]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
                     <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->targets))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
 
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
             @if ($target->month === 'oct')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][oct]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
                     <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->targets))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
 
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
             @if ($target->month === 'nov')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][nov]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
                     <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->targets))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
 
         @php $match = false; @endphp
         @forelse ($indicator->targets as $target)
             @if ($target->month === 'dec')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][dec]" value="{{ $target->value }}" style="width: 200px;" @if ($target->locked) readonly @endif>
                     <p class="text-info"><small>Last update: {{ \Carbon\Carbon::parse($target->updated_at)->format('d/m/Y H:i:s') }}</small></p>
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->targets))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
         {{-- ------------------------------------------------------------------------------ --}}
     </tr>

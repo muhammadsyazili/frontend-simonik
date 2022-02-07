@@ -41,20 +41,26 @@
                     <p>KPI</p>
                     </a>
                 </li>
+                @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
                 <li class="nav-item">
                     <a href="{{ route('simonik.targets.paper-work.index') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Target</p>
                     </a>
                 </li>
+                @endif
+                @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin', 'data-entry']))
                 <li class="nav-item">
                     <a href="{{ route('simonik.realizations.paper-work.index') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Realisasi</p>
                     </a>
                 </li>
+                @endif
                 </ul>
             </li>
+
+            @if (request()->cookie('X-Role') === 'super-admin')
             <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-circle"></i>
@@ -65,25 +71,27 @@
                 </a>
                 <ul class="nav nav-treeview" style="display: block;">
                 <li class="nav-item">
-                    <a href="{{ route('simonik.targets.paper-work.index') }}" class="nav-link">
+                    <a href="{{ route('simonik.user.index') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>User</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('simonik.level.index') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Level</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('simonik.unit.index') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Unit</p>
                     </a>
                 </li>
                 </ul>
             </li>
+            @endif
+
             <li class="nav-item">
                 <a href="{{ route('simonik.dashboard') }}" class="nav-link">
                 <i class="nav-icon fas fa-circle"></i>

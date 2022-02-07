@@ -143,89 +143,89 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
         //user
         Route::get('/simonik/users', [App\Http\Controllers\Simonik\UserController::class, 'index'])
         ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-        ->name('simonik.users.index');
+        ->name('simonik.user.index');
 
-        Route::get('/simonik/users/create', [App\Http\Controllers\Simonik\UserController::class, 'create'])
+        Route::get('/simonik/user/create', [App\Http\Controllers\Simonik\UserController::class, 'create'])
         ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-        ->name('simonik.users.create');
+        ->name('simonik.user.create');
 
-        Route::post('/simonik/users', [App\Http\Controllers\Simonik\UserController::class, 'store'])
+        Route::post('/simonik/user', [App\Http\Controllers\Simonik\UserController::class, 'store'])
         ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-        ->name('simonik.users.store');
+        ->name('simonik.user.store');
 
-        Route::get('/simonik/users/{id}/edit', [App\Http\Controllers\Simonik\UserController::class, 'edit'])
+        Route::get('/simonik/user/{id}/edit', [App\Http\Controllers\Simonik\UserController::class, 'edit'])
         ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-        ->name('simonik.users.edit');
+        ->name('simonik.user.edit');
 
-        Route::put('/simonik/users/{id}', [App\Http\Controllers\Simonik\UserController::class, 'update'])
+        Route::put('/simonik/user/{id}', [App\Http\Controllers\Simonik\UserController::class, 'update'])
         ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-        ->name('simonik.users.update');
+        ->name('simonik.user.update');
 
-        Route::get('/simonik/users/{id}/delete', [App\Http\Controllers\Simonik\UserController::class, 'delete'])
+        Route::get('/simonik/user/{id}/delete', [App\Http\Controllers\Simonik\UserController::class, 'delete'])
         ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-        ->name('simonik.users.delete');
+        ->name('simonik.user.delete');
 
-        Route::delete('/simonik/users/{id}', [App\Http\Controllers\Simonik\UserController::class, 'destroy'])
+        Route::delete('/simonik/user/{id}', [App\Http\Controllers\Simonik\UserController::class, 'destroy'])
         ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-        ->name('simonik.users.destroy');
+        ->name('simonik.user.destroy');
 
         //level
         Route::get('/simonik/levels', [App\Http\Controllers\Simonik\LevelController::class, 'index'])
         ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-        ->name('simonik.levels.index');
+        ->name('simonik.level.index');
 
-        Route::get('/simonik/levels/create', [App\Http\Controllers\Simonik\LevelController::class, 'create'])
+        Route::get('/simonik/level/create', [App\Http\Controllers\Simonik\LevelController::class, 'create'])
         ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-        ->name('simonik.levels.create');
+        ->name('simonik.level.create');
 
-        Route::post('/simonik/levels', [App\Http\Controllers\Simonik\LevelController::class, 'store'])
+        Route::post('/simonik/level', [App\Http\Controllers\Simonik\LevelController::class, 'store'])
         ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-        ->name('simonik.levels.store');
+        ->name('simonik.level.store');
 
-        Route::get('/simonik/levels/{id}/edit', [App\Http\Controllers\Simonik\LevelController::class, 'edit'])
+        Route::get('/simonik/level/{id}/edit', [App\Http\Controllers\Simonik\LevelController::class, 'edit'])
         ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-        ->name('simonik.levels.edit');
+        ->name('simonik.level.edit');
 
-        Route::put('/simonik/levels/{id}', [App\Http\Controllers\Simonik\LevelController::class, 'update'])
+        Route::put('/simonik/level/{id}', [App\Http\Controllers\Simonik\LevelController::class, 'update'])
         ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-        ->name('simonik.levels.update');
+        ->name('simonik.level.update');
 
-        Route::get('/simonik/levels/{id}/delete', [App\Http\Controllers\Simonik\LevelController::class, 'delete'])
+        Route::get('/simonik/level/{id}/delete', [App\Http\Controllers\Simonik\LevelController::class, 'delete'])
         ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-        ->name('simonik.levels.delete');
+        ->name('simonik.level.delete');
 
-        Route::delete('/simonik/levels/{id}', [App\Http\Controllers\Simonik\LevelController::class, 'destroy'])
+        Route::delete('/simonik/level/{id}', [App\Http\Controllers\Simonik\LevelController::class, 'destroy'])
         ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-        ->name('simonik.levels.destroy');
+        ->name('simonik.level.destroy');
 
         //unit
         Route::get('/simonik/units', [App\Http\Controllers\Simonik\UnitController::class, 'index'])
         ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-        ->name('simonik.units.index');
+        ->name('simonik.unit.index');
 
-        Route::get('/simonik/units/create', [App\Http\Controllers\Simonik\UnitController::class, 'create'])
+        Route::get('/simonik/unit/create', [App\Http\Controllers\Simonik\UnitController::class, 'create'])
         ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-        ->name('simonik.units.create');
+        ->name('simonik.unit.create');
 
-        Route::post('/simonik/units', [App\Http\Controllers\Simonik\UnitController::class, 'store'])
+        Route::post('/simonik/unit', [App\Http\Controllers\Simonik\UnitController::class, 'store'])
         ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-        ->name('simonik.units.store');
+        ->name('simonik.unit.store');
 
-        Route::get('/simonik/units/{id}/edit', [App\Http\Controllers\Simonik\UnitController::class, 'edit'])
+        Route::get('/simonik/unit/{id}/edit', [App\Http\Controllers\Simonik\UnitController::class, 'edit'])
         ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-        ->name('simonik.units.edit');
+        ->name('simonik.unit.edit');
 
-        Route::put('/simonik/units/{id}', [App\Http\Controllers\Simonik\UnitController::class, 'update'])
+        Route::put('/simonik/unit/{id}', [App\Http\Controllers\Simonik\UnitController::class, 'update'])
         ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-        ->name('simonik.units.update');
+        ->name('simonik.unit.update');
 
-        Route::get('/simonik/units/{id}/delete', [App\Http\Controllers\Simonik\UnitController::class, 'delete'])
+        Route::get('/simonik/unit/{id}/delete', [App\Http\Controllers\Simonik\UnitController::class, 'delete'])
         ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-        ->name('simonik.units.delete');
+        ->name('simonik.unit.delete');
 
-        Route::delete('/simonik/units/{id}', [App\Http\Controllers\Simonik\UnitController::class, 'destroy'])
+        Route::delete('/simonik/unit/{id}', [App\Http\Controllers\Simonik\UnitController::class, 'destroy'])
         ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-        ->name('simonik.units.destroy');
+        ->name('simonik.unit.destroy');
 
 
         //dashboard

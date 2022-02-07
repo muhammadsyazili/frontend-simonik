@@ -1,29 +1,29 @@
 @foreach ($indicators as $indicator)
     <tr style="background-color: rgb({{ $background_color['red'] }}, {{ $background_color['green'] }}, {{ $background_color['blue'] }}); @if (($background_color['red'] < 127.5) && ($background_color['green'] < 127.5) && ($background_color['blue'] < 127.5)) color: white; @endif">
-        <td>
+        <td class="small">
             <strong> {{ empty($prefix) ? "$loop->iteration." : "$prefix.$loop->iteration." }} </strong>{{ $indicator->indicator }}
         </td>
         <td class="small">
-            {{ $indicator->formula }}
+            <small>{{ $indicator->formula }}</small>
         </td>
-        <td class="text-center">
+        <td class="text-center small">
             {{ $indicator->measure }}
         </td>
-        <td class="text-center">
+        <td class="text-center small">
             @forelse ($indicator->weight as $key => $value)
                 <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span>
             @empty
                 <p>-</p>
             @endforelse
         </td>
-        <td class="text-center">
+        <td class="text-center small">
             @forelse ($indicator->validity as $key => $value)
                 <span class="badge badge-secondary">{{ $key }}</span>
             @empty
                 <p>-</p>
             @endforelse
         </td>
-        <td class="text-center">
+        <td class="text-center small">
             <span class="badge badge-secondary">
                 {!! $indicator->polarity !!}
             </span>
@@ -35,7 +35,7 @@
         @forelse ($indicator->realizations as $realization)
             @if ($realization->month === 'jan')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'jan')
@@ -65,10 +65,10 @@
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->realizations))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
         {{-- end load realisasi januari --}}
 
@@ -77,7 +77,7 @@
         @forelse ($indicator->realizations as $realization)
             @if ($realization->month === 'feb')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'feb')
@@ -107,10 +107,10 @@
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->realizations))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
         {{-- end load realisasi februari --}}
 
@@ -119,7 +119,7 @@
         @forelse ($indicator->realizations as $realization)
             @if ($realization->month === 'mar')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'mar')
@@ -149,10 +149,10 @@
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->realizations))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
         {{-- end load realisasi maret --}}
 
@@ -161,7 +161,7 @@
         @forelse ($indicator->realizations as $realization)
             @if ($realization->month === 'apr')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'apr')
@@ -191,10 +191,10 @@
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->realizations))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
         {{-- end load realisasi april --}}
 
@@ -203,7 +203,7 @@
         @forelse ($indicator->realizations as $realization)
             @if ($realization->month === 'may')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'may')
@@ -233,10 +233,10 @@
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->realizations))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
         {{-- end load realisasi mei --}}
 
@@ -245,7 +245,7 @@
         @forelse ($indicator->realizations as $realization)
             @if ($realization->month === 'jun')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'jun')
@@ -275,10 +275,10 @@
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->realizations))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
         {{-- end load realisasi juni --}}
 
@@ -287,7 +287,7 @@
         @forelse ($indicator->realizations as $realization)
             @if ($realization->month === 'jul')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'jul')
@@ -317,10 +317,10 @@
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->realizations))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
         {{-- end load realisasi juli --}}
 
@@ -329,7 +329,7 @@
         @forelse ($indicator->realizations as $realization)
             @if ($realization->month === 'aug')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'aug')
@@ -359,10 +359,10 @@
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->realizations))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
         {{-- end load realisasi agustus --}}
 
@@ -371,7 +371,7 @@
         @forelse ($indicator->realizations as $realization)
             @if ($realization->month === 'sep')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'sep')
@@ -401,10 +401,10 @@
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->realizations))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
         {{-- end load realisasi september --}}
 
@@ -413,7 +413,7 @@
         @forelse ($indicator->realizations as $realization)
             @if ($realization->month === 'oct')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'oct')
@@ -443,10 +443,10 @@
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->realizations))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
         {{-- end load realisasi oktober --}}
 
@@ -455,7 +455,7 @@
         @forelse ($indicator->realizations as $realization)
             @if ($realization->month === 'nov')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'nov')
@@ -485,10 +485,10 @@
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->realizations))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
         {{-- end load realisasi november --}}
 
@@ -497,7 +497,7 @@
         @forelse ($indicator->realizations as $realization)
             @if ($realization->month === 'dec')
                 @php $match = true; @endphp
-                <td class="text-center">
+                <td class="text-center small">
                     {{-- load target --}}
                     @foreach ($indicator->targets as $target)
                         @if ($target->month === 'dec')
@@ -527,10 +527,10 @@
                 </td>
             @endif
         @empty
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endforelse
         @if ($match == false && !empty($indicator->realizations))
-            <td class="text-center"></td>
+            <td class="text-center small"></td>
         @endif
         {{-- end load realisasi desember --}}
         {{-- ------------------------------------------------------------------------------ --}}

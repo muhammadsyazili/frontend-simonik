@@ -1,20 +1,20 @@
 @foreach ($super_master_indicators as $indicator)
     <tr style="background-color: rgb({{ $background_color['red'] }}, {{ $background_color['green'] }}, {{ $background_color['blue'] }}); @if (($background_color['red'] < 127.5) && ($background_color['green'] < 127.5) && ($background_color['blue'] < 127.5)) color: white; @endif">
-        <td>
+        <td class="small">
             @php $filtered = $indicators->firstWhere('code', $indicator->id); @endphp
             <input type="checkbox" name="indicators[]" value="@if (!is_null($filtered)){{ $filtered->id }}@else{{ $indicator->id }}@endif" @if (!is_null($filtered)){{ 'checked' }}@endif>
         </td>
-        <td>
+        <td class="small">
             <strong>{{ empty($iter) ? "$loop->iteration." : "$iter.$loop->iteration." }}</strong>
             @if (!is_null($filtered)){{ $filtered->indicator }}@else{{ $indicator->indicator }}@endif
         </td>
         <td class="small">
-            @if (!is_null($filtered)){{ $filtered->formula }}@else{{ $indicator->formula }}@endif
+            @if (!is_null($filtered))<small>{{ $filtered->formula }}</small>@else<small>{{ $indicator->formula }}</small>@endif
         </td>
-        <td class="text-center">
+        <td class="text-center small">
             @if (!is_null($filtered)){{ $filtered->measure }}@else{{ $indicator->measure }}@endif
         </td>
-        <td class="text-center">
+        <td class="text-center small">
             @if (!is_null($filtered))
                 @forelse ($filtered->weight as $key => $value)
                     <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span>
@@ -29,7 +29,7 @@
                 @endforelse
             @endif
         </td>
-        <td class="text-center">
+        <td class="text-center small">
             @if (!is_null($filtered))
                 @forelse ($filtered->validity as $key => $value)
                     <span class="badge badge-secondary">{{ $key }}</span>
@@ -44,7 +44,7 @@
                 @endforelse
             @endif
         </td>
-        <td class="text-center">
+        <td class="text-center small">
             @if (!is_null($filtered))
                 <span class="badge badge-secondary">
                     {!! $filtered->polarity !!}

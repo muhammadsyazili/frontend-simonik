@@ -69,7 +69,30 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $response = SIMONIK_sevices("/user", 'post', []);
+        $attributes = [
+            'name' => ['required', 'string', 'not_in:super-master,master,child,super-admin,admin,data-entry,employee'],
+            'nip' => ['required', 'string'],
+            'username' => ['required', 'string'],
+            'email' => ['required', 'string'],
+            'unit' => ['required', 'string'],
+        ];
+
+        $messages = [
+            'required' => ':attribute tidak boleh kosong.',
+            'not_in' => ':attribute yang dipilih tidak sah.',
+        ];
+
+        $request->validate($attributes, $messages);
+
+        $data = [
+            'name' => $request->post('name'),
+            'nip' => $request->post('nip'),
+            'username' => $request->post('username'),
+            'email' => $request->post('email'),
+            'unit' => $request->post('unit'),
+        ];
+
+        $response = SIMONIK_sevices("/user", 'post', $data);
 
         if ($response->clientError()) {
             return redirect()->back()->withErrors($response->object()->errors);
@@ -81,7 +104,7 @@ class UserController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.users.index');
+        return redirect()->route('simonik.user.index');
     }
 
     /**
@@ -127,7 +150,7 @@ class UserController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.users.index');
+        return redirect()->route('simonik.user.index');
     }
 
     /**
@@ -161,6 +184,6 @@ class UserController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.users.index');
+        return redirect()->route('simonik.user.index');
     }
 }
