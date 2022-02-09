@@ -159,8 +159,8 @@
 
         @if ($errors->any())
             <div class="alert alert-danger">
-                @foreach ($errors->all() as $error)
-                    <p>{{ $error }}</p>
+                @foreach ($errors->all() as $errorK => $errorV)
+                    <p class="small">{{ $errorK }}: {{ $errorV }}</p>
                 @endforeach
             </div>
         @endif

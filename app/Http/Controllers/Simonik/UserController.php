@@ -70,9 +70,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $attributes = [
-            'name' => ['required', 'string', 'not_in:super-master,master,child,super-admin,admin,data-entry,employee'],
+            'name' => ['required', 'string'],
             'nip' => ['required', 'string'],
-            'username' => ['required', 'string'],
+            'username' => ['required', 'string', 'alpha_dash', 'not_in:super-master,master,child,super-admin,admin,data-entry,employee'],
             'email' => ['required', 'string'],
             'unit' => ['required', 'string'],
         ];
@@ -80,6 +80,8 @@ class UserController extends Controller
         $messages = [
             'required' => ':attribute tidak boleh kosong.',
             'not_in' => ':attribute yang dipilih tidak sah.',
+            'email' => ':attribute harus valid.',
+            'alpha_dash' => ':attribute hanya boleh mengandung huruf, angka, dashes and underscores.',
         ];
 
         $request->validate($attributes, $messages);
