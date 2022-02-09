@@ -201,14 +201,14 @@
             <div class="form-group text-left row">
                 <div class="offset-sm-2 col-sm-10">
                     <input type="hidden" name="app" value="simonik">
-                    <button type="submit" class="btn btn-info btn-sm font-weight-bold">Sign In</button>
+                    <button type="submit" class="btn btn-info btn-sm">Sign In</button>
                 </div>
             </div>
         </form>
     </div>
 
     <div class="lockscreen-footer text-center">
-        Copyright &copy; PT. PLN(Persero) UIW S2JB - RENUS
+        <i class="far fa-copyright"></i> PT. PLN(Persero) UIW S2JB - RENUS
         <br/>
         {{ now()->year }}
     </div>

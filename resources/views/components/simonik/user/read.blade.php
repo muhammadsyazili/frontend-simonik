@@ -180,7 +180,7 @@
                                                 <th class="text-center">NIP</th>
                                                 <th class="text-center">Username</th>
                                                 <th class="text-center">Email</th>
-                                                <th class="text-center">Status Akun <span class="badge badge-pill badge-light" data-toggle="tooltip" data-placement="right" title="active: password sudah diubah, default: password belum diubah (1234567890)"><i class="fa fa-info" aria-hidden="true"></i></span></th>
+                                                <th class="text-center">Status Akun <span data-toggle="tooltip" data-placement="right" title="active: password sudah diubah, default: password belum diubah (1234567890)"><i class="fas fa-info-circle"></i></span></th>
                                                 <th class="text-center">Unit</th>
                                                 <th class="text-center">Role</th>
                                                 <th class="text-center"></th>
