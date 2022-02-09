@@ -180,7 +180,7 @@
                                                 <th class="text-center">NIP</th>
                                                 <th class="text-center">Username</th>
                                                 <th class="text-center">Email</th>
-                                                <th class="text-center">Status Akun</th>
+                                                <th class="text-center">Status Akun <span class="badge badge-pill badge-light" data-toggle="tooltip" data-placement="right" title="active: password sudah diubah, default: password belum diubah (1234567890)"><i class="fa fa-info" aria-hidden="true"></i></span></th>
                                                 <th class="text-center">Unit</th>
                                                 <th class="text-center">Role</th>
                                                 <th class="text-center"></th>
@@ -199,8 +199,10 @@
                                                     <td class="text-center small">{{ $user->role->name }}</td>
                                                     <td class="text-center small">
                                                         <div class="btn-group">
+                                                            @if (!in_array($user->role->name, ['super-admin', 'admin', 'data-entry']))
                                                             <a href="{{ route('simonik.user.edit', ['id' => $user->id]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></a>
                                                             <a href="{{ route('simonik.user.delete', ['id' => $user->id]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></a>
+                                                            @endif
                                                         </div>
                                                     </td>
                                                 </tr>

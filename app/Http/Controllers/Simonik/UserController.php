@@ -81,7 +81,7 @@ class UserController extends Controller
             'required' => ':attribute tidak boleh kosong.',
             'not_in' => ':attribute yang dipilih tidak sah.',
             'email' => ':attribute harus valid.',
-            'alpha_dash' => ':attribute hanya boleh mengandung huruf, angka, dashes and underscores.',
+            'alpha_dash' => ':attribute hanya boleh mengandung huruf, angka, dashes (-) and underscores (_).',
         ];
 
         $request->validate($attributes, $messages);
@@ -140,7 +140,32 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $response = SIMONIK_sevices("/user/$id", 'put', []);
+        $attributes = [
+            'name' => ['required', 'string'],
+            'nip' => ['required', 'string'],
+            'username' => ['required', 'string', 'alpha_dash', 'not_in:super-master,master,child,super-admin,admin,data-entry,employee'],
+            'email' => ['required', 'string'],
+            'unit' => ['required', 'string'],
+        ];
+
+        $messages = [
+            'required' => ':attribute tidak boleh kosong.',
+            'not_in' => ':attribute yang dipilih tidak sah.',
+            'email' => ':attribute harus valid.',
+            'alpha_dash' => ':attribute hanya boleh mengandung huruf, angka, dashes (-) and underscores (_).',
+        ];
+
+        $request->validate($attributes, $messages);
+
+        $data = [
+            'name' => $request->post('name'),
+            'nip' => $request->post('nip'),
+            'username' => $request->post('username'),
+            'email' => $request->post('email'),
+            'unit' => $request->post('unit'),
+        ];
+
+        $response = SIMONIK_sevices("/user/$id", 'put', $data);
 
         if ($response->clientError()) {
             return redirect()->back()->withErrors($response->object()->errors);
