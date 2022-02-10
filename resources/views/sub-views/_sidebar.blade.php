@@ -15,9 +15,9 @@
         </div>
         <div class="info">
             <a href="#" class="d-block"><small><i class="fas fa-at"></i> {{ request()->cookie('X-Username') }}</small></a>
-            <a href="#" class="d-block"><small>Role: {{ request()->cookie('X-Role') }}</small></a>
+            <a href="#" class="d-block"><small>role: {{ request()->cookie('X-Role') }}</small></a>
             @if (request()->cookie('X-Role') !== 'super-admin')
-            <a href="#" class="d-block"><small>Unit: {{ request()->cookie('X-Unit') }}</small></a>
+            <a href="#" class="d-block"><small>unit: {{ request()->cookie('X-Unit') }}</small></a>
             @endif
         </div>
     </div>

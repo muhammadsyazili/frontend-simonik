@@ -80,7 +80,6 @@ class UserController extends Controller
         $messages = [
             'required' => ':attribute tidak boleh kosong.',
             'not_in' => ':attribute yang dipilih tidak sah.',
-            'email' => ':attribute harus valid.',
             'alpha_dash' => ':attribute hanya boleh mengandung huruf, angka, dashes (-) and underscores (_).',
         ];
 
@@ -151,7 +150,6 @@ class UserController extends Controller
         $messages = [
             'required' => ':attribute tidak boleh kosong.',
             'not_in' => ':attribute yang dipilih tidak sah.',
-            'email' => ':attribute harus valid.',
             'alpha_dash' => ':attribute hanya boleh mengandung huruf, angka, dashes (-) and underscores (_).',
         ];
 
