@@ -177,6 +177,7 @@
                                             <tr>
                                                 <th class="text-center">No</th>
                                                 <th class="text-center">Nama</th>
+                                                <th class="text-center">Slug</th>
                                                 <th class="text-center">Turunan Dari Level</th>
                                                 <th class="text-center"></th>
                                             </tr>
@@ -186,12 +187,15 @@
                                                 <tr>
                                                     <td class="text-center small">{{ $loop->iteration }}</td>
                                                     <td class="text-center small">{{ $level->name }}</td>
+                                                    <td class="text-center small">{{ $level->slug }}</td>
                                                     <td class="text-center small">{{ is_null($level->parent) ? '-' : $level->parent->name }}</td>
                                                     <td class="text-center small">
+                                                        @if (!is_null($level->parent))
                                                         <div class="btn-group">
                                                             <a href="{{ route('simonik.level.edit', ['id' => $level->id]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></a>
                                                             <a href="{{ route('simonik.level.delete', ['id' => $level->id]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></a>
                                                         </div>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                             @empty

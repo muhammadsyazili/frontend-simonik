@@ -24,7 +24,6 @@ class RealizationController extends Controller
      */
     public function create()
     {
-
     }
 
     /**
