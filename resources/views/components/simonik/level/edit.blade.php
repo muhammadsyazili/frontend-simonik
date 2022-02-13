@@ -117,7 +117,8 @@
                     </div>
                     <!-- end : card-header -->
 
-                    <form action="{{ route('simonik.level.update', ['id' => $response->object()->data->level->id]) }}" method="post">
+                    <form action="{{ route('simonik.level.update', ['id' => $response->object()->data->level->id]) }}"
+                        method="post">
                         @method('put')
                         @csrf
 
@@ -127,7 +128,8 @@
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
                                         <label class="small">Nama <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control form-control-sm" name="name" value="{{ $response->object()->data->level->name }}" required>
+                                        <input type="text" class="form-control form-control-sm" name="name"
+                                            value="{{ $response->object()->data->level->name }}" required>
                                     </div>
                                 </div>
 
@@ -137,7 +139,8 @@
                                                 class="text-danger">*</span></label>
                                         <select class="form-control form-control-sm" id="dropdown-1" name="parent_level">
                                             @foreach ($response->object()->data->levels as $level)
-                                                <option value="{{ $level->slug }}" @if ($level->id === $response->object()->data->level->parent_id) selected @endif>{{ $level->name }}</option>
+                                                <option value="{{ $level->slug }}" @if ($level->id === $response->object()->data->level->parent_id) selected @endif>
+                                                    {{ $level->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
