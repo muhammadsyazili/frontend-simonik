@@ -3,7 +3,7 @@
 
     @if (!empty($level->childs_recursive))
         @include('components.simonik.realization.paper-work.read._level-child',[
-            'levels' => $level->childs_recursive
+        'levels' => $level->childs_recursive
         ])
     @endif
 @endforeach
