@@ -71,8 +71,8 @@ class UnitController extends Controller
     {
         $attributes = [
             'name' => ['required', 'string', 'not_in:super-master,master,child,super-admin,admin,data-entry,employee'],
-            'parent_level' => ['required', 'string'],
-            'parent_unit' => ['required', 'string'],
+            'level' => ['required', 'string'],
+            'unit' => ['required', 'string'],
         ];
 
         $messages = [
@@ -84,8 +84,8 @@ class UnitController extends Controller
 
         $data = [
             'name' => $request->post('name'),
-            'parent_level' => $request->post('parent_level'),
-            'parent_unit' => $request->post('parent_unit'),
+            'level' => $request->post('level'),
+            'unit' => $request->post('unit'),
         ];
 
         $response = SIMONIK_sevices("/unit", 'post', $data);

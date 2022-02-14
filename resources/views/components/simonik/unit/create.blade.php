@@ -67,10 +67,10 @@
     {{-- Request Unit --}}
     <script>
         $(document).ready(function() {
-            getUnits($('select[name="parent_level"]').val());
+            getUnits($('select[name="level"]').val());
         });
 
-        $('select[name="parent_level"]').click(function() {
+        $('select[name="level"]').click(function() {
             getUnits($(this).val());
         });
 
@@ -79,7 +79,7 @@
                 let host = $('meta[name="host"]').attr('content');
                 $.ajax({
                     type: 'GET',
-                    url: `${host}/level/${level}/units`,
+                    url: `${host}/level/${level}/parents`,
                     success: function(res) {
                         $('.dynamic-option').remove();
 
@@ -177,12 +177,13 @@
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small" for="dropdown-1">Turunan Dari Level <span
+                                        <label class="small" for="dropdown-1">Level <span
                                                 class="text-danger">*</span></label>
-                                        <select class="form-control form-control-sm" id="dropdown-1" name="parent_level">
-                                            @foreach ($response->object()->data->levels as $level)
-                                                <option value="{{ $level->slug }}">{{ $level->name }}</option>
-                                            @endforeach
+                                        <select class="form-control form-control-sm" id="dropdown-1" name="level">
+                                            @include('components.simonik.unit.create._level-child', [
+                                            'levels' => empty($response->object()->data->levels) ? $response->object()->data
+                                            : $response->object()->data->levels
+                                            ])
                                         </select>
                                     </div>
                                 </div>
