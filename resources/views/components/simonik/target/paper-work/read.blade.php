@@ -196,8 +196,7 @@ $(document).ready(function(){
                         <h3 class="card-title">Info</h3>
 
                         <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
-                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                         </div>
                         <!-- /.card-tools -->
                     </div>
@@ -217,8 +216,7 @@ $(document).ready(function(){
                         <h3 class="card-title">Alert</h3>
 
                         <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
-                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                         </div>
                         <!-- /.card-tools -->
                     </div>
@@ -253,11 +251,11 @@ $(document).ready(function(){
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="template">
-                                            <label class="custom-file-label" for="template">Choose file</label>
+                                                <input type="file" class="custom-file-input" id="template">
+                                                <label class="custom-file-label" for="template">Choose file</label>
                                             </div>
                                             <div class="input-group-append">
-                                            <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="buttom" title="Upload Template"><i class="fas fa-file-upload"></i></button>
+                                                <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="buttom" title="Upload Template"><i class="fas fa-file-upload"></i></button>
                                             </div>
                                         </div>
                                     </div>

@@ -188,12 +188,12 @@
                                 <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
                                     <div class="form-group clearfix">
                                         <div class="d-inline">
-                                        <input type="radio" name="polarity" value="1" checked>
-                                        <label class="small"><i class="fas fa-arrow-up"></i></label>
+                                            <input type="radio" name="polarity" value="1" checked>
+                                            <label class="small"><i class="fas fa-arrow-up"></i></label>
                                         </div>
                                         <div class="d-inline">
-                                        <input type="radio" name="polarity" value="-1">
-                                        <label class="small"><i class="fas fa-arrow-down"></i></label>
+                                            <input type="radio" name="polarity" value="-1">
+                                            <label class="small"><i class="fas fa-arrow-down"></i></label>
                                         </div>
                                     </div>
                                 </div>
