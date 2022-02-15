@@ -72,7 +72,7 @@ class UnitController extends Controller
         $attributes = [
             'name' => ['required', 'string', 'not_in:super-master,master,child,super-admin,admin,data-entry,employee'],
             'level' => ['required', 'string'],
-            'parent_unit' => ['required', 'string'],
+            'parent_unit' => ['string'],
         ];
 
         $messages = [
