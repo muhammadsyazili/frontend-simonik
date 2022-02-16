@@ -86,7 +86,8 @@
                         if (res.data.length > 0) {
                             let html;
                             for (let i = 0; i < res.data.length; i++) {
-                                html += `<option class="dynamic-option" value="${res.data[i].slug}">${res.data[i].name}</option>`;
+                                html +=
+                                    `<option class="dynamic-option" value="${res.data[i].slug}">${res.data[i].name}</option>`;
                             }
                             $('select[name="parent_unit"]').append(html);
                         }
@@ -181,8 +182,7 @@
                                                 class="text-danger">*</span></label>
                                         <select class="form-control form-control-sm" id="dropdown-1" name="level">
                                             @include('components.simonik.unit.create._level-child', [
-                                            'levels' => empty($response->object()->data->levels) ? $response->object()->data
-                                            : $response->object()->data->levels
+                                            'levels' => $response->object()->data->levels
                                             ])
                                         </select>
                                     </div>
@@ -192,7 +192,8 @@
                                     <div class="form-group">
                                         <label class="small" for="dropdown-1">Turunan Dari Unit <span
                                                 class="text-danger">*</span></label>
-                                        <select class="form-control form-control-sm" id="dropdown-1" name="parent_unit"></select>
+                                        <select class="form-control form-control-sm" id="dropdown-1"
+                                            name="parent_unit"></select>
                                     </div>
                                 </div>
                             </div>
