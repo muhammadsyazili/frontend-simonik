@@ -168,7 +168,7 @@
 
                     <form action="{{ route('simonik.unit.update', ['id' => $response->object()->data->unit->id]) }}"
                         method="post">
-                        @method('post')
+                        @method('put')
                         @csrf
 
                         <!-- card-body -->

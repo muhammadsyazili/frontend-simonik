@@ -133,7 +133,25 @@ class UnitController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $response = SIMONIK_sevices("/unit/$id", 'put', []);
+        $attributes = [
+            'name' => ['required', 'string', 'not_in:super-master,master,child,super-admin,admin,data-entry,employee'],
+            'level' => ['required', 'string'],
+        ];
+
+        $messages = [
+            'required' => ':attribute tidak boleh kosong.',
+            'not_in' => ':attribute yang dipilih tidak sah.',
+        ];
+
+        $request->validate($attributes, $messages);
+
+        $data = [
+            'name' => $request->post('name'),
+            'level' => $request->post('level'),
+            'parent_unit' => $request->post('parent_unit'),
+        ];
+
+        $response = SIMONIK_sevices("/unit/$id", 'put', $data);
 
         if ($response->clientError()) {
             return redirect()->back()->withErrors($response->object()->errors);
