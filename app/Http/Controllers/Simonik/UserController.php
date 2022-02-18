@@ -72,14 +72,13 @@ class UserController extends Controller
         $attributes = [
             'name' => ['required', 'string'],
             'nip' => ['required', 'string'],
-            'username' => ['required', 'string', 'alpha_dash', 'not_in:super-master,master,child,super-admin,admin,data-entry,employee'],
+            'username' => ['required', 'string', 'alpha_dash'],
             'email' => ['required', 'string'],
             'unit' => ['required', 'string'],
         ];
 
         $messages = [
             'required' => ':attribute tidak boleh kosong.',
-            'not_in' => ':attribute yang dipilih tidak sah.',
             'alpha_dash' => ':attribute hanya boleh mengandung huruf, angka, dashes (-) and underscores (_).',
         ];
 
@@ -142,14 +141,13 @@ class UserController extends Controller
         $attributes = [
             'name' => ['required', 'string'],
             'nip' => ['required', 'string'],
-            'username' => ['required', 'string', 'alpha_dash', 'not_in:super-master,master,child,super-admin,admin,data-entry,employee'],
+            'username' => ['required', 'string', 'alpha_dash'],
             'email' => ['required', 'string'],
             'unit' => ['required', 'string'],
         ];
 
         $messages = [
             'required' => ':attribute tidak boleh kosong.',
-            'not_in' => ':attribute yang dipilih tidak sah.',
             'alpha_dash' => ':attribute hanya boleh mengandung huruf, angka, dashes (-) and underscores (_).',
         ];
 
@@ -184,9 +182,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete($id, $username)
     {
-        return view('components.simonik.user.delete', compact(['id']));
+        return view('components.simonik.user.delete', compact(['id', 'username']));
     }
 
     /**

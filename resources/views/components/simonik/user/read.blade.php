@@ -176,7 +176,7 @@
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <a href="{{ route('simonik.user.create') }}" class="btn btn-info btn-sm mb-3"
-                                    data-toggle="tooltip" data-placement="bottom" title="Add User">Add User</a>
+                                    data-toggle="tooltip" data-placement="bottom" title="Add">Add</a>
 
                                 <input class="form-control form-control-sm mb-3" id="myInput" type="text"
                                     placeholder="Cari KPI..">
@@ -194,7 +194,7 @@
                                                         data-placement="right"
                                                         title="active: password sudah diubah, default: password belum diubah (1234567890)"><i
                                                             class="fas fa-info-circle"></i></span></th>
-                                                <th class="text-center">Unit</th>
+                                                <th class="text-center">Unit Kerja</th>
                                                 <th class="text-center">Role</th>
                                                 <th class="text-center"></th>
                                             </tr>
@@ -220,7 +220,7 @@
                                                                     class="btn btn-outline-info btn-sm"
                                                                     data-toggle="tooltip" data-placement="bottom"
                                                                     title="Edit"><i class="fas fa-edit"></i></a>
-                                                                <a href="{{ route('simonik.user.delete', ['id' => $user->id]) }}"
+                                                                <a href="{{ route('simonik.user.delete', ['id' => $user->id, 'username' => $user->username]) }}"
                                                                     class="btn btn-outline-info btn-sm"
                                                                     data-toggle="tooltip" data-placement="bottom"
                                                                     title="Delete"><i class="fas fa-trash-alt"></i></a>

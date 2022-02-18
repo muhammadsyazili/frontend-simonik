@@ -162,7 +162,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Ubah - Unit</h3>
+                        <h3 class="card-title">Ubah Unit Kerja</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -176,7 +176,7 @@
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small">Nama <span class="text-danger">*</span></label>
+                                        <label class="small">Nama Unit Kerja <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control form-control-sm" name="name"
                                             value="{{ $response->object()->data->unit->name }}" required>
                                     </div>
@@ -197,7 +197,7 @@
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small" for="dropdown-1">Turunan Dari Unit <span
+                                        <label class="small" for="dropdown-1">Turunan Dari Unit Kerja <span
                                                 class="text-danger">*</span></label>
                                         <select class="form-control form-control-sm" id="dropdown-1"
                                             name="parent_unit"></select>

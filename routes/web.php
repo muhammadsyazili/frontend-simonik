@@ -161,7 +161,7 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
             ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
             ->name('simonik.user.update');
 
-        Route::get('/simonik/user/{id}/delete', [App\Http\Controllers\Simonik\UserController::class, 'delete'])
+        Route::get('/simonik/user/{id}/{username}/delete', [App\Http\Controllers\Simonik\UserController::class, 'delete'])
             ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
             ->name('simonik.user.delete');
 
@@ -190,7 +190,7 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
             ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
             ->name('simonik.level.update');
 
-        Route::get('/simonik/level/{id}/delete', [App\Http\Controllers\Simonik\LevelController::class, 'delete'])
+        Route::get('/simonik/level/{id}/{name}/delete', [App\Http\Controllers\Simonik\LevelController::class, 'delete'])
             ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
             ->name('simonik.level.delete');
 
@@ -219,7 +219,7 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
             ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
             ->name('simonik.unit.update');
 
-        Route::get('/simonik/unit/{id}/delete', [App\Http\Controllers\Simonik\UnitController::class, 'delete'])
+        Route::get('/simonik/unit/{id}/{name}/delete', [App\Http\Controllers\Simonik\UnitController::class, 'delete'])
             ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
             ->name('simonik.unit.delete');
 

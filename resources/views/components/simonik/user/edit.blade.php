@@ -113,7 +113,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Edit - User</h3>
+                        <h3 class="card-title">Ubah User</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -159,7 +159,7 @@
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small" for="dropdown-1">Unit <span
+                                        <label class="small" for="dropdown-1">Unit Kerja <span
                                                 class="text-danger">*</span></label>
                                         <select class="form-control form-control-sm" id="dropdown-1" name="unit">
                                             @foreach ($response->object()->data->units as $unit)

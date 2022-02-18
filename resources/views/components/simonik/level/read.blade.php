@@ -176,7 +176,7 @@
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <a href="{{ route('simonik.level.create') }}" class="btn btn-info btn-sm mb-3"
-                                    data-toggle="tooltip" data-placement="bottom" title="Add Level">Add Level</a>
+                                    data-toggle="tooltip" data-placement="bottom" title="Add">Add</a>
 
                                 <input class="form-control form-control-sm mb-3" id="myInput" type="text"
                                     placeholder="Cari KPI..">
@@ -186,7 +186,7 @@
                                         <thead>
                                             <tr>
                                                 <th class="text-center">No</th>
-                                                <th class="text-center">Nama</th>
+                                                <th class="text-center">Nama Level</th>
                                                 <th class="text-center">Slug</th>
                                                 <th class="text-center">Turunan Dari Level</th>
                                                 <th class="text-center"></th>
@@ -207,7 +207,7 @@
                                                                     class="btn btn-outline-info btn-sm"
                                                                     data-toggle="tooltip" data-placement="bottom"
                                                                     title="Edit"><i class="fas fa-edit"></i></a>
-                                                                <a href="{{ route('simonik.level.delete', ['id' => $level->id]) }}"
+                                                                <a href="{{ route('simonik.level.delete', ['id' => $level->id, 'name' => $level->name]) }}"
                                                                     class="btn btn-outline-info btn-sm"
                                                                     data-toggle="tooltip" data-placement="bottom"
                                                                     title="Delete"><i class="fas fa-trash-alt"></i></a>

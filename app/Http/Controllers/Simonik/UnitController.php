@@ -70,13 +70,12 @@ class UnitController extends Controller
     public function store(Request $request)
     {
         $attributes = [
-            'name' => ['required', 'string', 'not_in:super-master,master,child,super-admin,admin,data-entry,employee'],
+            'name' => ['required', 'string'],
             'level' => ['required', 'string'],
         ];
 
         $messages = [
             'required' => ':attribute tidak boleh kosong.',
-            'not_in' => ':attribute yang dipilih tidak sah.',
         ];
 
         $request->validate($attributes, $messages);
@@ -134,13 +133,12 @@ class UnitController extends Controller
     public function update(Request $request, $id)
     {
         $attributes = [
-            'name' => ['required', 'string', 'not_in:super-master,master,child,super-admin,admin,data-entry,employee'],
+            'name' => ['required', 'string'],
             'level' => ['required', 'string'],
         ];
 
         $messages = [
             'required' => ':attribute tidak boleh kosong.',
-            'not_in' => ':attribute yang dipilih tidak sah.',
         ];
 
         $request->validate($attributes, $messages);
@@ -172,9 +170,9 @@ class UnitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete($id, $name)
     {
-        return view('components.simonik.unit.delete', compact(['id']));
+        return view('components.simonik.unit.delete', compact(['id', 'name']));
     }
 
     /**

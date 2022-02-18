@@ -166,7 +166,7 @@
 
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Daftar Unit</h3>
+                        <h3 class="card-title">Daftar Unit Kerja</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -176,7 +176,7 @@
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <a href="{{ route('simonik.unit.create') }}" class="btn btn-info btn-sm mb-3"
-                                    data-toggle="tooltip" data-placement="bottom" title="Add Unit">Add Unit</a>
+                                    data-toggle="tooltip" data-placement="bottom" title="Add">Add</a>
 
                                 <input class="form-control form-control-sm mb-3" id="myInput" type="text"
                                     placeholder="Cari KPI..">
@@ -186,9 +186,9 @@
                                         <thead>
                                             <tr>
                                                 <th class="text-center">No</th>
-                                                <th class="text-center">Nama</th>
+                                                <th class="text-center">Nama Unit Kerja</th>
                                                 <th class="text-center">Slug</th>
-                                                <th class="text-center">Turunan Dari Unit</th>
+                                                <th class="text-center">Turunan Dari Unit Kerja</th>
                                                 <th class="text-center">Level</th>
                                                 <th class="text-center"></th>
                                             </tr>
@@ -208,7 +208,7 @@
                                                                 class="btn btn-outline-info btn-sm" data-toggle="tooltip"
                                                                 data-placement="bottom" title="Edit"><i
                                                                     class="fas fa-edit"></i></a>
-                                                            <a href="{{ route('simonik.unit.delete', ['id' => $unit->id]) }}"
+                                                            <a href="{{ route('simonik.unit.delete', ['id' => $unit->id, 'name' => $unit->name]) }}"
                                                                 class="btn btn-outline-info btn-sm" data-toggle="tooltip"
                                                                 data-placement="bottom" title="Delete"><i
                                                                     class="fas fa-trash-alt"></i></a>

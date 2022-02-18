@@ -170,9 +170,9 @@ class LevelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete($id, $name)
     {
-        return view('components.simonik.level.delete', compact(['id']));
+        return view('components.simonik.level.delete', compact(['id', 'name']));
     }
 
     /**
