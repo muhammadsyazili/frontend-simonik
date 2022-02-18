@@ -132,11 +132,11 @@
                     <div class="card-footer clearfix">
                         <div class="row">
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <a href="{{ route('simonik.level.index') }}" class="btn btn-block btn-info btn-sm mb-3"
+                                <a href="{{ route('simonik.unit.index') }}" class="btn btn-block btn-info btn-sm mb-3"
                                     data-toggle="tooltip" data-placement="bottom" title="No">No</a>
                             </div>
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <form action="{{ route('simonik.level.destroy', ['id' => $id]) }}" method="post">
+                                <form action="{{ route('simonik.unit.destroy', ['id' => $id]) }}" method="post">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-block btn-danger btn-sm mb-3" data-toggle="tooltip"
