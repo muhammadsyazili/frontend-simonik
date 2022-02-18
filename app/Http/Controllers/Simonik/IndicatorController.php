@@ -194,9 +194,9 @@ class IndicatorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete($id, $name)
     {
-        return view('components.simonik.indicator.delete', compact(['id']));
+        return view('components.simonik.indicator.delete', compact(['id', 'name']));
     }
 
     /**

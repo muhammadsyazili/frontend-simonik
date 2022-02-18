@@ -34,7 +34,7 @@
                     <a href="{{ route('simonik.indicators.edit', ['id' => $indicator->id]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></a>
                 @endif
                 @if ($permissions['delete'])
-                    <a href="{{ route('simonik.indicators.delete', ['id' => $indicator->id]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></a>
+                    <a href="{{ route('simonik.indicators.delete', ['id' => $indicator->id, 'name' => $indicator->indicator]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></a>
                 @endif
             </div>
 

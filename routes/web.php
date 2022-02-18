@@ -64,7 +64,7 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
             ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
             ->name('simonik.indicators.update');
 
-        Route::get('/simonik/indicators/{id}/delete', [App\Http\Controllers\Simonik\IndicatorController::class, 'delete'])
+        Route::get('/simonik/indicators/{id}/{name}/delete', [App\Http\Controllers\Simonik\IndicatorController::class, 'delete'])
             ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
             ->name('simonik.indicators.delete');
 

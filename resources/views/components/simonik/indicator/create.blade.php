@@ -132,7 +132,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Tambah - KPI</h3>
+                        <h3 class="card-title">Tambah KPI</h3>
                     </div>
                     <!-- end : card-header -->
 
