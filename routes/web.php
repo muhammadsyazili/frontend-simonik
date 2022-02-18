@@ -169,6 +169,10 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
             ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
             ->name('simonik.user.destroy');
 
+        Route::get('/simonik/user/{id}/password/reset', [App\Http\Controllers\Simonik\UserController::class, 'password_reset'])
+            ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
+            ->name('simonik.user.password.reset');
+
         //level
         Route::get('/simonik/levels', [App\Http\Controllers\Simonik\LevelController::class, 'index'])
             ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])

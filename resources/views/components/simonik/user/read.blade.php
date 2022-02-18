@@ -214,7 +214,7 @@
                                                         {{ is_null($user->unit) ? '-' : $user->unit->name }}</td>
                                                     <td class="text-center small">{{ $user->role->name }}</td>
                                                     <td class="text-center small">
-                                                        <div class="btn-group">
+                                                        <div class="btn-group mb-1">
                                                             @if (!in_array($user->role->name, ['super-admin', 'admin', 'data-entry']))
                                                                 <a href="{{ route('simonik.user.edit', ['id' => $user->id]) }}"
                                                                     class="btn btn-outline-info btn-sm"
@@ -226,6 +226,10 @@
                                                                     title="Delete"><i class="fas fa-trash-alt"></i></a>
                                                             @endif
                                                         </div>
+
+                                                        <a href="{{ route('simonik.user.password.reset', ['id' => $user->id]) }}"
+                                                            class="btn btn-outline-info btn-sm" data-toggle="tooltip"
+                                                            data-placement="bottom" title="Password Reset"><i class="fa fa-retweet" aria-hidden="true"></i></a>
                                                     </td>
                                                 </tr>
                                             @empty

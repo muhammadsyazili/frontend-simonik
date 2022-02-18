@@ -209,4 +209,26 @@ class UserController extends Controller
         Session::flash('info_message', $response->object()->message);
         return redirect()->route('simonik.user.index');
     }
+
+    /**
+     * Show the form for resetting password the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function password_reset($id)
+    {
+        $response = SIMONIK_sevices("/user/$id/edit", 'get');
+
+        if ($response->clientError()) {
+            return redirect()->back()->withErrors($response->object()->errors);
+        }
+
+        if ($response->serverError()) {
+            Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
+            return redirect()->back();
+        }
+
+        return view('components.simonik.user.edit', compact('response'));
+    }
 }
