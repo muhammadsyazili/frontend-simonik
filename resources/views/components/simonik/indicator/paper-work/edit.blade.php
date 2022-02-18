@@ -168,7 +168,9 @@
                                     <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                 </div>
                             @else
-                                <input class="form-control form-control-sm mb-3" id="myInput" type="text" style="width: 25vw;" placeholder="Cari KPI..">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <input class="form-control form-control-sm mb-3" id="myInput" type="text" style="width: 25vw;" placeholder="Cari KPI..">
+                                </div>
 
                                 <form action="{{ route('simonik.indicators.paper-work.update', ['level' => $level, 'unit' => $unit, 'tahun' => $tahun]) }}" method="post">
                                     @csrf
