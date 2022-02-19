@@ -216,9 +216,21 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function password_reset_confirm($id, $username)
+    {
+        return view('components.simonik.user.password-reset', compact(['id', 'username']));
+    }
+
+    /**
+     * Resetting password the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function password_reset($id)
     {
-        $response = SIMONIK_sevices("/user/$id/edit", 'get');
+        $response = SIMONIK_sevices("/user/$id/password/reset", 'put', []);
 
         if ($response->clientError()) {
             return redirect()->back()->withErrors($response->object()->errors);
@@ -229,6 +241,7 @@ class UserController extends Controller
             return redirect()->back();
         }
 
-        return view('components.simonik.user.edit', compact('response'));
+        Session::flash('info_message', $response->object()->message);
+        return redirect()->route('simonik.user.index');
     }
 }
