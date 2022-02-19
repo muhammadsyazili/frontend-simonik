@@ -171,11 +171,11 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
 
         Route::get('/simonik/user/{id}/{username}/password/reset', [App\Http\Controllers\Simonik\UserController::class, 'password_reset_confirm'])
             ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.user.password.reset');
+            ->name('simonik.user.password.reset.confirm');
 
         Route::put('/simonik/user/{id}/password/reset', [App\Http\Controllers\Simonik\UserController::class, 'password_reset'])
             ->middleware([\App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.user.update');
+            ->name('simonik.user.password.reset');
 
         //level
         Route::get('/simonik/levels', [App\Http\Controllers\Simonik\LevelController::class, 'index'])

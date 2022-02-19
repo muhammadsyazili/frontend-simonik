@@ -136,7 +136,7 @@
                                     data-toggle="tooltip" data-placement="bottom" title="No">No</a>
                             </div>
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <form action="{{ route('simonik.user.destroy', ['id' => $id]) }}" method="post">
+                                <form action="{{ route('simonik.user.password.reset', ['id' => $id]) }}" method="post">
                                     @csrf
                                     @method('put')
                                     <button type="submit" class="btn btn-block btn-danger btn-sm mb-3" data-toggle="tooltip"

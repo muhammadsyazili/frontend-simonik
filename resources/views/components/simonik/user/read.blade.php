@@ -225,7 +225,7 @@
                                                                     data-toggle="tooltip" data-placement="bottom"
                                                                     title="Delete"><i class="fas fa-trash-alt"></i></a>
                                                             @endif
-                                                            <a href="{{ route('simonik.user.password.reset', ['id' => $user->id, 'username' => $user->username]) }}"
+                                                            <a href="{{ route('simonik.user.password.reset.confirm', ['id' => $user->id, 'username' => $user->username]) }}"
                                                                 class="btn btn-outline-info btn-sm" data-toggle="tooltip"
                                                                 data-placement="bottom" title="Reset Password"><i
                                                                     class="fa fa-key" aria-hidden="true"></i></i></a>
