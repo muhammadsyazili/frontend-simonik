@@ -41,7 +41,7 @@
         <td class="text-center small">
             <div class="btn-group">
                 <a href="{{ route('simonik.indicators.edit', ['id' => $indicator->id]) }}" class="btn btn-sm btn-outline-info" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></a>
-                <a href="{{ route('simonik.indicators.delete', ['id' => $indicator->id]) }}" class="btn btn-sm btn-outline-info" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></a>
+                <a href="{{ route('simonik.indicators.delete', ['id' => $indicator->id, 'name' => $indicator->indicator]) }}" class="btn btn-sm btn-outline-info" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></a>
             </div>
 
             <input type="hidden" name="indicators[]" value="{{ $indicator->id }}">

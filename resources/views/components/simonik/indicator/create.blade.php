@@ -75,6 +75,12 @@
         }
     </script>
     {{-- End : Form Control By Condition --}}
+
+    <script>
+        $('#check-handler').click(function () {
+            $('.check-item').not(this).prop('checked', this.checked);
+        });
+    </script>
 @endpush
 
 {{-- ========================================================== --}}
@@ -214,12 +220,17 @@
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <p class="text-center font-weight-bold small">Masa Berlaku <span class="text-danger">*</span></p>
+                                    <div class="form-check text-center mb-3">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" id="check-handler"><small>Select All Month</small>
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[jan]" value="1">Jan
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[jan]" value="1">Jan
                                             </label>
                                         </div>
                                     </div>
@@ -228,7 +239,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[feb]" value="1">Feb
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[feb]" value="1">Feb
                                             </label>
                                         </div>
                                     </div>
@@ -237,7 +248,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[mar]" value="1">Mar
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[mar]" value="1">Mar
                                             </label>
                                         </div>
                                     </div>
@@ -246,7 +257,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[apr]" value="1">Apr
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[apr]" value="1">Apr
                                             </label>
                                         </div>
                                     </div>
@@ -255,7 +266,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[may]" value="1">May
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[may]" value="1">May
                                             </label>
                                         </div>
                                     </div>
@@ -264,7 +275,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[jun]" value="1">Jun
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[jun]" value="1">Jun
                                             </label>
                                         </div>
                                     </div>
@@ -273,7 +284,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[jul]" value="1">Jul
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[jul]" value="1">Jul
                                             </label>
                                         </div>
                                     </div>
@@ -282,7 +293,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[aug]" value="1">Aug
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[aug]" value="1">Aug
                                             </label>
                                         </div>
                                     </div>
@@ -291,7 +302,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[sep]" value="1">Sep
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[sep]" value="1">Sep
                                             </label>
                                         </div>
                                     </div>
@@ -300,7 +311,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[oct]" value="1">Oct
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[oct]" value="1">Oct
                                             </label>
                                         </div>
                                     </div>
@@ -309,7 +320,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[nov]" value="1">Nov
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[nov]" value="1">Nov
                                             </label>
                                         </div>
                                     </div>
@@ -318,7 +329,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[dec]" value="1">Dec
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[dec]" value="1">Dec
                                             </label>
                                         </div>
                                     </div>

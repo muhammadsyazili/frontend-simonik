@@ -19,6 +19,7 @@
             @if (request()->cookie('X-Role') !== 'super-admin')
             <a href="#" class="d-block"><small>unit: {{ request()->cookie('X-Unit') }}</small></a>
             @endif
+            <a href="#" class="badge badge-info text-light">Ubah Password</a>
         </div>
     </div>
     <!-- End Sidebar User Panel -->

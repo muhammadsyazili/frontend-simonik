@@ -75,6 +75,12 @@
         }
     </script>
     {{-- End : Form Control By Condition --}}
+
+    <script>
+        $('#check-handler').click(function () {
+            $('.check-item').not(this).prop('checked', this.checked);
+        });
+    </script>
 @endpush
 
 {{-- ========================================================== --}}
@@ -214,12 +220,17 @@
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <p class="small text-center font-weight-bold">Masa Berlaku <span class="text-danger">*</span></p>
+                                    <div class="form-check text-center mb-3">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" id="check-handler"><small>Select All Month</small>
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[jan]" value="1" @if (array_key_exists('jan', (array) $response->object()->data->indicator->validity)) checked @endif>Jan
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[jan]" value="1" @if (array_key_exists('jan', (array) $response->object()->data->indicator->validity)) checked @endif>Jan
                                             </label>
                                         </div>
                                     </div>
@@ -228,7 +239,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[feb]" value="1" @if (array_key_exists('feb', (array) $response->object()->data->indicator->validity)) checked @endif>Feb
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[feb]" value="1" @if (array_key_exists('feb', (array) $response->object()->data->indicator->validity)) checked @endif>Feb
                                             </label>
                                         </div>
                                     </div>
@@ -237,7 +248,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[mar]" value="1" @if (array_key_exists('mar', (array) $response->object()->data->indicator->validity)) checked @endif>Mar
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[mar]" value="1" @if (array_key_exists('mar', (array) $response->object()->data->indicator->validity)) checked @endif>Mar
                                             </label>
                                         </div>
                                     </div>
@@ -246,7 +257,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[apr]" value="1" @if (array_key_exists('apr', (array) $response->object()->data->indicator->validity)) checked @endif>Apr
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[apr]" value="1" @if (array_key_exists('apr', (array) $response->object()->data->indicator->validity)) checked @endif>Apr
                                             </label>
                                         </div>
                                     </div>
@@ -255,7 +266,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[may]" value="1" @if (array_key_exists('may', (array) $response->object()->data->indicator->validity)) checked @endif>May
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[may]" value="1" @if (array_key_exists('may', (array) $response->object()->data->indicator->validity)) checked @endif>May
                                             </label>
                                         </div>
                                     </div>
@@ -264,7 +275,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[jun]" value="1" @if (array_key_exists('jun', (array) $response->object()->data->indicator->validity)) checked @endif>Jun
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[jun]" value="1" @if (array_key_exists('jun', (array) $response->object()->data->indicator->validity)) checked @endif>Jun
                                             </label>
                                         </div>
                                     </div>
@@ -273,7 +284,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[jul]" value="1" @if (array_key_exists('jul', (array) $response->object()->data->indicator->validity)) checked @endif>Jul
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[jul]" value="1" @if (array_key_exists('jul', (array) $response->object()->data->indicator->validity)) checked @endif>Jul
                                             </label>
                                         </div>
                                     </div>
@@ -282,7 +293,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[aug]" value="1" @if (array_key_exists('aug', (array) $response->object()->data->indicator->validity)) checked @endif>Aug
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[aug]" value="1" @if (array_key_exists('aug', (array) $response->object()->data->indicator->validity)) checked @endif>Aug
                                             </label>
                                         </div>
                                     </div>
@@ -291,7 +302,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[sep]" value="1" @if (array_key_exists('sep', (array) $response->object()->data->indicator->validity)) checked @endif>Sep
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[sep]" value="1" @if (array_key_exists('sep', (array) $response->object()->data->indicator->validity)) checked @endif>Sep
                                             </label>
                                         </div>
                                     </div>
@@ -300,7 +311,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[oct]" value="1" @if (array_key_exists('oct', (array) $response->object()->data->indicator->validity)) checked @endif>Oct
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[oct]" value="1" @if (array_key_exists('oct', (array) $response->object()->data->indicator->validity)) checked @endif>Oct
                                             </label>
                                         </div>
                                     </div>
@@ -309,7 +320,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[nov]" value="1" @if (array_key_exists('nov', (array) $response->object()->data->indicator->validity)) checked @endif>Nov
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[nov]" value="1" @if (array_key_exists('nov', (array) $response->object()->data->indicator->validity)) checked @endif>Nov
                                             </label>
                                         </div>
                                     </div>
@@ -318,7 +329,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input validity-group" name="validity[dec]" value="1" @if (array_key_exists('dec', (array) $response->object()->data->indicator->validity)) checked @endif>Dec
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[dec]" value="1" @if (array_key_exists('dec', (array) $response->object()->data->indicator->validity)) checked @endif>Dec
                                             </label>
                                         </div>
                                     </div>
