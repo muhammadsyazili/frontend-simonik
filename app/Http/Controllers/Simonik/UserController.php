@@ -230,7 +230,7 @@ class UserController extends Controller
      */
     public function password_reset($id)
     {
-        $response = SIMONIK_sevices("/user/$id/password/reset", 'put', []);
+        $response = SIMONIK_sevices("/user/$id/password/reset", 'get', []);
 
         if ($response->clientError()) {
             return redirect()->back()->withErrors($response->object()->errors);

@@ -206,7 +206,7 @@
                 headers: {
                     'X-User-Id': $('meta[name="user"]').attr('content')
                 },
-                url: `${host}/realizations/paper-work/${id}/${month}/change-lock`,
+                url: `${host}/realizations/paper-work/${id}/${month}/lock/change`,
                 success: function(res) {
                     location.reload();
                 },
