@@ -34,6 +34,7 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
     //Home
     Route::get('/home', function () {
         if (request()->cookie('X-App') === 'simonik') {
+            
             return redirect()->route('simonik.indicators.paper-work.index');
         } else if (request()->cookie('X-App') === 'fdx') {
             return redirect()->route('fdx.indicators.index');
