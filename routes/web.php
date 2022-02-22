@@ -261,9 +261,13 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
             ->name('simonik.unit.destroy');
 
 
-        //dashboard
-        Route::get('/simonik/dashboard', [App\Http\Controllers\Simonik\DashboardController::class, 'index'])
-            ->name('simonik.dashboard');
+        //analytic
+        Route::get('/simonik/analytic', [App\Http\Controllers\Simonik\AnalyticController::class, 'index'])
+            ->name('simonik.analytic');
+
+        //export
+        Route::get('/simonik/export', [App\Http\Controllers\Simonik\ExportController::class, 'index'])
+            ->name('simonik.export');
     });
 
 
