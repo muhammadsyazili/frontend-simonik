@@ -122,7 +122,9 @@
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <h1 class="text-center text-danger"><i class="fas fa-exclamation-triangle"></i></h1>
-                                <h5 class="text-center">Anda yakin ingin <strong>Reset Password <i class="fa fa-arrow-right" aria-hidden="true"></i> User: <span>@</span>{{ $username }}</strong>?</h5>
+                                <h5 class="text-center">Anda yakin ingin <strong>Reset Password <i
+                                            class="fa fa-arrow-right" aria-hidden="true"></i> User:
+                                        <span>@</span>{{ $username }}</strong>?</h5>
                             </div>
                         </div>
                     </div>

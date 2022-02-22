@@ -110,7 +110,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  string|int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -133,7 +133,7 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  string|int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -179,7 +179,8 @@ class UserController extends Controller
     /**
      * Show the form for deleting the specified resource.
      *
-     * @param  int  $id
+     * @param  string|int  $id
+     * @param  string  $username
      * @return \Illuminate\Http\Response
      */
     public function delete($id, $username)
@@ -190,7 +191,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  string|int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -211,21 +212,21 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for resetting password the specified resource.
+     * Show the form for password reset.
      *
-     * @param  int  $id
+     * @param  string|int  $id
+     * @param  string  $username
      * @return \Illuminate\Http\Response
      */
-    public function password_reset_confirm($id, $username)
+    public function password_reset_form($id, $username)
     {
         return view('components.simonik.user.password-reset', compact(['id', 'username']));
     }
 
     /**
-     * Resetting password the specified resource in storage.
+     * Password reset.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  string|int  $id
      * @return \Illuminate\Http\Response
      */
     public function password_reset($id)
@@ -243,5 +244,56 @@ class UserController extends Controller
 
         Session::flash('info_message', $response->object()->message);
         return redirect()->route('simonik.user.index');
+    }
+
+    /**
+     * Show the form for password change.
+     *
+     * @param  string|int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function password_change_form($id)
+    {
+        return view('components.simonik.user.password-change', compact(['id']));
+    }
+
+    /**
+     * Password reset.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string|int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function password_change(Request $request, $id)
+    {
+        $attributes = [
+            'password' => ['required', 'string', 'confirmed'],
+            'password_confirmation' => ['required', 'string'],
+        ];
+
+        $messages = [
+            'required' => ':attribute tidak boleh kosong.',
+            'confirmed' => ':attribute tidak sama.',
+        ];
+
+        $request->validate($attributes, $messages);
+
+        $data = [
+            'password' => $request->post('password'),
+        ];
+
+        $response = SIMONIK_sevices("/user/$id/password/change", 'put', $data);
+
+        if ($response->clientError()) {
+            return redirect()->back()->withErrors($response->object()->errors);
+        }
+
+        if ($response->serverError()) {
+            Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
+            return redirect()->back();
+        }
+
+        Session::flash('info_message', $response->object()->message);
+        return redirect()->route('home');
     }
 }
