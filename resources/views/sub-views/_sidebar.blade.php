@@ -19,7 +19,7 @@
             @if (request()->cookie('X-Role') !== 'super-admin')
             <a href="#" class="d-block"><small>unit: {{ request()->cookie('X-Unit') }}</small></a>
             @endif
-            <a href="{{ route('simonik.user.password.change.form', ['id' => request()->cookie('X-User-Id')]) }}" class="badge badge-warning text-light">Ubah Password</a>
+            <a href="{{ route('simonik.user.password.change.form', ['id' => request()->cookie('X-User-Id')]) }}" class="badge badge-danger text-light">Ubah Password</a>
         </div>
     </div>
     <!-- End Sidebar User Panel -->

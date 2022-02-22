@@ -46,7 +46,6 @@ class CustomAuthManager {
         Cookie::queue(Cookie::make('X-Role', $response->object()->data->role, time() + (60 * 60 * 24 * 30)));
         Cookie::queue(Cookie::make('X-Level', $response->object()->data->level, time() + (60 * 60 * 24 * 30)));
         Cookie::queue(Cookie::make('X-Unit', $response->object()->data->unit, time() + (60 * 60 * 24 * 30)));
-        Cookie::queue(Cookie::make('X-Active', $response->object()->data->actived, time() + (60 * 60 * 24 * 30)));
         Cookie::queue(Cookie::make('X-App', $app, time() + (60 * 60 * 24 * 30)));
         Cookie::queue(Cookie::make('X-Credential', hash('sha256', self::SECRET_KEY.$response->object()->data->id.$response->object()->data->token), time() + (60 * 60 * 24 * 30)));
 
@@ -92,7 +91,6 @@ class CustomAuthManager {
         Cookie::queue(Cookie::forget('X-Role'));
         Cookie::queue(Cookie::forget('X-Level'));
         Cookie::queue(Cookie::forget('X-Unit'));
-        Cookie::queue(Cookie::forget('X-Active'));
         Cookie::queue(Cookie::forget('X-App'));
         Cookie::queue(Cookie::forget('X-Credential'));
 
