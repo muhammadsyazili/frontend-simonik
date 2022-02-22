@@ -14,7 +14,7 @@ class AnalyticController extends Controller
      */
     public function index()
     {
-        return 'this analytic page';
+        return view('components.simonik.analytic');
     }
 
     /**
