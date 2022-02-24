@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Simonik\Extends\Realization;
+namespace App\Http\Controllers\Simonik;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
 
-class PaperWorkRealizationController extends Controller
+class MonitoringController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class PaperWorkRealizationController extends Controller
     public function index(Request $request)
     {
         $response = null;
-        if (is_null($request->query('level')) && is_null($request->query('unit')) && is_null($request->query('tahun'))) {
+        if (is_null($request->query('level')) && is_null($request->query('unit')) && is_null($request->query('tahun')) && is_null($request->query('bulan'))) {
             $response = SIMONIK_sevices(sprintf('/user/%s/levels', $request->cookie('X-User-Id')), 'get', ['with-super-master' => 'false']);
 
             if ($response->clientError()) {
@@ -30,10 +30,11 @@ class PaperWorkRealizationController extends Controller
                 return redirect()->back();
             }
         } else {
-            $response = SIMONIK_sevices('/realizations/paper-work/edit', 'get', [
+            $response = SIMONIK_sevices('/analytic', 'get', [
                 'level' => $request->query('level'),
                 'unit' => $request->query('unit'),
                 'tahun' => $request->query('tahun'),
+                'bulan' => $request->query('bulan'),
             ]);
 
             if ($response->clientError()) {
@@ -46,41 +47,72 @@ class PaperWorkRealizationController extends Controller
             }
         }
 
-        return view('components.simonik.realization.paper-work.read', compact('response'));
+        return view('components.simonik.monitoring', compact('response'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $realizations = [];
-        foreach ($request->post('realizations') as $realizationK => $realizationV) {
-            foreach ($realizationV as $K => $V) {
-                $realizations[$realizationK][$K] = (float) $V;
-            }
-        }
+        //
+    }
 
-        $response = SIMONIK_sevices('/realizations/paper-work', 'put', [
-            'level' => $request->post('level'),
-            'unit' => $request->post('unit'),
-            'tahun' => $request->post('tahun'),
-            'realizations' => $realizations,
-        ]);
-
-        if ($response->clientError()) {
-            return redirect()->back()->withErrors($response->object()->errors);
-        }
-
-        if ($response->serverError()) {
-            Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
-            return redirect()->back();
-        }
-
-        Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.realizations.paper-work.index', ['level' => $request->level, 'unit' => $request->unit, 'tahun' => $request->tahun]);
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

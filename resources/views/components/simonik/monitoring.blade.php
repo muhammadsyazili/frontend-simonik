@@ -1,10 +1,11 @@
 @extends('layouts/after-login')
 
-@section('title', 'Kertas Kerja - Target')
+@section('title', 'Monitoring')
 
 {{-- ========================================================== --}}
 @push('metadata')
     <meta name="host" content="{{ env('HOST_SIMONIK') }}">
+    <meta name="user" content="{{ request()->cookie('X-User-Id') }}">
     <meta name="level" content="{{ request()->query('level') }}">
     <meta name="unit" content="{{ request()->query('unit') }}">
     <meta name="year" content="{{ request()->query('tahun') }}">
@@ -177,7 +178,7 @@
                         $('.dynamic-option').remove();
 
                         if (res.data.length > 0) {
-                            let html = '<option class="dynamic-option" value="master">-- Master --</option>';
+                            let html;
                             for (let i = 0; i < res.data.length; i++) {
                                 html +=
                                     `<option class="dynamic-option" value="${res.data[i].slug}">${res.data[i].name}</option>`;
@@ -191,6 +192,29 @@
                 });
             }
         }
+    </script>
+
+    {{-- Request locked/un-locked --}}
+    <script>
+        $(document).on('click', '.lock-action', function() {
+            let host = $('meta[name="host"]').attr('content');
+            let id = $(this).data('id');
+            let month = $(this).data('month');
+
+            $.ajax({
+                type: 'GET',
+                headers: {
+                    'X-User-Id': $('meta[name="user"]').attr('content')
+                },
+                url: `${host}/realizations/paper-work/${id}/${month}/lock/change`,
+                success: function(res) {
+                    location.reload();
+                },
+                error: function(res) {
+                    console.log(`Error : ${res.responseJSON.message}`);
+                }
+            });
+        });
     </script>
 @endpush
 
@@ -245,53 +269,12 @@
                 </div>
             @endif
 
-            {{-- section: template download/upload --}}
-            <div class="col-md-12">
-                <div class="card border-0 shadow rounded">
-                    <!-- card-header -->
-                    <div class="card-header">
-                        <h3 class="card-title">Add (excel)</h3>
-                    </div>
-                    <!-- end : card-header -->
-
-                    <!-- card-body -->
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                                <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip"
-                                    data-placement="buttom" title="Download Template"><i
-                                        class="fas fa-file-download"></i></button>
-                            </div>
-                            <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                                <form action="#" method="post">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="template">
-                                                <label class="custom-file-label" for="template">Choose file</label>
-                                            </div>
-                                            <div class="input-group-append">
-                                                <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip"
-                                                    data-placement="buttom" title="Upload Template"><i
-                                                        class="fas fa-file-upload"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end : card-body -->
-                </div>
-            </div>
-            {{-- end section: template download/upload --}}
-
             {{-- section: table --}}
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Kertas Kerja - Target / Level :
+                        <h3 class="card-title">Monitoring / Level :
                             {{ request()->query('level') == null ? '-' : strtoupper(str_replace('-', ' ', request()->query('level'))) }}
                             / Unit :
                             {{ request()->query('unit') == null ? '-' : strtoupper(str_replace('-', ' ', request()->query('unit'))) }}
@@ -305,14 +288,14 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                <form action="{{ route('simonik.targets.paper-work.index') }}" method="get">
+                                <form action="{{ route('simonik.monitoring') }}" method="get">
                                     <div class="input-group mb-3">
                                         <span class="input-group-append">
                                             <span class="input-group-text">Level</span>
                                         </span>
 
                                         <select class="custom-select" name="level">
-                                            @include('components.simonik.target.paper-work.read._level-child', [
+                                            @include('components.simonik._level-child', [
                                             'levels' => empty($response->object()->data->levels) ? $response->object()->data
                                             : $response->object()->data->levels
                                             ])
@@ -331,6 +314,25 @@
                                         <input type="text" class="form-control" name="tahun" />
 
                                         <span class="input-group-append">
+                                            <span class="input-group-text">Bulan</span>
+                                        </span>
+
+                                        <select class="custom-select" name="bulan">
+                                            <option value="1">s.d. Jan</option>
+                                            <option value="2">s.d. Feb</option>
+                                            <option value="3">s.d. Mar</option>
+                                            <option value="4">s.d. Apr</option>
+                                            <option value="5">s.d. May</option>
+                                            <option value="6">s.d. Jun</option>
+                                            <option value="7">s.d. Jul</option>
+                                            <option value="8">s.d. Aug</option>
+                                            <option value="9">s.d. Sep</option>
+                                            <option value="10">s.d. Oct</option>
+                                            <option value="11">s.d. Nov</option>
+                                            <option value="12">s.d. Dec</option>
+                                        </select>
+
+                                        <span class="input-group-append">
                                             <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip"
                                                 data-placement="buttom" title="Search"><i
                                                     class="fas fa-search"></i></button>
@@ -346,51 +348,43 @@
                                     <input class="form-control form-control-sm mb-3" id="myInput" type="text"
                                         style="width: 25vw;" placeholder="Cari KPI..">
 
-                                    <form action="{{ route('simonik.targets.paper-work.update') }}" method="post">
-                                        @csrf
-                                        @method('put')
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered" id="drag-drop-table-sorting">
-                                                <thead>
-                                                    <tr class="first">
-                                                        <th class="text-center" rowspan="2">KPI</th>
-                                                        <th class="text-center" rowspan="2">Formula</th>
-                                                        <th class="text-center" rowspan="2">Satuan</th>
-                                                        <th class="text-center" rowspan="2">Bobot</th>
-                                                        <th class="text-center" rowspan="2">Berlaku</th>
-                                                        <th class="text-center" rowspan="2">Polaritas</th>
-                                                        <th class="text-center" colspan="12">Target</th>
-                                                    </tr>
-                                                    <tr class="second">
-                                                        <th class="text-center">Jan</th>
-                                                        <th class="text-center">Feb</th>
-                                                        <th class="text-center">Mar</th>
-                                                        <th class="text-center">Apr</th>
-                                                        <th class="text-center">May</th>
-                                                        <th class="text-center">Jun</th>
-                                                        <th class="text-center">Jul</th>
-                                                        <th class="text-center">Aug</th>
-                                                        <th class="text-center">Sep</th>
-                                                        <th class="text-center">Oct</th>
-                                                        <th class="text-center">Nov</th>
-                                                        <th class="text-center">Dec</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="text-nowrap" id="myTable">
-                                                    @include('components.simonik.target.paper-work.read._indicator-child',[
-                                                    'indicators' => $response->object()->data->indicators,
-                                                    'background_color' => ['red' => 255, 'green' => 255, 'blue' => 255],
-                                                    'iter' => 0,
-                                                    ])
-                                                </tbody>
-                                            </table>
-                                        </div>
-
-                                        <input type="hidden" name="level" value="{{ request()->query('level') }}">
-                                        <input type="hidden" name="unit" value="{{ request()->query('unit') }}">
-                                        <input type="hidden" name="tahun" value="{{ request()->query('tahun') }}">
-                                        <button type="submit" class="btn btn-info btn-sm float-right mt-3">Save</button>
-                                    </form>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="drag-drop-table-sorting">
+                                            <thead>
+                                                <tr class="first">
+                                                    <th class="text-center" rowspan="2">KPI</th>
+                                                    <th class="text-center" rowspan="2">Formula</th>
+                                                    <th class="text-center" rowspan="2">Satuan</th>
+                                                    <th class="text-center" rowspan="2">Bobot</th>
+                                                    <th class="text-center" rowspan="2">Berlaku</th>
+                                                    <th class="text-center" rowspan="2">Polaritas</th>
+                                                    <th class="text-center" colspan="12">Target (T) & Realisasi (R)
+                                                    </th>
+                                                </tr>
+                                                <tr class="second">
+                                                    <th class="text-center">Jan</th>
+                                                    <th class="text-center">Feb</th>
+                                                    <th class="text-center">Mar</th>
+                                                    <th class="text-center">Apr</th>
+                                                    <th class="text-center">May</th>
+                                                    <th class="text-center">Jun</th>
+                                                    <th class="text-center">Jul</th>
+                                                    <th class="text-center">Aug</th>
+                                                    <th class="text-center">Sep</th>
+                                                    <th class="text-center">Oct</th>
+                                                    <th class="text-center">Nov</th>
+                                                    <th class="text-center">Dec</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="text-nowrap" id="myTable">
+                                                @include('components.simonik._indicator-child',[
+                                                'indicators' => $response->object()->data->indicators,
+                                                'background_color' => ['red' => 255, 'green' => 255, 'blue' => 255],
+                                                'iter' => 0,
+                                                ])
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 @endif
                             </div>
                         </div>

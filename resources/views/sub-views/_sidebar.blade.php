@@ -97,10 +97,10 @@
             @endif
 
             <li class="nav-item">
-                <a href="{{ route('simonik.analytic') }}" class="nav-link">
+                <a href="{{ route('simonik.monitoring') }}" class="nav-link">
                 <i class="fas fa-circle nav-icon text-warning"></i>
                 <p>
-                    Analytic
+                    Monitoring
                 </p>
                 </a>
             </li>

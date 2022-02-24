@@ -261,9 +261,9 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
             ->name('simonik.unit.destroy');
 
 
-        //analytic
-        Route::get('/simonik/analytic', [App\Http\Controllers\Simonik\AnalyticController::class, 'index'])
-            ->name('simonik.analytic');
+        //monitoring
+        Route::get('/simonik/monitoring', [App\Http\Controllers\Simonik\MonitoringController::class, 'index'])
+            ->name('simonik.monitoring');
 
         //export
         Route::get('/simonik/export', [App\Http\Controllers\Simonik\ExportController::class, 'index'])
