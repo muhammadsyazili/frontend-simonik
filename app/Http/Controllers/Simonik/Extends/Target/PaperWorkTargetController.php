@@ -82,4 +82,9 @@ class PaperWorkTargetController extends Controller
         Session::flash('info_message', $response->object()->message);
         return redirect()->route('simonik.targets.paper-work.index', ['level' => $request->level, 'unit' => $request->unit, 'tahun' => $request->tahun]);
     }
+
+    public function export()
+    {
+
+    }
 }
