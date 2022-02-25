@@ -165,6 +165,10 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
             ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
             ->name('simonik.targets.paper-work.update');
 
+        Route::get('/simonik/targets/paper-work/{level}/{unit}/{tahun}/export/', [App\Http\Controllers\Simonik\Extends\Target\PaperWorkTargetController::class, 'export'])
+            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
+            ->name('simonik.targets.paper-work.export');
+
         //user
         Route::get('/simonik/users', [App\Http\Controllers\Simonik\UserController::class, 'index'])
             ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
@@ -259,7 +263,6 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
         Route::delete('/simonik/unit/{id}', [App\Http\Controllers\Simonik\UnitController::class, 'destroy'])
             ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
             ->name('simonik.unit.destroy');
-
 
         //monitoring
         Route::get('/simonik/monitoring', [App\Http\Controllers\Simonik\MonitoringController::class, 'index'])

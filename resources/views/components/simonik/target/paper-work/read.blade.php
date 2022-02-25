@@ -246,44 +246,46 @@
             @endif
 
             {{-- section: template download/upload --}}
-            <div class="col-md-12">
-                <div class="card border-0 shadow rounded">
-                    <!-- card-header -->
-                    <div class="card-header">
-                        <h3 class="card-title">Add (excel)</h3>
-                    </div>
-                    <!-- end : card-header -->
+            @if (!empty($response->object()->data->indicators))
+                <div class="col-md-12">
+                    <div class="card border-0 shadow rounded">
+                        <!-- card-header -->
+                        <div class="card-header">
+                            <h3 class="card-title">Add Via Excel</h3>
+                        </div>
+                        <!-- end : card-header -->
 
-                    <!-- card-body -->
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                                <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip"
-                                    data-placement="buttom" title="Download Template"><i
-                                        class="fas fa-file-download"></i></button>
-                            </div>
-                            <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                                <form action="#" method="post">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="template">
-                                                <label class="custom-file-label" for="template">Choose file</label>
-                                            </div>
-                                            <div class="input-group-append">
-                                                <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip"
-                                                    data-placement="buttom" title="Upload Template"><i
-                                                        class="fas fa-file-upload"></i></button>
+                        <!-- card-body -->
+                        <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                                    <a href="{{ route('simonik.targets.paper-work.export', ['level' => request()->query('level'), 'unit' => request()->query('unit'), 'tahun' => request()->query('tahun')]) }}" class="btn btn-info btn-block"
+                                        data-toggle="tooltip" data-placement="bottom" title="Download Template"><i
+                                            class="fas fa-file-download"></i></a>
+                                </div>
+                                <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                                    <form action="#" method="post">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="template">
+                                                    <label class="custom-file-label" for="template">Choose file</label>
+                                                </div>
+                                                <div class="input-group-append">
+                                                    <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip"
+                                                        data-placement="buttom" title="Upload Template"><i
+                                                            class="fas fa-file-upload"></i></button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
                         </div>
+                        <!-- end : card-body -->
                     </div>
-                    <!-- end : card-body -->
                 </div>
-            </div>
+            @endif
             {{-- end section: template download/upload --}}
 
             {{-- section: table --}}

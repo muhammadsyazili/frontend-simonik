@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
+use App\Exports\TargetsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PaperWorkTargetController extends Controller
 {
@@ -83,8 +85,10 @@ class PaperWorkTargetController extends Controller
         return redirect()->route('simonik.targets.paper-work.index', ['level' => $request->level, 'unit' => $request->unit, 'tahun' => $request->tahun]);
     }
 
-    public function export()
+    public function export($level, $unit, $tahun)
     {
-
+        return Excel::download(new TargetsExport($level, $unit, $tahun), "$level-$unit-$tahun.xlsx", \Maatwebsite\Excel\Excel::XLSX, [
+            'Content-Type' => 'text/csv',
+      ]);
     }
 }

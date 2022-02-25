@@ -92,6 +92,51 @@
 
     </style>
     <!-- End : Change Color Row Table on Click -->
+
+    {{-- highcharts --}}
+    <style>
+        .highcharts-figure,
+        .highcharts-data-table table {
+            widows: 100%;
+            margin: 1em auto;
+        }
+
+        .highcharts-data-table table {
+            font-family: Verdana, sans-serif;
+            border-collapse: collapse;
+            border: 1px solid #ebebeb;
+            margin: 10px auto;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .highcharts-data-table caption {
+            padding: 1em 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .highcharts-data-table th {
+            font-weight: 600;
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table td,
+        .highcharts-data-table th,
+        .highcharts-data-table caption {
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table thead tr,
+        .highcharts-data-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        .highcharts-data-table tr:hover {
+            background: #f1f7ff;
+        }
+    </style>
 @endpush
 
 {{-- ========================================================== --}}
@@ -112,6 +157,85 @@
     <script src="{{ asset('template/dist/js/adminlte.min.js') }}"></script> {{-- required --}}
     <!-- AdminLTE For Demo Purposes -->
     <script src="{{ asset('template/dist/js/demo.js') }}"></script> {{-- required --}}
+
+    {{-- highcharts --}}
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <script>
+        Highcharts.chart('container', {
+
+        title: {
+            text: 'Solar Employment Growth by Sector, 2010-2016'
+        },
+
+        subtitle: {
+            text: 'Source: thesolarfoundation.com'
+        },
+
+        yAxis: {
+            title: {
+                text: 'Number of Employees'
+            }
+        },
+
+        xAxis: {
+            accessibility: {
+                rangeDescription: 'Range: 2010 to 2017'
+            }
+        },
+
+        legend: {
+            layout: 'horizontal',
+            align: 'bottom',
+        },
+
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false
+                },
+                pointStart: 2010
+            }
+        },
+
+        series: [{
+            name: 'Installation',
+            data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+        }, {
+            name: 'Manufacturing',
+            data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+        }, {
+            name: 'Sales & Distribution',
+            data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+        }, {
+            name: 'Project Development',
+            data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+        }, {
+            name: 'Other',
+            data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+        }],
+
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+
+        });
+    </script>
 
     {{-- Change Color Row Table on Click --}}
     <script>
@@ -345,6 +469,8 @@
                                 @if (empty($response->object()->data->indicators))
                                     <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                 @else
+                                    <div id="container"></div>
+
                                     <input class="form-control form-control-sm mb-3" id="myInput" type="text"
                                         style="width: 25vw;" placeholder="Cari KPI..">
 
@@ -353,13 +479,9 @@
                                             <thead>
                                                 <tr class="first">
                                                     <th class="text-center" rowspan="2">KPI</th>
-                                                    <th class="text-center" rowspan="2">Formula</th>
-                                                    <th class="text-center" rowspan="2">Satuan</th>
-                                                    <th class="text-center" rowspan="2">Bobot</th>
-                                                    <th class="text-center" rowspan="2">Berlaku</th>
-                                                    <th class="text-center" rowspan="2">Polaritas</th>
-                                                    <th class="text-center" colspan="12">Target (T) & Realisasi (R)
-                                                    </th>
+                                                    <th class="text-center" rowspan="2">% PENCAPAIAN</th>
+                                                    <th class="text-center" rowspan="2">Status</th>
+                                                    <th class="text-center" colspan="12">Target (T) & Realisasi (R)</th>
                                                 </tr>
                                                 <tr class="second">
                                                     <th class="text-center">Jan</th>
