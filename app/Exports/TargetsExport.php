@@ -15,12 +15,14 @@ class TargetsExport implements FromCollection, WithHeadings, WithDrawings, WithC
     private $level;
     private $unit;
     private $tahun;
+    private $indicators;
 
-    public function __construct($level, $unit, $tahun)
+    public function __construct($level, $unit, $tahun, $indicators)
     {
         $this->level = $level;
         $this->unit = $unit;
         $this->tahun = $tahun;
+        $this->indicators = $indicators;
     }
 
     /**
@@ -28,10 +30,7 @@ class TargetsExport implements FromCollection, WithHeadings, WithDrawings, WithC
      */
     public function collection()
     {
-        return new Collection([
-            [1, 2, 3],
-            [4, 5, 6]
-        ]);
+        return new Collection($this->indicators);
     }
 
     public function headings(): array

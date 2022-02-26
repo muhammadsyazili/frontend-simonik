@@ -47,7 +47,7 @@ class PaperWorkTargetController extends Controller
             }
         }
 
-        return view('components.simonik.target.paper-work.read', compact('response'));
+        return view('components.simonik.target.paper-work.read-new', compact('response'));
     }
 
     /**
@@ -87,7 +87,22 @@ class PaperWorkTargetController extends Controller
 
     public function export($level, $unit, $tahun)
     {
-        return Excel::download(new TargetsExport($level, $unit, $tahun), "$level-$unit-$tahun.xlsx", \Maatwebsite\Excel\Excel::XLSX, [
+        $response = SIMONIK_sevices('/targets/paper-work/edit', 'get', [
+            'level' => $level,
+            'unit' => $unit,
+            'tahun' => $tahun,
+        ]);
+
+        if ($response->clientError()) {
+            return redirect()->back()->withErrors($response->object()->errors);
+        }
+
+        if ($response->serverError()) {
+            Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
+            return redirect()->back();
+        }
+
+        return Excel::download(new TargetsExport($level, $unit, $tahun, $response->object()->data->indicators), "$level-$unit-$tahun.xlsx", \Maatwebsite\Excel\Excel::XLSX, [
             'Content-Type' => 'text/csv',
       ]);
     }
