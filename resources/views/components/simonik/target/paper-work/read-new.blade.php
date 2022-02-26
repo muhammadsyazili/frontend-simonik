@@ -5,6 +5,8 @@
 {{-- ========================================================== --}}
 @push('metadata')
     <meta name="host" content="{{ env('HOST_SIMONIK') }}">
+    <meta name="user" content="{{ request()->cookie('X-User-Id') }}">
+
     <meta name="level" content="{{ request()->query('level') }}">
     <meta name="unit" content="{{ request()->query('unit') }}">
     <meta name="year" content="{{ request()->query('tahun') }}">
@@ -147,6 +149,7 @@
     {{-- Request Unit --}}
     <script>
         $(document).ready(function() {
+            getLevels();
             getUnits($('meta[name="level"]').attr('content'));
 
             //mapping option selected in filter from query params
@@ -167,20 +170,47 @@
             getUnits($(this).val());
         });
 
+        function getLevels() {
+            let host = $('meta[name="host"]').attr('content');
+            let user = $('meta[name="user"]').attr('content');
+
+            $.ajax({
+                type: 'GET',
+                url: `${host}/user/${user}/levels`,
+                data: {
+                    "with-super-master": "false"
+                },
+                success: function(res) {
+                    if (res.data.length > 0) {
+                        let html;
+                        for (let i = 0; i < res.data.length; i++) {
+                            html +=
+                                `<option value="${res.data[i].slug}">${res.data[i].name}</option>`;
+                        }
+                        $('select[name="level"]').append(html);
+                    }
+                },
+                error: function(res) {
+                    console.log(`Level : ${res.responseJSON.message}`);
+                }
+            });
+        }
+
         function getUnits(level) {
             if (level.length > 0) {
                 let host = $('meta[name="host"]').attr('content');
+
                 $.ajax({
                     type: 'GET',
                     url: `${host}/level/${level}/units`,
                     success: function(res) {
-                        $('.dynamic-option').remove();
+                        $('.option-item').remove();
 
                         if (res.data.length > 0) {
-                            let html = '<option class="dynamic-option" value="master">-- Master --</option>';
+                            let html = '<option class="option-item" value="master">-- Master --</option>';
                             for (let i = 0; i < res.data.length; i++) {
                                 html +=
-                                    `<option class="dynamic-option" value="${res.data[i].slug}">${res.data[i].name}</option>`;
+                                    `<option class="option-item" value="${res.data[i].slug}">${res.data[i].name}</option>`;
                             }
                             $('select[name="unit"]').append(html);
                         }
@@ -313,12 +343,7 @@
                                             <span class="input-group-text">Level</span>
                                         </span>
 
-                                        <select class="custom-select" name="level">
-                                            @include('components.simonik.target.paper-work.read._level-child', [
-                                            'levels' => empty($response->object()->data->levels) ? $response->object()->data
-                                            : $response->object()->data->levels
-                                            ])
-                                        </select>
+                                        <select class="custom-select" name="level"></select>
 
                                         <span class="input-group-append">
                                             <span class="input-group-text">Unit</span>
