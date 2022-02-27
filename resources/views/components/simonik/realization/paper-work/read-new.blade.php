@@ -9,7 +9,7 @@
 
     <meta name="level" content="{{ request()->query('level') }}">
     <meta name="unit" content="{{ request()->query('unit') }}">
-    <meta name="year" content="{{ request()->query('tahun') }}">
+    <meta name="tahun" content="{{ request()->query('tahun') }}">
 @endpush
 
 {{-- ========================================================== --}}
@@ -146,7 +146,7 @@
 {{-- ========================================================== --}}
 
 @push('ajax-request')
-    {{-- Request Unit --}}
+    {{-- Request Level & Unit --}}
     <script>
         $(document).ready(function() {
             getLevels();
@@ -162,7 +162,7 @@
                     if ($(this).val() == $('meta[name="unit"]').attr('content'))
                         $(this).attr("selected", "selected");
                 });
-                $('input[name="tahun"]').val($('meta[name="year"]').attr('content'));
+                $('input[name="tahun"]').val($('meta[name="tahun"]').attr('content'));
             }, 2000);
         });
 
@@ -184,8 +184,7 @@
                     if (res.data.length > 0) {
                         let html;
                         for (let i = 0; i < res.data.length; i++) {
-                            html +=
-                                `<option value="${res.data[i].slug}">${res.data[i].name}</option>`;
+                            html += `<option value="${res.data[i].slug}">${res.data[i].name}</option>`;
                         }
                         $('select[name="level"]').append(html);
                     }
@@ -203,13 +202,12 @@
                     type: 'GET',
                     url: `${host}/level/${level}/units`,
                     success: function(res) {
-                        $('.dynamic-option').remove();
+                        $('.option-item').remove();
 
                         if (res.data.length > 0) {
                             let html;
                             for (let i = 0; i < res.data.length; i++) {
-                                html +=
-                                    `<option class="dynamic-option" value="${res.data[i].slug}">${res.data[i].name}</option>`;
+                                html += `<option class="option-item" value="${res.data[i].slug}">${res.data[i].name}</option>`;
                             }
                             $('select[name="unit"]').append(html);
                         }
@@ -297,7 +295,7 @@
 
             {{-- section: template download/upload --}}
             @if (!is_null($response))
-                @if (!empty($response->object()->data->indicators))
+                @if (!empty($response->data->indicators))
                     <div class="col-md-12">
                         <div class="card border-0 shadow rounded">
                             <!-- card-header -->
@@ -341,7 +339,8 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Kertas Kerja - Realisasi / Level :
+                        <h3 class="card-title">Kertas Kerja - Realisasi
+                            / Level :
                             {{ request()->query('level') == null ? '-' : strtoupper(str_replace('-', ' ', request()->query('level'))) }}
                             / Unit :
                             {{ request()->query('unit') == null ? '-' : strtoupper(str_replace('-', ' ', request()->query('unit'))) }}
@@ -383,8 +382,10 @@
                             </div>
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                @if (!is_null($response))
-                                    @if (empty($response->object()->data->indicators))
+                                @if (is_null($response))
+                                    <h3 class="text-center font-weight-bold">Lakukan Filter</h3>
+                                @else
+                                    @if (empty($response->data->indicators))
                                         <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                     @else
                                         <input class="form-control form-control-sm mb-3" id="myInput" type="text" style="width: 25vw;" placeholder="Cari KPI..">
@@ -421,7 +422,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody class="text-nowrap" id="myTable">
-                                                        @foreach ($response->object()->data->indicators as $indicator)
+                                                        @foreach ($response->data->indicators as $indicator)
                                                             <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
                                                                 <td class="small">
                                                                     {{ $indicator->indicator }}

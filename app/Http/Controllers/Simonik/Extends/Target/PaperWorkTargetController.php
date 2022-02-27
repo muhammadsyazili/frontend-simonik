@@ -34,6 +34,8 @@ class PaperWorkTargetController extends Controller
                 Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
                 return redirect()->back();
             }
+
+            $response = $response->object();
         }
 
         return view('components.simonik.target.paper-work.read-new', compact('response'));

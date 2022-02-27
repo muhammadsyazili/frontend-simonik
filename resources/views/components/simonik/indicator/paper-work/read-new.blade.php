@@ -1,6 +1,6 @@
 @extends('layouts/after-login')
 
-@section('title', 'Kertas Kerja - Target')
+@section('title', 'Kertas Kerja - KPI')
 
 {{-- ========================================================== --}}
 @push('metadata')
@@ -13,16 +13,16 @@
 @endpush
 
 {{-- ========================================================== --}}
+
 @push('style')
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('template/plugins/fontawesome-free/css/all.min.css') }}"> {{-- required --}}
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://pre.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> {{-- required --}}
     <!-- Theme Style -->
     <link rel="stylesheet" href="{{ asset('template/dist/css/adminlte.min.css') }}"> {{-- required --}}
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     {{-- required --}}
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <!-- Custom Style for Sidebar -->
     <style>
@@ -50,41 +50,7 @@
     </style>
     <!-- End : Custom Style for Navbar -->
 
-    {{-- Table Header Fixed --}}
-    <style>
-        .table-responsive {
-            height: 500px;
-            overflow: scroll;
-        }
-
-        thead tr.first th,
-        thead tr.first td {
-            color: #ffffff !important;
-            background-color: #135b96 !important;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='540' height='450' viewBox='0 0 1080 900'%3E%3Cg fill-opacity='.1'%3E%3Cpolygon fill='%23444' points='90 150 0 300 180 300'/%3E%3Cpolygon points='90 150 180 0 0 0'/%3E%3Cpolygon fill='%23AAA' points='270 150 360 0 180 0'/%3E%3Cpolygon fill='%23DDD' points='450 150 360 300 540 300'/%3E%3Cpolygon fill='%23999' points='450 150 540 0 360 0'/%3E%3Cpolygon points='630 150 540 300 720 300'/%3E%3Cpolygon fill='%23DDD' points='630 150 720 0 540 0'/%3E%3Cpolygon fill='%23444' points='810 150 720 300 900 300'/%3E%3Cpolygon fill='%23FFF' points='810 150 900 0 720 0'/%3E%3Cpolygon fill='%23DDD' points='990 150 900 300 1080 300'/%3E%3Cpolygon fill='%23444' points='990 150 1080 0 900 0'/%3E%3Cpolygon fill='%23DDD' points='90 450 0 600 180 600'/%3E%3Cpolygon points='90 450 180 300 0 300'/%3E%3Cpolygon fill='%23666' points='270 450 180 600 360 600'/%3E%3Cpolygon fill='%23AAA' points='270 450 360 300 180 300'/%3E%3Cpolygon fill='%23DDD' points='450 450 360 600 540 600'/%3E%3Cpolygon fill='%23999' points='450 450 540 300 360 300'/%3E%3Cpolygon fill='%23999' points='630 450 540 600 720 600'/%3E%3Cpolygon fill='%23FFF' points='630 450 720 300 540 300'/%3E%3Cpolygon points='810 450 720 600 900 600'/%3E%3Cpolygon fill='%23DDD' points='810 450 900 300 720 300'/%3E%3Cpolygon fill='%23AAA' points='990 450 900 600 1080 600'/%3E%3Cpolygon fill='%23444' points='990 450 1080 300 900 300'/%3E%3Cpolygon fill='%23222' points='90 750 0 900 180 900'/%3E%3Cpolygon points='270 750 180 900 360 900'/%3E%3Cpolygon fill='%23DDD' points='270 750 360 600 180 600'/%3E%3Cpolygon points='450 750 540 600 360 600'/%3E%3Cpolygon points='630 750 540 900 720 900'/%3E%3Cpolygon fill='%23444' points='630 750 720 600 540 600'/%3E%3Cpolygon fill='%23AAA' points='810 750 720 900 900 900'/%3E%3Cpolygon fill='%23666' points='810 750 900 600 720 600'/%3E%3Cpolygon fill='%23999' points='990 750 900 900 1080 900'/%3E%3Cpolygon fill='%23999' points='180 0 90 150 270 150'/%3E%3Cpolygon fill='%23444' points='360 0 270 150 450 150'/%3E%3Cpolygon fill='%23FFF' points='540 0 450 150 630 150'/%3E%3Cpolygon points='900 0 810 150 990 150'/%3E%3Cpolygon fill='%23222' points='0 300 -90 450 90 450'/%3E%3Cpolygon fill='%23FFF' points='0 300 90 150 -90 150'/%3E%3Cpolygon fill='%23FFF' points='180 300 90 450 270 450'/%3E%3Cpolygon fill='%23666' points='180 300 270 150 90 150'/%3E%3Cpolygon fill='%23222' points='360 300 270 450 450 450'/%3E%3Cpolygon fill='%23FFF' points='360 300 450 150 270 150'/%3E%3Cpolygon fill='%23444' points='540 300 450 450 630 450'/%3E%3Cpolygon fill='%23222' points='540 300 630 150 450 150'/%3E%3Cpolygon fill='%23AAA' points='720 300 630 450 810 450'/%3E%3Cpolygon fill='%23666' points='720 300 810 150 630 150'/%3E%3Cpolygon fill='%23FFF' points='900 300 810 450 990 450'/%3E%3Cpolygon fill='%23999' points='900 300 990 150 810 150'/%3E%3Cpolygon points='0 600 -90 750 90 750'/%3E%3Cpolygon fill='%23666' points='0 600 90 450 -90 450'/%3E%3Cpolygon fill='%23AAA' points='180 600 90 750 270 750'/%3E%3Cpolygon fill='%23444' points='180 600 270 450 90 450'/%3E%3Cpolygon fill='%23444' points='360 600 270 750 450 750'/%3E%3Cpolygon fill='%23999' points='360 600 450 450 270 450'/%3E%3Cpolygon fill='%23666' points='540 600 630 450 450 450'/%3E%3Cpolygon fill='%23222' points='720 600 630 750 810 750'/%3E%3Cpolygon fill='%23FFF' points='900 600 810 750 990 750'/%3E%3Cpolygon fill='%23222' points='900 600 990 450 810 450'/%3E%3Cpolygon fill='%23DDD' points='0 900 90 750 -90 750'/%3E%3Cpolygon fill='%23444' points='180 900 270 750 90 750'/%3E%3Cpolygon fill='%23FFF' points='360 900 450 750 270 750'/%3E%3Cpolygon fill='%23AAA' points='540 900 630 750 450 750'/%3E%3Cpolygon fill='%23FFF' points='720 900 810 750 630 750'/%3E%3Cpolygon fill='%23222' points='900 900 990 750 810 750'/%3E%3Cpolygon fill='%23222' points='1080 300 990 450 1170 450'/%3E%3Cpolygon fill='%23FFF' points='1080 300 1170 150 990 150'/%3E%3Cpolygon points='1080 600 990 750 1170 750'/%3E%3Cpolygon fill='%23666' points='1080 600 1170 450 990 450'/%3E%3Cpolygon fill='%23DDD' points='1080 900 1170 750 990 750'/%3E%3C/g%3E%3C/svg%3E");
-            position: sticky;
-            position: -webkit-sticky;
-            /* Safari */
-            top: 0;
-            z-index: 10;
-        }
-
-        thead tr.second th,
-        thead tr.second td {
-            color: #ffffff !important;
-            background-color: #135b96 !important;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='540' height='450' viewBox='0 0 1080 900'%3E%3Cg fill-opacity='.1'%3E%3Cpolygon fill='%23444' points='90 150 0 300 180 300'/%3E%3Cpolygon points='90 150 180 0 0 0'/%3E%3Cpolygon fill='%23AAA' points='270 150 360 0 180 0'/%3E%3Cpolygon fill='%23DDD' points='450 150 360 300 540 300'/%3E%3Cpolygon fill='%23999' points='450 150 540 0 360 0'/%3E%3Cpolygon points='630 150 540 300 720 300'/%3E%3Cpolygon fill='%23DDD' points='630 150 720 0 540 0'/%3E%3Cpolygon fill='%23444' points='810 150 720 300 900 300'/%3E%3Cpolygon fill='%23FFF' points='810 150 900 0 720 0'/%3E%3Cpolygon fill='%23DDD' points='990 150 900 300 1080 300'/%3E%3Cpolygon fill='%23444' points='990 150 1080 0 900 0'/%3E%3Cpolygon fill='%23DDD' points='90 450 0 600 180 600'/%3E%3Cpolygon points='90 450 180 300 0 300'/%3E%3Cpolygon fill='%23666' points='270 450 180 600 360 600'/%3E%3Cpolygon fill='%23AAA' points='270 450 360 300 180 300'/%3E%3Cpolygon fill='%23DDD' points='450 450 360 600 540 600'/%3E%3Cpolygon fill='%23999' points='450 450 540 300 360 300'/%3E%3Cpolygon fill='%23999' points='630 450 540 600 720 600'/%3E%3Cpolygon fill='%23FFF' points='630 450 720 300 540 300'/%3E%3Cpolygon points='810 450 720 600 900 600'/%3E%3Cpolygon fill='%23DDD' points='810 450 900 300 720 300'/%3E%3Cpolygon fill='%23AAA' points='990 450 900 600 1080 600'/%3E%3Cpolygon fill='%23444' points='990 450 1080 300 900 300'/%3E%3Cpolygon fill='%23222' points='90 750 0 900 180 900'/%3E%3Cpolygon points='270 750 180 900 360 900'/%3E%3Cpolygon fill='%23DDD' points='270 750 360 600 180 600'/%3E%3Cpolygon points='450 750 540 600 360 600'/%3E%3Cpolygon points='630 750 540 900 720 900'/%3E%3Cpolygon fill='%23444' points='630 750 720 600 540 600'/%3E%3Cpolygon fill='%23AAA' points='810 750 720 900 900 900'/%3E%3Cpolygon fill='%23666' points='810 750 900 600 720 600'/%3E%3Cpolygon fill='%23999' points='990 750 900 900 1080 900'/%3E%3Cpolygon fill='%23999' points='180 0 90 150 270 150'/%3E%3Cpolygon fill='%23444' points='360 0 270 150 450 150'/%3E%3Cpolygon fill='%23FFF' points='540 0 450 150 630 150'/%3E%3Cpolygon points='900 0 810 150 990 150'/%3E%3Cpolygon fill='%23222' points='0 300 -90 450 90 450'/%3E%3Cpolygon fill='%23FFF' points='0 300 90 150 -90 150'/%3E%3Cpolygon fill='%23FFF' points='180 300 90 450 270 450'/%3E%3Cpolygon fill='%23666' points='180 300 270 150 90 150'/%3E%3Cpolygon fill='%23222' points='360 300 270 450 450 450'/%3E%3Cpolygon fill='%23FFF' points='360 300 450 150 270 150'/%3E%3Cpolygon fill='%23444' points='540 300 450 450 630 450'/%3E%3Cpolygon fill='%23222' points='540 300 630 150 450 150'/%3E%3Cpolygon fill='%23AAA' points='720 300 630 450 810 450'/%3E%3Cpolygon fill='%23666' points='720 300 810 150 630 150'/%3E%3Cpolygon fill='%23FFF' points='900 300 810 450 990 450'/%3E%3Cpolygon fill='%23999' points='900 300 990 150 810 150'/%3E%3Cpolygon points='0 600 -90 750 90 750'/%3E%3Cpolygon fill='%23666' points='0 600 90 450 -90 450'/%3E%3Cpolygon fill='%23AAA' points='180 600 90 750 270 750'/%3E%3Cpolygon fill='%23444' points='180 600 270 450 90 450'/%3E%3Cpolygon fill='%23444' points='360 600 270 750 450 750'/%3E%3Cpolygon fill='%23999' points='360 600 450 450 270 450'/%3E%3Cpolygon fill='%23666' points='540 600 630 450 450 450'/%3E%3Cpolygon fill='%23222' points='720 600 630 750 810 750'/%3E%3Cpolygon fill='%23FFF' points='900 600 810 750 990 750'/%3E%3Cpolygon fill='%23222' points='900 600 990 450 810 450'/%3E%3Cpolygon fill='%23DDD' points='0 900 90 750 -90 750'/%3E%3Cpolygon fill='%23444' points='180 900 270 750 90 750'/%3E%3Cpolygon fill='%23FFF' points='360 900 450 750 270 750'/%3E%3Cpolygon fill='%23AAA' points='540 900 630 750 450 750'/%3E%3Cpolygon fill='%23FFF' points='720 900 810 750 630 750'/%3E%3Cpolygon fill='%23222' points='900 900 990 750 810 750'/%3E%3Cpolygon fill='%23222' points='1080 300 990 450 1170 450'/%3E%3Cpolygon fill='%23FFF' points='1080 300 1170 150 990 150'/%3E%3Cpolygon points='1080 600 990 750 1170 750'/%3E%3Cpolygon fill='%23666' points='1080 600 1170 450 990 450'/%3E%3Cpolygon fill='%23DDD' points='1080 900 1170 750 990 750'/%3E%3C/g%3E%3C/svg%3E");
-            position: sticky;
-            position: -webkit-sticky;
-            /* Safari */
-            top: 0;
-            z-index: 10;
-        }
-
-    </style>
-    {{-- End : Table Header Fixed --}}
-
-    <!-- Change Color Row Table on Click -->
+    {{-- Change Color Row Table on Click --}}
     <style>
         .table tbody tr.highlight td {
             background-color: rgb(30, 41, 59);
@@ -92,7 +58,50 @@
         }
 
     </style>
-    <!-- End : Change Color Row Table on Click -->
+    {{-- End : Change Color Row Table on Click --}}
+
+    {{-- Table Header Fixed --}}
+    <style>
+        .table-responsive {
+            height: 400px;
+            overflow: scroll;
+        }
+
+        thead tr:nth-child(1) th {
+            color: #ffffff !important;
+            background-color: #135b96 !important;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='540' height='450' viewBox='0 0 1080 900'%3E%3Cg fill-opacity='.1'%3E%3Cpolygon fill='%23444' points='90 150 0 300 180 300'/%3E%3Cpolygon points='90 150 180 0 0 0'/%3E%3Cpolygon fill='%23AAA' points='270 150 360 0 180 0'/%3E%3Cpolygon fill='%23DDD' points='450 150 360 300 540 300'/%3E%3Cpolygon fill='%23999' points='450 150 540 0 360 0'/%3E%3Cpolygon points='630 150 540 300 720 300'/%3E%3Cpolygon fill='%23DDD' points='630 150 720 0 540 0'/%3E%3Cpolygon fill='%23444' points='810 150 720 300 900 300'/%3E%3Cpolygon fill='%23FFF' points='810 150 900 0 720 0'/%3E%3Cpolygon fill='%23DDD' points='990 150 900 300 1080 300'/%3E%3Cpolygon fill='%23444' points='990 150 1080 0 900 0'/%3E%3Cpolygon fill='%23DDD' points='90 450 0 600 180 600'/%3E%3Cpolygon points='90 450 180 300 0 300'/%3E%3Cpolygon fill='%23666' points='270 450 180 600 360 600'/%3E%3Cpolygon fill='%23AAA' points='270 450 360 300 180 300'/%3E%3Cpolygon fill='%23DDD' points='450 450 360 600 540 600'/%3E%3Cpolygon fill='%23999' points='450 450 540 300 360 300'/%3E%3Cpolygon fill='%23999' points='630 450 540 600 720 600'/%3E%3Cpolygon fill='%23FFF' points='630 450 720 300 540 300'/%3E%3Cpolygon points='810 450 720 600 900 600'/%3E%3Cpolygon fill='%23DDD' points='810 450 900 300 720 300'/%3E%3Cpolygon fill='%23AAA' points='990 450 900 600 1080 600'/%3E%3Cpolygon fill='%23444' points='990 450 1080 300 900 300'/%3E%3Cpolygon fill='%23222' points='90 750 0 900 180 900'/%3E%3Cpolygon points='270 750 180 900 360 900'/%3E%3Cpolygon fill='%23DDD' points='270 750 360 600 180 600'/%3E%3Cpolygon points='450 750 540 600 360 600'/%3E%3Cpolygon points='630 750 540 900 720 900'/%3E%3Cpolygon fill='%23444' points='630 750 720 600 540 600'/%3E%3Cpolygon fill='%23AAA' points='810 750 720 900 900 900'/%3E%3Cpolygon fill='%23666' points='810 750 900 600 720 600'/%3E%3Cpolygon fill='%23999' points='990 750 900 900 1080 900'/%3E%3Cpolygon fill='%23999' points='180 0 90 150 270 150'/%3E%3Cpolygon fill='%23444' points='360 0 270 150 450 150'/%3E%3Cpolygon fill='%23FFF' points='540 0 450 150 630 150'/%3E%3Cpolygon points='900 0 810 150 990 150'/%3E%3Cpolygon fill='%23222' points='0 300 -90 450 90 450'/%3E%3Cpolygon fill='%23FFF' points='0 300 90 150 -90 150'/%3E%3Cpolygon fill='%23FFF' points='180 300 90 450 270 450'/%3E%3Cpolygon fill='%23666' points='180 300 270 150 90 150'/%3E%3Cpolygon fill='%23222' points='360 300 270 450 450 450'/%3E%3Cpolygon fill='%23FFF' points='360 300 450 150 270 150'/%3E%3Cpolygon fill='%23444' points='540 300 450 450 630 450'/%3E%3Cpolygon fill='%23222' points='540 300 630 150 450 150'/%3E%3Cpolygon fill='%23AAA' points='720 300 630 450 810 450'/%3E%3Cpolygon fill='%23666' points='720 300 810 150 630 150'/%3E%3Cpolygon fill='%23FFF' points='900 300 810 450 990 450'/%3E%3Cpolygon fill='%23999' points='900 300 990 150 810 150'/%3E%3Cpolygon points='0 600 -90 750 90 750'/%3E%3Cpolygon fill='%23666' points='0 600 90 450 -90 450'/%3E%3Cpolygon fill='%23AAA' points='180 600 90 750 270 750'/%3E%3Cpolygon fill='%23444' points='180 600 270 450 90 450'/%3E%3Cpolygon fill='%23444' points='360 600 270 750 450 750'/%3E%3Cpolygon fill='%23999' points='360 600 450 450 270 450'/%3E%3Cpolygon fill='%23666' points='540 600 630 450 450 450'/%3E%3Cpolygon fill='%23222' points='720 600 630 750 810 750'/%3E%3Cpolygon fill='%23FFF' points='900 600 810 750 990 750'/%3E%3Cpolygon fill='%23222' points='900 600 990 450 810 450'/%3E%3Cpolygon fill='%23DDD' points='0 900 90 750 -90 750'/%3E%3Cpolygon fill='%23444' points='180 900 270 750 90 750'/%3E%3Cpolygon fill='%23FFF' points='360 900 450 750 270 750'/%3E%3Cpolygon fill='%23AAA' points='540 900 630 750 450 750'/%3E%3Cpolygon fill='%23FFF' points='720 900 810 750 630 750'/%3E%3Cpolygon fill='%23222' points='900 900 990 750 810 750'/%3E%3Cpolygon fill='%23222' points='1080 300 990 450 1170 450'/%3E%3Cpolygon fill='%23FFF' points='1080 300 1170 150 990 150'/%3E%3Cpolygon points='1080 600 990 750 1170 750'/%3E%3Cpolygon fill='%23666' points='1080 600 1170 450 990 450'/%3E%3Cpolygon fill='%23DDD' points='1080 900 1170 750 990 750'/%3E%3C/g%3E%3C/svg%3E");
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+    </style>
+    {{-- End : Table Header Fixed --}}
+
+    {{-- Legend --}}
+    <style>
+        fieldset.scheduler-border {
+            border: 1px groove #ddd !important;
+            padding: 0 1.4em 0 1.4em !important;
+            -webkit-box-shadow: 0px 0px 0px 0px #000;
+            box-shadow: 0px 0px 0px 0px #000;
+        }
+
+        legend.scheduler-border {
+            font-size: 0.75em !important;
+            font-weight: bold !important;
+            text-align: left !important;
+            width: auto;
+            padding: 0 10px;
+            border-bottom: none;
+            margin-top: -15px;
+            background-color: white;
+            color: black;
+        }
+
+    </style>
+    {{-- End : Legend --}}
 @endpush
 
 {{-- ========================================================== --}}
@@ -107,12 +116,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('template/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script> {{-- required --}}
-    <!-- bs-custom-file-input -->
-    <script src="{{ asset('template/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('template/dist/js/adminlte.min.js') }}"></script> {{-- required --}}
     <!-- AdminLTE For Demo Purposes -->
     <script src="{{ asset('template/dist/js/demo.js') }}"></script> {{-- required --}}
+
+    {{-- Drag Drop Table Sorting --}}
+    <script src="{{ asset('drag-drop-table-sorting/js/jquery.tablednd.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#drag-drop-table-sorting').tableDnD();
+        });
+    </script>
+    {{-- End : Drag Drop Table Sorting --}}
 
     {{-- Change Color Row Table on Click --}}
     <script>
@@ -121,15 +137,6 @@
         });
     </script>
     {{-- End : Change Color Row Table on Click --}}
-
-    {{-- Table Header Fixed --}}
-    <script>
-        $(document).ready(function() {
-            let firstheight = $('.first').height();
-            $("thead tr.second th, thead tr.second td").css("top", firstheight);
-        });
-    </script>
-    {{-- End : Table Header Fixed --}}
 
     <script>
         $(document).ready(function() {
@@ -163,12 +170,20 @@
                         $(this).attr("selected", "selected");
                 });
                 $('input[name="tahun"]').val($('meta[name="tahun"]').attr('content'));
+
+                disablator($('select[name="level"]').val());
             }, 2000);
         });
 
         $('select[name="level"]').click(function() {
+            disablator($(this).val());
             getUnits($(this).val());
         });
+
+        function disablator(val) {
+            let disabled = val == 'super-master' ? true : false;
+            $('input[name="tahun"]').prop("disabled", disabled);
+        }
 
         function getLevels() {
             let host = $('meta[name="host"]').attr('content');
@@ -178,7 +193,7 @@
                 type: 'GET',
                 url: `${host}/user/${user}/levels`,
                 data: {
-                    "with-super-master": "false"
+                    "with-super-master": "true"
                 },
                 success: function(res) {
                     if (res.data.length > 0) {
@@ -198,7 +213,6 @@
         function getUnits(level) {
             if (level.length > 0) {
                 let host = $('meta[name="host"]').attr('content');
-
                 $.ajax({
                     type: 'GET',
                     url: `${host}/level/${level}/units`,
@@ -271,53 +285,98 @@
                 </div>
             @endif
 
-            {{-- section: template download/upload --}}
-            @if (!is_null($response))
-                @if (!empty($response->data->indicators))
-                    <div class="col-md-12">
-                        <div class="card border-0 shadow rounded">
-                            <!-- card-header -->
-                            <div class="card-header">
-                                <h3 class="card-title">Add Via Excel</h3>
-                            </div>
-                            <!-- end : card-header -->
+            {{-- section: feature --}}
+            @if (!is_null(request()->query('level')) && in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                <div class="col-md-12">
+                    <div class="card border-0 shadow rounded">
+                        <!-- card-header -->
+                        <div class="card-header">
+                            <h3 class="card-title">Fitur</h3>
+                        </div>
+                        <!-- end : card-header -->
 
-                            <!-- card-body -->
-                            <div class="card-body">
-                                <div class="row mb-3">
-                                    <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                                        <a href="{{ route('simonik.targets.paper-work.export', ['level' => request()->query('level'), 'unit' => request()->query('unit'), 'tahun' => request()->query('tahun')]) }}" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="bottom" title="Download Template"><i class="fas fa-file-download"></i></a>
-                                    </div>
-                                    <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                                        <form action="#" method="post">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="template">
-                                                        <label class="custom-file-label" for="template">Choose file</label>
+                        <!-- card-body -->
+                        <div class="card-body">
+                            <div class="row">
+                                @if (!is_null($response))
+                                    @if (!empty($response->data->permissions) && $response->data->permissions->indicator->create)
+                                        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                            <fieldset class="scheduler-border">
+                                                <legend class="scheduler-border"><i class="fas fa-key"></i> KPI</legend>
+                                                <a href="{{ route('simonik.indicators.create') }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Create">Create</a>
+                                            </fieldset>
+                                        </div>
+                                    @endif
+
+                                    @if ((!empty($response->data->permissions) && $response->data->permissions->reference->create) || (!empty($response->data->permissions) && $response->data->permissions->reference->edit))
+                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                            <fieldset class="scheduler-border">
+                                                <legend class="scheduler-border"><i class="fas fa-link"></i> Referensi - KPI</legend>
+
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                        @if (!empty($response->data->permissions) && $response->data->permissions->reference->create)
+                                                            <a href="{{ route('simonik.indicators.paper-work.reference.create') }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Create">Create</a>
+                                                        @endif
                                                     </div>
-                                                    <div class="input-group-append">
-                                                        <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="buttom" title="Upload Template"><i class="fas fa-file-upload"></i></button>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                        @if (!empty($response->data->permissions) && $response->data->permissions->reference->edit && (request()->query('level') === 'super-master' || request()->query('unit') === 'master'))
+                                                            <a href="{{ route('simonik.indicators.paper-work.reference.edit', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Edit">Edit</a>
+                                                        @endif
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+                                            </fieldset>
+                                        </div>
+                                    @endif
+
+                                    @if ((!empty($response->data->permissions) && $response->data->permissions->paper_work->indicator->create) || (!empty($response->data->permissions) && $response->data->permissions->paper_work->indicator->edit) || (!empty($response->data->permissions) && $response->data->permissions->paper_work->indicator->delete))
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                            <fieldset class="scheduler-border">
+                                                <legend class="scheduler-border"><i class="fas fa-list-ol"></i> Kertas Kerja -
+                                                    KPI</legend>
+
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                        @if (!empty($response->data->permissions) && $response->data->permissions->paper_work->indicator->create)
+                                                            <a href="{{ route('simonik.indicators.paper-work.create') }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Create">Create</a>
+                                                        @endif
+                                                    </div>
+
+                                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                        @if (!empty($response->data->permissions) && $response->data->permissions->paper_work->indicator->edit)
+                                                            @if (request()->query('level') !== 'super-master')
+                                                                <a href="{{ route('simonik.indicators.paper-work.edit', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Edit">Edit</a>
+                                                            @endif
+                                                        @endif
+                                                    </div>
+
+                                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                        @if (!empty($response->data->permissions) && $response->data->permissions->paper_work->indicator->delete)
+                                                            @if (request()->query('level') !== 'super-master')
+                                                                <a href="{{ route('simonik.indicators.paper-work.delete', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Delete">Delete</a>
+                                                            @endif
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    @endif
+                                @endif
                             </div>
-                            <!-- end : card-body -->
                         </div>
+                        <!-- end : card-body -->
                     </div>
-                @endif
+                </div>
             @endif
-            {{-- end section: template download/upload --}}
+            {{-- end section: feature --}}
 
             {{-- section: table --}}
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
+
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Kertas Kerja - Target
+                        <h3 class="card-title">Kertas Kerja - KPI
                             / Level :
                             {{ request()->query('level') == null ? '-' : strtoupper(str_replace('-', ' ', request()->query('level'))) }}
                             / Unit :
@@ -330,9 +389,11 @@
 
                     <!-- card-body -->
                     <div class="card-body">
+
                         <div class="row">
+
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                <form action="{{ route('simonik.targets.paper-work.index') }}" method="get">
+                                <form action="{{ route('simonik.indicators.paper-work.index') }}" method="get">
                                     <div class="input-group mb-3">
                                         <span class="input-group-append">
                                             <span class="input-group-text">Level</span>
@@ -368,37 +429,24 @@
                                     @else
                                         <input class="form-control form-control-sm mb-3" id="myInput" type="text" style="width: 25vw;" placeholder="Cari KPI..">
 
-                                        <form action="{{ route('simonik.targets.paper-work.update') }}" method="post">
+                                        <form action="{{ route('simonik.indicators.paper-work.reorder', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" method="post">
                                             @csrf
                                             @method('put')
-                                            <div class="table-responsive">
+
+                                            <div class="table-responsive-sm">
                                                 <table class="table table-bordered" id="drag-drop-table-sorting">
                                                     <thead>
-                                                        <tr class="first">
-                                                            <th class="text-center" rowspan="2">KPI</th>
-                                                            <th class="text-center" rowspan="2">Formula</th>
-                                                            <th class="text-center" rowspan="2">Satuan</th>
-                                                            <th class="text-center" rowspan="2">Bobot</th>
-                                                            <th class="text-center" rowspan="2">Berlaku</th>
-                                                            <th class="text-center" rowspan="2">Polaritas</th>
-                                                            <th class="text-center" colspan="12">Target</th>
-                                                        </tr>
-                                                        <tr class="second">
-                                                            <th class="text-center">Jan</th>
-                                                            <th class="text-center">Feb</th>
-                                                            <th class="text-center">Mar</th>
-                                                            <th class="text-center">Apr</th>
-                                                            <th class="text-center">May</th>
-                                                            <th class="text-center">Jun</th>
-                                                            <th class="text-center">Jul</th>
-                                                            <th class="text-center">Aug</th>
-                                                            <th class="text-center">Sep</th>
-                                                            <th class="text-center">Oct</th>
-                                                            <th class="text-center">Nov</th>
-                                                            <th class="text-center">Dec</th>
+                                                        <tr>
+                                                            <th class="text-center">KPI</th>
+                                                            <th class="text-center">Formula</th>
+                                                            <th class="text-center">Satuan</th>
+                                                            <th class="text-center">Bobot</th>
+                                                            <th class="text-center">Berlaku</th>
+                                                            <th class="text-center">Polaritas</th>
+                                                            <th class="text-center"></th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody class="text-nowrap" id="myTable">
+                                                    <tbody id="myTable">
                                                         @foreach ($response->data->indicators as $indicator)
                                                             <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
                                                                 <td class="small">
@@ -429,116 +477,44 @@
                                                                         {!! $indicator->polarity !!}
                                                                     </span>
                                                                 </td>
-
-                                                                {{-- ------------------------------------------------------------------------------ --}}
                                                                 <td class="text-center small">
-                                                                    @if (!is_null($indicator->targets->jan->value))
-                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][jan]" value="{{ $indicator->targets->jan->value }}" style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->jan->updated_at }}</small></p>
-                                                                    @endif
-                                                                </td>
+                                                                    <div class="btn-group">
+                                                                        @if ($response->data->permissions->indicator->edit)
+                                                                            <a href="{{ route('simonik.indicators.edit', ['id' => $indicator->id]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></a>
+                                                                        @endif
+                                                                        @if ($response->data->permissions->indicator->delete)
+                                                                            <a href="{{ route('simonik.indicators.delete', ['id' => $indicator->id, 'name' => $indicator->indicator]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></a>
+                                                                        @endif
+                                                                    </div>
 
-                                                                <td class="text-center small">
-                                                                    @if (!is_null($indicator->targets->feb->value))
-                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][feb]" value="{{ $indicator->targets->feb->value }}" style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->feb->updated_at }}</small></p>
-                                                                    @endif
+                                                                    <input type="hidden" name="indicators[]" value="{{ $indicator->id }}">
                                                                 </td>
-
-                                                                <td class="text-center small">
-                                                                    @if (!is_null($indicator->targets->mar->value))
-                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][mar]" value="{{ $indicator->targets->mar->value }}" style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->mar->updated_at }}</small></p>
-                                                                    @endif
-                                                                </td>
-
-                                                                <td class="text-center small">
-                                                                    @if (!is_null($indicator->targets->apr->value))
-                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][apr]" value="{{ $indicator->targets->apr->value }}" style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->apr->updated_at }}</small></p>
-                                                                    @endif
-                                                                </td>
-
-                                                                <td class="text-center small">
-                                                                    @if (!is_null($indicator->targets->may->value))
-                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][may]" value="{{ $indicator->targets->may->value }}" style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->may->updated_at }}</small></p>
-                                                                    @endif
-                                                                </td>
-
-                                                                <td class="text-center small">
-                                                                    @if (!is_null($indicator->targets->jun->value))
-                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][jun]" value="{{ $indicator->targets->jun->value }}" style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->jun->updated_at }}</small></p>
-                                                                    @endif
-                                                                </td>
-
-                                                                <td class="text-center small">
-                                                                    @if (!is_null($indicator->targets->jul->value))
-                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][jul]" value="{{ $indicator->targets->jul->value }}" style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->jul->updated_at }}</small></p>
-                                                                    @endif
-                                                                </td>
-
-                                                                <td class="text-center small">
-                                                                    @if (!is_null($indicator->targets->aug->value))
-                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][aug]" value="{{ $indicator->targets->aug->value }}" style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->aug->updated_at }}</small></p>
-                                                                    @endif
-                                                                </td>
-
-                                                                <td class="text-center small">
-                                                                    @if (!is_null($indicator->targets->sep->value))
-                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][sep]" value="{{ $indicator->targets->sep->value }}" style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->sep->updated_at }}</small></p>
-                                                                    @endif
-                                                                </td>
-
-                                                                <td class="text-center small">
-                                                                    @if (!is_null($indicator->targets->oct->value))
-                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][oct]" value="{{ $indicator->targets->oct->value }}" style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->oct->updated_at }}</small></p>
-                                                                    @endif
-                                                                </td>
-
-                                                                <td class="text-center small">
-                                                                    @if (!is_null($indicator->targets->nov->value))
-                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][nov]" value="{{ $indicator->targets->nov->value }}" style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->nov->updated_at }}</small></p>
-                                                                    @endif
-                                                                </td>
-
-                                                                <td class="text-center small">
-                                                                    @if (!is_null($indicator->targets->dec->value))
-                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][dec]" value="{{ $indicator->targets->dec->value }}" style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->dec->updated_at }}</small></p>
-                                                                    @endif
-                                                                </td>
-                                                                {{-- ------------------------------------------------------------------------------ --}}
                                                             </tr>
                                                         @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
 
-                                            <input type="hidden" name="level" value="{{ request()->query('level') }}">
-                                            <input type="hidden" name="unit" value="{{ request()->query('unit') }}">
-                                            <input type="hidden" name="tahun" value="{{ request()->query('tahun') }}">
-                                            <button type="submit" class="btn btn-info btn-sm float-right mt-3">Save</button>
+                                            @if ($response->data->permissions->indicator->changes_order)
+                                                <button type="submit" class="btn btn-sm btn-info float-right"><strong>Urutkan ulang KPI</strong></button>
+                                            @endif
                                         </form>
                                     @endif
                                 @endif
                             </div>
                         </div>
+
                     </div>
                     <!-- end : card-body -->
 
                     <!-- card-footer -->
                     <div class="card-footer clearfix"></div>
                     <!-- end : card-footer -->
+
                 </div>
             </div>
             {{-- end section: table --}}
+
         @endif
     </div>
 @endsection
