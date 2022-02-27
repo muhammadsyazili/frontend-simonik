@@ -27,7 +27,9 @@ class IndicatorReferenceController extends Controller
             return redirect()->back();
         }
 
-        return view('components.simonik.indicator.reference.create', compact('response'));
+        $response = $response->object();
+
+        return view('components.simonik.indicator.reference.create-new', compact('response'));
     }
 
     /**

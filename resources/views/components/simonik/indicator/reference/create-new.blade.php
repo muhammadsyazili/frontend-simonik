@@ -132,9 +132,7 @@
                             <h3 class="card-title">Info</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -154,9 +152,7 @@
                             <h3 class="card-title">Alert</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -186,15 +182,14 @@
                         <!-- card-body -->
                         <div class="card-body">
                             <div class="row">
-                                @if (empty($response->object()->data->indicators))
+                                @if (empty($response->data->indicators))
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                         <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                     </div>
                                 @else
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
-                                        <input class="form-control form-control-sm mb-3" id="myInput" type="text"
-                                            style="width: 25vw;" placeholder="Cari KPI..">
+                                        <input class="form-control form-control-sm mb-3" id="myInput" type="text" style="width: 25vw;" placeholder="Cari KPI..">
 
                                         <div class="table-responsive-sm">
                                             <table class="table table-bordered">
@@ -206,17 +201,14 @@
                                                         <th class="text-center">Bobot</th>
                                                         <th class="text-center">Berlaku</th>
                                                         <th class="text-center">Polaritas</th>
-                                                        <th class="text-center">Referensi KPI <span
-                                                                class="badge badge-pill badge-light" data-toggle="tooltip"
-                                                                data-placement="right" title="Not referenced">&#128681;
-                                                                (Belum direferensikan)</span></th>
+                                                        <th class="text-center">Referensi KPI <span class="badge badge-pill badge-light" data-toggle="tooltip" data-placement="right" title="Not referenced">&#128681; (Belum direferensikan)</span></th>
                                                         <th class="text-center"></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="myTable">
                                                     @include('components.simonik.indicator.reference.create._indicator-child',[
-                                                    'indicators' => $response->object()->data->indicators,
-                                                    'preferences' => $response->object()->data->preferences,
+                                                    'indicators' => $response->data->indicators,
+                                                    'preferences' => $response->data->preferences,
                                                     'background_color' => ['red' => 255, 'green' => 255, 'blue' => 255]
                                                     ])
                                                 </tbody>
