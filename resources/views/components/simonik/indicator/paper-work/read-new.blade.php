@@ -496,7 +496,7 @@
                                             </div>
 
                                             @if ($response->data->permissions->indicator->changes_order)
-                                                <button type="submit" class="btn btn-sm btn-info float-right"><strong>Urutkan ulang KPI</strong></button>
+                                                <button type="submit" class="btn btn-sm btn-info float-right">Reordering KPI</button>
                                             @endif
                                         </form>
                                     @endif

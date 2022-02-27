@@ -67,7 +67,9 @@ class PaperWorkIndicatorController extends Controller
             return redirect()->back();
         }
 
-        return view('components.simonik.indicator.paper-work.create', compact('response'));
+        $response = $response->object();
+
+        return view('components.simonik.indicator.paper-work.create-new', compact('response'));
     }
 
     /**
