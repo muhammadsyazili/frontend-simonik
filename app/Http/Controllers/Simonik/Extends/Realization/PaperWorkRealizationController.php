@@ -18,18 +18,7 @@ class PaperWorkRealizationController extends Controller
     public function index(Request $request)
     {
         $response = null;
-        if (is_null($request->query('level')) && is_null($request->query('unit')) && is_null($request->query('tahun'))) {
-            $response = SIMONIK_sevices(sprintf('/user/%s/levels', $request->cookie('X-User-Id')), 'get', ['with-super-master' => 'false']);
-
-            if ($response->clientError()) {
-                return redirect()->back()->withErrors($response->object()->errors);
-            }
-
-            if ($response->serverError()) {
-                Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
-                return redirect()->back();
-            }
-        } else {
+        if (!is_null($request->query('level')) && !is_null($request->query('unit')) && !is_null($request->query('tahun'))) {
             $response = SIMONIK_sevices('/realizations/paper-work/edit', 'get', [
                 'level' => $request->query('level'),
                 'unit' => $request->query('unit'),

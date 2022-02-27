@@ -100,8 +100,8 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            @foreach ($errors->all() as $errorK => $errorV)
-                                <p class="small">{{ $errorK }}: {{ $errorV }}</p>
+                            @foreach ($errors->all() as $errorV)
+                                <p class="small">{{ $errorV }}</p>
                             @endforeach
                         </div>
                         <!-- /.card-body -->
@@ -126,7 +126,8 @@
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small">Nama Level <span class="text-danger">*</span></label>
+                                        <label class="small">Nama Level <span
+                                                class="text-danger">*</span></label>
                                         <input type="text" class="form-control form-control-sm" name="name" required>
                                     </div>
                                 </div>

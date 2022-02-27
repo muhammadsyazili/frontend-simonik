@@ -238,8 +238,7 @@
                             <h3 class="card-title">Info</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i></button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -259,15 +258,14 @@
                             <h3 class="card-title">Alert</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i></button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            @foreach ($errors->all() as $errorK => $errorV)
-                                <p class="small">{{ $errorK }}: {{ $errorV }}</p>
+                            @foreach ($errors->all() as $errorV)
+                                <p class="small">{{ $errorV }}</p>
                             @endforeach
                         </div>
                         <!-- /.card-body -->
@@ -290,9 +288,7 @@
                             <div class="card-body">
                                 <div class="row mb-3">
                                     <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                                        <a href="{{ route('simonik.targets.paper-work.export', ['level' => request()->query('level'), 'unit' => request()->query('unit'), 'tahun' => request()->query('tahun')]) }}" class="btn btn-info btn-block"
-                                            data-toggle="tooltip" data-placement="bottom" title="Download Template"><i
-                                                class="fas fa-file-download"></i></a>
+                                        <a href="{{ route('simonik.targets.paper-work.export', ['level' => request()->query('level'), 'unit' => request()->query('unit'), 'tahun' => request()->query('tahun')]) }}" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="bottom" title="Download Template"><i class="fas fa-file-download"></i></a>
                                     </div>
                                     <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10">
                                         <form action="#" method="post">
@@ -303,9 +299,7 @@
                                                         <label class="custom-file-label" for="template">Choose file</label>
                                                     </div>
                                                     <div class="input-group-append">
-                                                        <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip"
-                                                            data-placement="buttom" title="Upload Template"><i
-                                                                class="fas fa-file-upload"></i></button>
+                                                        <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="buttom" title="Upload Template"><i class="fas fa-file-upload"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -360,9 +354,7 @@
                                         <input type="text" class="form-control" name="tahun" />
 
                                         <span class="input-group-append">
-                                            <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip"
-                                                data-placement="buttom" title="Search"><i
-                                                    class="fas fa-search"></i></button>
+                                            <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip" data-placement="buttom" title="Search"><i class="fas fa-search"></i></button>
                                         </span>
                                     </div>
                                 </form>
@@ -373,8 +365,7 @@
                                     @if (empty($response->object()->data->indicators))
                                         <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                     @else
-                                        <input class="form-control form-control-sm mb-3" id="myInput" type="text"
-                                            style="width: 25vw;" placeholder="Cari KPI..">
+                                        <input class="form-control form-control-sm mb-3" id="myInput" type="text" style="width: 25vw;" placeholder="Cari KPI..">
 
                                         <form action="{{ route('simonik.targets.paper-work.update') }}" method="post">
                                             @csrf

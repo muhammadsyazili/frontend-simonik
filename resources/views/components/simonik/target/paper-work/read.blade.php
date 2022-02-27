@@ -236,8 +236,8 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            @foreach ($errors->all() as $errorK => $errorV)
-                                <p class="small">{{ $errorK }}: {{ $errorV }}</p>
+                            @foreach ($errors->all() as $errorV)
+                                <p class="small">{{ $errorV }}</p>
                             @endforeach
                         </div>
                         <!-- /.card-body -->
@@ -259,9 +259,9 @@
                         <div class="card-body">
                             <div class="row mb-3">
                                 <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                                    <a href="{{ route('simonik.targets.paper-work.export', ['level' => request()->query('level'), 'unit' => request()->query('unit'), 'tahun' => request()->query('tahun')]) }}" class="btn btn-info btn-block"
-                                        data-toggle="tooltip" data-placement="bottom" title="Download Template"><i
-                                            class="fas fa-file-download"></i></a>
+                                    <a href="{{ route('simonik.targets.paper-work.export', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}"
+                                        class="btn btn-info btn-block" data-toggle="tooltip" data-placement="bottom"
+                                        title="Download Template"><i class="fas fa-file-download"></i></a>
                                 </div>
                                 <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10">
                                     <form action="#" method="post">
@@ -272,9 +272,9 @@
                                                     <label class="custom-file-label" for="template">Choose file</label>
                                                 </div>
                                                 <div class="input-group-append">
-                                                    <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip"
-                                                        data-placement="buttom" title="Upload Template"><i
-                                                            class="fas fa-file-upload"></i></button>
+                                                    <button type="submit" class="btn btn-info btn-block"
+                                                        data-toggle="tooltip" data-placement="buttom"
+                                                        title="Upload Template"><i class="fas fa-file-upload"></i></button>
                                                 </div>
                                             </div>
                                         </div>

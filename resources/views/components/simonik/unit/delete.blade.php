@@ -100,8 +100,8 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            @foreach ($errors->all() as $errorK => $errorV)
-                                <p class="small">{{ $errorK }}: {{ $errorV }}</p>
+                            @foreach ($errors->all() as $errorV)
+                                <p class="small">{{ $errorV }}</p>
                             @endforeach
                         </div>
                         <!-- /.card-body -->
@@ -122,7 +122,8 @@
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <h1 class="text-center text-danger"><i class="fas fa-exclamation-triangle"></i></h1>
-                                <h5 class="text-center">Anda yakin ingin menghapus <strong>Unit Kerja: {{ $name }}</strong>?</h5>
+                                <h5 class="text-center">Anda yakin ingin menghapus <strong>Unit Kerja:
+                                        {{ $name }}</strong>?</h5>
                             </div>
                         </div>
                     </div>

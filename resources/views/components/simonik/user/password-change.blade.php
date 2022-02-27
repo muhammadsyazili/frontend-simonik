@@ -100,8 +100,8 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            @foreach ($errors->all() as $errorK => $errorV)
-                                <p class="small">{{ $errorK }}: {{ $errorV }}</p>
+                            @foreach ($errors->all() as $errorV)
+                                <p class="small">{{ $errorV }}</p>
                             @endforeach
                         </div>
                         <!-- /.card-body -->
@@ -127,14 +127,17 @@
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
                                         <label class="small">Password <span class="text-danger">*</span></label>
-                                        <input type="password" class="form-control form-control-sm" name="password" required>
+                                        <input type="password" class="form-control form-control-sm" name="password"
+                                            required>
                                     </div>
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small">Konfirmasi Password <span class="text-danger">*</span></label>
-                                        <input type="password" class="form-control form-control-sm" name="password_confirmation" required>
+                                        <label class="small">Konfirmasi Password <span
+                                                class="text-danger">*</span></label>
+                                        <input type="password" class="form-control form-control-sm"
+                                            name="password_confirmation" required>
                                     </div>
                                 </div>
                             </div>

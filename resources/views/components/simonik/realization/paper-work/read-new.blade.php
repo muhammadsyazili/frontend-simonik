@@ -260,8 +260,7 @@
                             <h3 class="card-title">Info</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i></button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -281,15 +280,14 @@
                             <h3 class="card-title">Alert</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i></button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            @foreach ($errors->all() as $errorK => $errorV)
-                                <p class="small">{{ $errorK }}: {{ $errorV }}</p>
+                            @foreach ($errors->all() as $errorV)
+                                <p class="small">{{ $errorV }}</p>
                             @endforeach
                         </div>
                         <!-- /.card-body -->
@@ -298,44 +296,44 @@
             @endif
 
             {{-- section: template download/upload --}}
-            <div class="col-md-12">
-                <div class="card border-0 shadow rounded">
-                    <!-- card-header -->
-                    <div class="card-header">
-                        <h3 class="card-title">Add (excel)</h3>
-                    </div>
-                    <!-- end : card-header -->
+            @if (!is_null($response))
+                @if (!empty($response->object()->data->indicators))
+                    <div class="col-md-12">
+                        <div class="card border-0 shadow rounded">
+                            <!-- card-header -->
+                            <div class="card-header">
+                                <h3 class="card-title">Add (excel)</h3>
+                            </div>
+                            <!-- end : card-header -->
 
-                    <!-- card-body -->
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                                <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip"
-                                    data-placement="buttom" title="Download Template"><i
-                                        class="fas fa-file-download"></i></button>
-                            </div>
-                            <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                                <form action="#" method="post">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="template">
-                                                <label class="custom-file-label" for="template">Choose file</label>
-                                            </div>
-                                            <div class="input-group-append">
-                                                <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip"
-                                                    data-placement="buttom" title="Upload Template"><i
-                                                        class="fas fa-file-upload"></i></button>
-                                            </div>
-                                        </div>
+                            <!-- card-body -->
+                            <div class="card-body">
+                                <div class="row mb-3">
+                                    <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                                        <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="buttom" title="Download Template"><i class="fas fa-file-download"></i></button>
                                     </div>
-                                </form>
+                                    <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                                        <form action="#" method="post">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="template">
+                                                        <label class="custom-file-label" for="template">Choose file</label>
+                                                    </div>
+                                                    <div class="input-group-append">
+                                                        <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="buttom" title="Upload Template"><i class="fas fa-file-upload"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
+                            <!-- end : card-body -->
                         </div>
                     </div>
-                    <!-- end : card-body -->
-                </div>
-            </div>
+                @endif
+            @endif
             {{-- end section: template download/upload --}}
 
             {{-- section: table --}}
@@ -378,396 +376,419 @@
                                         <input type="text" class="form-control" name="tahun" />
 
                                         <span class="input-group-append">
-                                            <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip"
-                                                data-placement="buttom" title="Search"><i
-                                                    class="fas fa-search"></i></button>
+                                            <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip" data-placement="buttom" title="Search"><i class="fas fa-search"></i></button>
                                         </span>
                                     </div>
                                 </form>
                             </div>
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                @if (empty($response->object()->data->indicators))
-                                    <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
-                                @else
-                                    <input class="form-control form-control-sm mb-3" id="myInput" type="text"
-                                        style="width: 25vw;" placeholder="Cari KPI..">
+                                @if (!is_null($response))
+                                    @if (empty($response->object()->data->indicators))
+                                        <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
+                                    @else
+                                        <input class="form-control form-control-sm mb-3" id="myInput" type="text" style="width: 25vw;" placeholder="Cari KPI..">
 
-                                    <form action="{{ route('simonik.realizations.paper-work.update') }}" method="post">
-                                        @csrf
-                                        @method('put')
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered" id="drag-drop-table-sorting">
-                                                <thead>
-                                                    <tr class="first">
-                                                        <th class="text-center" rowspan="2">KPI</th>
-                                                        <th class="text-center" rowspan="2">Formula</th>
-                                                        <th class="text-center" rowspan="2">Satuan</th>
-                                                        <th class="text-center" rowspan="2">Bobot</th>
-                                                        <th class="text-center" rowspan="2">Berlaku</th>
-                                                        <th class="text-center" rowspan="2">Polaritas</th>
-                                                        <th class="text-center" colspan="12">Target (T) & Realisasi (R)
-                                                        </th>
-                                                    </tr>
-                                                    <tr class="second">
-                                                        <th class="text-center">Jan</th>
-                                                        <th class="text-center">Feb</th>
-                                                        <th class="text-center">Mar</th>
-                                                        <th class="text-center">Apr</th>
-                                                        <th class="text-center">May</th>
-                                                        <th class="text-center">Jun</th>
-                                                        <th class="text-center">Jul</th>
-                                                        <th class="text-center">Aug</th>
-                                                        <th class="text-center">Sep</th>
-                                                        <th class="text-center">Oct</th>
-                                                        <th class="text-center">Nov</th>
-                                                        <th class="text-center">Dec</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="text-nowrap" id="myTable">
-                                                    @foreach ($response->object()->data->indicators as $indicator)
-                                                        <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
-                                                            <td class="small">
-                                                                {{ $indicator->indicator }}
-                                                            </td>
-                                                            <td class="small">
-                                                                <small>{{ $indicator->formula }}</small>
-                                                            </td>
-                                                            <td class="text-center small">
-                                                                {{ $indicator->measure }}
-                                                            </td>
-                                                            <td class="text-center small">
-                                                                @forelse ($indicator->weight as $key => $value)
-                                                                    <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span>
-                                                                @empty
-                                                                    <p>-</p>
-                                                                @endforelse
-                                                            </td>
-                                                            <td class="text-center small">
-                                                                @forelse ($indicator->validity as $key => $value)
-                                                                    <span class="badge badge-secondary">{{ $key }}</span>
-                                                                @empty
-                                                                    <p>-</p>
-                                                                @endforelse
-                                                            </td>
-                                                            <td class="text-center small">
-                                                                <span class="badge badge-secondary">
-                                                                    {!! $indicator->polarity !!}
-                                                                </span>
-                                                            </td>
-
-                                                            {{-- ------------------------------------------------------------------------------ --}}
-                                                            <td class="text-center small">
-                                                                @if (!is_null($indicator->realizations->jan->value))
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">T</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->jan->value }}" style="width: 200px;" readonly>
-                                                                    </div>
-
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">R</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][jan]" value="{{ $indicator->realizations->jan->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->jan->locked) @if (now()->month !== 1) readonly @endif @endif @endif>
-                                                                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
-                                                                            <div class="input-group-append">
-                                                                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="jan" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->jan->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->jan->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
-                                                                            </div>
-                                                                        @endif
-                                                                    </div>
-
-                                                                    <p class="text-info"><small>Last update: {{ $indicator->realizations->jan->updated_at }}</small></p>
-                                                                @endif
-                                                            </td>
-
-                                                            <td class="text-center small">
-                                                                @if (!is_null($indicator->realizations->feb->value))
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">T</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->feb->value }}" style="width: 200px;" readonly>
-                                                                    </div>
-
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">R</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][feb]" value="{{ $indicator->realizations->feb->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->feb->locked) @if (now()->month !== 1) readonly @endif @endif @endif>
-                                                                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
-                                                                            <div class="input-group-append">
-                                                                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="feb" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->feb->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->feb->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
-                                                                            </div>
-                                                                        @endif
-                                                                    </div>
-
-                                                                    <p class="text-info"><small>Last update: {{ $indicator->realizations->feb->updated_at }}</small></p>
-                                                                @endif
-                                                            </td>
-
-                                                            <td class="text-center small">
-                                                                @if (!is_null($indicator->realizations->mar->value))
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">T</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->mar->value }}" style="width: 200px;" readonly>
-                                                                    </div>
-
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">R</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][mar]" value="{{ $indicator->realizations->mar->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->mar->locked) @if (now()->month !== 1) readonly @endif @endif @endif>
-                                                                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
-                                                                            <div class="input-group-append">
-                                                                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="mar" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->mar->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->mar->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
-                                                                            </div>
-                                                                        @endif
-                                                                    </div>
-
-                                                                    <p class="text-info"><small>Last update: {{ $indicator->realizations->mar->updated_at }}</small></p>
-                                                                @endif
-                                                            </td>
-
-                                                            <td class="text-center small">
-                                                                @if (!is_null($indicator->realizations->apr->value))
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">T</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->apr->value }}" style="width: 200px;" readonly>
-                                                                    </div>
-
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">R</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][apr]" value="{{ $indicator->realizations->apr->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->apr->locked) @if (now()->month !== 1) readonly @endif @endif @endif>
-                                                                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
-                                                                            <div class="input-group-append">
-                                                                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="apr" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->apr->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->apr->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
-                                                                            </div>
-                                                                        @endif
-                                                                    </div>
-
-                                                                    <p class="text-info"><small>Last update: {{ $indicator->realizations->apr->updated_at }}</small></p>
-                                                                @endif
-                                                            </td>
-
-                                                            <td class="text-center small">
-                                                                @if (!is_null($indicator->realizations->may->value))
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">T</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->may->value }}" style="width: 200px;" readonly>
-                                                                    </div>
-
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">R</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][may]" value="{{ $indicator->realizations->may->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->may->locked) @if (now()->month !== 1) readonly @endif @endif @endif>
-                                                                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
-                                                                            <div class="input-group-append">
-                                                                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="may" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->may->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->may->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
-                                                                            </div>
-                                                                        @endif
-                                                                    </div>
-
-                                                                    <p class="text-info"><small>Last update: {{ $indicator->realizations->may->updated_at }}</small></p>
-                                                                @endif
-                                                            </td>
-
-                                                            <td class="text-center small">
-                                                                @if (!is_null($indicator->realizations->jun->value))
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">T</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->jun->value }}" style="width: 200px;" readonly>
-                                                                    </div>
-
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">R</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][jun]" value="{{ $indicator->realizations->jun->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->jun->locked) @if (now()->month !== 1) readonly @endif @endif @endif>
-                                                                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
-                                                                            <div class="input-group-append">
-                                                                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="jun" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->jun->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->jun->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
-                                                                            </div>
-                                                                        @endif
-                                                                    </div>
-
-                                                                    <p class="text-info"><small>Last update: {{ $indicator->realizations->jun->updated_at }}</small></p>
-                                                                @endif
-                                                            </td>
-
-                                                            <td class="text-center small">
-                                                                @if (!is_null($indicator->realizations->jul->value))
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">T</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->jul->value }}" style="width: 200px;" readonly>
-                                                                    </div>
-
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">R</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][jul]" value="{{ $indicator->realizations->jul->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->jul->locked) @if (now()->month !== 1) readonly @endif @endif @endif>
-                                                                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
-                                                                            <div class="input-group-append">
-                                                                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="jul" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->jul->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->jul->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
-                                                                            </div>
-                                                                        @endif
-                                                                    </div>
-
-                                                                    <p class="text-info"><small>Last update: {{ $indicator->realizations->jul->updated_at }}</small></p>
-                                                                @endif
-                                                            </td>
-
-                                                            <td class="text-center small">
-                                                                @if (!is_null($indicator->realizations->aug->value))
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">T</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->aug->value }}" style="width: 200px;" readonly>
-                                                                    </div>
-
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">R</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][aug]" value="{{ $indicator->realizations->aug->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->aug->locked) @if (now()->month !== 1) readonly @endif @endif @endif>
-                                                                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
-                                                                            <div class="input-group-append">
-                                                                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="aug" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->aug->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->aug->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
-                                                                            </div>
-                                                                        @endif
-                                                                    </div>
-
-                                                                    <p class="text-info"><small>Last update: {{ $indicator->realizations->aug->updated_at }}</small></p>
-                                                                @endif
-                                                            </td>
-
-                                                            <td class="text-center small">
-                                                                @if (!is_null($indicator->realizations->sep->value))
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">T</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->sep->value }}" style="width: 200px;" readonly>
-                                                                    </div>
-
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">R</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][sep]" value="{{ $indicator->realizations->sep->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->sep->locked) @if (now()->month !== 1) readonly @endif @endif @endif>
-                                                                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
-                                                                            <div class="input-group-append">
-                                                                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="sep" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->sep->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->sep->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
-                                                                            </div>
-                                                                        @endif
-                                                                    </div>
-
-                                                                    <p class="text-info"><small>Last update: {{ $indicator->realizations->sep->updated_at }}</small></p>
-                                                                @endif
-                                                            </td>
-
-                                                            <td class="text-center small">
-                                                                @if (!is_null($indicator->realizations->oct->value))
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">T</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->oct->value }}" style="width: 200px;" readonly>
-                                                                    </div>
-
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">R</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][oct]" value="{{ $indicator->realizations->oct->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->oct->locked) @if (now()->month !== 1) readonly @endif @endif @endif>
-                                                                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
-                                                                            <div class="input-group-append">
-                                                                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="oct" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->oct->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->oct->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
-                                                                            </div>
-                                                                        @endif
-                                                                    </div>
-
-                                                                    <p class="text-info"><small>Last update: {{ $indicator->realizations->oct->updated_at }}</small></p>
-                                                                @endif
-                                                            </td>
-
-                                                            <td class="text-center small">
-                                                                @if (!is_null($indicator->realizations->nov->value))
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">T</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->nov->value }}" style="width: 200px;" readonly>
-                                                                    </div>
-
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">R</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][nov]" value="{{ $indicator->realizations->nov->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->nov->locked) @if (now()->month !== 1) readonly @endif @endif @endif>
-                                                                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
-                                                                            <div class="input-group-append">
-                                                                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="nov" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->nov->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->nov->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
-                                                                            </div>
-                                                                        @endif
-                                                                    </div>
-
-                                                                    <p class="text-info"><small>Last update: {{ $indicator->realizations->nov->updated_at }}</small></p>
-                                                                @endif
-                                                            </td>
-
-                                                            <td class="text-center small">
-                                                                @if (!is_null($indicator->realizations->dec->value))
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">T</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->dec->value }}" style="width: 200px;" readonly>
-                                                                    </div>
-
-                                                                    <div class="input-group input-group-sm mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">R</span>
-                                                                        </div>
-                                                                        <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][dec]" value="{{ $indicator->realizations->dec->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->dec->locked) @if (now()->month !== 1) readonly @endif @endif @endif>
-                                                                        @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
-                                                                            <div class="input-group-append">
-                                                                                <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="dec" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->dec->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->dec->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
-                                                                            </div>
-                                                                        @endif
-                                                                    </div>
-
-                                                                    <p class="text-info"><small>Last update: {{ $indicator->realizations->dec->updated_at }}</small></p>
-                                                                @endif
-                                                            </td>
-                                                            {{-- ------------------------------------------------------------------------------ --}}
+                                        <form action="{{ route('simonik.realizations.paper-work.update') }}" method="post">
+                                            @csrf
+                                            @method('put')
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered" id="drag-drop-table-sorting">
+                                                    <thead>
+                                                        <tr class="first">
+                                                            <th class="text-center" rowspan="2">KPI</th>
+                                                            <th class="text-center" rowspan="2">Formula</th>
+                                                            <th class="text-center" rowspan="2">Satuan</th>
+                                                            <th class="text-center" rowspan="2">Bobot</th>
+                                                            <th class="text-center" rowspan="2">Berlaku</th>
+                                                            <th class="text-center" rowspan="2">Polaritas</th>
+                                                            <th class="text-center" colspan="12">Target (T) & Realisasi (R)
+                                                            </th>
                                                         </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                                        <tr class="second">
+                                                            <th class="text-center">Jan</th>
+                                                            <th class="text-center">Feb</th>
+                                                            <th class="text-center">Mar</th>
+                                                            <th class="text-center">Apr</th>
+                                                            <th class="text-center">May</th>
+                                                            <th class="text-center">Jun</th>
+                                                            <th class="text-center">Jul</th>
+                                                            <th class="text-center">Aug</th>
+                                                            <th class="text-center">Sep</th>
+                                                            <th class="text-center">Oct</th>
+                                                            <th class="text-center">Nov</th>
+                                                            <th class="text-center">Dec</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="text-nowrap" id="myTable">
+                                                        @foreach ($response->object()->data->indicators as $indicator)
+                                                            <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
+                                                                <td class="small">
+                                                                    {{ $indicator->indicator }}
+                                                                </td>
+                                                                <td class="small">
+                                                                    <small>{{ $indicator->formula }}</small>
+                                                                </td>
+                                                                <td class="text-center small">
+                                                                    {{ $indicator->measure }}
+                                                                </td>
+                                                                <td class="text-center small">
+                                                                    @forelse ($indicator->weight as $key => $value)
+                                                                        <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span>
+                                                                    @empty
+                                                                        <p>-</p>
+                                                                    @endforelse
+                                                                </td>
+                                                                <td class="text-center small">
+                                                                    @forelse ($indicator->validity as $key => $value)
+                                                                        <span class="badge badge-secondary">{{ $key }}</span>
+                                                                    @empty
+                                                                        <p>-</p>
+                                                                    @endforelse
+                                                                </td>
+                                                                <td class="text-center small">
+                                                                    <span class="badge badge-secondary">
+                                                                        {!! $indicator->polarity !!}
+                                                                    </span>
+                                                                </td>
 
-                                        <input type="hidden" name="level" value="{{ request()->query('level') }}">
-                                        <input type="hidden" name="unit" value="{{ request()->query('unit') }}">
-                                        <input type="hidden" name="tahun" value="{{ request()->query('tahun') }}">
-                                        <button type="submit" class="btn btn-info btn-sm float-right mt-3">Save</button>
-                                    </form>
+                                                                {{-- ------------------------------------------------------------------------------ --}}
+                                                                <td class="text-center small">
+                                                                    @if (!is_null($indicator->realizations->jan->value))
+                                                                        @if (!is_null($indicator->targets->jan->value))
+                                                                            <div class="input-group input-group-sm mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">T</span>
+                                                                                </div>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->jan->value }}" style="width: 200px;" readonly>
+                                                                            </div>
+                                                                        @endif
+
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">R</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][jan]" value="{{ $indicator->realizations->jan->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->jan->locked) @if (now()->month !== 1) readonly @endif @endif @endif>
+                                                                            @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                                                                                <div class="input-group-append">
+                                                                                    <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="jan" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->jan->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->jan->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                </div>
+                                                                            @endif
+                                                                        </div>
+
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->jan->updated_at }}</small></p>
+                                                                    @endif
+                                                                </td>
+
+                                                                <td class="text-center small">
+                                                                    @if (!is_null($indicator->realizations->feb->value))
+                                                                        @if (!is_null($indicator->targets->feb->value))
+                                                                            <div class="input-group input-group-sm mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">T</span>
+                                                                                </div>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->feb->value }}" style="width: 200px;" readonly>
+                                                                            </div>
+                                                                        @endif
+
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">R</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][feb]" value="{{ $indicator->realizations->feb->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->feb->locked) @if (now()->month !== 2) readonly @endif @endif @endif>
+                                                                            @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                                                                                <div class="input-group-append">
+                                                                                    <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="feb" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->feb->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->feb->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                </div>
+                                                                            @endif
+                                                                        </div>
+
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->feb->updated_at }}</small></p>
+                                                                    @endif
+                                                                </td>
+
+                                                                <td class="text-center small">
+                                                                    @if (!is_null($indicator->realizations->mar->value))
+                                                                        @if (!is_null($indicator->targets->mar->value))
+                                                                            <div class="input-group input-group-sm mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">T</span>
+                                                                                </div>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->mar->value }}" style="width: 200px;" readonly>
+                                                                            </div>
+                                                                        @endif
+
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">R</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][mar]" value="{{ $indicator->realizations->mar->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->mar->locked) @if (now()->month !== 3) readonly @endif @endif @endif>
+                                                                            @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                                                                                <div class="input-group-append">
+                                                                                    <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="mar" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->mar->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->mar->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                </div>
+                                                                            @endif
+                                                                        </div>
+
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->mar->updated_at }}</small></p>
+                                                                    @endif
+                                                                </td>
+
+                                                                <td class="text-center small">
+                                                                    @if (!is_null($indicator->realizations->apr->value))
+                                                                        @if (!is_null($indicator->targets->apr->value))
+                                                                            <div class="input-group input-group-sm mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">T</span>
+                                                                                </div>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->apr->value }}" style="width: 200px;" readonly>
+                                                                            </div>
+                                                                        @endif
+
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">R</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][apr]" value="{{ $indicator->realizations->apr->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->apr->locked) @if (now()->month !== 4) readonly @endif @endif @endif>
+                                                                            @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                                                                                <div class="input-group-append">
+                                                                                    <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="apr" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->apr->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->apr->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                </div>
+                                                                            @endif
+                                                                        </div>
+
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->apr->updated_at }}</small></p>
+                                                                    @endif
+                                                                </td>
+
+                                                                <td class="text-center small">
+                                                                    @if (!is_null($indicator->realizations->may->value))
+                                                                        @if (!is_null($indicator->targets->may->value))
+                                                                            <div class="input-group input-group-sm mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">T</span>
+                                                                                </div>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->may->value }}" style="width: 200px;" readonly>
+                                                                            </div>
+                                                                        @endif
+
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">R</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][may]" value="{{ $indicator->realizations->may->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->may->locked) @if (now()->month !== 5) readonly @endif @endif @endif>
+                                                                            @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                                                                                <div class="input-group-append">
+                                                                                    <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="may" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->may->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->may->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                </div>
+                                                                            @endif
+                                                                        </div>
+
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->may->updated_at }}</small></p>
+                                                                    @endif
+                                                                </td>
+
+                                                                <td class="text-center small">
+                                                                    @if (!is_null($indicator->realizations->jun->value))
+                                                                        @if (!is_null($indicator->targets->jun->value))
+                                                                            <div class="input-group input-group-sm mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">T</span>
+                                                                                </div>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->jun->value }}" style="width: 200px;" readonly>
+                                                                            </div>
+                                                                        @endif
+
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">R</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][jun]" value="{{ $indicator->realizations->jun->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->jun->locked) @if (now()->month !== 6) readonly @endif @endif @endif>
+                                                                            @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                                                                                <div class="input-group-append">
+                                                                                    <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="jun" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->jun->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->jun->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                </div>
+                                                                            @endif
+                                                                        </div>
+
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->jun->updated_at }}</small></p>
+                                                                    @endif
+                                                                </td>
+
+                                                                <td class="text-center small">
+                                                                    @if (!is_null($indicator->realizations->jul->value))
+                                                                        @if (!is_null($indicator->targets->jul->value))
+                                                                            <div class="input-group input-group-sm mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">T</span>
+                                                                                </div>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->jul->value }}" style="width: 200px;" readonly>
+                                                                            </div>
+                                                                        @endif
+
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">R</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][jul]" value="{{ $indicator->realizations->jul->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->jul->locked) @if (now()->month !== 7) readonly @endif @endif @endif>
+                                                                            @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                                                                                <div class="input-group-append">
+                                                                                    <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="jul" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->jul->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->jul->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                </div>
+                                                                            @endif
+                                                                        </div>
+
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->jul->updated_at }}</small></p>
+                                                                    @endif
+                                                                </td>
+
+                                                                <td class="text-center small">
+                                                                    @if (!is_null($indicator->realizations->aug->value))
+                                                                        @if (!is_null($indicator->targets->aug->value))
+                                                                            <div class="input-group input-group-sm mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">T</span>
+                                                                                </div>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->aug->value }}" style="width: 200px;" readonly>
+                                                                            </div>
+                                                                        @endif
+
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">R</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][aug]" value="{{ $indicator->realizations->aug->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->aug->locked) @if (now()->month !== 8) readonly @endif @endif @endif>
+                                                                            @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                                                                                <div class="input-group-append">
+                                                                                    <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="aug" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->aug->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->aug->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                </div>
+                                                                            @endif
+                                                                        </div>
+
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->aug->updated_at }}</small></p>
+                                                                    @endif
+                                                                </td>
+
+                                                                <td class="text-center small">
+                                                                    @if (!is_null($indicator->realizations->sep->value))
+                                                                        @if (!is_null($indicator->targets->sep->value))
+                                                                            <div class="input-group input-group-sm mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">T</span>
+                                                                                </div>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->sep->value }}" style="width: 200px;" readonly>
+                                                                            </div>
+                                                                        @endif
+
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">R</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][sep]" value="{{ $indicator->realizations->sep->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->sep->locked) @if (now()->month !== 9) readonly @endif @endif @endif>
+                                                                            @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                                                                                <div class="input-group-append">
+                                                                                    <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="sep" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->sep->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->sep->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                </div>
+                                                                            @endif
+                                                                        </div>
+
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->sep->updated_at }}</small></p>
+                                                                    @endif
+                                                                </td>
+
+                                                                <td class="text-center small">
+                                                                    @if (!is_null($indicator->realizations->oct->value))
+                                                                        @if (!is_null($indicator->targets->oct->value))
+                                                                            <div class="input-group input-group-sm mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">T</span>
+                                                                                </div>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->oct->value }}" style="width: 200px;" readonly>
+                                                                            </div>
+                                                                        @endif
+
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">R</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][oct]" value="{{ $indicator->realizations->oct->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->oct->locked) @if (now()->month !== 10) readonly @endif @endif @endif>
+                                                                            @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                                                                                <div class="input-group-append">
+                                                                                    <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="oct" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->oct->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->oct->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                </div>
+                                                                            @endif
+                                                                        </div>
+
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->oct->updated_at }}</small></p>
+                                                                    @endif
+                                                                </td>
+
+                                                                <td class="text-center small">
+                                                                    @if (!is_null($indicator->realizations->nov->value))
+                                                                        @if (!is_null($indicator->targets->nov->value))
+                                                                            <div class="input-group input-group-sm mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">T</span>
+                                                                                </div>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->nov->value }}" style="width: 200px;" readonly>
+                                                                            </div>
+                                                                        @endif
+
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">R</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][nov]" value="{{ $indicator->realizations->nov->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->nov->locked) @if (now()->month !== 11) readonly @endif @endif @endif>
+                                                                            @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                                                                                <div class="input-group-append">
+                                                                                    <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="nov" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->nov->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->nov->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                </div>
+                                                                            @endif
+                                                                        </div>
+
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->nov->updated_at }}</small></p>
+                                                                    @endif
+                                                                </td>
+
+                                                                <td class="text-center small">
+                                                                    @if (!is_null($indicator->realizations->dec->value))
+                                                                        @if (!is_null($indicator->targets->dec->value))
+                                                                            <div class="input-group input-group-sm mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">T</span>
+                                                                                </div>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->dec->value }}" style="width: 200px;" readonly>
+                                                                            </div>
+                                                                        @endif
+
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">R</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][dec]" value="{{ $indicator->realizations->dec->value }}" style="width: 200px;" @if (!in_array(request()->cookie('X-Role'), ['super-admin', 'admin'])) @if ($indicator->realizations->dec->locked) @if (now()->month !== 12) readonly @endif @endif @endif>
+                                                                            @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                                                                                <div class="input-group-append">
+                                                                                    <button class="btn btn-info lock-action" type="button" data-id="{{ $indicator->id }}" data-month="dec" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->dec->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->dec->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                </div>
+                                                                            @endif
+                                                                        </div>
+
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->dec->updated_at }}</small></p>
+                                                                    @endif
+                                                                </td>
+                                                                {{-- ------------------------------------------------------------------------------ --}}
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <input type="hidden" name="level" value="{{ request()->query('level') }}">
+                                            <input type="hidden" name="unit" value="{{ request()->query('unit') }}">
+                                            <input type="hidden" name="tahun" value="{{ request()->query('tahun') }}">
+                                            <button type="submit" class="btn btn-info btn-sm float-right mt-3">Save</button>
+                                        </form>
+                                    @endif
                                 @endif
                             </div>
                         </div>

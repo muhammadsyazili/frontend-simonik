@@ -151,8 +151,8 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            @foreach ($errors->all() as $errorK => $errorV)
-                                <p class="small">{{ $errorK }}: {{ $errorV }}</p>
+                            @foreach ($errors->all() as $errorV)
+                                <p class="small">{{ $errorV }}</p>
                             @endforeach
                         </div>
                         <!-- /.card-body -->
@@ -208,7 +208,8 @@
                                                         {{ is_null($user->nip) ? '-' : $user->nip }}</td>
                                                     <td class="text-center small">{{ $user->username }}</td>
                                                     <td class="text-center small">{{ $user->email }}</td>
-                                                    <td class="text-center small {{ $user->actived ? 'bg-success' : 'bg-secondary' }}">
+                                                    <td
+                                                        class="text-center small {{ $user->actived ? 'bg-success' : 'bg-secondary' }}">
                                                         {{ $user->actived ? 'active' : 'default' }}</td>
                                                     <td class="text-center small">
                                                         {{ is_null($user->unit) ? '-' : $user->unit->name }}</td>
