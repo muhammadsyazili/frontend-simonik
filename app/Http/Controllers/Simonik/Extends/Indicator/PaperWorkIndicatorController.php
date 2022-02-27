@@ -130,9 +130,9 @@ class PaperWorkIndicatorController extends Controller
             return redirect()->back();
         }
 
-        //dd($response->object()->data);
+        $response = $response->object();
 
-        return view('components.simonik.indicator.paper-work.edit', compact(['response', 'level', 'unit', 'tahun']));
+        return view('components.simonik.indicator.paper-work.edit-new', compact(['response', 'level', 'unit', 'tahun']));
     }
 
     /**

@@ -123,8 +123,7 @@
                             <h3 class="card-title">Info</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i></button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -144,8 +143,7 @@
                             <h3 class="card-title">Alert</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i></button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -164,29 +162,23 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Ubah Kertas Kerja - KPI / Level :
-                            {{ cast_to_upper($level) }} / Unit :
-                            {{ $level === 'super-master' ? '-' : cast_to_upper($unit) }} / Tahun :
-                            {{ $level === 'super-master' ? '-' : cast_to_upper($tahun) }}</h3>
+                        <h3 class="card-title">Ubah Kertas Kerja - KPI / Level : {{ cast_to_upper($level) }} / Unit : {{ $level === 'super-master' ? '-' : cast_to_upper($unit) }} / Tahun : {{ $level === 'super-master' ? '-' : cast_to_upper($tahun) }}</h3>
                     </div>
                     <!-- end : card-header -->
 
                     <!-- card-body -->
                     <div class="card-body">
                         <div class="row">
-                            @if (empty($response->object()->data->super_master_indicators))
+                            @if (empty($response->data->indicators))
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                 </div>
                             @else
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <input class="form-control form-control-sm mb-3" id="myInput" type="text"
-                                        style="width: 25vw;" placeholder="Cari KPI..">
+                                    <input class="form-control form-control-sm mb-3" id="myInput" type="text" style="width: 25vw;" placeholder="Cari KPI..">
                                 </div>
 
-                                <form
-                                    action="{{ route('simonik.indicators.paper-work.update', ['level' => $level, 'unit' => $unit, 'tahun' => $tahun]) }}"
-                                    method="post">
+                                <form action="{{ route('simonik.indicators.paper-work.update', ['level' => $level, 'unit' => $unit, 'tahun' => $tahun]) }}" method="post">
                                     @csrf
                                     @method('put')
 
@@ -205,12 +197,41 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody id="myTable">
-                                                    @include('components.simonik.indicator.paper-work.edit._indicator-child',[
-                                                    'super_master_indicators' =>
-                                                    $response->object()->data->super_master_indicators,
-                                                    'indicators' => collect($response->object()->data->indicators),
-                                                    'background_color' => ['red' => 255, 'green' => 255, 'blue' => 255]
-                                                    ])
+                                                    @foreach ($response->data->indicators as $indicator)
+                                                        <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
+                                                            <td class="small">
+                                                                <input type="checkbox" name="indicators[]" value="{{ $indicator->id }}" @if ($indicator->selected) checked @endif>
+                                                            </td>
+                                                            <td class="small">
+                                                                {{ $indicator->indicator }}
+                                                            </td>
+                                                            <td class="small">
+                                                                <small>{{ $indicator->formula }}</small>
+                                                            </td>
+                                                            <td class="text-center small">
+                                                                {{ $indicator->measure }}
+                                                            </td>
+                                                            <td class="text-center small">
+                                                                @forelse ($indicator->weight as $key => $value)
+                                                                    <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span>
+                                                                @empty
+                                                                    <p>-</p>
+                                                                @endforelse
+                                                            </td>
+                                                            <td class="text-center small">
+                                                                @forelse ($indicator->validity as $key => $value)
+                                                                    <span class="badge badge-secondary">{{ $key }}</span>
+                                                                @empty
+                                                                    <p>-</p>
+                                                                @endforelse
+                                                            </td>
+                                                            <td class="text-center small">
+                                                                <span class="badge badge-secondary">
+                                                                    {!! $indicator->polarity !!}
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
@@ -220,14 +241,9 @@
                                         <h1 class="text-center text-danger"><i class="fas fa-exclamation-triangle"></i></h1>
                                         <h5 class="text-center text-danger"><strong>Danger Zone!</strong></h5>
                                         <p><small><strong>Noted!</strong></small></p>
-                                        <p><small>- Aksi ini akan menambahkan KPI beserta target & realisasi pada KPI yang
-                                                di <strong>checked</strong>.</small></p>
-                                        <p><small>- Aksi ini akan menghapus KPI beserta target & realisasi pada KPI yang di
-                                                <strong>un-checked</strong>.</small></p>
-                                        <p><small>- Aksi ini akan berkalu pada <strong>Level:
-                                                    {{ cast_to_upper($level) }} - Unit:
-                                                    @if ($unit === 'master'){{ 'SEMUA UNIT PADA LEVEL DIPILIH' }}@else{{ cast_to_upper($unit) }}@endif - Tahun:
-                                                    {{ cast_to_upper($tahun) }}</strong>.</small></p>
+                                        <p><small>- Aksi ini akan menambahkan KPI beserta target & realisasi pada KPI yang di <strong>checked</strong>.</small></p>
+                                        <p><small>- Aksi ini akan menghapus KPI beserta target & realisasi pada KPI yang di <strong>un-checked</strong>.</small></p>
+                                        <p><small>- Aksi ini akan berkalu pada <strong>Level: {{ cast_to_upper($level) }} - Unit: @if ($unit === 'master') SEMUA UNIT PADA LEVEL {{ cast_to_upper($level) }} @else{{ cast_to_upper($unit) }}@endif - Tahun: {{ cast_to_upper($tahun) }}</strong>.</small></p>
                                     </div>
 
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">

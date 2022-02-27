@@ -176,9 +176,9 @@
                     <!-- card-header -->
                     <div class="card-header">
                         <h3 class="card-title">Referensi - KPI / Level :
-                            {{ strtoupper(str_replace('-', ' ', $level)) }} / Unit :
-                            {{ $level === 'super-master' ? '-' : strtoupper(str_replace('-', ' ', $unit)) }} / Tahun :
-                            {{ $level === 'super-master' ? '-' : strtoupper(str_replace('-', ' ', $tahun)) }}</h3>
+                            {{ cast_to_upper($level) }} / Unit :
+                            {{ $level === 'super-master' ? '-' : cast_to_upper($unit) }} / Tahun :
+                            {{ $level === 'super-master' ? '-' : cast_to_upper($tahun) }}</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -232,9 +232,9 @@
                                             <h5 class="text-center text-danger"><strong>Danger Zone!</strong></h5>
                                             <p class="text-center"><small><strong>Noted!</strong> Aksi ini akan mengubah
                                                     referensi KPI di <strong>Level:
-                                                        {{ strtoupper(str_replace('-', ' ', $level)) }} - Unit:
-                                                        @if ($unit === 'master'){{ 'SEMUA UNIT PADA LEVEL DIPILIH' }}@else{{ strtoupper(str_replace('-', ' ', $unit)) }}@endif - Tahun:
-                                                        {{ strtoupper(str_replace('-', ' ', $tahun)) }}</strong>.</small>
+                                                        {{ cast_to_upper($level) }} - Unit:
+                                                        @if ($unit === 'master'){{ 'SEMUA UNIT PADA LEVEL DIPILIH' }}@else{{ cast_to_upper($unit) }}@endif - Tahun:
+                                                        {{ cast_to_upper($tahun) }}</strong>.</small>
                                             </p>
                                         </div>
                                     @endif

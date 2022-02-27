@@ -42,3 +42,8 @@ function FDX_sevices($endpoint, $method, $data = [], $withToken = true)
 
     return $withToken === false ? Http::$method("$host$endpoint", $data) : Http::withToken($token)->withHeaders(['X-User-Id' => Cookie::get('X-User-Id') ?? null])->$method("$host$endpoint", $data);
 }
+
+function cast_to_upper($value)
+{
+    return strtoupper(str_replace('-', ' ', $value));
+}

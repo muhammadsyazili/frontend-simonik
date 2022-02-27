@@ -371,11 +371,11 @@
                     <!-- card-header -->
                     <div class="card-header">
                         <h3 class="card-title">Kertas Kerja - KPI / Level :
-                            {{ request()->query('level') == null ? '-' : strtoupper(str_replace('-', ' ', request()->query('level'))) }}
+                            {{ request()->query('level') == null ? '-' : cast_to_upper(request()->query('level')) }}
                             / Unit :
-                            {{ request()->query('unit') == null ? '-' : strtoupper(str_replace('-', ' ', request()->query('unit'))) }}
+                            {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }}
                             / Tahun :
-                            {{ request()->query('tahun') == null ? '-' : strtoupper(str_replace('-', ' ', request()->query('tahun'))) }}
+                            {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }}
                         </h3>
                     </div>
                     <!-- end : card-header -->

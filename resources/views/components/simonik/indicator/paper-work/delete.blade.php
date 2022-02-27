@@ -125,9 +125,9 @@
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <h1 class="text-center text-danger"><i class="fas fa-exclamation-triangle"></i></h1>
                                 <h5 class="text-center">Anda yakin ingin menghapus kertas kerja KPI <strong>Level:
-                                        {{ strtoupper(str_replace('-', ' ', $level)) }} - Unit: @if ($unit === 'master'){{ 'SEMUA UNIT PADA LEVEL DIPILIH' }}@else{{ strtoupper(str_replace('-', ' ', $unit)) }}@endif -
-                                        Tahun: {{ strtoupper(str_replace('-', ' ', $tahun)) }}</strong> ?</h5>
-                                @if ($unit === 'master') <p class="text-center"><strong>Noted!</strong> Aksi ini akan menghapus semua kertas kerja KPI beserta target & realisasi di semua unit kerja level: <strong>{{ strtoupper(str_replace('-', ' ', $level)) }}</strong>.</p> @endif
+                                        {{ cast_to_upper($level) }} - Unit: @if ($unit === 'master'){{ 'SEMUA UNIT PADA LEVEL DIPILIH' }}@else{{ cast_to_upper($unit) }}@endif -
+                                        Tahun: {{ cast_to_upper($tahun) }}</strong> ?</h5>
+                                @if ($unit === 'master') <p class="text-center"><strong>Noted!</strong> Aksi ini akan menghapus semua kertas kerja KPI beserta target & realisasi di semua unit kerja level: <strong>{{ cast_to_upper($level) }}</strong>.</p> @endif
                             </div>
 
                         </div>
