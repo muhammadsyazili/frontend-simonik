@@ -46,7 +46,7 @@ class PaperWorkRealizationController extends Controller
             }
         }
 
-        return view('components.simonik.realization.paper-work.read', compact('response'));
+        return view('components.simonik.realization.paper-work.read-new', compact('response'));
     }
 
     /**
