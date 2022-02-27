@@ -106,6 +106,12 @@
             });
         });
     </script>
+
+    <script>
+        $('#check-handler').click(function() {
+            $('.check-item').not(this).prop('checked', this.checked);
+        });
+    </script>
 @endpush
 
 {{-- ========================================================== --}}
@@ -175,7 +181,13 @@
                                 </div>
                             @else
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <input class="form-control form-control-sm mb-3" id="myInput" type="text" style="width: 25vw;" placeholder="Cari KPI..">
+                                    <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari KPI..">
+
+                                    <div class="form-check mb-3">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" id="check-handler"><small>Select All KPI</small>
+                                        </label>
+                                    </div>
                                 </div>
 
                                 <form action="{{ route('simonik.indicators.paper-work.update', ['level' => $level, 'unit' => $unit, 'tahun' => $tahun]) }}" method="post">
@@ -200,7 +212,7 @@
                                                     @foreach ($response->data->indicators as $indicator)
                                                         <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
                                                             <td class="small">
-                                                                <input type="checkbox" name="indicators[]" value="{{ $indicator->id }}" @if ($indicator->selected) checked @endif>
+                                                                <input type="checkbox" class="check-item" name="indicators[]" value="{{ $indicator->id }}" @if ($indicator->selected) checked @endif>
                                                             </td>
                                                             <td class="small">
                                                                 {{ $indicator->indicator }}
@@ -243,7 +255,7 @@
                                         <p><small><strong>Noted!</strong></small></p>
                                         <p><small>- Aksi ini akan menambahkan KPI beserta target & realisasi pada KPI yang di <strong>checked</strong>.</small></p>
                                         <p><small>- Aksi ini akan menghapus KPI beserta target & realisasi pada KPI yang di <strong>un-checked</strong>.</small></p>
-                                        <p><small>- Aksi ini akan berkalu pada <strong>Level: {{ cast_to_upper($level) }} - Unit: @if ($unit === 'master') SEMUA UNIT PADA LEVEL {{ cast_to_upper($level) }} @else{{ cast_to_upper($unit) }}@endif - Tahun: {{ cast_to_upper($tahun) }}</strong>.</small></p>
+                                        <p><small>- Aksi ini akan berkalu pada <strong>LEVEL: {{ cast_to_upper($level) }} - UNIT: @if ($unit === 'master') SEMUA UNIT KERJA LEVEL {{ cast_to_upper($level) }} @else{{ cast_to_upper($unit) }}@endif - TAHUN: {{ cast_to_upper($tahun) }}</strong>.</small></p>
                                     </div>
 
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">

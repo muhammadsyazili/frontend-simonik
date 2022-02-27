@@ -73,8 +73,7 @@
                             <h3 class="card-title">Info</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i></button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -94,8 +93,7 @@
                             <h3 class="card-title">Alert</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i></button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -121,15 +119,11 @@
                     <!-- card-body -->
                     <div class="card-body">
                         <div class="row">
-
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <h1 class="text-center text-danger"><i class="fas fa-exclamation-triangle"></i></h1>
-                                <h5 class="text-center">Anda yakin ingin menghapus kertas kerja KPI <strong>Level:
-                                        {{ cast_to_upper($level) }} - Unit: @if ($unit === 'master'){{ 'SEMUA UNIT PADA LEVEL DIPILIH' }}@else{{ cast_to_upper($unit) }}@endif -
-                                        Tahun: {{ cast_to_upper($tahun) }}</strong> ?</h5>
+                                <h5 class="text-center">Anda yakin ingin menghapus kertas kerja KPI <strong>LEVEL: {{ cast_to_upper($level) }} - UNIT: @if ($unit === 'master') SEMUA UNIT KERJA LEVEL {{ cast_to_upper($level) }} @else{{ cast_to_upper($unit) }}@endif - TAHUN: {{ cast_to_upper($tahun) }}</strong> ?</h5>
                                 @if ($unit === 'master') <p class="text-center"><strong>Noted!</strong> Aksi ini akan menghapus semua kertas kerja KPI beserta target & realisasi di semua unit kerja level: <strong>{{ cast_to_upper($level) }}</strong>.</p> @endif
                             </div>
-
                         </div>
                     </div>
                     <!-- end : card-body -->
@@ -138,18 +132,13 @@
                     <div class="card-footer clearfix">
                         <div class="row">
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <a href="{{ route('simonik.indicators.paper-work.index', ['level' => $level, 'unit' => $unit, 'tahun' => $tahun]) }}"
-                                    class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom"
-                                    title="No">No</a>
+                                <a href="{{ route('simonik.indicators.paper-work.index', ['level' => $level, 'unit' => $unit, 'tahun' => $tahun]) }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="No">No</a>
                             </div>
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <form
-                                    action="{{ route('simonik.indicators.paper-work.destroy', ['level' => $level, 'unit' => $unit, 'tahun' => $tahun]) }}"
-                                    method="post">
+                                <form action="{{ route('simonik.indicators.paper-work.destroy', ['level' => $level, 'unit' => $unit, 'tahun' => $tahun]) }}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-block btn-danger btn-sm mb-3" data-toggle="tooltip"
-                                        data-placement="bottom" title="Yes">Yes</button>
+                                    <button type="submit" class="btn btn-block btn-danger btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Yes">Yes</button>
                                 </form>
                             </div>
                         </div>

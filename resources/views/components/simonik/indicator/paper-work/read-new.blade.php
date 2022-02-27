@@ -427,7 +427,7 @@
                                     @if (empty($response->data->indicators))
                                         <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                     @else
-                                        <input class="form-control form-control-sm mb-3" id="myInput" type="text" style="width: 25vw;" placeholder="Cari KPI..">
+                                        <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari KPI..">
 
                                         <form action="{{ route('simonik.indicators.paper-work.reorder', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" method="post">
                                             @csrf
