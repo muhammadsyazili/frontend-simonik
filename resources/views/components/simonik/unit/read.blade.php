@@ -193,8 +193,8 @@
                                                     <td class="text-center small">{{ $loop->iteration }}</td>
                                                     <td class="text-center small">{{ $unit->name }}</td>
                                                     <td class="text-center small">{{ $unit->slug }}</td>
-                                                    <td class="text-center small">{{ is_null($unit->parent) ? '-' : $unit->parent->name }}</td>
-                                                    <td class="text-center small">{{ $unit->level->name }}</td>
+                                                    <td class="text-center small">{{ $unit->parent_name }}</td>
+                                                    <td class="text-center small">{{ $unit->level_name }}</td>
                                                     <td class="text-center small">
                                                         <div class="btn-group">
                                                             <a href="{{ route('simonik.unit.edit', ['id' => $unit->id]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></a>

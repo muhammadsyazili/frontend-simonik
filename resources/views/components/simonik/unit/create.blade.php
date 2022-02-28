@@ -77,6 +77,7 @@
         function getUnits(level) {
             if (level.length > 0) {
                 let host = $('meta[name="host"]').attr('content');
+                
                 $.ajax({
                     type: 'GET',
                     url: `${host}/level/${level}/parents`,
@@ -175,9 +176,9 @@
                                     <div class="form-group">
                                         <label class="small" for="dropdown-1">Level <span class="text-danger">*</span></label>
                                         <select class="form-control form-control-sm" id="dropdown-1" name="level">
-                                            @include('components.simonik.unit.create._level-child', [
-                                            'levels' => $response->data->levels
-                                            ])
+                                            @foreach ($response->data->levels as $level)
+                                                <option value="{{ $level->slug }}">{{ $level->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
