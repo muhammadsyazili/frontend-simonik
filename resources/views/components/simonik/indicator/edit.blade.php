@@ -101,9 +101,7 @@
                             <h3 class="card-title">Info</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -123,9 +121,7 @@
                             <h3 class="card-title">Alert</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -148,9 +144,7 @@
                     </div>
                     <!-- end : card-header -->
 
-                    <form
-                        action="{{ route('simonik.indicators.update', ['id' => $response->object()->data->indicator->id]) }}"
-                        method="post">
+                    <form action="{{ route('simonik.indicators.update', ['id' => $response->data->indicator->id]) }}" method="post">
                         @method('put')
                         @csrf
 
@@ -160,40 +154,37 @@
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
                                         <label class="small">KPI <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control form-control-sm" name="indicator"
-                                            value="{{ $response->object()->data->indicator->indicator }}">
+                                        <input type="text" class="form-control form-control-sm" name="indicator" value="{{ $response->data->indicator->indicator }}">
                                     </div>
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                                    <label class="small">KPI Dummy <small class="text-info">(KPI tidak
-                                            memiliki bobot)</small> ? <span class="text-danger">*</span></label>
+                                    <label class="small">KPI Dummy <small class="text-info">(KPI tidak memiliki bobot)</small> ? <span class="text-danger">*</span></label>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
                                     <div class="form-group clearfix">
                                         <div class="d-inline">
-                                            <input type="radio" name="dummy" value="0" @if ($response->object()->data->indicator->dummy === false) checked @endif>
+                                            <input type="radio" name="dummy" value="0" @if ($response->data->indicator->dummy === false) checked @endif>
                                             <label class="small">Tidak</label>
                                         </div>
                                         <div class="d-inline">
-                                            <input type="radio" name="dummy" value="1" @if ($response->object()->data->indicator->dummy === true) checked @endif>
+                                            <input type="radio" name="dummy" value="1" @if ($response->data->indicator->dummy === true) checked @endif>
                                             <label class="small">Ya</label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                                    <label class="small">Faktor Pengurang ? <span
-                                            class="text-danger">*</span></label>
+                                    <label class="small">Faktor Pengurang ? <span class="text-danger">*</span></label>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
                                     <div class="form-group clearfix">
                                         <div class="d-inline">
-                                            <input type="radio" name="reducing_factor" value="0" @if ($response->object()->data->indicator->reducing_factor === false) checked @endif>
+                                            <input type="radio" name="reducing_factor" value="0" @if ($response->data->indicator->reducing_factor === false) checked @endif>
                                             <label class="small">Tidak</label>
                                         </div>
                                         <div class="d-inline">
-                                            <input type="radio" name="reducing_factor" value="1" @if ($response->object()->data->indicator->reducing_factor === true) checked @endif>
+                                            <input type="radio" name="reducing_factor" value="1" @if ($response->data->indicator->reducing_factor === true) checked @endif>
                                             <label class="small">Ya</label>
                                         </div>
                                     </div>
@@ -205,11 +196,11 @@
                                 <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
                                     <div class="form-group clearfix">
                                         <div class="d-inline">
-                                            <input type="radio" name="polarity" value="1" @if ($response->object()->data->indicator->original_polarity === '1') checked @endif>
+                                            <input type="radio" name="polarity" value="1" @if ($response->data->indicator->original_polarity === '1') checked @endif>
                                             <label class="small"><i class="fas fa-arrow-up"></i></label>
                                         </div>
                                         <div class="d-inline">
-                                            <input type="radio" name="polarity" value="-1" @if ($response->object()->data->indicator->original_polarity === '-1') checked @endif>
+                                            <input type="radio" name="polarity" value="-1" @if ($response->data->indicator->original_polarity === '-1') checked @endif>
                                             <label class="small"><i class="fas fa-arrow-down"></i></label>
                                         </div>
                                     </div>
@@ -218,26 +209,22 @@
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
                                         <label class="small">Formula</label>
-                                        <textarea class="form-control form-control-sm" rows="3"
-                                            name="formula">{{ $response->object()->data->indicator->formula }}</textarea>
+                                        <textarea class="form-control form-control-sm" rows="3" name="formula">{{ $response->data->indicator->formula }}</textarea>
                                     </div>
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
                                         <label class="small">Satuan</label>
-                                        <input type="text" class="form-control form-control-sm" name="measure"
-                                            value="{{ $response->object()->data->indicator->measure }}">
+                                        <input type="text" class="form-control form-control-sm" name="measure" value="{{ $response->data->indicator->measure }}">
                                     </div>
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <p class="small text-center font-weight-bold">Masa Berlaku <span
-                                            class="text-danger">*</span></p>
+                                    <p class="small text-center font-weight-bold">Masa Berlaku <span class="text-danger">*</span></p>
                                     <div class="form-check text-center mb-3">
                                         <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" id="check-handler"><small>Select
-                                                All Month</small>
+                                            <input type="checkbox" class="form-check-input" id="check-handler"><small>Select All Month</small>
                                         </label>
                                     </div>
                                 </div>
@@ -245,8 +232,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group"
-                                                    name="validity[jan]" value="1" @if (array_key_exists('jan', (array) $response->object()->data->indicator->validity)) checked @endif>Jan
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[jan]" value="1" @if ($response->data->indicator->validity->jan->checked) checked @endif>Jan
                                             </label>
                                         </div>
                                     </div>
@@ -255,8 +241,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group"
-                                                    name="validity[feb]" value="1" @if (array_key_exists('feb', (array) $response->object()->data->indicator->validity)) checked @endif>Feb
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[feb]" value="1" @if ($response->data->indicator->validity->feb->checked) checked @endif>Feb
                                             </label>
                                         </div>
                                     </div>
@@ -265,8 +250,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group"
-                                                    name="validity[mar]" value="1" @if (array_key_exists('mar', (array) $response->object()->data->indicator->validity)) checked @endif>Mar
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[mar]" value="1" @if ($response->data->indicator->validity->mar->checked) checked @endif>Mar
                                             </label>
                                         </div>
                                     </div>
@@ -275,8 +259,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group"
-                                                    name="validity[apr]" value="1" @if (array_key_exists('apr', (array) $response->object()->data->indicator->validity)) checked @endif>Apr
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[apr]" value="1" @if ($response->data->indicator->validity->apr->checked) checked @endif>Apr
                                             </label>
                                         </div>
                                     </div>
@@ -285,8 +268,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group"
-                                                    name="validity[may]" value="1" @if (array_key_exists('may', (array) $response->object()->data->indicator->validity)) checked @endif>May
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[may]" value="1" @if ($response->data->indicator->validity->may->checked) checked @endif>May
                                             </label>
                                         </div>
                                     </div>
@@ -295,8 +277,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group"
-                                                    name="validity[jun]" value="1" @if (array_key_exists('jun', (array) $response->object()->data->indicator->validity)) checked @endif>Jun
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[jun]" value="1" @if ($response->data->indicator->validity->jun->checked) checked @endif>Jun
                                             </label>
                                         </div>
                                     </div>
@@ -305,8 +286,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group"
-                                                    name="validity[jul]" value="1" @if (array_key_exists('jul', (array) $response->object()->data->indicator->validity)) checked @endif>Jul
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[jul]" value="1" @if ($response->data->indicator->validity->jul->checked) checked @endif>Jul
                                             </label>
                                         </div>
                                     </div>
@@ -315,8 +295,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group"
-                                                    name="validity[aug]" value="1" @if (array_key_exists('aug', (array) $response->object()->data->indicator->validity)) checked @endif>Aug
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[aug]" value="1" @if ($response->data->indicator->validity->aug->checked) checked @endif>Aug
                                             </label>
                                         </div>
                                     </div>
@@ -325,8 +304,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group"
-                                                    name="validity[sep]" value="1" @if (array_key_exists('sep', (array) $response->object()->data->indicator->validity)) checked @endif>Sep
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[sep]" value="1" @if ($response->data->indicator->validity->sep->checked) checked @endif>Sep
                                             </label>
                                         </div>
                                     </div>
@@ -335,8 +313,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group"
-                                                    name="validity[oct]" value="1" @if (array_key_exists('oct', (array) $response->object()->data->indicator->validity)) checked @endif>Oct
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[oct]" value="1" @if ($response->data->indicator->validity->oct->checked) checked @endif>Oct
                                             </label>
                                         </div>
                                     </div>
@@ -345,8 +322,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group"
-                                                    name="validity[nov]" value="1" @if (array_key_exists('nov', (array) $response->object()->data->indicator->validity)) checked @endif>Nov
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[nov]" value="1" @if ($response->data->indicator->validity->nov->checked) checked @endif>Nov
                                             </label>
                                         </div>
                                     </div>
@@ -355,115 +331,95 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group"
-                                                    name="validity[dec]" value="1" @if (array_key_exists('dec', (array) $response->object()->data->indicator->validity)) checked @endif>Dec
+                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[dec]" value="1" @if ($response->data->indicator->validity->dec->checked) checked @endif>Dec
                                             </label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <p class="text-center font-weight-bold small">Bobot <span
-                                            class="text-danger">*</span></p>
+                                    <p class="text-center font-weight-bold small">Bobot <span class="text-danger">*</span></p>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <p class="text-center text-info"><small><strong>Noted!</strong> bobot akan diabaikan
-                                            jika masa berlaku tidak dipilih</small></p>
+                                    <p class="text-center text-info"><small><strong>Noted!</strong> bobot akan diabaikan jika masa berlaku tidak dipilih</small></p>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center small">Jan</p>
-                                        <input type="number" class="form-control form-control-sm weight-group"
-                                            name="weight[jan]" @if (array_key_exists('jan', (array) $response->object()->data->indicator->weight)) value="{{ $response->object()->data->indicator->weight->jan }}" @else value="0" @endif>
+                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[jan]" value="{{ $response->data->indicator->weight->jan->value }}">
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center small">Feb</p>
-                                        <input type="number" class="form-control form-control-sm weight-group"
-                                            name="weight[feb]" @if (array_key_exists('feb', (array) $response->object()->data->indicator->weight)) value="{{ $response->object()->data->indicator->weight->feb }}" @else value="0" @endif>
+                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[feb]" value="{{ $response->data->indicator->weight->feb->value }}">
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center small">Mar</p>
-                                        <input type="number" class="form-control form-control-sm weight-group"
-                                            name="weight[mar]" @if (array_key_exists('mar', (array) $response->object()->data->indicator->weight)) value="{{ $response->object()->data->indicator->weight->mar }}" @else value="0" @endif>
+                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[mar]" value="{{ $response->data->indicator->weight->mar->value }}">
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center small">Apr</p>
-                                        <input type="number" class="form-control form-control-sm weight-group"
-                                            name="weight[apr]" @if (array_key_exists('apr', (array) $response->object()->data->indicator->weight)) value="{{ $response->object()->data->indicator->weight->apr }}" @else value="0" @endif>
+                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[apr]" value="{{ $response->data->indicator->weight->apr->value }}">
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center small">May</p>
-                                        <input type="number" class="form-control form-control-sm weight-group"
-                                            name="weight[may]" @if (array_key_exists('may', (array) $response->object()->data->indicator->weight)) value="{{ $response->object()->data->indicator->weight->may }}" @else value="0" @endif>
+                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[may]" value="{{ $response->data->indicator->weight->may->value }}">
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center small">Jun</p>
-                                        <input type="number" class="form-control form-control-sm weight-group"
-                                            name="weight[jun]" @if (array_key_exists('jun', (array) $response->object()->data->indicator->weight)) value="{{ $response->object()->data->indicator->weight->jun }}" @else value="0" @endif>
+                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[jun]" value="{{ $response->data->indicator->weight->jun->value }}">
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center small">Jul</p>
-                                        <input type="number" class="form-control form-control-sm weight-group"
-                                            name="weight[jul]" @if (array_key_exists('jul', (array) $response->object()->data->indicator->weight)) value="{{ $response->object()->data->indicator->weight->jul }}" @else value="0" @endif>
+                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[jul]" value="{{ $response->data->indicator->weight->jul->value }}">
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center small">Aug</p>
-                                        <input type="number" class="form-control form-control-sm weight-group"
-                                            name="weight[aug]" @if (array_key_exists('aug', (array) $response->object()->data->indicator->weight)) value="{{ $response->object()->data->indicator->weight->aug }}" @else value="0" @endif>
+                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[aug]" value="{{ $response->data->indicator->weight->aug->value }}">
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center small">Sep</p>
-                                        <input type="number" class="form-control form-control-sm weight-group"
-                                            name="weight[sep]" @if (array_key_exists('sep', (array) $response->object()->data->indicator->weight)) value="{{ $response->object()->data->indicator->weight->sep }}" @else value="0" @endif>
+                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[sep]" value="{{ $response->data->indicator->weight->sep->value }}">
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center small">Oct</p>
-                                        <input type="number" class="form-control form-control-sm weight-group"
-                                            name="weight[oct]" @if (array_key_exists('oct', (array) $response->object()->data->indicator->weight)) value="{{ $response->object()->data->indicator->weight->oct }}" @else value="0" @endif>
+                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[oct]" value="{{ $response->data->indicator->weight->oct->value }}">
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center small">Nov</p>
-                                        <input type="number" class="form-control form-control-sm weight-group"
-                                            name="weight[nov]" @if (array_key_exists('nov', (array) $response->object()->data->indicator->weight)) value="{{ $response->object()->data->indicator->weight->nov }}" @else value="0" @endif>
+                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[nov]" value="{{ $response->data->indicator->weight->nov->value }}">
                                     </div>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
                                         <p class="text-center small">Dec</p>
-                                        <input type="number" class="form-control form-control-sm weight-group"
-                                            name="weight[dec]" @if (array_key_exists('dec', (array) $response->object()->data->indicator->weight)) value="{{ $response->object()->data->indicator->weight->dec }}" @else value="0" @endif>
+                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[dec]" value="{{ $response->data->indicator->weight->dec->value }}">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    @if ($response->object()->data->indicator->label === 'master')
-                                        <h1 class="text-center text-danger"><i class="fas fa-exclamation-triangle"></i>
-                                        </h1>
+                                    @if ($response->data->indicator->label === 'master')
+                                        <h1 class="text-center text-danger"><i class="fas fa-exclamation-triangle"></i></h1>
                                         <h5 class="text-center text-danger"><strong>Danger Zone!</strong></h5>
-                                        <p class="text-center"><small><strong>Noted!</strong> Aksi ini akan mengubah
-                                                semua KPI beserta target & realisasi yang bersesuaian di semua unit kerja di
-                                                level:
-                                                <strong>{{ $response->object()->data->indicator->level->name }}</strong>.</small>
-                                        </p>
+                                        <p class="text-center"><small><strong>Noted!</strong> Aksi ini akan mengubah semua KPI beserta target & realisasi yang bersesuaian di semua unit kerja di level: <strong>{{ $response->data->indicator->level_name }}</strong>.</small></p>
                                     @endif
                                 </div>
                             </div>

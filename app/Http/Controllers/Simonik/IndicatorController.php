@@ -111,6 +111,8 @@ class IndicatorController extends Controller
             return redirect()->back();
         }
 
+        $response = $response->object();
+
         return view('components.simonik.indicator.edit', compact('response'));
     }
 
