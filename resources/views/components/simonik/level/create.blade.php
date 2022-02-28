@@ -70,9 +70,7 @@
                             <h3 class="card-title">Info</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -92,9 +90,7 @@
                             <h3 class="card-title">Alert</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -126,18 +122,16 @@
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small">Nama Level <span
-                                                class="text-danger">*</span></label>
+                                        <label class="small">Nama Level <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control form-control-sm" name="name" required>
                                     </div>
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small" for="dropdown-1">Turunan Dari Level <span
-                                                class="text-danger">*</span></label>
+                                        <label class="small" for="dropdown-1">Turunan Dari Level <span class="text-danger">*</span></label>
                                         <select class="form-control form-control-sm" id="dropdown-1" name="parent_level">
-                                            @foreach ($response->object()->data->levels as $level)
+                                            @foreach ($response->data->levels as $level)
                                                 <option value="{{ $level->slug }}">{{ $level->name }}</option>
                                             @endforeach
                                         </select>

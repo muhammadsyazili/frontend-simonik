@@ -70,9 +70,7 @@
                             <h3 class="card-title">Info</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -92,9 +90,7 @@
                             <h3 class="card-title">Alert</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -117,8 +113,7 @@
                     </div>
                     <!-- end : card-header -->
 
-                    <form action="{{ route('simonik.level.update', ['id' => $response->object()->data->level->id]) }}"
-                        method="post">
+                    <form action="{{ route('simonik.level.update', ['id' => $response->data->level->id]) }}" method="post">
                         @method('put')
                         @csrf
 
@@ -127,21 +122,17 @@
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small">Nama Level <span
-                                                class="text-danger">*</span></label>
-                                        <input type="text" class="form-control form-control-sm" name="name"
-                                            value="{{ $response->object()->data->level->name }}" required>
+                                        <label class="small">Nama Level <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control form-control-sm" name="name" value="{{ $response->data->level->name }}" required>
                                     </div>
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small" for="dropdown-1">Turunan Dari Level <span
-                                                class="text-danger">*</span></label>
+                                        <label class="small" for="dropdown-1">Turunan Dari Level <span class="text-danger">*</span></label>
                                         <select class="form-control form-control-sm" id="dropdown-1" name="parent_level">
-                                            @foreach ($response->object()->data->levels as $level)
-                                                <option value="{{ $level->slug }}" @if ($level->id === $response->object()->data->level->parent_id) selected @endif>
-                                                    {{ $level->name }}</option>
+                                            @foreach ($response->data->levels as $level)
+                                                <option value="{{ $level->slug }}" @if ($level->id === $response->data->level->parent_id) selected @endif> {{ $level->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>

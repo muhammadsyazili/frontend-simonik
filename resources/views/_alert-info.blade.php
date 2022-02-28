@@ -1,1 +1,1 @@
-<i class="fa fa-info-circle" aria-hidden="true"></i> {!! $message !!}
+<p><span><i class="fa fa-info-circle" aria-hidden="true"></i></span> {!! $message !!}</p>
