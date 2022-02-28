@@ -1,1 +1,1 @@
-<i class="icon fas fa-info"></i> {!! $message !!}
+<i class="fa fa-info-circle" aria-hidden="true"></i> {!! $message !!}

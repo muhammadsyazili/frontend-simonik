@@ -104,7 +104,9 @@ class IndicatorReferenceController extends Controller
         $unit = $request->query('unit');
         $tahun = $request->query('tahun');
 
-        return view('components.simonik.indicator.reference.edit', compact(['response', 'level', 'unit', 'tahun']));
+        $response = $response->object();
+
+        return view('components.simonik.indicator.reference.edit-new', compact(['response', 'level', 'unit', 'tahun']));
     }
 
     /**

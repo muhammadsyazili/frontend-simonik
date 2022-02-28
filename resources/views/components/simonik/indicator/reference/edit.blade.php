@@ -191,7 +191,7 @@
                         <!-- card-body -->
                         <div class="card-body">
                             <div class="row">
-                                @if (empty($response->object()->data->indicators))
+                                @if (empty($response->data->indicators))
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                         <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                     </div>
@@ -216,8 +216,8 @@
                                                 </thead>
                                                 <tbody id="myTable">
                                                     @include('components.simonik.indicator.reference.edit._indicator-child',[
-                                                    'indicators' => $response->object()->data->indicators,
-                                                    'preferences' => $response->object()->data->preferences,
+                                                    'indicators' => $response->data->indicators,
+                                                    'preferences' => $response->data->preferences,
                                                     'background_color' => ['red' => 255, 'green' => 255, 'blue' => 255]
                                                     ])
                                                 </tbody>

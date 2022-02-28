@@ -171,13 +171,13 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Referensi - KPI</h3>
+                        <h3 class="card-title">Referensi - KPI / Level : {{ cast_to_upper($level) }} / Unit : {{ $level === 'super-master' ? '-' : cast_to_upper($unit) }} / Tahun : {{ $level === 'super-master' ? '-' : cast_to_upper($tahun) }}</h3>
                     </div>
                     <!-- end : card-header -->
 
-                    <form action="{{ route('simonik.indicators.paper-work.reference.store') }}" method="post">
+                    <form action="{{ route('simonik.indicators.paper-work.reference.update', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" method="post">
                         @csrf
-                        @method('post')
+                        @method('put')
 
                         <!-- card-body -->
                         <div class="card-body">
@@ -189,7 +189,7 @@
                                 @else
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
-                                        <input class="form-control form-control-sm mb-3" id="myInput" type="text" style="width: 25vw;" placeholder="Cari KPI..">
+                                        <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari KPI..">
 
                                         <div class="table-responsive-sm">
                                             <table class="table table-bordered">
@@ -201,8 +201,7 @@
                                                         <th class="text-center">Bobot</th>
                                                         <th class="text-center">Berlaku</th>
                                                         <th class="text-center">Polaritas</th>
-                                                        <th class="text-center">Referensi KPI <span class="badge badge-pill badge-light" data-toggle="tooltip" data-placement="right" title="Not referenced">&#128681; (Belum direferensikan)</span></th>
-                                                        <th class="text-center"></th>
+                                                        <th class="text-center">Referensi KPI</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="myTable">
@@ -246,12 +245,6 @@
                                                                         @endif
                                                                     @endforeach
                                                                 </select>
-                                                            </td>
-                                                            <td class="text-center small">
-                                                                <div class="btn-group">
-                                                                    <a href="{{ route('simonik.indicators.edit', ['id' => $indicator->id]) }}" class="btn btn-sm btn-outline-info" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></a>
-                                                                    <a href="{{ route('simonik.indicators.delete', ['id' => $indicator->id, 'name' => $indicator->indicator]) }}" class="btn btn-sm btn-outline-info" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></a>
-                                                                </div>
 
                                                                 <input type="hidden" name="indicators[]" value="{{ $indicator->id }}">
                                                             </td>
@@ -261,6 +254,14 @@
                                             </table>
                                         </div>
                                     </div>
+
+                                    @if ($level !== 'super-master')
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                            <h1 class="text-center text-danger"><i class="fas fa-exclamation-triangle"></i></h1>
+                                            <h5 class="text-center text-danger"><strong>Danger Zone!</strong></h5>
+                                            <p class="text-center"><small><strong>Noted!</strong> Aksi ini akan mengubah referensi KPI di <strong>LEVEL: {{ cast_to_upper($level) }} - UNIT: @if ($unit === 'master') SEMUA UNIT LEVEL {{ cast_to_upper($level) }} @else{{ cast_to_upper($unit) }}@endif - TAHUN: {{ cast_to_upper($tahun) }}</strong>.</small></p>
+                                        </div>
+                                    @endif
                                 @endif
                             </div>
                         </div>
@@ -268,6 +269,11 @@
 
                         <!-- card-footer -->
                         <div class="card-footer clearfix">
+                            <input type="hidden" name="level" value="{{ request()->query('level') }}">
+                            @if (request()->query('level') !== 'super-master')
+                                <input type="hidden" name="unit" value="{{ request()->query('unit') }}">
+                                <input type="hidden" name="tahun" value="{{ request()->query('tahun') }}">
+                            @endif
                             <button type="submit" class="btn btn-sm btn-info float-right">Save</button>
                         </div>
                         <!-- end : card-footer -->
