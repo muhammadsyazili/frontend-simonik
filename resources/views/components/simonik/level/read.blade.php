@@ -192,9 +192,9 @@
                                                     <td class="text-center small">{{ $loop->iteration }}</td>
                                                     <td class="text-center small">{{ $level->name }}</td>
                                                     <td class="text-center small">{{ $level->slug }}</td>
-                                                    <td class="text-center small">{{ is_null($level->parent) ? '-' : $level->parent->name }}</td>
+                                                    <td class="text-center small">{{ $level->parent_name }}</td>
                                                     <td class="text-center small">
-                                                        @if (!is_null($level->parent))
+                                                        @if ($level->modificable)
                                                             <div class="btn-group">
                                                                 <a href="{{ route('simonik.level.edit', ['id' => $level->id]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></a>
                                                                 <a href="{{ route('simonik.level.delete', ['id' => $level->id, 'name' => $level->name]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></a>

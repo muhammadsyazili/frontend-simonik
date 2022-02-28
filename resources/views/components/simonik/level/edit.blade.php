@@ -132,7 +132,7 @@
                                         <label class="small" for="dropdown-1">Turunan Dari Level <span class="text-danger">*</span></label>
                                         <select class="form-control form-control-sm" id="dropdown-1" name="parent_level">
                                             @foreach ($response->data->levels as $level)
-                                                <option value="{{ $level->slug }}" @if ($level->id === $response->data->level->parent_id) selected @endif> {{ $level->name }}</option>
+                                                <option value="{{ $level->slug }}" @if ($level->selected) selected @endif> {{ $level->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
