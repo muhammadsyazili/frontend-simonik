@@ -86,8 +86,7 @@
                         if (res.data.length > 0) {
                             let html;
                             for (let i = 0; i < res.data.length; i++) {
-                                html +=
-                                    `<option class="dynamic-option" value="${res.data[i].slug}">${res.data[i].name}</option>`;
+                                html += `<option class="dynamic-option" value="${res.data[i].slug}">${res.data[i].name}</option>`;
                             }
                             $('select[name="parent_unit"]').append(html);
                         }
@@ -115,9 +114,7 @@
                             <h3 class="card-title">Info</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -137,9 +134,7 @@
                             <h3 class="card-title">Alert</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -171,19 +166,17 @@
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small">Nama Unit Kerja <span
-                                                class="text-danger">*</span></label>
+                                        <label class="small">Nama Unit Kerja <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control form-control-sm" name="name" required>
                                     </div>
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small" for="dropdown-1">Level <span
-                                                class="text-danger">*</span></label>
+                                        <label class="small" for="dropdown-1">Level <span class="text-danger">*</span></label>
                                         <select class="form-control form-control-sm" id="dropdown-1" name="level">
                                             @include('components.simonik.unit.create._level-child', [
-                                            'levels' => $response->object()->data->levels
+                                            'levels' => $response->data->levels
                                             ])
                                         </select>
                                     </div>
@@ -191,10 +184,8 @@
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small" for="dropdown-1">Turunan Dari Unit Kerja <span
-                                                class="text-danger">*</span></label>
-                                        <select class="form-control form-control-sm" id="dropdown-1"
-                                            name="parent_unit"></select>
+                                        <label class="small" for="dropdown-1">Turunan Dari Unit Kerja <span class="text-danger">*</span></label>
+                                        <select class="form-control form-control-sm" id="dropdown-1" name="parent_unit"></select>
                                     </div>
                                 </div>
                             </div>

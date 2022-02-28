@@ -10,16 +10,6 @@ use Symfony\Component\HttpFoundation\Response;
 class UnitController extends Controller
 {
     /**
-     * Instantiate a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -36,6 +26,8 @@ class UnitController extends Controller
             Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
             return redirect()->back();
         }
+
+        $response = $response->object();
 
         return view('components.simonik.unit.read', compact('response'));
     }
@@ -57,6 +49,8 @@ class UnitController extends Controller
             Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
             return redirect()->back();
         }
+
+        $response = $response->object();
 
         return view('components.simonik.unit.create', compact('response'));
     }
@@ -119,6 +113,8 @@ class UnitController extends Controller
             Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
             return redirect()->back();
         }
+
+        $response = $response->object();
 
         return view('components.simonik.unit.edit', compact('response'));
     }

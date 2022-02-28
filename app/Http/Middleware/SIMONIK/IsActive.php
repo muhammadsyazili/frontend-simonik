@@ -32,6 +32,5 @@ class IsActive
         }
 
         return $response->object()->data->user->actived ? $next($request) : redirect()->route('simonik.user.password.change.form', ['id' => $request->cookie('X-User-Id')]);
-        //return $request->cookie('X-Active') ? $next($request) : redirect()->route('simonik.user.password.change.form', ['id' => $request->cookie('X-User-Id')]);
     }
 }

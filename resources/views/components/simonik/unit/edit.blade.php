@@ -5,7 +5,7 @@
 {{-- ========================================================== --}}
 @push('metadata')
     <meta name="host" content="{{ env('HOST_SIMONIK') }}">
-    <meta name="parent_id" content="{{ $response->object()->data->unit->parent_id }}">
+    <meta name="parent_id" content="{{ $response->data->unit->parent_id }}">
 @endpush
 
 {{-- ========================================================== --}}
@@ -90,8 +90,7 @@
                             let html;
                             for (let i = 0; i < res.data.length; i++) {
                                 $selected = res.data[i].id == parent_id ? 'selected' : '';
-                                html +=
-                                    `<option class="dynamic-option" value="${res.data[i].slug}" ${$selected}>${res.data[i].name}</option>`;
+                                html += `<option class="dynamic-option" value="${res.data[i].slug}" ${$selected}>${res.data[i].name}</option>`;
                             }
                             $('select[name="parent_unit"]').append(html);
                         }
@@ -119,9 +118,7 @@
                             <h3 class="card-title">Info</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -141,9 +138,7 @@
                             <h3 class="card-title">Alert</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -166,8 +161,7 @@
                     </div>
                     <!-- end : card-header -->
 
-                    <form action="{{ route('simonik.unit.update', ['id' => $response->object()->data->unit->id]) }}"
-                        method="post">
+                    <form action="{{ route('simonik.unit.update', ['id' => $response->data->unit->id]) }}" method="post">
                         @method('put')
                         @csrf
 
@@ -176,21 +170,18 @@
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small">Nama Unit Kerja <span
-                                                class="text-danger">*</span></label>
-                                        <input type="text" class="form-control form-control-sm" name="name"
-                                            value="{{ $response->object()->data->unit->name }}" required>
+                                        <label class="small">Nama Unit Kerja <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control form-control-sm" name="name" value="{{ $response->data->unit->name }}" required>
                                     </div>
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small" for="dropdown-1">Level <span
-                                                class="text-danger">*</span></label>
+                                        <label class="small" for="dropdown-1">Level <span class="text-danger">*</span></label>
                                         <select class="form-control form-control-sm" id="dropdown-1" name="level">
                                             @include('components.simonik.unit.edit._level-child', [
-                                            'levels' => $response->object()->data->levels,
-                                            'level_id' => $response->object()->data->unit->level_id,
+                                            'levels' => $response->data->levels,
+                                            'level_id' => $response->data->unit->level_id,
                                             ])
                                         </select>
                                     </div>
@@ -198,10 +189,8 @@
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small" for="dropdown-1">Turunan Dari Unit Kerja <span
-                                                class="text-danger">*</span></label>
-                                        <select class="form-control form-control-sm" id="dropdown-1"
-                                            name="parent_unit"></select>
+                                        <label class="small" for="dropdown-1">Turunan Dari Unit Kerja <span class="text-danger">*</span></label>
+                                        <select class="form-control form-control-sm" id="dropdown-1" name="parent_unit"></select>
                                     </div>
                                 </div>
                             </div>

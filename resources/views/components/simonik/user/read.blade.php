@@ -121,9 +121,7 @@
                             <h3 class="card-title">Info</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -143,9 +141,7 @@
                             <h3 class="card-title">Alert</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -175,11 +171,9 @@
 
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                <a href="{{ route('simonik.user.create') }}" class="btn btn-info btn-sm mb-3"
-                                    data-toggle="tooltip" data-placement="bottom" title="Add">Add</a>
+                                <a href="{{ route('simonik.user.create') }}" class="btn btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Add">Add</a>
 
-                                <input class="form-control form-control-sm mb-3" id="myInput" type="text"
-                                    placeholder="Cari KPI..">
+                                <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari KPI..">
 
                                 <div class="table-responsive-sm">
                                     <table class="table table-bordered" id="drag-drop-table-sorting">
@@ -190,46 +184,30 @@
                                                 <th class="text-center">NIP</th>
                                                 <th class="text-center">Username</th>
                                                 <th class="text-center">Email</th>
-                                                <th class="text-center">Status Akun <span data-toggle="tooltip"
-                                                        data-placement="right"
-                                                        title="active: password sudah diubah, default: password belum diubah (1234567890)"><i
-                                                            class="fas fa-info-circle"></i></span></th>
+                                                <th class="text-center">Status Akun <span data-toggle="tooltip" data-placement="right" title="active: password sudah diubah, default: password belum diubah (1234567890)"><i class="fas fa-info-circle"></i></span></th>
                                                 <th class="text-center">Unit Kerja</th>
                                                 <th class="text-center">Role</th>
                                                 <th class="text-center"></th>
                                             </tr>
                                         </thead>
                                         <tbody id="myTable">
-                                            @forelse ($response->object()->data->users as $user)
+                                            @forelse ($response->data->users as $user)
                                                 <tr>
                                                     <td class="text-center small">{{ $loop->iteration }}</td>
                                                     <td class="text-center small">{{ $user->name }}</td>
-                                                    <td class="text-center small">
-                                                        {{ is_null($user->nip) ? '-' : $user->nip }}</td>
+                                                    <td class="text-center small">{{ is_null($user->nip) ? '-' : $user->nip }}</td>
                                                     <td class="text-center small">{{ $user->username }}</td>
                                                     <td class="text-center small">{{ $user->email }}</td>
-                                                    <td
-                                                        class="text-center small {{ $user->actived ? 'bg-success' : 'bg-secondary' }}">
-                                                        {{ $user->actived ? 'active' : 'default' }}</td>
-                                                    <td class="text-center small">
-                                                        {{ is_null($user->unit) ? '-' : $user->unit->name }}</td>
+                                                    <td class="text-center small {{ $user->actived ? 'bg-success' : 'bg-secondary' }}">{{ $user->actived ? 'active' : 'default' }}</td>
+                                                    <td class="text-center small">{{ is_null($user->unit) ? '-' : $user->unit->name }}</td>
                                                     <td class="text-center small">{{ $user->role->name }}</td>
                                                     <td class="text-center small">
                                                         <div class="btn-group mb-1">
                                                             @if (!in_array($user->role->name, ['super-admin', 'admin', 'data-entry']))
-                                                                <a href="{{ route('simonik.user.edit', ['id' => $user->id]) }}"
-                                                                    class="btn btn-outline-info btn-sm"
-                                                                    data-toggle="tooltip" data-placement="bottom"
-                                                                    title="Edit"><i class="fas fa-edit"></i></a>
-                                                                <a href="{{ route('simonik.user.delete', ['id' => $user->id, 'username' => $user->username]) }}"
-                                                                    class="btn btn-outline-info btn-sm"
-                                                                    data-toggle="tooltip" data-placement="bottom"
-                                                                    title="Delete"><i class="fas fa-trash-alt"></i></a>
+                                                                <a href="{{ route('simonik.user.edit', ['id' => $user->id]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></a>
+                                                                <a href="{{ route('simonik.user.delete', ['id' => $user->id, 'username' => $user->username]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></a>
                                                             @endif
-                                                            <a href="{{ route('simonik.user.password.reset.form', ['id' => $user->id, 'username' => $user->username]) }}"
-                                                                class="btn btn-outline-info btn-sm" data-toggle="tooltip"
-                                                                data-placement="bottom" title="Reset Password"><i
-                                                                    class="fa fa-key" aria-hidden="true"></i></i></a>
+                                                            <a href="{{ route('simonik.user.password.reset.form', ['id' => $user->id, 'username' => $user->username]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Reset Password"><i class="fa fa-key" aria-hidden="true"></i></i></a>
                                                         </div>
 
                                                     </td>

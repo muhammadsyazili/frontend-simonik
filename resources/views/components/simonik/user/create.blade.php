@@ -70,9 +70,7 @@
                             <h3 class="card-title">Info</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -92,9 +90,7 @@
                             <h3 class="card-title">Alert</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -154,10 +150,9 @@
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small" for="dropdown-1">Unit Kerja <span
-                                                class="text-danger">*</span></label>
+                                        <label class="small" for="dropdown-1">Unit Kerja <span class="text-danger">*</span></label>
                                         <select class="form-control form-control-sm" id="dropdown-1" name="unit">
-                                            @foreach ($response->object()->data->units as $unit)
+                                            @foreach ($response->data->units as $unit)
                                                 <option value="{{ $unit->slug }}">{{ $unit->name }}</option>
                                             @endforeach
                                         </select>

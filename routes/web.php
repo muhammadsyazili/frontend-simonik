@@ -51,7 +51,6 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
             }
 
             return $response->object()->data->user->actived ? redirect()->route('simonik.indicators.paper-work.index') : redirect()->route('simonik.user.password.change.form', ['id' => $id]);
-            //return $request->cookie('X-Active') ? redirect()->route('simonik.indicators.paper-work.index') : redirect()->route('simonik.user.password.change.form', ['id' => $id]);
         } else if ($request->cookie('X-App') === 'fdx') {
             return redirect()->route('fdx.indicators.index');
         } else {
@@ -70,31 +69,6 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
 
         Route::put('/simonik/user/{id}/password/change', [App\Http\Controllers\Simonik\UserController::class, 'password_change'])
             ->name('simonik.user.password.change');
-
-        //indicator
-        Route::get('/simonik/indicators/create', [App\Http\Controllers\Simonik\IndicatorController::class, 'create'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.indicators.create');
-
-        Route::post('/simonik/indicators', [App\Http\Controllers\Simonik\IndicatorController::class, 'store'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.indicators.store');
-
-        Route::get('/simonik/indicators/{id}/edit', [App\Http\Controllers\Simonik\IndicatorController::class, 'edit'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
-            ->name('simonik.indicators.edit');
-
-        Route::put('/simonik/indicators/{id}', [App\Http\Controllers\Simonik\IndicatorController::class, 'update'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
-            ->name('simonik.indicators.update');
-
-        Route::get('/simonik/indicators/{id}/{name}/delete', [App\Http\Controllers\Simonik\IndicatorController::class, 'delete'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.indicators.delete');
-
-        Route::delete('/simonik/indicators/{id}', [App\Http\Controllers\Simonik\IndicatorController::class, 'destroy'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.indicators.destroy');
 
         //paper work - indicator
         Route::get('/simonik/indicators/paper-work', [App\Http\Controllers\Simonik\Extends\Indicator\PaperWorkIndicatorController::class, 'index'])
@@ -125,7 +99,6 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
             ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
             ->name('simonik.indicators.paper-work.destroy');
 
-        //reorder
         Route::put('/simonik/indicators/paper-work/reorder', [App\Http\Controllers\Simonik\Extends\Indicator\PaperWorkIndicatorController::class, 'reorder'])
             ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
             ->name('simonik.indicators.paper-work.reorder');
@@ -168,6 +141,31 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
         Route::get('/simonik/targets/paper-work/{level}/{unit}/{tahun}/export/', [App\Http\Controllers\Simonik\Extends\Target\PaperWorkTargetController::class, 'export'])
             ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
             ->name('simonik.targets.paper-work.export');
+
+        //indicator
+        Route::get('/simonik/indicators/create', [App\Http\Controllers\Simonik\IndicatorController::class, 'create'])
+            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
+            ->name('simonik.indicators.create');
+
+        Route::post('/simonik/indicators', [App\Http\Controllers\Simonik\IndicatorController::class, 'store'])
+            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
+            ->name('simonik.indicators.store');
+
+        Route::get('/simonik/indicators/{id}/edit', [App\Http\Controllers\Simonik\IndicatorController::class, 'edit'])
+            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
+            ->name('simonik.indicators.edit');
+
+        Route::put('/simonik/indicators/{id}', [App\Http\Controllers\Simonik\IndicatorController::class, 'update'])
+            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
+            ->name('simonik.indicators.update');
+
+        Route::get('/simonik/indicators/{id}/{name}/delete', [App\Http\Controllers\Simonik\IndicatorController::class, 'delete'])
+            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
+            ->name('simonik.indicators.delete');
+
+        Route::delete('/simonik/indicators/{id}', [App\Http\Controllers\Simonik\IndicatorController::class, 'destroy'])
+            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
+            ->name('simonik.indicators.destroy');
 
         //user
         Route::get('/simonik/users', [App\Http\Controllers\Simonik\UserController::class, 'index'])

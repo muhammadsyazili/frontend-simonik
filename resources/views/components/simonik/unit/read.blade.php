@@ -121,9 +121,7 @@
                             <h3 class="card-title">Info</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -143,9 +141,7 @@
                             <h3 class="card-title">Alert</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -175,11 +171,9 @@
 
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                <a href="{{ route('simonik.unit.create') }}" class="btn btn-info btn-sm mb-3"
-                                    data-toggle="tooltip" data-placement="bottom" title="Add">Add</a>
+                                <a href="{{ route('simonik.unit.create') }}" class="btn btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Add">Add</a>
 
-                                <input class="form-control form-control-sm mb-3" id="myInput" type="text"
-                                    placeholder="Cari KPI..">
+                                <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari KPI..">
 
                                 <div class="table-responsive-sm">
                                     <table class="table table-bordered" id="drag-drop-table-sorting">
@@ -194,24 +188,17 @@
                                             </tr>
                                         </thead>
                                         <tbody id="myTable">
-                                            @forelse ($response->object()->data->units as $unit)
+                                            @forelse ($response->data->units as $unit)
                                                 <tr>
                                                     <td class="text-center small">{{ $loop->iteration }}</td>
                                                     <td class="text-center small">{{ $unit->name }}</td>
                                                     <td class="text-center small">{{ $unit->slug }}</td>
-                                                    <td class="text-center small">
-                                                        {{ is_null($unit->parent) ? '-' : $unit->parent->name }}</td>
+                                                    <td class="text-center small">{{ is_null($unit->parent) ? '-' : $unit->parent->name }}</td>
                                                     <td class="text-center small">{{ $unit->level->name }}</td>
                                                     <td class="text-center small">
                                                         <div class="btn-group">
-                                                            <a href="{{ route('simonik.unit.edit', ['id' => $unit->id]) }}"
-                                                                class="btn btn-outline-info btn-sm" data-toggle="tooltip"
-                                                                data-placement="bottom" title="Edit"><i
-                                                                    class="fas fa-edit"></i></a>
-                                                            <a href="{{ route('simonik.unit.delete', ['id' => $unit->id, 'name' => $unit->name]) }}"
-                                                                class="btn btn-outline-info btn-sm" data-toggle="tooltip"
-                                                                data-placement="bottom" title="Delete"><i
-                                                                    class="fas fa-trash-alt"></i></a>
+                                                            <a href="{{ route('simonik.unit.edit', ['id' => $unit->id]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></a>
+                                                            <a href="{{ route('simonik.unit.delete', ['id' => $unit->id, 'name' => $unit->name]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>

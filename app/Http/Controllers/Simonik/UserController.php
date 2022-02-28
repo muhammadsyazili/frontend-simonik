@@ -37,6 +37,8 @@ class UserController extends Controller
             return redirect()->back();
         }
 
+        $response = $response->object();
+
         return view('components.simonik.user.read', compact('response'));
     }
 
@@ -57,6 +59,8 @@ class UserController extends Controller
             Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
             return redirect()->back();
         }
+
+        $response = $response->object();
 
         return view('components.simonik.user.create', compact('response'));
     }
@@ -125,6 +129,8 @@ class UserController extends Controller
             Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
             return redirect()->back();
         }
+
+        $response = $response->object();
 
         return view('components.simonik.user.edit', compact('response'));
     }

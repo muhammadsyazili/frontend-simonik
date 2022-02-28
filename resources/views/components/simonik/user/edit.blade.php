@@ -70,9 +70,7 @@
                             <h3 class="card-title">Info</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -92,9 +90,7 @@
                             <h3 class="card-title">Alert</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -117,8 +113,7 @@
                     </div>
                     <!-- end : card-header -->
 
-                    <form action="{{ route('simonik.user.update', ['id' => $response->object()->data->user->id]) }}"
-                        method="post">
+                    <form action="{{ route('simonik.user.update', ['id' => $response->data->user->id]) }}" method="post">
                         @method('put')
                         @csrf
 
@@ -128,42 +123,37 @@
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
                                         <label class="small">Nama <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control form-control-sm" name="name"
-                                            value="{{ $response->object()->data->user->name }}" required>
+                                        <input type="text" class="form-control form-control-sm" name="name" value="{{ $response->data->user->name }}" required>
                                     </div>
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
                                         <label class="small">NIP <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control form-control-sm" name="nip"
-                                            value="{{ $response->object()->data->user->nip }}" required>
+                                        <input type="text" class="form-control form-control-sm" name="nip" value="{{ $response->data->user->nip }}" required>
                                     </div>
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
                                         <label class="small">Username <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control form-control-sm" name="username"
-                                            value="{{ $response->object()->data->user->username }}" required>
+                                        <input type="text" class="form-control form-control-sm" name="username" value="{{ $response->data->user->username }}" required>
                                     </div>
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
                                         <label class="small">Email <span class="text-danger">*</span></label>
-                                        <input type="email" class="form-control form-control-sm" name="email"
-                                            value="{{ $response->object()->data->user->email }}" required>
+                                        <input type="email" class="form-control form-control-sm" name="email" value="{{ $response->data->user->email }}" required>
                                     </div>
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small" for="dropdown-1">Unit Kerja <span
-                                                class="text-danger">*</span></label>
+                                        <label class="small" for="dropdown-1">Unit Kerja <span class="text-danger">*</span></label>
                                         <select class="form-control form-control-sm" id="dropdown-1" name="unit">
-                                            @foreach ($response->object()->data->units as $unit)
-                                                <option value="{{ $unit->slug }}" @if ($response->object()->data->user->unit_id === $unit->id) selected @endif>
+                                            @foreach ($response->data->units as $unit)
+                                                <option value="{{ $unit->slug }}" @if ($response->data->user->unit_id === $unit->id) selected @endif>
                                                     {{ $unit->name }}</option>
                                             @endforeach
                                         </select>
