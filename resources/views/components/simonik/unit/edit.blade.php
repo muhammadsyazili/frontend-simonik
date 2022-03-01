@@ -179,10 +179,9 @@
                                     <div class="form-group">
                                         <label class="small" for="dropdown-1">Level <span class="text-danger">*</span></label>
                                         <select class="form-control form-control-sm" id="dropdown-1" name="level">
-                                            @include('components.simonik.unit.edit._level-child', [
-                                            'levels' => $response->data->levels,
-                                            'level_id' => $response->data->unit->level_id,
-                                            ])
+                                            @foreach ($response->data->levels as $level)
+                                                <option value="{{ $level->slug }}" @if ($level->id === $response->data->unit->level_id) selected @endif>{{ $level->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
