@@ -440,9 +440,9 @@
                                                             <th class="text-center">KPI</th>
                                                             <th class="text-center">Formula</th>
                                                             <th class="text-center">Satuan</th>
-                                                            <th class="text-center">Bobot</th>
-                                                            <th class="text-center">Berlaku</th>
                                                             <th class="text-center">Polaritas</th>
+                                                            <th class="text-center">Berlaku</th>
+                                                            <th class="text-center">Bobot</th>
                                                             <th class="text-center"></th>
                                                         </tr>
                                                     </thead>
@@ -450,7 +450,7 @@
                                                         @foreach ($response->data->indicators as $indicator)
                                                             <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
                                                                 <td class="small">
-                                                                    {{ $indicator->indicator }}
+                                                                    <p>{{ $indicator->indicator }} <span class="badge badge-info">{{ $indicator->type }}</span></p>
                                                                 </td>
                                                                 <td class="small">
                                                                     <small>{{ $indicator->formula }}</small>
@@ -459,11 +459,9 @@
                                                                     {{ $indicator->measure }}
                                                                 </td>
                                                                 <td class="text-center small">
-                                                                    @forelse ($indicator->weight as $key => $value)
-                                                                        <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span>
-                                                                    @empty
-                                                                        <p>-</p>
-                                                                    @endforelse
+                                                                    <span class="badge badge-secondary">
+                                                                        {!! $indicator->polarity !!}
+                                                                    </span>
                                                                 </td>
                                                                 <td class="text-center small">
                                                                     @forelse ($indicator->validity as $key => $value)
@@ -473,9 +471,11 @@
                                                                     @endforelse
                                                                 </td>
                                                                 <td class="text-center small">
-                                                                    <span class="badge badge-secondary">
-                                                                        {!! $indicator->polarity !!}
-                                                                    </span>
+                                                                    @forelse ($indicator->weight as $key => $value)
+                                                                        <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span>
+                                                                    @empty
+                                                                        <p>-</p>
+                                                                    @endforelse
                                                                 </td>
                                                                 <td class="text-center small">
                                                                     <div class="btn-group">

@@ -208,8 +208,7 @@
                         if (res.data.length > 0) {
                             let html = '<option class="option-item" value="master">-- Master --</option>';
                             for (let i = 0; i < res.data.length; i++) {
-                                html +=
-                                    `<option class="option-item" value="${res.data[i].slug}">${res.data[i].name}</option>`;
+                                html += `<option class="option-item" value="${res.data[i].slug}">${res.data[i].name}</option>`;
                             }
                             $('select[name="unit"]').append(html);
                         }
@@ -237,8 +236,7 @@
                             <h3 class="card-title">Info</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i></button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -258,8 +256,7 @@
                             <h3 class="card-title">Alert</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i></button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -289,9 +286,7 @@
                             <div class="card-body">
                                 <div class="row mb-3">
                                     <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                                        <a href="{{ route('simonik.targets.paper-work.export', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}"
-                                            class="btn btn-info btn-block" data-toggle="tooltip" data-placement="bottom"
-                                            title="Download Template"><i class="fas fa-file-download"></i></a>
+                                        <a href="{{ route('simonik.targets.paper-work.export', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="bottom" title="Download Template"><i class="fas fa-file-download"></i></a>
                                     </div>
                                     <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10">
                                         <form action="#" method="post">
@@ -302,10 +297,7 @@
                                                         <label class="custom-file-label" for="template">Choose file</label>
                                                     </div>
                                                     <div class="input-group-append">
-                                                        <button type="submit" class="btn btn-info btn-block"
-                                                            data-toggle="tooltip" data-placement="buttom"
-                                                            title="Upload Template"><i
-                                                                class="fas fa-file-upload"></i></button>
+                                                        <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="buttom" title="Upload Template"><i class="fas fa-file-upload"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -361,9 +353,7 @@
                                         <input type="text" class="form-control" name="tahun" />
 
                                         <span class="input-group-append">
-                                            <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip"
-                                                data-placement="buttom" title="Search"><i
-                                                    class="fas fa-search"></i></button>
+                                            <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip" data-placement="buttom" title="Search"><i class="fas fa-search"></i></button>
                                         </span>
                                     </div>
                                 </form>
@@ -376,8 +366,7 @@
                                     @if (empty($response->data->indicators))
                                         <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                     @else
-                                        <input class="form-control form-control-sm mb-3" id="myInput" type="text"
-                                            style="width: 25vw;" placeholder="Cari KPI..">
+                                        <input class="form-control form-control-sm mb-3" id="myInput" type="text" style="width: 25vw;" placeholder="Cari KPI..">
 
                                         <form action="{{ route('simonik.targets.paper-work.update') }}" method="post">
                                             @csrf
@@ -389,9 +378,9 @@
                                                             <th class="text-center" rowspan="2">KPI</th>
                                                             <th class="text-center" rowspan="2">Formula</th>
                                                             <th class="text-center" rowspan="2">Satuan</th>
-                                                            <th class="text-center" rowspan="2">Bobot</th>
-                                                            <th class="text-center" rowspan="2">Berlaku</th>
                                                             <th class="text-center" rowspan="2">Polaritas</th>
+                                                            <th class="text-center" rowspan="2">Berlaku</th>
+                                                            <th class="text-center" rowspan="2">Bobot</th>
                                                             <th class="text-center" colspan="12">Target</th>
                                                         </tr>
                                                         <tr class="second">
@@ -411,10 +400,9 @@
                                                     </thead>
                                                     <tbody class="text-nowrap" id="myTable">
                                                         @foreach ($response->data->indicators as $indicator)
-                                                            <tr
-                                                                style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if ($indicator->bg_color->r < 127.5 && $indicator->bg_color->g < 127.5 && $indicator->bg_color->b < 127.5) color: white; @endif">
+                                                            <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if ($indicator->bg_color->r < 127.5 && $indicator->bg_color->g < 127.5 && $indicator->bg_color->b < 127.5) color: white; @endif">
                                                                 <td class="small">
-                                                                    {{ $indicator->indicator }}
+                                                                    <p>{{ $indicator->indicator }} <span class="badge badge-info">{{ $indicator->type }}</span></p>
                                                                 </td>
                                                                 <td class="small">
                                                                     <small>{{ $indicator->formula }}</small>
@@ -423,182 +411,106 @@
                                                                     {{ $indicator->measure }}
                                                                 </td>
                                                                 <td class="text-center small">
-                                                                    @forelse ($indicator->weight as $key => $value)
-                                                                        <span
-                                                                            class="badge badge-secondary">{{ $key }}
-                                                                            : {{ $value }}</span>
-                                                                    @empty
-                                                                        <p>-</p>
-                                                                    @endforelse
-                                                                </td>
-                                                                <td class="text-center small">
-                                                                    @forelse ($indicator->validity as $key => $value)
-                                                                        <span
-                                                                            class="badge badge-secondary">{{ $key }}</span>
-                                                                    @empty
-                                                                        <p>-</p>
-                                                                    @endforelse
-                                                                </td>
-                                                                <td class="text-center small">
                                                                     <span class="badge badge-secondary">
                                                                         {!! $indicator->polarity !!}
                                                                     </span>
                                                                 </td>
-
+                                                                <td class="text-center small">
+                                                                    @forelse ($indicator->validity as $key => $value)
+                                                                        <span class="badge badge-secondary">{{ $key }}</span>
+                                                                    @empty
+                                                                        <p>-</p>
+                                                                    @endforelse
+                                                                </td>
+                                                                <td class="text-center small">
+                                                                    @forelse ($indicator->weight as $key => $value)
+                                                                        <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span>
+                                                                    @empty
+                                                                        <p>-</p>
+                                                                    @endforelse
+                                                                </td>
                                                                 {{-- ------------------------------------------------------------------------------ --}}
                                                                 <td class="text-center small">
                                                                     @if (!is_null($indicator->targets->jan->value))
-                                                                        <input type="number" step="any" min="0"
-                                                                            class="form-control form-control-sm"
-                                                                            name="targets[{{ $indicator->id }}][jan]"
-                                                                            value="{{ $indicator->targets->jan->value }}"
-                                                                            style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update:
-                                                                                {{ $indicator->targets->jan->updated_at }}</small>
-                                                                        </p>
+                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][jan]" value="{{ $indicator->targets->jan->value }}" style="width: 200px;">
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->jan->updated_at }}</small></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center small">
                                                                     @if (!is_null($indicator->targets->feb->value))
-                                                                        <input type="number" step="any" min="0"
-                                                                            class="form-control form-control-sm"
-                                                                            name="targets[{{ $indicator->id }}][feb]"
-                                                                            value="{{ $indicator->targets->feb->value }}"
-                                                                            style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update:
-                                                                                {{ $indicator->targets->feb->updated_at }}</small>
-                                                                        </p>
+                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][feb]" value="{{ $indicator->targets->feb->value }}" style="width: 200px;">
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->feb->updated_at }}</small></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center small">
                                                                     @if (!is_null($indicator->targets->mar->value))
-                                                                        <input type="number" step="any" min="0"
-                                                                            class="form-control form-control-sm"
-                                                                            name="targets[{{ $indicator->id }}][mar]"
-                                                                            value="{{ $indicator->targets->mar->value }}"
-                                                                            style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update:
-                                                                                {{ $indicator->targets->mar->updated_at }}</small>
-                                                                        </p>
+                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][mar]" value="{{ $indicator->targets->mar->value }}" style="width: 200px;">
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->mar->updated_at }}</small></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center small">
                                                                     @if (!is_null($indicator->targets->apr->value))
-                                                                        <input type="number" step="any" min="0"
-                                                                            class="form-control form-control-sm"
-                                                                            name="targets[{{ $indicator->id }}][apr]"
-                                                                            value="{{ $indicator->targets->apr->value }}"
-                                                                            style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update:
-                                                                                {{ $indicator->targets->apr->updated_at }}</small>
-                                                                        </p>
+                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][apr]" value="{{ $indicator->targets->apr->value }}" style="width: 200px;">
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->apr->updated_at }}</small></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center small">
                                                                     @if (!is_null($indicator->targets->may->value))
-                                                                        <input type="number" step="any" min="0"
-                                                                            class="form-control form-control-sm"
-                                                                            name="targets[{{ $indicator->id }}][may]"
-                                                                            value="{{ $indicator->targets->may->value }}"
-                                                                            style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update:
-                                                                                {{ $indicator->targets->may->updated_at }}</small>
-                                                                        </p>
+                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][may]" value="{{ $indicator->targets->may->value }}" style="width: 200px;">
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->may->updated_at }}</small></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center small">
                                                                     @if (!is_null($indicator->targets->jun->value))
-                                                                        <input type="number" step="any" min="0"
-                                                                            class="form-control form-control-sm"
-                                                                            name="targets[{{ $indicator->id }}][jun]"
-                                                                            value="{{ $indicator->targets->jun->value }}"
-                                                                            style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update:
-                                                                                {{ $indicator->targets->jun->updated_at }}</small>
-                                                                        </p>
+                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][jun]" value="{{ $indicator->targets->jun->value }}" style="width: 200px;">
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->jun->updated_at }}</small></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center small">
                                                                     @if (!is_null($indicator->targets->jul->value))
-                                                                        <input type="number" step="any" min="0"
-                                                                            class="form-control form-control-sm"
-                                                                            name="targets[{{ $indicator->id }}][jul]"
-                                                                            value="{{ $indicator->targets->jul->value }}"
-                                                                            style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update:
-                                                                                {{ $indicator->targets->jul->updated_at }}</small>
-                                                                        </p>
+                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][jul]" value="{{ $indicator->targets->jul->value }}" style="width: 200px;">
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->jul->updated_at }}</small></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center small">
                                                                     @if (!is_null($indicator->targets->aug->value))
-                                                                        <input type="number" step="any" min="0"
-                                                                            class="form-control form-control-sm"
-                                                                            name="targets[{{ $indicator->id }}][aug]"
-                                                                            value="{{ $indicator->targets->aug->value }}"
-                                                                            style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update:
-                                                                                {{ $indicator->targets->aug->updated_at }}</small>
-                                                                        </p>
+                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][aug]" value="{{ $indicator->targets->aug->value }}" style="width: 200px;">
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->aug->updated_at }}</small></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center small">
                                                                     @if (!is_null($indicator->targets->sep->value))
-                                                                        <input type="number" step="any" min="0"
-                                                                            class="form-control form-control-sm"
-                                                                            name="targets[{{ $indicator->id }}][sep]"
-                                                                            value="{{ $indicator->targets->sep->value }}"
-                                                                            style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update:
-                                                                                {{ $indicator->targets->sep->updated_at }}</small>
-                                                                        </p>
+                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][sep]" value="{{ $indicator->targets->sep->value }}" style="width: 200px;">
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->sep->updated_at }}</small></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center small">
                                                                     @if (!is_null($indicator->targets->oct->value))
-                                                                        <input type="number" step="any" min="0"
-                                                                            class="form-control form-control-sm"
-                                                                            name="targets[{{ $indicator->id }}][oct]"
-                                                                            value="{{ $indicator->targets->oct->value }}"
-                                                                            style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update:
-                                                                                {{ $indicator->targets->oct->updated_at }}</small>
-                                                                        </p>
+                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][oct]" value="{{ $indicator->targets->oct->value }}" style="width: 200px;">
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->oct->updated_at }}</small></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center small">
                                                                     @if (!is_null($indicator->targets->nov->value))
-                                                                        <input type="number" step="any" min="0"
-                                                                            class="form-control form-control-sm"
-                                                                            name="targets[{{ $indicator->id }}][nov]"
-                                                                            value="{{ $indicator->targets->nov->value }}"
-                                                                            style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update:
-                                                                                {{ $indicator->targets->nov->updated_at }}</small>
-                                                                        </p>
+                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][nov]" value="{{ $indicator->targets->nov->value }}" style="width: 200px;">
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->nov->updated_at }}</small></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center small">
                                                                     @if (!is_null($indicator->targets->dec->value))
-                                                                        <input type="number" step="any" min="0"
-                                                                            class="form-control form-control-sm"
-                                                                            name="targets[{{ $indicator->id }}][dec]"
-                                                                            value="{{ $indicator->targets->dec->value }}"
-                                                                            style="width: 200px;">
-                                                                        <p class="text-info"><small>Last update:
-                                                                                {{ $indicator->targets->dec->updated_at }}</small>
-                                                                        </p>
+                                                                        <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][dec]" value="{{ $indicator->targets->dec->value }}" style="width: 200px;">
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->targets->dec->updated_at }}</small></p>
                                                                     @endif
                                                                 </td>
                                                                 {{-- ------------------------------------------------------------------------------ --}}
@@ -611,8 +523,7 @@
                                             <input type="hidden" name="level" value="{{ request()->query('level') }}">
                                             <input type="hidden" name="unit" value="{{ request()->query('unit') }}">
                                             <input type="hidden" name="tahun" value="{{ request()->query('tahun') }}">
-                                            <button type="submit"
-                                                class="btn btn-info btn-sm float-right mt-3">Save</button>
+                                            <button type="submit" class="btn btn-info btn-sm float-right mt-3">Save</button>
                                         </form>
                                     @endif
                                 @endif

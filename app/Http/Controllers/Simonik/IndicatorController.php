@@ -29,6 +29,7 @@ class IndicatorController extends Controller
     {
         $attributes = [
             'indicator' => ['required', 'string', 'max:100'],
+            'type' => ['required'],
             'dummy' => ['required', 'boolean'],
             'reducing_factor' => ['required_if:dummy,0', 'boolean'],
             'polarity' => ['required_if:dummy,0', 'in:aman,1,-1'],
@@ -68,6 +69,7 @@ class IndicatorController extends Controller
 
         $data = [
             'indicator' => $request->post('indicator'),
+            'type' => $request->post('type'),
             'dummy' => $request->post('dummy'),
             'reducing_factor' => $request->post('reducing_factor'),
             'polarity' => $request->post('polarity'),
@@ -127,6 +129,7 @@ class IndicatorController extends Controller
     {
         $attributes = [
             'indicator' => ['required', 'string', 'max:100'],
+            'type' => ['required'],
             'dummy' => ['required', 'boolean'],
             'reducing_factor' => ['required_if:dummy,0', 'boolean'],
             'polarity' => ['required_if:dummy,0', 'in:aman,1,-1'],
@@ -166,6 +169,7 @@ class IndicatorController extends Controller
 
         $data = [
             'indicator' => $request->post('indicator'),
+            'type' => $request->post('type'),
             'dummy' => $request->post('dummy'),
             'reducing_factor' => $request->post('reducing_factor'),
             'polarity' => $request->post('polarity'),
