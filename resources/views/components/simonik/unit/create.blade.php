@@ -77,7 +77,7 @@
         function getUnits(level) {
             if (level.length > 0) {
                 let host = $('meta[name="host"]').attr('content');
-                
+
                 $.ajax({
                     type: 'GET',
                     url: `${host}/level/${level}/parents`,
