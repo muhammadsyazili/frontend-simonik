@@ -194,12 +194,14 @@
                                                     <td class="text-center small">{{ $level->slug }}</td>
                                                     <td class="text-center small">{{ $level->parent_name }}</td>
                                                     <td class="text-center small">
-                                                        @if ($level->modificable)
-                                                            <div class="btn-group">
+                                                        <div class="btn-group">
+                                                            @if ($level->edit_modificable)
                                                                 <a href="{{ route('simonik.level.edit', ['id' => $level->id]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></a>
+                                                            @endif
+                                                            @if ($level->delete_modificable)
                                                                 <a href="{{ route('simonik.level.delete', ['id' => $level->id, 'name' => $level->name]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></a>
-                                                            </div>
-                                                        @endif
+                                                            @endif
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             @empty
