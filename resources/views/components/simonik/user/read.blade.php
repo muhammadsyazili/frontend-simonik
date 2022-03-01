@@ -198,13 +198,15 @@
                                                     <td class="text-center small">{{ is_null($user->nip) ? '-' : $user->nip }}</td>
                                                     <td class="text-center small">{{ $user->username }}</td>
                                                     <td class="text-center small">{{ $user->email }}</td>
-                                                    <td class="text-center small {{ $user->actived ? 'bg-success' : 'bg-secondary' }}">{{ $user->actived ? 'active' : 'default' }}</td>
-                                                    <td class="text-center small">{{ is_null($user->unit) ? '-' : $user->unit->name }}</td>
-                                                    <td class="text-center small">{{ $user->role->name }}</td>
+                                                    <td class="text-center small {{ $user->bg_color_actived }}">{{ $user->actived }}</td>
+                                                    <td class="text-center small">{{ $user->unit_name }}</td>
+                                                    <td class="text-center small">{{ $user->role_name }}</td>
                                                     <td class="text-center small">
                                                         <div class="btn-group mb-1">
-                                                            @if (!in_array($user->role->name, ['super-admin', 'admin', 'data-entry']))
+                                                            @if ($user->edit_modificable)
                                                                 <a href="{{ route('simonik.user.edit', ['id' => $user->id]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></a>
+                                                            @endif
+                                                            @if ($user->delete_modificable)
                                                                 <a href="{{ route('simonik.user.delete', ['id' => $user->id, 'username' => $user->username]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></a>
                                                             @endif
                                                             <a href="{{ route('simonik.user.password.reset.form', ['id' => $user->id, 'username' => $user->username]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Reset Password"><i class="fa fa-key" aria-hidden="true"></i></i></a>
