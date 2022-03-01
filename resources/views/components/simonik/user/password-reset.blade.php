@@ -70,8 +70,7 @@
                             <h3 class="card-title">Info</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
                                 </button>
                             </div>
                             <!-- /.card-tools -->
@@ -92,9 +91,7 @@
                             <h3 class="card-title">Alert</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -122,9 +119,7 @@
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <h1 class="text-center text-danger"><i class="fas fa-exclamation-triangle"></i></h1>
-                                <h5 class="text-center">Anda yakin ingin <strong>Reset Password <i
-                                            class="fa fa-arrow-right" aria-hidden="true"></i> User:
-                                        <span>@</span>{{ $username }}</strong>?</h5>
+                                <h5 class="text-center">Anda yakin ingin <strong>Reset Password <i class="fa fa-arrow-right" aria-hidden="true"></i> USER: <span>@</span>{{ $username }}</strong>?</h5>
                             </div>
                         </div>
                     </div>
@@ -134,15 +129,13 @@
                     <div class="card-footer clearfix">
                         <div class="row">
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <a href="{{ route('simonik.user.index') }}" class="btn btn-block btn-info btn-sm mb-3"
-                                    data-toggle="tooltip" data-placement="bottom" title="No">No</a>
+                                <a href="{{ route('simonik.user.index') }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="No">No</a>
                             </div>
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                 <form action="{{ route('simonik.user.password.reset', ['id' => $id]) }}" method="post">
                                     @csrf
                                     @method('put')
-                                    <button type="submit" class="btn btn-block btn-danger btn-sm mb-3" data-toggle="tooltip"
-                                        data-placement="bottom" title="Yes">Yes</button>
+                                    <button type="submit" class="btn btn-block btn-danger btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Yes">Yes</button>
                                 </form>
                             </div>
                         </div>

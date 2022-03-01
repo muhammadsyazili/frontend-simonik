@@ -70,9 +70,7 @@
                             <h3 class="card-title">Info</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -92,9 +90,7 @@
                             <h3 class="card-title">Alert</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -127,17 +123,14 @@
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
                                         <label class="small">Password <span class="text-danger">*</span></label>
-                                        <input type="password" class="form-control form-control-sm" name="password"
-                                            required>
+                                        <input type="password" class="form-control form-control-sm" name="password" required>
                                     </div>
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small">Konfirmasi Password <span
-                                                class="text-danger">*</span></label>
-                                        <input type="password" class="form-control form-control-sm"
-                                            name="password_confirmation" required>
+                                        <label class="small">Konfirmasi Password <span class="text-danger">*</span></label>
+                                        <input type="password" class="form-control form-control-sm" name="password_confirmation" required>
                                     </div>
                                 </div>
                             </div>
