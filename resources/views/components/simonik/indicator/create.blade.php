@@ -58,24 +58,36 @@
     {{-- Form Control By Condition --}}
     <script>
         $(document).ready(function() {
-            form();
-        });
-        $('input[name="dummy"]').change(function() {
-            form();
+            dummy();
+            reducing_factor();
         });
 
-        function form() {
+        $('input[name="dummy"]').change(function() {
+            dummy();
+        });
+
+        $('input[name="reducing_factor"]').change(function() {
+            reducing_factor();
+        });
+
+        function dummy() {
             if ($('input[name="dummy"]:checked').val() == 0) {
                 $('input[name="reducing_factor"]').attr("disabled", false);
                 $('input[name="polarity"]').attr("disabled", false);
+                $('#check-handler').attr("disabled", false);
                 $('.validity-group').attr("disabled", false);
                 $('.weight-group').prop('disabled', false);
             } else {
                 $('input[name="reducing_factor"]').attr("disabled", true);
                 $('input[name="polarity"]').attr("disabled", true);
+                $('#check-handler').attr("disabled", true);
                 $('.validity-group').attr("disabled", true);
                 $('.weight-group').prop('disabled', true);
             }
+        }
+
+        function reducing_factor() {
+            $('input[name="reducing_factor"]:checked').val() == 0 ? $('input[name="polarity"]').attr("disabled", false) : $('input[name="polarity"]').attr("disabled", true);
         }
     </script>
     {{-- End : Form Control By Condition --}}
