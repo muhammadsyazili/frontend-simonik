@@ -401,9 +401,9 @@
                                                             <th class="text-center" rowspan="2">KPI</th>
                                                             <th class="text-center" rowspan="2">Formula</th>
                                                             <th class="text-center" rowspan="2">Satuan</th>
-                                                            <th class="text-center" rowspan="2">Bobot</th>
-                                                            <th class="text-center" rowspan="2">Berlaku</th>
                                                             <th class="text-center" rowspan="2">Polaritas</th>
+                                                            <th class="text-center" rowspan="2">Berlaku</th>
+                                                            <th class="text-center" rowspan="2">Bobot</th>
                                                             <th class="text-center" colspan="12">Target (T) & Realisasi
                                                                 (R)
                                                             </th>
@@ -436,11 +436,9 @@
                                                                     {{ $indicator->measure }}
                                                                 </td>
                                                                 <td class="text-center small">
-                                                                    @forelse ($indicator->weight as $key => $value)
-                                                                        <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span>
-                                                                    @empty
-                                                                        <p>-</p>
-                                                                    @endforelse
+                                                                    <span class="badge badge-secondary">
+                                                                        {!! $indicator->polarity !!}
+                                                                    </span>
                                                                 </td>
                                                                 <td class="text-center small">
                                                                     @forelse ($indicator->validity as $key => $value)
@@ -450,11 +448,12 @@
                                                                     @endforelse
                                                                 </td>
                                                                 <td class="text-center small">
-                                                                    <span class="badge badge-secondary">
-                                                                        {!! $indicator->polarity !!}
-                                                                    </span>
+                                                                    @forelse ($indicator->weight as $key => $value)
+                                                                        <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span>
+                                                                    @empty
+                                                                        <p>-</p>
+                                                                    @endforelse
                                                                 </td>
-
                                                                 {{-- ------------------------------------------------------------------------------ --}}
                                                                 <td class="text-center small">
                                                                     @if (!is_null($indicator->realizations->jan->value))
