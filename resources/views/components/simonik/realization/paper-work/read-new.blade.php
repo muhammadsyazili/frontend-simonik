@@ -517,10 +517,7 @@
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
-                                                                                <input type="number" step="any" min="0"
-                                                                                    class="form-control"
-                                                                                    value="{{ $indicator->targets->mar->value }}"
-                                                                                    style="width: 200px;" readonly>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->mar->value }}" style="width: 200px;" readonly>
                                                                             </div>
                                                                         @endif
 
@@ -528,25 +525,16 @@
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
-                                                                            <input type="number" step="any" min="0"
-                                                                                class="form-control"
-                                                                                name="realizations[{{ $indicator->id }}][mar]"
-                                                                                value="{{ $indicator->realizations->mar->value }}"
-                                                                                style="width: 200px;"
-                                                                                @if ($indicator->realizations->mar->readonly) readonly @endif>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][mar]" value="{{ $indicator->realizations->mar->value }}" style="width: 200px;" @if ($indicator->realizations->mar->readonly) readonly @endif>
                                                                             @if ($indicator->change_lock)
                                                                                 <div class="input-group-append">
-                                                                                    <button
-                                                                                        class="btn @if ($indicator->realizations->mar->locked){{ 'btn-success' }}@else{{ 'btn-danger' }}@endif lock-action" type="button" data-id="{{ $indicator->id }}" data-month="mar" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->mar->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->mar->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                    <button class="btn @if ($indicator->realizations->mar->locked){{ 'btn-success' }}@else{{ 'btn-danger' }}@endif lock-action" type="button" data-id="{{ $indicator->id }}" data-month="mar" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->mar->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->mar->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
                                                                                 </div>
-@endif
+                                                                            @endif
                                                                         </div>
 
-                                                                        <p class="
-                                                                                        text-info"><small>Last update:
-                                                                                            {{ $indicator->realizations->mar->updated_at }}</small>
-                                                                                        </p>
-                                                                            @endif
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->mar->updated_at }}</small></p>
+                                                                    @endif
                                                                 </td>
 
                                                                 <td class="text-center small">
@@ -556,10 +544,7 @@
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
-                                                                                <input type="number" step="any" min="0"
-                                                                                    class="form-control"
-                                                                                    value="{{ $indicator->targets->apr->value }}"
-                                                                                    style="width: 200px;" readonly>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->apr->value }}" style="width: 200px;" readonly>
                                                                             </div>
                                                                         @endif
 
@@ -567,25 +552,16 @@
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
-                                                                            <input type="number" step="any" min="0"
-                                                                                class="form-control"
-                                                                                name="realizations[{{ $indicator->id }}][apr]"
-                                                                                value="{{ $indicator->realizations->apr->value }}"
-                                                                                style="width: 200px;"
-                                                                                @if ($indicator->realizations->apr->readonly) readonly @endif>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][apr]" value="{{ $indicator->realizations->apr->value }}" style="width: 200px;" @if ($indicator->realizations->apr->readonly) readonly @endif>
                                                                             @if ($indicator->change_lock)
                                                                                 <div class="input-group-append">
-                                                                                    <button
-                                                                                        class="btn @if ($indicator->realizations->apr->locked){{ 'btn-success' }}@else{{ 'btn-danger' }}@endif lock-action" type="button" data-id="{{ $indicator->id }}" data-month="apr" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->apr->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->apr->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                    <button class="btn @if ($indicator->realizations->apr->locked){{ 'btn-success' }}@else{{ 'btn-danger' }}@endif lock-action" type="button" data-id="{{ $indicator->id }}" data-month="apr" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->apr->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->apr->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
                                                                                 </div>
-@endif
+                                                                            @endif
                                                                         </div>
 
-                                                                        <p class="
-                                                                                        text-info"><small>Last update:
-                                                                                            {{ $indicator->realizations->apr->updated_at }}</small>
-                                                                                        </p>
-                                                                            @endif
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->apr->updated_at }}</small></p>
+                                                                    @endif
                                                                 </td>
 
                                                                 <td class="text-center small">
@@ -595,10 +571,7 @@
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
-                                                                                <input type="number" step="any" min="0"
-                                                                                    class="form-control"
-                                                                                    value="{{ $indicator->targets->may->value }}"
-                                                                                    style="width: 200px;" readonly>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->may->value }}" style="width: 200px;" readonly>
                                                                             </div>
                                                                         @endif
 
@@ -606,25 +579,16 @@
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
-                                                                            <input type="number" step="any" min="0"
-                                                                                class="form-control"
-                                                                                name="realizations[{{ $indicator->id }}][may]"
-                                                                                value="{{ $indicator->realizations->may->value }}"
-                                                                                style="width: 200px;"
-                                                                                @if ($indicator->realizations->may->readonly) readonly @endif>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][may]" value="{{ $indicator->realizations->may->value }}" style="width: 200px;" @if ($indicator->realizations->may->readonly) readonly @endif>
                                                                             @if ($indicator->change_lock)
                                                                                 <div class="input-group-append">
-                                                                                    <button
-                                                                                        class="btn @if ($indicator->realizations->may->locked){{ 'btn-success' }}@else{{ 'btn-danger' }}@endif lock-action" type="button" data-id="{{ $indicator->id }}" data-month="may" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->may->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->may->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                    <button class="btn @if ($indicator->realizations->may->locked){{ 'btn-success' }}@else{{ 'btn-danger' }}@endif lock-action" type="button" data-id="{{ $indicator->id }}" data-month="may" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->may->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->may->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
                                                                                 </div>
-@endif
+                                                                            @endif
                                                                         </div>
 
-                                                                        <p class="
-                                                                                        text-info"><small>Last update:
-                                                                                            {{ $indicator->realizations->may->updated_at }}</small>
-                                                                                        </p>
-                                                                            @endif
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->may->updated_at }}</small></p>
+                                                                    @endif
                                                                 </td>
 
                                                                 <td class="text-center small">
@@ -634,10 +598,7 @@
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
-                                                                                <input type="number" step="any" min="0"
-                                                                                    class="form-control"
-                                                                                    value="{{ $indicator->targets->jun->value }}"
-                                                                                    style="width: 200px;" readonly>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->jun->value }}" style="width: 200px;" readonly>
                                                                             </div>
                                                                         @endif
 
@@ -645,25 +606,16 @@
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
-                                                                            <input type="number" step="any" min="0"
-                                                                                class="form-control"
-                                                                                name="realizations[{{ $indicator->id }}][jun]"
-                                                                                value="{{ $indicator->realizations->jun->value }}"
-                                                                                style="width: 200px;"
-                                                                                @if ($indicator->realizations->jun->readonly) readonly @endif>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][jun]" value="{{ $indicator->realizations->jun->value }}" style="width: 200px;" @if ($indicator->realizations->jun->readonly) readonly @endif>
                                                                             @if ($indicator->change_lock)
                                                                                 <div class="input-group-append">
-                                                                                    <button
-                                                                                        class="btn @if ($indicator->realizations->jun->locked){{ 'btn-success' }}@else{{ 'btn-danger' }}@endif lock-action" type="button" data-id="{{ $indicator->id }}" data-month="jun" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->jun->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->jun->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                    <button class="btn @if ($indicator->realizations->jun->locked){{ 'btn-success' }}@else{{ 'btn-danger' }}@endif lock-action" type="button" data-id="{{ $indicator->id }}" data-month="jun" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->jun->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->jun->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
                                                                                 </div>
-@endif
+                                                                            @endif
                                                                         </div>
 
-                                                                        <p class="
-                                                                                        text-info"><small>Last update:
-                                                                                            {{ $indicator->realizations->jun->updated_at }}</small>
-                                                                                        </p>
-                                                                            @endif
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->jun->updated_at }}</small></p>
+                                                                    @endif
                                                                 </td>
 
                                                                 <td class="text-center small">
@@ -673,10 +625,7 @@
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
-                                                                                <input type="number" step="any" min="0"
-                                                                                    class="form-control"
-                                                                                    value="{{ $indicator->targets->jul->value }}"
-                                                                                    style="width: 200px;" readonly>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->jul->value }}" style="width: 200px;" readonly>
                                                                             </div>
                                                                         @endif
 
@@ -684,25 +633,16 @@
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
-                                                                            <input type="number" step="any" min="0"
-                                                                                class="form-control"
-                                                                                name="realizations[{{ $indicator->id }}][jul]"
-                                                                                value="{{ $indicator->realizations->jul->value }}"
-                                                                                style="width: 200px;"
-                                                                                @if ($indicator->realizations->jul->readonly) readonly @endif>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][jul]" value="{{ $indicator->realizations->jul->value }}" style="width: 200px;" @if ($indicator->realizations->jul->readonly) readonly @endif>
                                                                             @if ($indicator->change_lock)
                                                                                 <div class="input-group-append">
-                                                                                    <button
-                                                                                        class="btn @if ($indicator->realizations->jul->locked){{ 'btn-success' }}@else{{ 'btn-danger' }}@endif lock-action" type="button" data-id="{{ $indicator->id }}" data-month="jul" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->jul->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->jul->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                    <button class="btn @if ($indicator->realizations->jul->locked){{ 'btn-success' }}@else{{ 'btn-danger' }}@endif lock-action" type="button" data-id="{{ $indicator->id }}" data-month="jul" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->jul->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->jul->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
                                                                                 </div>
-@endif
+                                                                            @endif
                                                                         </div>
 
-                                                                        <p class="
-                                                                                        text-info"><small>Last update:
-                                                                                            {{ $indicator->realizations->jul->updated_at }}</small>
-                                                                                        </p>
-                                                                            @endif
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->jul->updated_at }}</small></p>
+                                                                    @endif
                                                                 </td>
 
                                                                 <td class="text-center small">
@@ -712,10 +652,7 @@
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
-                                                                                <input type="number" step="any" min="0"
-                                                                                    class="form-control"
-                                                                                    value="{{ $indicator->targets->aug->value }}"
-                                                                                    style="width: 200px;" readonly>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->aug->value }}" style="width: 200px;" readonly>
                                                                             </div>
                                                                         @endif
 
@@ -723,25 +660,16 @@
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
-                                                                            <input type="number" step="any" min="0"
-                                                                                class="form-control"
-                                                                                name="realizations[{{ $indicator->id }}][aug]"
-                                                                                value="{{ $indicator->realizations->aug->value }}"
-                                                                                style="width: 200px;"
-                                                                                @if ($indicator->realizations->aug->readonly) readonly @endif>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][aug]" value="{{ $indicator->realizations->aug->value }}" style="width: 200px;" @if ($indicator->realizations->aug->readonly) readonly @endif>
                                                                             @if ($indicator->change_lock)
                                                                                 <div class="input-group-append">
-                                                                                    <button
-                                                                                        class="btn @if ($indicator->realizations->aug->locked){{ 'btn-success' }}@else{{ 'btn-danger' }}@endif lock-action" type="button" data-id="{{ $indicator->id }}" data-month="aug" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->aug->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->aug->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                    <button class="btn @if ($indicator->realizations->aug->locked){{ 'btn-success' }}@else{{ 'btn-danger' }}@endif lock-action" type="button" data-id="{{ $indicator->id }}" data-month="aug" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->aug->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->aug->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
                                                                                 </div>
-@endif
+                                                                            @endif
                                                                         </div>
 
-                                                                        <p class="
-                                                                                        text-info"><small>Last update:
-                                                                                            {{ $indicator->realizations->aug->updated_at }}</small>
-                                                                                        </p>
-                                                                            @endif
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->aug->updated_at }}</small></p>
+                                                                    @endif
                                                                 </td>
 
                                                                 <td class="text-center small">
@@ -751,10 +679,7 @@
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
-                                                                                <input type="number" step="any" min="0"
-                                                                                    class="form-control"
-                                                                                    value="{{ $indicator->targets->sep->value }}"
-                                                                                    style="width: 200px;" readonly>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->sep->value }}" style="width: 200px;" readonly>
                                                                             </div>
                                                                         @endif
 
@@ -762,25 +687,16 @@
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
-                                                                            <input type="number" step="any" min="0"
-                                                                                class="form-control"
-                                                                                name="realizations[{{ $indicator->id }}][sep]"
-                                                                                value="{{ $indicator->realizations->sep->value }}"
-                                                                                style="width: 200px;"
-                                                                                @if ($indicator->realizations->sep->readonly) readonly @endif>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][sep]" value="{{ $indicator->realizations->sep->value }}" style="width: 200px;" @if ($indicator->realizations->sep->readonly) readonly @endif>
                                                                             @if ($indicator->change_lock)
                                                                                 <div class="input-group-append">
-                                                                                    <button
-                                                                                        class="btn @if ($indicator->realizations->sep->locked){{ 'btn-success' }}@else{{ 'btn-danger' }}@endif lock-action" type="button" data-id="{{ $indicator->id }}" data-month="sep" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->sep->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->sep->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                    <button class="btn @if ($indicator->realizations->sep->locked){{ 'btn-success' }}@else{{ 'btn-danger' }}@endif lock-action" type="button" data-id="{{ $indicator->id }}" data-month="sep" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->sep->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->sep->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
                                                                                 </div>
-@endif
+                                                                            @endif
                                                                         </div>
 
-                                                                        <p class="
-                                                                                        text-info"><small>Last update:
-                                                                                            {{ $indicator->realizations->sep->updated_at }}</small>
-                                                                                        </p>
-                                                                            @endif
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->sep->updated_at }}</small></p>
+                                                                    @endif
                                                                 </td>
 
                                                                 <td class="text-center small">
@@ -790,10 +706,7 @@
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
-                                                                                <input type="number" step="any" min="0"
-                                                                                    class="form-control"
-                                                                                    value="{{ $indicator->targets->oct->value }}"
-                                                                                    style="width: 200px;" readonly>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->oct->value }}" style="width: 200px;" readonly>
                                                                             </div>
                                                                         @endif
 
@@ -801,25 +714,16 @@
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
-                                                                            <input type="number" step="any" min="0"
-                                                                                class="form-control"
-                                                                                name="realizations[{{ $indicator->id }}][oct]"
-                                                                                value="{{ $indicator->realizations->oct->value }}"
-                                                                                style="width: 200px;"
-                                                                                @if ($indicator->realizations->oct->readonly) readonly @endif>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][oct]" value="{{ $indicator->realizations->oct->value }}" style="width: 200px;" @if ($indicator->realizations->oct->readonly) readonly @endif>
                                                                             @if ($indicator->change_lock)
                                                                                 <div class="input-group-append">
-                                                                                    <button
-                                                                                        class="btn @if ($indicator->realizations->oct->locked){{ 'btn-success' }}@else{{ 'btn-danger' }}@endif lock-action" type="button" data-id="{{ $indicator->id }}" data-month="oct" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->oct->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->oct->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                    <button class="btn @if ($indicator->realizations->oct->locked){{ 'btn-success' }}@else{{ 'btn-danger' }}@endif lock-action" type="button" data-id="{{ $indicator->id }}" data-month="oct" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->oct->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->oct->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
                                                                                 </div>
-@endif
+                                                                            @endif
                                                                         </div>
 
-                                                                        <p class="
-                                                                                        text-info"><small>Last update:
-                                                                                            {{ $indicator->realizations->oct->updated_at }}</small>
-                                                                                        </p>
-                                                                            @endif
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->oct->updated_at }}</small></p>
+                                                                    @endif
                                                                 </td>
 
                                                                 <td class="text-center small">
@@ -829,10 +733,7 @@
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
-                                                                                <input type="number" step="any" min="0"
-                                                                                    class="form-control"
-                                                                                    value="{{ $indicator->targets->nov->value }}"
-                                                                                    style="width: 200px;" readonly>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->nov->value }}" style="width: 200px;" readonly>
                                                                             </div>
                                                                         @endif
 
@@ -840,25 +741,16 @@
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
-                                                                            <input type="number" step="any" min="0"
-                                                                                class="form-control"
-                                                                                name="realizations[{{ $indicator->id }}][nov]"
-                                                                                value="{{ $indicator->realizations->nov->value }}"
-                                                                                style="width: 200px;"
-                                                                                @if ($indicator->realizations->nov->readonly) readonly @endif>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][nov]" value="{{ $indicator->realizations->nov->value }}" style="width: 200px;" @if ($indicator->realizations->nov->readonly) readonly @endif>
                                                                             @if ($indicator->change_lock)
                                                                                 <div class="input-group-append">
-                                                                                    <button
-                                                                                        class="btn @if ($indicator->realizations->nov->locked){{ 'btn-success' }}@else{{ 'btn-danger' }}@endif lock-action" type="button" data-id="{{ $indicator->id }}" data-month="nov" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->nov->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->nov->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                    <button class="btn @if ($indicator->realizations->nov->locked){{ 'btn-success' }}@else{{ 'btn-danger' }}@endif lock-action" type="button" data-id="{{ $indicator->id }}" data-month="nov" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->nov->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->nov->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
                                                                                 </div>
-@endif
+                                                                            @endif
                                                                         </div>
 
-                                                                        <p class="
-                                                                                        text-info"><small>Last update:
-                                                                                            {{ $indicator->realizations->nov->updated_at }}</small>
-                                                                                        </p>
-                                                                            @endif
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->nov->updated_at }}</small></p>
+                                                                    @endif
                                                                 </td>
 
                                                                 <td class="text-center small">
@@ -868,10 +760,7 @@
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
-                                                                                <input type="number" step="any" min="0"
-                                                                                    class="form-control"
-                                                                                    value="{{ $indicator->targets->dec->value }}"
-                                                                                    style="width: 200px;" readonly>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->dec->value }}" style="width: 200px;" readonly>
                                                                             </div>
                                                                         @endif
 
@@ -879,25 +768,16 @@
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
-                                                                            <input type="number" step="any" min="0"
-                                                                                class="form-control"
-                                                                                name="realizations[{{ $indicator->id }}][dec]"
-                                                                                value="{{ $indicator->realizations->dec->value }}"
-                                                                                style="width: 200px;"
-                                                                                @if ($indicator->realizations->dec->readonly) readonly @endif>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][dec]" value="{{ $indicator->realizations->dec->value }}" style="width: 200px;" @if ($indicator->realizations->dec->readonly) readonly @endif>
                                                                             @if ($indicator->change_lock)
                                                                                 <div class="input-group-append">
-                                                                                    <button
-                                                                                        class="btn @if ($indicator->realizations->dec->locked){{ 'btn-success' }}@else{{ 'btn-danger' }}@endif lock-action" type="button" data-id="{{ $indicator->id }}" data-month="dec" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->dec->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->dec->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                    <button class="btn @if ($indicator->realizations->dec->locked){{ 'btn-success' }}@else{{ 'btn-danger' }}@endif lock-action" type="button" data-id="{{ $indicator->id }}" data-month="dec" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->dec->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->dec->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
                                                                                 </div>
-@endif
+                                                                            @endif
                                                                         </div>
 
-                                                                        <p class="
-                                                                                        text-info"><small>Last update:
-                                                                                            {{ $indicator->realizations->dec->updated_at }}</small>
-                                                                                        </p>
-                                                                            @endif
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->dec->updated_at }}</small></p>
+                                                                    @endif
                                                                 </td>
                                                                 {{-- ------------------------------------------------------------------------------ --}}
                                                             </tr>
@@ -909,8 +789,7 @@
                                             <input type="hidden" name="level" value="{{ request()->query('level') }}">
                                             <input type="hidden" name="unit" value="{{ request()->query('unit') }}">
                                             <input type="hidden" name="tahun" value="{{ request()->query('tahun') }}">
-                                            <button type="submit"
-                                                class="btn btn-info btn-sm float-right mt-3">Save</button>
+                                            <button type="submit" class="btn btn-info btn-sm float-right mt-3">Save</button>
                                         </form>
                                     @endif
                                 @endif
