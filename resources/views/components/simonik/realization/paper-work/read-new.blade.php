@@ -490,10 +490,7 @@
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
-                                                                                <input type="number" step="any" min="0"
-                                                                                    class="form-control"
-                                                                                    value="{{ $indicator->targets->feb->value }}"
-                                                                                    style="width: 200px;" readonly>
+                                                                                <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->feb->value }}" style="width: 200px;" readonly>
                                                                             </div>
                                                                         @endif
 
@@ -501,25 +498,16 @@
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
-                                                                            <input type="number" step="any" min="0"
-                                                                                class="form-control"
-                                                                                name="realizations[{{ $indicator->id }}][feb]"
-                                                                                value="{{ $indicator->realizations->feb->value }}"
-                                                                                style="width: 200px;"
-                                                                                @if ($indicator->realizations->feb->readonly) readonly @endif>
+                                                                            <input type="number" step="any" min="0" class="form-control" name="realizations[{{ $indicator->id }}][feb]" value="{{ $indicator->realizations->feb->value }}" style="width: 200px;" @if ($indicator->realizations->feb->readonly) readonly @endif>
                                                                             @if ($indicator->change_lock)
                                                                                 <div class="input-group-append">
-                                                                                    <button
-                                                                                        class="btn @if ($indicator->realizations->feb->locked){{ 'btn-success' }}@else{{ 'btn-danger' }}@endif lock-action" type="button" data-id="{{ $indicator->id }}" data-month="feb" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->feb->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->feb->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
+                                                                                    <button class="btn @if ($indicator->realizations->feb->locked){{ 'btn-success' }}@else{{ 'btn-danger' }}@endif lock-action" type="button" data-id="{{ $indicator->id }}" data-month="feb" data-toggle="tooltip" data-placement="bottom" title="@if ($indicator->realizations->feb->locked) ststus: locked @else status: un-locked @endif">@if ($indicator->realizations->feb->locked) <i class="fas fa-lock"></i> @else <i class="fas fa-lock-open"></i> @endif</button>
                                                                                 </div>
-@endif
+                                                                            @endif
                                                                         </div>
 
-                                                                        <p class="
-                                                                                        text-info"><small>Last update:
-                                                                                            {{ $indicator->realizations->feb->updated_at }}</small>
-                                                                                        </p>
-                                                                            @endif
+                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->feb->updated_at }}</small></p>
+                                                                    @endif
                                                                 </td>
 
                                                                 <td class="text-center small">
