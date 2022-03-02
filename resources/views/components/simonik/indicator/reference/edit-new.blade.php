@@ -240,7 +240,7 @@
                                                                     @foreach ($indicator->preferences as $preference)
                                                                         @if ($preference->showed)
                                                                             <option value="{{ $preference->id }}" @if ($preference->selected) selected @endif>
-                                                                                <p>{{ $preference->indicator }} @if (!is_null($preference->referenced) && !$preference->referenced) &#128681; @endif</p>
+                                                                                {{ $preference->indicator }} @if (!is_null($preference->referenced) && !$preference->referenced) &#128681; @endif
                                                                             </option>
                                                                         @endif
                                                                     @endforeach
