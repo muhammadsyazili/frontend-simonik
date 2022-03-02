@@ -427,7 +427,7 @@
                                                         @foreach ($response->data->indicators as $indicator)
                                                             <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if ($indicator->bg_color->r < 127.5 && $indicator->bg_color->g < 127.5 && $indicator->bg_color->b < 127.5) color: white; @endif">
                                                                 <td class="small">
-                                                                    {{ $indicator->indicator }}
+                                                                    <p>{{ $indicator->indicator }} <span class="badge badge-info">{{ $indicator->type }}</span></p>
                                                                 </td>
                                                                 <td class="small">
                                                                     <small>{{ $indicator->formula }}</small>
