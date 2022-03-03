@@ -14,8 +14,6 @@
 @push('style')
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('template/plugins/fontawesome-free/css/all.min.css') }}"> {{-- required --}}
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://pre.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> {{-- required --}}
     <!-- Theme Style -->
     <link rel="stylesheet" href="{{ asset('template/dist/css/adminlte.min.css') }}"> {{-- required --}}
     <!-- Google Font: Source Sans Pro -->
@@ -147,7 +145,7 @@
     {{-- Request Unit --}}
     <script>
         $(document).ready(function() {
-            getUnits($('meta[name="level"]').attr('content'));
+            units($('meta[name="level"]').attr('content'));
 
             //mapping option selected in filter from query params
             setTimeout(function() {
@@ -164,10 +162,10 @@
         });
 
         $('select[name="level"]').click(function() {
-            getUnits($(this).val());
+            units($(this).val());
         });
 
-        function getUnits(level) {
+        function units(level) {
             if (level.length > 0) {
                 let host = $('meta[name="host"]').attr('content');
                 $.ajax({

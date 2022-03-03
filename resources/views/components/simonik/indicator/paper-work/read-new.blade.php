@@ -156,8 +156,8 @@
     {{-- Request Level & Unit --}}
     <script>
         $(document).ready(function() {
-            getLevels();
-            getUnits($('meta[name="level"]').attr('content'));
+            levels();
+            units($('meta[name="level"]').attr('content'));
 
             //mapping option selected in filter from query params
             setTimeout(function() {
@@ -177,7 +177,7 @@
 
         $('select[name="level"]').click(function() {
             disablator($(this).val());
-            getUnits($(this).val());
+            units($(this).val());
         });
 
         function disablator(val) {
@@ -185,7 +185,7 @@
             $('input[name="tahun"]').prop("disabled", disabled);
         }
 
-        function getLevels() {
+        function levels() {
             let host = $('meta[name="host"]').attr('content');
             let user = $('meta[name="user"]').attr('content');
 
@@ -197,7 +197,7 @@
                 },
                 success: function(res) {
                     if (res.data.length > 0) {
-                        let html;
+                        let html = '';
                         for (let i = 0; i < res.data.length; i++) {
                             html += `<option value="${res.data[i].slug}">${res.data[i].name}</option>`;
                         }
@@ -210,7 +210,7 @@
             });
         }
 
-        function getUnits(level) {
+        function units(level) {
             if (level.length > 0) {
                 let host = $('meta[name="host"]').attr('content');
                 $.ajax({

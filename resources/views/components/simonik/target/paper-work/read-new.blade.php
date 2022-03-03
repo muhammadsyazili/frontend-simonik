@@ -16,8 +16,6 @@
 @push('style')
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('template/plugins/fontawesome-free/css/all.min.css') }}"> {{-- required --}}
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://pre.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> {{-- required --}}
     <!-- Theme Style -->
     <link rel="stylesheet" href="{{ asset('template/dist/css/adminlte.min.css') }}"> {{-- required --}}
     <!-- Google Font: Source Sans Pro -->
@@ -53,7 +51,7 @@
     {{-- Table Header Fixed --}}
     <style>
         .table-responsive {
-            height: 500px;
+            height: 100vh;
             overflow: scroll;
         }
 
@@ -116,7 +114,7 @@
 
     {{-- Change Color Row Table on Click --}}
     <script>
-        $('#drag-drop-table-sorting').on('click', 'tbody tr', function(event) {
+        $('#table').on('click', 'tbody tr', function(event) {
             $(this).addClass('highlight').siblings().removeClass('highlight');
         });
     </script>
@@ -149,8 +147,8 @@
     {{-- Request Level & Unit --}}
     <script>
         $(document).ready(function() {
-            getLevels();
-            getUnits($('meta[name="level"]').attr('content'));
+            levels();
+            units($('meta[name="level"]').attr('content'));
 
             //mapping option selected in filter from query params
             setTimeout(function() {
@@ -167,10 +165,10 @@
         });
 
         $('select[name="level"]').click(function() {
-            getUnits($(this).val());
+            units($(this).val());
         });
 
-        function getLevels() {
+        function levels() {
             let host = $('meta[name="host"]').attr('content');
             let user = $('meta[name="user"]').attr('content');
 
@@ -182,7 +180,7 @@
                 },
                 success: function(res) {
                     if (res.data.length > 0) {
-                        let html;
+                        let html = '';
                         for (let i = 0; i < res.data.length; i++) {
                             html += `<option value="${res.data[i].slug}">${res.data[i].name}</option>`;
                         }
@@ -195,7 +193,7 @@
             });
         }
 
-        function getUnits(level) {
+        function units(level) {
             if (level.length > 0) {
                 let host = $('meta[name="host"]').attr('content');
 
@@ -366,13 +364,16 @@
                                     @if (empty($response->data->indicators))
                                         <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                     @else
-                                        <input class="form-control form-control-sm mb-3" id="myInput" type="text" style="width: 25vw;" placeholder="Cari KPI..">
+                                        <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari KPI..">
 
                                         <form action="{{ route('simonik.targets.paper-work.update') }}" method="post">
                                             @csrf
                                             @method('put')
+
+                                            <a href="#table"><span class="badge badge-pill badge-info">Focus on table</span></a>
+
                                             <div class="table-responsive">
-                                                <table class="table table-bordered" id="drag-drop-table-sorting">
+                                                <table class="table table-bordered" id="table">
                                                     <thead>
                                                         <tr class="first">
                                                             <th class="text-center" rowspan="2">KPI</th>

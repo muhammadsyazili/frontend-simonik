@@ -155,7 +155,7 @@
     {{-- Request Unit --}}
     <script>
         $(document).ready(function() {
-            getUnits($('meta[name="level"]').attr('content'));
+            units($('meta[name="level"]').attr('content'));
 
             //mapping option selected in filter from query params
             setTimeout(function() {
@@ -175,7 +175,7 @@
 
         $('select[name="level"]').click(function() {
             yearControl($(this).val());
-            getUnits($(this).val());
+            units($(this).val());
         });
 
         function yearControl(val) {
@@ -183,7 +183,7 @@
                 false);
         }
 
-        function getUnits(level) {
+        function units(level) {
             if (level.length > 0) {
                 let host = $('meta[name="host"]').attr('content');
                 $.ajax({

@@ -67,14 +67,14 @@
     {{-- Request Unit --}}
     <script>
         $(document).ready(function() {
-            getUnits($('select[name="level"]').val());
+            units($('select[name="level"]').val());
         });
 
         $('select[name="level"]').click(function() {
-            getUnits($(this).val());
+            units($(this).val());
         });
 
-        function getUnits(level) {
+        function units(level) {
             if (level.length > 0) {
                 let host = $('meta[name="host"]').attr('content');
 
@@ -85,7 +85,7 @@
                         $('.dynamic-option').remove();
 
                         if (res.data.length > 0) {
-                            let html;
+                            let html = '';
                             for (let i = 0; i < res.data.length; i++) {
                                 html += `<option class="dynamic-option" value="${res.data[i].slug}">${res.data[i].name}</option>`;
                             }

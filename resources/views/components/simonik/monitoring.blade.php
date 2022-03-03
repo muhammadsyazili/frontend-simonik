@@ -17,8 +17,6 @@
 @push('style')
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('template/plugins/fontawesome-free/css/all.min.css') }}"> {{-- required --}}
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://pre.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> {{-- required --}}
     <!-- Theme Style -->
     <link rel="stylesheet" href="{{ asset('template/dist/css/adminlte.min.css') }}"> {{-- required --}}
     <!-- Google Font: Source Sans Pro -->
@@ -54,7 +52,7 @@
     {{-- Table Header Fixed --}}
     <style>
         .table-responsive {
-            height: 500px;
+            height: 100vh;
             overflow: scroll;
         }
 
@@ -242,7 +240,7 @@
 
     {{-- Change Color Row Table on Click --}}
     <script>
-        $('#drag-drop-table-sorting').on('click', 'tbody tr', function(event) {
+        $('#table').on('click', 'tbody tr', function(event) {
             $(this).addClass('highlight').siblings().removeClass('highlight');
         });
     </script>
@@ -275,8 +273,8 @@
     {{-- Request Level & Unit --}}
     <script>
         $(document).ready(function() {
-            getLevels();
-            getUnits($('meta[name="level"]').attr('content'));
+            levels();
+            units($('meta[name="level"]').attr('content'));
 
             //mapping option selected in filter from query params
             setTimeout(function() {
@@ -288,15 +286,19 @@
                     if ($(this).val() == $('meta[name="unit"]').attr('content'))
                         $(this).attr("selected", "selected");
                 });
+                $('select[name="bulan"] option').each(function() {
+                    if ($(this).val() == $('meta[name="bulan"]').attr('content'))
+                        $(this).attr("selected", "selected");
+                });
                 $('input[name="tahun"]').val($('meta[name="tahun"]').attr('content'));
             }, 2000);
         });
 
         $('select[name="level"]').click(function() {
-            getUnits($(this).val());
+            units($(this).val());
         });
 
-        function getLevels() {
+        function levels() {
             let host = $('meta[name="host"]').attr('content');
             let user = $('meta[name="user"]').attr('content');
 
@@ -308,7 +310,7 @@
                 },
                 success: function(res) {
                     if (res.data.length > 0) {
-                        let html;
+                        let html = '';
                         for (let i = 0; i < res.data.length; i++) {
                             html += `<option value="${res.data[i].slug}">${res.data[i].name}</option>`;
                         }
@@ -321,7 +323,7 @@
             });
         }
 
-        function getUnits(level) {
+        function units(level) {
             if (level.length > 0) {
                 let host = $('meta[name="host"]').attr('content');
                 $.ajax({
@@ -331,7 +333,7 @@
                         $('.dynamic-option').remove();
 
                         if (res.data.length > 0) {
-                            let html;
+                            let html = '';
                             for (let i = 0; i < res.data.length; i++) {
                                 html += `<option class="dynamic-option" value="${res.data[i].slug}">${res.data[i].name}</option>`;
                             }
@@ -463,46 +465,305 @@
                             </div>
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                @if (empty($response->data->indicators))
-                                    <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
+                                @if (is_null($response))
+                                    <h3 class="text-center font-weight-bold">Lakukan Filter</h3>
                                 @else
-                                    <div id="container"></div>
+                                    @if (empty($response->data->indicators))
+                                        <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
+                                    @else
+                                        {{-- <div id="container"></div> --}}
 
-                                    <input class="form-control form-control-sm mb-3" id="myInput" type="text" style="width: 25vw;" placeholder="Cari KPI..">
+                                        <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari KPI..">
 
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="drag-drop-table-sorting">
-                                            <thead>
-                                                <tr class="first">
-                                                    <th class="text-center" rowspan="2">KPI</th>
-                                                    <th class="text-center" rowspan="2">% PENCAPAIAN</th>
-                                                    <th class="text-center" rowspan="2">Status</th>
-                                                    <th class="text-center" colspan="12">Target (T) & Realisasi (R)</th>
-                                                </tr>
-                                                <tr class="second">
-                                                    <th class="text-center">Jan</th>
-                                                    <th class="text-center">Feb</th>
-                                                    <th class="text-center">Mar</th>
-                                                    <th class="text-center">Apr</th>
-                                                    <th class="text-center">May</th>
-                                                    <th class="text-center">Jun</th>
-                                                    <th class="text-center">Jul</th>
-                                                    <th class="text-center">Aug</th>
-                                                    <th class="text-center">Sep</th>
-                                                    <th class="text-center">Oct</th>
-                                                    <th class="text-center">Nov</th>
-                                                    <th class="text-center">Dec</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="text-nowrap" id="myTable">
-                                                @include('components.simonik._indicator-child',[
-                                                'indicators' => $response->data->indicators,
-                                                'background_color' => ['red' => 255, 'green' => 255, 'blue' => 255],
-                                                'iter' => 0,
-                                                ])
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                        <a href="#table"><span class="badge badge-pill badge-info">Focus on table</span></a>
+
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered" id="table">
+                                                <thead>
+                                                    <tr class="first">
+                                                        <th class="text-center" rowspan="2">KPI</th>
+                                                        <th class="text-center" rowspan="2">% PENCAPAIAN</th>
+                                                        <th class="text-center" rowspan="2">Status</th>
+                                                        <th class="text-center" colspan="12">Target (T) & Realisasi (R)</th>
+                                                    </tr>
+                                                    <tr class="second">
+                                                        <th class="text-center">Jan</th>
+                                                        <th class="text-center">Feb</th>
+                                                        <th class="text-center">Mar</th>
+                                                        <th class="text-center">Apr</th>
+                                                        <th class="text-center">May</th>
+                                                        <th class="text-center">Jun</th>
+                                                        <th class="text-center">Jul</th>
+                                                        <th class="text-center">Aug</th>
+                                                        <th class="text-center">Sep</th>
+                                                        <th class="text-center">Oct</th>
+                                                        <th class="text-center">Nov</th>
+                                                        <th class="text-center">Dec</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="myTable">
+                                                    @foreach ($response->data->indicators as $indicator)
+                                                        <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
+                                                            <td class="small">
+                                                                <div style="width: 300px;">
+                                                                    <p>{{ $indicator->indicator }} <span class="badge badge-info">{{ $indicator->type }}</span></p>
+                                                                    <p>Formula: {{ $indicator->formula }}</p>
+                                                                    <p>Satuan: {{ $indicator->measure }}</p>
+                                                                    <p>Polaritas: <span class="badge badge-secondary">{!! $indicator->polarity !!}</span></p>
+                                                                    <p>Berlaku: @forelse ($indicator->validity as $key => $value) <span class="badge badge-secondary">{{ $key }}</span> @empty {{ '-' }} @endforelse</p>
+                                                                    <p>Bobot: @forelse ($indicator->weight as $key => $value) <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span> @empty {{ '-' }} @endforelse</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-center small">
+                                                            </td>
+                                                            <td class="text-center small">
+                                                            </td>
+
+                                                            <td class="text-center small">
+                                                                @if (!is_null($indicator->realizations->jan->value))
+                                                                    @if (!is_null($indicator->targets->jan->value))
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">T</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->jan->value }}" style="width: 150px;" readonly>
+                                                                        </div>
+                                                                    @endif
+
+                                                                    <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text">R</span>
+                                                                        </div>
+                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->realizations->jan->value }}" style="width: 150px;" readonly>
+                                                                    </div>
+                                                                @endif
+                                                            </td>
+
+                                                            <td class="text-center small">
+                                                                @if (!is_null($indicator->realizations->feb->value))
+                                                                    @if (!is_null($indicator->targets->feb->value))
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">T</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->feb->value }}" style="width: 150px;" readonly>
+                                                                        </div>
+                                                                    @endif
+
+                                                                    <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text">R</span>
+                                                                        </div>
+                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->realizations->feb->value }}" style="width: 150px;" readonly>
+                                                                    </div>
+                                                                @endif
+                                                            </td>
+
+                                                            <td class="text-center small">
+                                                                @if (!is_null($indicator->realizations->mar->value))
+                                                                    @if (!is_null($indicator->targets->mar->value))
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">T</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->mar->value }}" style="width: 150px;" readonly>
+                                                                        </div>
+                                                                    @endif
+
+                                                                    <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text">R</span>
+                                                                        </div>
+                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->realizations->mar->value }}" style="width: 150px;" readonly>
+                                                                    </div>
+                                                                @endif
+                                                            </td>
+
+                                                            <td class="text-center small">
+                                                                @if (!is_null($indicator->realizations->apr->value))
+                                                                    @if (!is_null($indicator->targets->apr->value))
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">T</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->apr->value }}" style="width: 150px;" readonly>
+                                                                        </div>
+                                                                    @endif
+
+                                                                    <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text">R</span>
+                                                                        </div>
+                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->realizations->apr->value }}" style="width: 150px;" readonly>
+                                                                    </div>
+                                                                @endif
+                                                            </td>
+
+                                                            <td class="text-center small">
+                                                                @if (!is_null($indicator->realizations->may->value))
+                                                                    @if (!is_null($indicator->targets->may->value))
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">T</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->may->value }}" style="width: 150px;" readonly>
+                                                                        </div>
+                                                                    @endif
+
+                                                                    <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text">R</span>
+                                                                        </div>
+                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->realizations->may->value }}" style="width: 150px;" readonly>
+                                                                    </div>
+                                                                @endif
+                                                            </td>
+
+                                                            <td class="text-center small">
+                                                                @if (!is_null($indicator->realizations->jun->value))
+                                                                    @if (!is_null($indicator->targets->jun->value))
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">T</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->jun->value }}" style="width: 150px;" readonly>
+                                                                        </div>
+                                                                    @endif
+
+                                                                    <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text">R</span>
+                                                                        </div>
+                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->realizations->jun->value }}" style="width: 150px;" readonly>
+                                                                    </div>
+                                                                @endif
+                                                            </td>
+
+                                                            <td class="text-center small">
+                                                                @if (!is_null($indicator->realizations->jul->value))
+                                                                    @if (!is_null($indicator->targets->jul->value))
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">T</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->jul->value }}" style="width: 150px;" readonly>
+                                                                        </div>
+                                                                    @endif
+
+                                                                    <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text">R</span>
+                                                                        </div>
+                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->realizations->jul->value }}" style="width: 150px;" readonly>
+                                                                    </div>
+                                                                @endif
+                                                            </td>
+
+                                                            <td class="text-center small">
+                                                                @if (!is_null($indicator->realizations->aug->value))
+                                                                    @if (!is_null($indicator->targets->aug->value))
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">T</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->aug->value }}" style="width: 150px;" readonly>
+                                                                        </div>
+                                                                    @endif
+
+                                                                    <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text">R</span>
+                                                                        </div>
+                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->realizations->aug->value }}" style="width: 150px;" readonly>
+                                                                    </div>
+                                                                @endif
+                                                            </td>
+
+                                                            <td class="text-center small">
+                                                                @if (!is_null($indicator->realizations->sep->value))
+                                                                    @if (!is_null($indicator->targets->sep->value))
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">T</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->sep->value }}" style="width: 150px;" readonly>
+                                                                        </div>
+                                                                    @endif
+
+                                                                    <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text">R</span>
+                                                                        </div>
+                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->realizations->sep->value }}" style="width: 150px;" readonly>
+                                                                    </div>
+                                                                @endif
+                                                            </td>
+
+                                                            <td class="text-center small">
+                                                                @if (!is_null($indicator->realizations->oct->value))
+                                                                    @if (!is_null($indicator->targets->oct->value))
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">T</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->oct->value }}" style="width: 150px;" readonly>
+                                                                        </div>
+                                                                    @endif
+
+                                                                    <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text">R</span>
+                                                                        </div>
+                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->realizations->oct->value }}" style="width: 150px;" readonly>
+                                                                    </div>
+                                                                @endif
+                                                            </td>
+
+                                                            <td class="text-center small">
+                                                                @if (!is_null($indicator->realizations->nov->value))
+                                                                    @if (!is_null($indicator->targets->nov->value))
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">T</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->nov->value }}" style="width: 150px;" readonly>
+                                                                        </div>
+                                                                    @endif
+
+                                                                    <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text">R</span>
+                                                                        </div>
+                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->realizations->nov->value }}" style="width: 150px;" readonly>
+                                                                    </div>
+                                                                @endif
+                                                            </td>
+
+                                                            <td class="text-center small">
+                                                                @if (!is_null($indicator->realizations->dec->value))
+                                                                    @if (!is_null($indicator->targets->dec->value))
+                                                                        <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">T</span>
+                                                                            </div>
+                                                                            <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->targets->dec->value }}" style="width: 150px;" readonly>
+                                                                        </div>
+                                                                    @endif
+
+                                                                    <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text">R</span>
+                                                                        </div>
+                                                                        <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->realizations->dec->value }}" style="width: 150px;" readonly>
+                                                                    </div>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    @endif
                                 @endif
                             </div>
                         </div>
