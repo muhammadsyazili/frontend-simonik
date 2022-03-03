@@ -410,6 +410,8 @@
                             {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }}
                             / Tahun :
                             {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }}
+                            / Bulan :
+                            {{ request()->query('bulan') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }}
                         </h3>
                     </div>
                     <!-- end : card-header -->
@@ -484,9 +486,10 @@
                                                         <th class="text-center" rowspan="2">KPI</th>
                                                         <th class="text-center" rowspan="2">% PENCAPAIAN</th>
                                                         <th class="text-center" rowspan="2">Status</th>
-                                                        <th class="text-center" colspan="12">Target (T) & Realisasi (R)</th>
+                                                        <th class="text-center" rowspan="2">Show Chart</th>
+                                                        {{-- <th class="text-center" colspan="12">Target (T) & Realisasi (R)</th> --}}
                                                     </tr>
-                                                    <tr class="second">
+                                                    {{-- <tr class="second">
                                                         <th class="text-center">Jan</th>
                                                         <th class="text-center">Feb</th>
                                                         <th class="text-center">Mar</th>
@@ -499,27 +502,30 @@
                                                         <th class="text-center">Oct</th>
                                                         <th class="text-center">Nov</th>
                                                         <th class="text-center">Dec</th>
-                                                    </tr>
+                                                    </tr> --}}
                                                 </thead>
                                                 <tbody id="myTable">
                                                     @foreach ($response->data->indicators as $indicator)
                                                         <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
                                                             <td class="small">
                                                                 <div style="width: 300px;">
-                                                                    <p>{{ $indicator->indicator }} <span class="badge badge-info">{{ $indicator->type }}</span></p>
-                                                                    <p>Formula: {{ $indicator->formula }}</p>
-                                                                    <p>Satuan: {{ $indicator->measure }}</p>
-                                                                    <p>Polaritas: <span class="badge badge-secondary">{!! $indicator->polarity !!}</span></p>
-                                                                    <p>Berlaku: @forelse ($indicator->validity as $key => $value) <span class="badge badge-secondary">{{ $key }}</span> @empty {{ '-' }} @endforelse</p>
-                                                                    <p>Bobot: @forelse ($indicator->weight as $key => $value) <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span> @empty {{ '-' }} @endforelse</p>
+                                                                    <p style="margin: 0">{{ $indicator->indicator }} <span class="badge badge-info">{{ $indicator->type }}</span></p>
+                                                                    <p style="margin: 0">Formula: {{ $indicator->formula }}</p>
+                                                                    <p style="margin: 0">Satuan: {{ $indicator->measure }}</p>
+                                                                    <p style="margin: 0">Polaritas: <span class="badge badge-secondary">{!! $indicator->polarity !!}</span></p>
+                                                                    <p style="margin: 0">Berlaku: @forelse ($indicator->validity as $key => $value) <span class="badge badge-secondary">{{ $key }}</span> @empty {{ '-' }} @endforelse</p>
+                                                                    <p style="margin: 0">Bobot: @forelse ($indicator->weight as $key => $value) <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span> @empty {{ '-' }} @endforelse</p>
                                                                 </div>
                                                             </td>
                                                             <td class="text-center small">
                                                             </td>
                                                             <td class="text-center small">
                                                             </td>
-
                                                             <td class="text-center small">
+                                                                <button type="button" class="btn btn-sm btn-outline-info"><i class="fas fa-chart-bar"></i></button>
+                                                            </td>
+
+                                                            {{-- <td class="text-center small">
                                                                 @if (!is_null($indicator->realizations->jan->value))
                                                                     @if (!is_null($indicator->targets->jan->value))
                                                                         <div class="input-group input-group-sm mb-3">
@@ -757,7 +763,7 @@
                                                                         <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->realizations->dec->value }}" style="width: 150px;" readonly>
                                                                     </div>
                                                                 @endif
-                                                            </td>
+                                                            </td> --}}
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
