@@ -332,8 +332,7 @@
                                     @if ((!empty($response->data->permissions) && $response->data->permissions->paper_work->indicator->create) || (!empty($response->data->permissions) && $response->data->permissions->paper_work->indicator->edit) || (!empty($response->data->permissions) && $response->data->permissions->paper_work->indicator->delete))
                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                             <fieldset class="scheduler-border">
-                                                <legend class="scheduler-border"><i class="fas fa-list-ol"></i> Kertas Kerja -
-                                                    KPI</legend>
+                                                <legend class="scheduler-border"><i class="fas fa-list-ol"></i> Kertas Kerja - KPI</legend>
 
                                                 <div class="row">
                                                     <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">

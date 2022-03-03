@@ -6,9 +6,11 @@
 @push('metadata')
     <meta name="host" content="{{ env('HOST_SIMONIK') }}">
     <meta name="user" content="{{ request()->cookie('X-User-Id') }}">
+
     <meta name="level" content="{{ request()->query('level') }}">
     <meta name="unit" content="{{ request()->query('unit') }}">
-    <meta name="year" content="{{ request()->query('tahun') }}">
+    <meta name="tahun" content="{{ request()->query('tahun') }}">
+    <meta name="bulan" content="{{ request()->query('bulan') }}">
 @endpush
 
 {{-- ========================================================== --}}
@@ -270,9 +272,10 @@
 {{-- ========================================================== --}}
 
 @push('ajax-request')
-    {{-- Request Unit --}}
+    {{-- Request Level & Unit --}}
     <script>
         $(document).ready(function() {
+            getLevels();
             getUnits($('meta[name="level"]').attr('content'));
 
             //mapping option selected in filter from query params
@@ -285,13 +288,38 @@
                     if ($(this).val() == $('meta[name="unit"]').attr('content'))
                         $(this).attr("selected", "selected");
                 });
-                $('input[name="tahun"]').val($('meta[name="year"]').attr('content'));
+                $('input[name="tahun"]').val($('meta[name="tahun"]').attr('content'));
             }, 2000);
         });
 
         $('select[name="level"]').click(function() {
             getUnits($(this).val());
         });
+
+        function getLevels() {
+            let host = $('meta[name="host"]').attr('content');
+            let user = $('meta[name="user"]').attr('content');
+
+            $.ajax({
+                type: 'GET',
+                url: `${host}/user/${user}/levels`,
+                data: {
+                    "with-super-master": "false"
+                },
+                success: function(res) {
+                    if (res.data.length > 0) {
+                        let html;
+                        for (let i = 0; i < res.data.length; i++) {
+                            html += `<option value="${res.data[i].slug}">${res.data[i].name}</option>`;
+                        }
+                        $('select[name="level"]').append(html);
+                    }
+                },
+                error: function(res) {
+                    console.log(`Level : ${res.responseJSON.message}`);
+                }
+            });
+        }
 
         function getUnits(level) {
             if (level.length > 0) {
@@ -305,8 +333,7 @@
                         if (res.data.length > 0) {
                             let html;
                             for (let i = 0; i < res.data.length; i++) {
-                                html +=
-                                    `<option class="dynamic-option" value="${res.data[i].slug}">${res.data[i].name}</option>`;
+                                html += `<option class="dynamic-option" value="${res.data[i].slug}">${res.data[i].name}</option>`;
                             }
                             $('select[name="unit"]').append(html);
                         }
@@ -317,29 +344,6 @@
                 });
             }
         }
-    </script>
-
-    {{-- Request locked/un-locked --}}
-    <script>
-        $(document).on('click', '.lock-action', function() {
-            let host = $('meta[name="host"]').attr('content');
-            let id = $(this).data('id');
-            let month = $(this).data('month');
-
-            $.ajax({
-                type: 'GET',
-                headers: {
-                    'X-User-Id': $('meta[name="user"]').attr('content')
-                },
-                url: `${host}/realizations/paper-work/${id}/${month}/lock/change`,
-                success: function(res) {
-                    location.reload();
-                },
-                error: function(res) {
-                    console.log(`Error : ${res.responseJSON.message}`);
-                }
-            });
-        });
     </script>
 @endpush
 
@@ -357,8 +361,7 @@
                             <h3 class="card-title">Info</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i></button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -378,8 +381,7 @@
                             <h3 class="card-title">Alert</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i></button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
                             <!-- /.card-tools -->
                         </div>
@@ -399,7 +401,8 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Monitoring / Level :
+                        <h3 class="card-title">Monitoring
+                            / Level :
                             {{ request()->query('level') == null ? '-' : cast_to_upper(request()->query('level')) }}
                             / Unit :
                             {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }}
@@ -419,12 +422,7 @@
                                             <span class="input-group-text">Level</span>
                                         </span>
 
-                                        <select class="custom-select" name="level">
-                                            @include('components.simonik._level-child', [
-                                            'levels' => empty($response->object()->data->levels) ? $response->object()->data
-                                            : $response->object()->data->levels
-                                            ])
-                                        </select>
+                                        <select class="custom-select" name="level"></select>
 
                                         <span class="input-group-append">
                                             <span class="input-group-text">Unit</span>
@@ -443,37 +441,34 @@
                                         </span>
 
                                         <select class="custom-select" name="bulan">
-                                            <option value="1">s.d. Jan</option>
-                                            <option value="2">s.d. Feb</option>
-                                            <option value="3">s.d. Mar</option>
-                                            <option value="4">s.d. Apr</option>
-                                            <option value="5">s.d. May</option>
-                                            <option value="6">s.d. Jun</option>
-                                            <option value="7">s.d. Jul</option>
-                                            <option value="8">s.d. Aug</option>
-                                            <option value="9">s.d. Sep</option>
-                                            <option value="10">s.d. Oct</option>
-                                            <option value="11">s.d. Nov</option>
-                                            <option value="12">s.d. Dec</option>
+                                            <option value="jan">s.d. Jan</option>
+                                            <option value="feb">s.d. Feb</option>
+                                            <option value="mar">s.d. Mar</option>
+                                            <option value="apr">s.d. Apr</option>
+                                            <option value="may">s.d. May</option>
+                                            <option value="jun">s.d. Jun</option>
+                                            <option value="jul">s.d. Jul</option>
+                                            <option value="aug">s.d. Aug</option>
+                                            <option value="sep">s.d. Sep</option>
+                                            <option value="oct">s.d. Oct</option>
+                                            <option value="nov">s.d. Nov</option>
+                                            <option value="dec">s.d. Dec</option>
                                         </select>
 
                                         <span class="input-group-append">
-                                            <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip"
-                                                data-placement="buttom" title="Search"><i
-                                                    class="fas fa-search"></i></button>
+                                            <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip" data-placement="buttom" title="Search"><i class="fas fa-search"></i></button>
                                         </span>
                                     </div>
                                 </form>
                             </div>
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                @if (empty($response->object()->data->indicators))
+                                @if (empty($response->data->indicators))
                                     <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                 @else
                                     <div id="container"></div>
 
-                                    <input class="form-control form-control-sm mb-3" id="myInput" type="text"
-                                        style="width: 25vw;" placeholder="Cari KPI..">
+                                    <input class="form-control form-control-sm mb-3" id="myInput" type="text" style="width: 25vw;" placeholder="Cari KPI..">
 
                                     <div class="table-responsive">
                                         <table class="table table-bordered" id="drag-drop-table-sorting">
@@ -501,7 +496,7 @@
                                             </thead>
                                             <tbody class="text-nowrap" id="myTable">
                                                 @include('components.simonik._indicator-child',[
-                                                'indicators' => $response->object()->data->indicators,
+                                                'indicators' => $response->data->indicators,
                                                 'background_color' => ['red' => 255, 'green' => 255, 'blue' => 255],
                                                 'iter' => 0,
                                                 ])

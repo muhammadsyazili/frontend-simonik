@@ -29,6 +29,8 @@ class MonitoringController extends Controller
                 Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
                 return redirect()->back();
             }
+
+            $response = $response->object();
         } else {
             $response = SIMONIK_sevices('/analytic', 'get', [
                 'level' => $request->query('level'),
@@ -45,6 +47,8 @@ class MonitoringController extends Controller
                 Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
                 return redirect()->back();
             }
+
+            $response = $response->object();
         }
 
         return view('components.simonik.monitoring', compact('response'));
