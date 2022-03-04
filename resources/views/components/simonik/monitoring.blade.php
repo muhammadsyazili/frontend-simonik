@@ -53,7 +53,7 @@
     <style>
         .table-responsive {
             height: 100vh;
-            overflow: scroll;
+            overflow-x: scroll;
         }
 
         thead tr.first th,
@@ -487,9 +487,9 @@
                                                         <th class="text-center" rowspan="2">% PENCAPAIAN</th>
                                                         <th class="text-center" rowspan="2">Status</th>
                                                         <th class="text-center" rowspan="2">Show Chart</th>
-                                                        {{-- <th class="text-center" colspan="12">Target (T) & Realisasi (R)</th> --}}
+                                                        <th class="text-center" colspan="12">Target (T) & Realisasi (R)</th>
                                                     </tr>
-                                                    {{-- <tr class="second">
+                                                    <tr class="second">
                                                         <th class="text-center">Jan</th>
                                                         <th class="text-center">Feb</th>
                                                         <th class="text-center">Mar</th>
@@ -502,7 +502,7 @@
                                                         <th class="text-center">Oct</th>
                                                         <th class="text-center">Nov</th>
                                                         <th class="text-center">Dec</th>
-                                                    </tr> --}}
+                                                    </tr>
                                                 </thead>
                                                 <tbody id="myTable">
                                                     @foreach ($response->data->indicators as $indicator)
@@ -518,6 +518,7 @@
                                                                 </div>
                                                             </td>
                                                             <td class="text-center small">
+                                                                {{ $indicator->achievement }}
                                                             </td>
                                                             <td class="text-center small">
                                                             </td>
@@ -525,7 +526,7 @@
                                                                 <button type="button" class="btn btn-sm btn-outline-info"><i class="fas fa-chart-bar"></i></button>
                                                             </td>
 
-                                                            {{-- <td class="text-center small">
+                                                            <td class="text-center small">
                                                                 @if (!is_null($indicator->realizations->jan->value))
                                                                     @if (!is_null($indicator->targets->jan->value))
                                                                         <div class="input-group input-group-sm mb-3">
@@ -763,7 +764,7 @@
                                                                         <input type="number" step="any" min="0" class="form-control" value="{{ $indicator->realizations->dec->value }}" style="width: 150px;" readonly>
                                                                     </div>
                                                                 @endif
-                                                            </td> --}}
+                                                            </td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
