@@ -473,7 +473,7 @@
                                     @if (empty($response->data->indicators))
                                         <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                     @else
-                                        {{-- <div id="container"></div> --}}
+                                        <div id="container"></div>
 
                                         <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari KPI..">
 
@@ -485,6 +485,8 @@
                                                     <tr class="first">
                                                         <th class="text-center" rowspan="2">KPI</th>
                                                         <th class="text-center" rowspan="2">% PENCAPAIAN</th>
+                                                        <th class="text-center" rowspan="2">NILAI (CAPPING 110%)</th>
+                                                        <th class="text-center" rowspan="2">NILAI (CAPPING 100%)</th>
                                                         <th class="text-center" rowspan="2">Status</th>
                                                         <th class="text-center" rowspan="2">Show Chart</th>
                                                         <th class="text-center" colspan="12">Target (T) & Realisasi (R)</th>
@@ -521,6 +523,13 @@
                                                                 {{ $indicator->achievement }}
                                                             </td>
                                                             <td class="text-center small">
+                                                                {{ $indicator->capping_value_110 }}
+                                                            </td>
+                                                            <td class="text-center small">
+                                                                {{ $indicator->capping_value_100 }}
+                                                            </td>
+                                                            <td class="text-center small">
+                                                                {{ $indicator->status }}
                                                             </td>
                                                             <td class="text-center small">
                                                                 <button type="button" class="btn btn-sm btn-outline-info"><i class="fas fa-chart-bar"></i></button>

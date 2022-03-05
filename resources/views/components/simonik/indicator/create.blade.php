@@ -77,12 +77,14 @@
                 $('#check-handler').attr("disabled", false);
                 $('.validity-group').attr("disabled", false);
                 $('.weight-group').prop('disabled', false);
+                $('#multiple-add-weight').prop('disabled', false);
             } else {
                 $('input[name="reducing_factor"]').attr("disabled", true);
                 $('input[name="polarity"]').attr("disabled", true);
                 $('#check-handler').attr("disabled", true);
                 $('.validity-group').attr("disabled", true);
                 $('.weight-group').prop('disabled', true);
+                $('#multiple-add-weight').prop('disabled', true);
             }
         }
 
@@ -95,6 +97,12 @@
     <script>
         $('#check-handler').click(function() {
             $('.check-item').not(this).prop('checked', this.checked);
+        });
+    </script>
+
+    <script>
+        $('#multiple-add-weight').keyup(function() {
+            $('.weight-group').val(this.value);
         });
     </script>
 @endpush
@@ -369,7 +377,16 @@
                                     <p class="text-center font-weight-bold small">Bobot <span class="text-danger">*</span></p>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <p class="text-center text-info"><small><strong>Noted!</strong> bobot akan diabaikan jika masa berlaku tidak dipilih</small></p>
+                                    <p class="text-center text-info small"><strong>Noted!</strong> bobot akan diabaikan jika masa berlaku tidak dipilih</p>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <p class="text-center text-info small">Jika bobot dari bulan jan-dec sama isi field dibawah ini</p>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <input type="number" class="form-control form-control-sm" id="multiple-add-weight" value="0">
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-2">
+                                    <p class="text-center text-info small">Jika bobot dari bulan jan-dec tidak sama isi field dibawah ini</p>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
