@@ -60,6 +60,45 @@
         $(document).ready(function() {
             dummy();
             reducing_factor();
+
+            $('#btn-del').attr('disabled', true);
+            $('#btn-add').click(function() {
+                let num = $('.cloned').length;
+                let newNum = new Number(num + 1);
+                let newElem = $(`#row-${num}`).clone().attr('id', `row-${newNum}`).fadeIn('slow');
+
+                newElem.find('.heading-row').html(newNum);
+                // newElem.find('.input-a').attr('data-id', newNum).attr('id', `input-ulp-${newNum}`);
+                // newElem.find('.input-b').attr('data-id', newNum).attr('id', `input-penyulang-${newNum}`);
+                // newElem.find('.input-c').attr('data-id', newNum).attr('id', `input-pp-${newNum}`);
+                // newElem.find('.input-e').attr('data-id', newNum).attr('id', `input-tanggal-${newNum}`);
+                // newElem.find('.input-f').attr('data-id', newNum).attr('id', `input-jarak-aman-sebelum-${newNum}`);
+                // newElem.find('.input-g').attr('data-id', newNum).attr('id', `input-jarak-aman-sesudah-${newNum}`);
+                // newElem.find('.input-h').val(null).attr('data-id', newNum).attr('id', `input-img-${newNum}`);
+                // newElem.find('.input-i').attr('data-id', newNum).attr('id', `input-petugas-${newNum}`);
+
+                $(`#row-${num}`).after(newElem);
+                $(`#row-${newNum}`).focus();
+
+                $('#btn-del').attr('disabled', false);
+            });
+
+            $('#btn-del').click(function() {
+                if (confirm("Anda yakin ?")) {
+                    let num = $('.cloned').length;
+
+                    $(`#row-${num}`).slideUp('slow', function() {
+                        $(this).remove();
+
+                        if (num - 1 === 1) {
+                            $('#btn-del').attr('disabled', true);
+                        }
+
+                        $('#btn-add').attr('disabled', false).prop('value', "add section");
+                    });
+                }
+                return false;
+            });
         });
 
         $('input[name="dummy"]').change(function() {
@@ -170,297 +209,306 @@
 
                         <!-- card-body -->
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <div class="form-group">
-                                        <label class="small">KPI <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control form-control-sm" name="indicator" required>
+                            <div id="row-1" class="cloned">
+                                <div class="row">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <h1 class="text-center font-weight-bold heading-row">1</h1>
                                     </div>
-                                </div>
 
-                                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                                    <label class="small">Tipe <span class="text-danger">*</span></label>
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
-                                    <div class="form-group clearfix">
-                                        <div class="d-inline">
-                                            <input type="radio" name="type" value="KPI" checked>
-                                            <label class="small">KPI</label>
-                                        </div>
-                                        <div class="d-inline">
-                                            <input type="radio" name="type" value="PI">
-                                            <label class="small">PI</label>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <div class="form-group">
+                                            <label class="small">KPI <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control form-control-sm indicator" id="indicator" data-id="1" name="indicator[]" required>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                                    <label class="small">KPI Dummy <small class="text-info">(KPI tidak memiliki bobot)</small> ? <span class="text-danger">*</span></label>
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
-                                    <div class="form-group clearfix">
-                                        <div class="d-inline">
-                                            <input type="radio" name="dummy" value="0" checked>
-                                            <label class="small">Tidak</label>
-                                        </div>
-                                        <div class="d-inline">
-                                            <input type="radio" name="dummy" value="1">
-                                            <label class="small">Ya</label>
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                                        <label class="small">Tipe <span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
+                                        <div class="form-group clearfix">
+                                            <div class="d-inline">
+                                                <input type="radio" class="type" id="type-kpi" data-id="1" name="type[]" value="KPI" checked>
+                                                <label class="small">KPI</label>
+                                            </div>
+                                            <div class="d-inline">
+                                                <input type="radio" class="type" id="type-pi" data-id="1" name="type[]" value="PI">
+                                                <label class="small">PI</label>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                                    <label class="small">Faktor Pengurang ? <span class="text-danger">*</span></label>
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
-                                    <div class="form-group clearfix">
-                                        <div class="d-inline">
-                                            <input type="radio" name="reducing_factor" value="0" checked>
-                                            <label class="small">Tidak</label>
-                                        </div>
-                                        <div class="d-inline">
-                                            <input type="radio" name="reducing_factor" value="1">
-                                            <label class="small">Ya</label>
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                                        <label class="small">KPI Dummy <small class="text-info">(KPI tidak memiliki bobot)</small> ? <span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
+                                        <div class="form-group clearfix">
+                                            <div class="d-inline">
+                                                <input type="radio" class="dummy" id="dummy-no" data-id="1" name="dummy[]" value="0" checked>
+                                                <label class="small">Tidak</label>
+                                            </div>
+                                            <div class="d-inline">
+                                                <input type="radio" class="dummy" id="dummy-yes" data-id="1" name="dummy[]" value="1">
+                                                <label class="small">Ya</label>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                                    <label class="small">Polaritas <span class="text-danger">*</span></label>
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
-                                    <div class="form-group clearfix">
-                                        <div class="d-inline">
-                                            <input type="radio" name="polarity" value="1" checked>
-                                            <label class="small"><i class="fas fa-arrow-up"></i></label>
-                                        </div>
-                                        <div class="d-inline">
-                                            <input type="radio" name="polarity" value="-1">
-                                            <label class="small"><i class="fas fa-arrow-down"></i></label>
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                                        <label class="small">Faktor Pengurang ? <span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
+                                        <div class="form-group clearfix">
+                                            <div class="d-inline">
+                                                <input type="radio" class="reducing_factor" id="reducing_factor-no" data-id="1" name="reducing_factor[]" value="0" checked>
+                                                <label class="small">Tidak</label>
+                                            </div>
+                                            <div class="d-inline">
+                                                <input type="radio" class="reducing_factor" id="reducing_factor-yes" data-id="1" name="reducing_factor[]" value="1">
+                                                <label class="small">Ya</label>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <div class="form-group">
-                                        <label class="small">Formula</label>
-                                        <textarea class="form-control form-control-sm" rows="3" name="formula"></textarea>
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                                        <label class="small">Polaritas <span class="text-danger">*</span></label>
                                     </div>
-                                </div>
+                                    <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
+                                        <div class="form-group clearfix">
+                                            <div class="d-inline">
+                                                <input type="radio" class="polarity" id="polarity-positive" data-id="1" name="polarity[]" value="1" checked>
+                                                <label class="small"><i class="fas fa-arrow-up"></i></label>
+                                            </div>
+                                            <div class="d-inline">
+                                                <input type="radio" class="polarity" id="polarity-negative" data-id="1" name="polarity[]" value="-1">
+                                                <label class="small"><i class="fas fa-arrow-down"></i></label>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <div class="form-group">
-                                        <label class="small">Satuan</label>
-                                        <input type="text" class="form-control form-control-sm" name="measure">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <div class="form-group">
+                                            <label class="small">Formula</label>
+                                            <textarea class="form-control form-control-sm formula" rows="3" id="formula" data-id="1" name="formula[]"></textarea>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <p class="text-center font-weight-bold small">Masa Berlaku <span class="text-danger">*</span></p>
-                                    <div class="form-check text-center mb-3">
-                                        <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" id="check-handler"><small>Select All Month</small>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[jan]" value="1">Jan
-                                            </label>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <div class="form-group">
+                                            <label class="small">Satuan</label>
+                                            <input type="text" class="form-control form-control-sm measure" id="measure" data-id="1" name="measure[]">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[feb]" value="1">Feb
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[mar]" value="1">Mar
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[apr]" value="1">Apr
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[may]" value="1">May
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[jun]" value="1">Jun
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[jul]" value="1">Jul
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[aug]" value="1">Aug
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[sep]" value="1">Sep
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[oct]" value="1">Oct
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[nov]" value="1">Nov
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <label class="form-check-label small">
-                                                <input type="checkbox" class="form-check-input check-item validity-group" name="validity[dec]" value="1">Dec
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <p class="text-center font-weight-bold small">Bobot <span class="text-danger">*</span></p>
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <p class="text-center text-info small"><strong>Noted!</strong> bobot akan diabaikan jika masa berlaku tidak dipilih</p>
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <p class="text-center text-info small">Jika bobot dari bulan jan-dec sama isi field dibawah ini</p>
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <input type="number" class="form-control form-control-sm" id="multiple-add-weight" value="0">
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-2">
-                                    <p class="text-center text-info small">Jika bobot dari bulan jan-dec tidak sama isi field dibawah ini</p>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">Jan</p>
-                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[jan]" value="0">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <p class="text-center font-weight-bold small">Masa Berlaku <span class="text-danger">*</span></p>
+                                        <div class="form-check text-center mb-3">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" id="check-handler"><small>Select All Month</small>
+                                            </label>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">Feb</p>
-                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[feb]" value="0">
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <label class="form-check-label small">
+                                                    <input type="checkbox" class="form-check-input check-item validity-group validity-jan" id="validity-jan-1" data-id="1" name="validity[jan][]" value="1">Jan
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">Mar</p>
-                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[mar]" value="0">
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <label class="form-check-label small">
+                                                    <input type="checkbox" class="form-check-input check-item validity-group validity-feb" id="validity-feb-1" data-id="1" name="validity[feb][]" value="1">Feb
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">Apr</p>
-                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[apr]" value="0">
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <label class="form-check-label small">
+                                                    <input type="checkbox" class="form-check-input check-item validity-group validity-mar" id="validity-mar-1" data-id="1" name="validity[mar][]" value="1">Mar
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">May</p>
-                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[may]" value="0">
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <label class="form-check-label small">
+                                                    <input type="checkbox" class="form-check-input check-item validity-group validity-apr" id="validity-apr-1" data-id="1" name="validity[apr][]" value="1">Apr
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">Jun</p>
-                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[jun]" value="0">
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <label class="form-check-label small">
+                                                    <input type="checkbox" class="form-check-input check-item validity-group validity-may" id="validity-may-1" data-id="1" name="validity[may][]" value="1">May
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">Jul</p>
-                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[jul]" value="0">
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <label class="form-check-label small">
+                                                    <input type="checkbox" class="form-check-input check-item validity-group validity-jun" id="validity-jun-1" data-id="1" name="validity[jun][]" value="1">Jun
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">Aug</p>
-                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[aug]" value="0">
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <label class="form-check-label small">
+                                                    <input type="checkbox" class="form-check-input check-item validity-group validity-jul" id="validity-jul-1" data-id="1" name="validity[jul][]" value="1">Jul
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">Sep</p>
-                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[sep]" value="0">
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <label class="form-check-label small">
+                                                    <input type="checkbox" class="form-check-input check-item validity-group validity-aug" id="validity-aug-1" data-id="1" name="validity[aug][]" value="1">Aug
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">Oct</p>
-                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[oct]" value="0">
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <label class="form-check-label small">
+                                                    <input type="checkbox" class="form-check-input check-item validity-group validity-sep" id="validity-sep-1" data-id="1" name="validity[sep][]" value="1">Sep
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">Nov</p>
-                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[nov]" value="0">
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <label class="form-check-label small">
+                                                    <input type="checkbox" class="form-check-input check-item validity-group validity-oct" id="validity-oct-1" data-id="1" name="validity[oct][]" value="1">Oct
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">Dec</p>
-                                        <input type="number" class="form-control form-control-sm weight-group" name="weight[dec]" value="0">
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <label class="form-check-label small">
+                                                    <input type="checkbox" class="form-check-input check-item validity-group validity-nov" id="validity-nov-1" data-id="1" name="validity[nov][]" value="1">Nov
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <label class="form-check-label small">
+                                                    <input type="checkbox" class="form-check-input check-item validity-group validity-dec" id="validity-dec-1" data-id="1" name="validity[dec][]" value="1">Dec
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <p class="text-center font-weight-bold small">Bobot <span class="text-danger">*</span></p>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <p class="text-center text-info small"><strong>Noted!</strong> bobot akan diabaikan jika masa berlaku tidak dipilih</p>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <p class="text-center text-info small">Jika bobot dari bulan jan-dec sama isi field dibawah ini</p>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <input type="number" class="form-control form-control-sm" id="multiple-add-weight" value="0">
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-2">
+                                        <p class="text-center text-info small">Jika bobot dari bulan jan-dec tidak sama isi field dibawah ini</p>
+                                    </div>
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <p class="text-center small">Jan</p>
+                                            <input type="number" class="form-control form-control-sm weight-group weight-jan" id="weight-jan-1" data-id="1" name="weight[jan][]" value="0">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <p class="text-center small">Feb</p>
+                                            <input type="number" class="form-control form-control-sm weight-group weight-feb" id="weight-feb-1" data-id="1" name="weight[feb][]" value="0">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <p class="text-center small">Mar</p>
+                                            <input type="number" class="form-control form-control-sm weight-group weight-mar" id="weight-mar-1" data-id="1" name="weight[mar][]" value="0">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <p class="text-center small">Apr</p>
+                                            <input type="number" class="form-control form-control-sm weight-group weight-apr" id="weight-apr-1" data-id="1" name="weight[apr][]" value="0">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <p class="text-center small">May</p>
+                                            <input type="number" class="form-control form-control-sm weight-group weight-may" id="weight-may-1" data-id="1" name="weight[may][]" value="0">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <p class="text-center small">Jun</p>
+                                            <input type="number" class="form-control form-control-sm weight-group weight-jun" id="weight-jun-1" data-id="1" name="weight[jun][]" value="0">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <p class="text-center small">Jul</p>
+                                            <input type="number" class="form-control form-control-sm weight-group weight-jul" id="weight-jul-1" data-id="1" name="weight[jul][]" value="0">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <p class="text-center small">Aug</p>
+                                            <input type="number" class="form-control form-control-sm weight-group weight-aug" id="weight-aug-1" data-id="1" name="weight[aug][]" value="0">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <p class="text-center small">Sep</p>
+                                            <input type="number" class="form-control form-control-sm weight-group weight-sep" id="weight-sep-1" data-id="1" name="weight[sep][]" value="0">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <p class="text-center small">Oct</p>
+                                            <input type="number" class="form-control form-control-sm weight-group weight-oct" id="weight-oct-1" data-id="1" name="weight[oct][]" value="0">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <p class="text-center small">Nov</p>
+                                            <input type="number" class="form-control form-control-sm weight-group weight-nov" id="weight-nov-1" data-id="1" name="weight[nov][]" value="0">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
+                                        <div class="form-group">
+                                            <p class="text-center small">Dec</p>
+                                            <input type="number" class="form-control form-control-sm weight-group weight-dec" id="weight-dec-1" data-id="1" name="weight[dec][]" value="0">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <button type="button" id="btn-add" name="btn-add" class="btn btn-sm btn-info"><i class="fa fa-plus" aria-hidden="true"></i></button>
+				            <button type="button" id="btn-del" name="btn-del" class="btn btn-sm btn-danger"><i class="fa fa-minus" aria-hidden="true"></i></button>
                         </div>
                         <!-- end : card-body -->
 
