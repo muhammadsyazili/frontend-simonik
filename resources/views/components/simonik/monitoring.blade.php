@@ -473,7 +473,7 @@
                                     @if (empty($response->data->indicators))
                                         <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                     @else
-                                        <div id="container"></div>
+                                        {{-- <div id="container"></div> --}}
 
                                         <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari KPI..">
 

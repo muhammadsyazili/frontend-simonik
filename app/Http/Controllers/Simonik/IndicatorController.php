@@ -91,7 +91,8 @@ class IndicatorController extends Controller
         }
 
         Session::flash('info_message', sprintf("%s, Silakan lanjut ke menu <a class=\"text-danger font-weight-bold\" href=\"%s\">Referensi - KPI: Create</a>", $response->object()->message, route('simonik.indicators.paper-work.reference.create')));
-        return redirect()->route('simonik.indicators.paper-work.index', params());
+        //return redirect()->route('simonik.indicators.paper-work.index', params());
+        return redirect()->route('simonik.indicators.create');
     }
 
     /**

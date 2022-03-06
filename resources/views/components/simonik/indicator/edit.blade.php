@@ -173,7 +173,7 @@
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small">KPI <span class="text-danger">*</span></label>
+                                        <label class="small">Nama KPI <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control form-control-sm" name="indicator" value="{{ $response->data->indicator->indicator }}">
                                     </div>
                                 </div>
@@ -195,7 +195,7 @@
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                                    <label class="small">KPI Dummy <small class="text-info">(KPI tidak memiliki bobot)</small> ? <span class="text-danger">*</span></label>
+                                    <label class="small">KPI Tidak Memiliki Bobot ? <span class="text-danger">*</span></label>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
                                     <div class="form-group clearfix">
@@ -211,7 +211,7 @@
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                                    <label class="small">Faktor Pengurang ? <span class="text-danger">*</span></label>
+                                    <label class="small">KPI Faktor Pengurang ? <span class="text-danger">*</span></label>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
                                     <div class="form-group clearfix">
@@ -380,13 +380,10 @@
                                     <p class="text-center text-info small"><strong>Noted!</strong> bobot akan diabaikan jika masa berlaku tidak dipilih</p>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <p class="text-center text-info small">Jika bobot dari bulan jan-dec sama isi field dibawah ini</p>
+                                    <p class="text-center text-info small"><small>jika bobot jan s.d dec sama cukup isi field dibawah ini</small></p>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <input type="number" class="form-control form-control-sm" id="multiple-add-weight" value="0">
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-2">
-                                    <p class="text-center text-info small">Jika bobot dari bulan jan-dec tidak sama isi field dibawah ini</p>
+                                    <input type="number" class="form-control form-control-sm mb-2" id="multiple-add-weight" value="0">
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
                                     <div class="form-group">
