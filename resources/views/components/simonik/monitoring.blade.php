@@ -167,6 +167,9 @@
                 },
                 success: function(res) {
                     Highcharts.chart('chart-container', {
+                        chart: {
+                            type: 'line'
+                        },
                         title: {
                             text: res.data.indicator.indicator
                         },
@@ -185,6 +188,14 @@
                             layout: 'vertical',
                             align: 'right',
                             verticalAlign: 'middle'
+                        },
+                        plotOptions: {
+                            line: {
+                                dataLabels: {
+                                    enabled: true
+                                },
+                                enableMouseTracking: false
+                            }
                         },
                         series: [{
                             name: 'TARGET',
@@ -461,7 +472,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody id="myTable">
-                                                    @foreach ($response->data->indicators as $indicator)
+                                                    @foreach ($response->data->indicators->partials as $indicator)
                                                         <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
                                                             <td class="small">
                                                                 <div style="width: 300px;">
@@ -472,13 +483,19 @@
                                                                 </div>
                                                             </td>
                                                             <td class="text-center small">
-                                                                {{ $indicator->achievement }}
+                                                                @if (!is_null($indicator->achievement))
+                                                                    {{ round($indicator->achievement, 2) }}
+                                                                @endif
                                                             </td>
                                                             <td class="text-center small">
-                                                                {{ $indicator->capping_value_100 }}
+                                                                @if (!is_null($indicator->capping_value_100))
+                                                                    {{ $indicator->capping_value_100 === 'BELUM DINILAI' ? $indicator->capping_value_100 : round($indicator->capping_value_100, 2) }}
+                                                                @endif
                                                             </td>
                                                             <td class="text-center small">
-                                                                {{ $indicator->capping_value_110 }}
+                                                                @if (!is_null($indicator->capping_value_110))
+                                                                    {{ $indicator->capping_value_110 === 'BELUM DINILAI' ? $indicator->capping_value_110 : round($indicator->capping_value_110, 2) }}
+                                                                @endif
                                                             </td>
                                                             <td class="text-center {{ 'bg-'.$indicator->status_color }} small">
                                                                 {{ $indicator->status }}
@@ -490,6 +507,30 @@
                                                             </td>
                                                         </tr>
                                                     @endforeach
+                                                    <tr class="bg-info">
+                                                        <td class="small">KEY PERFORMANCE INDIKATOR</td>
+                                                        <td class="text-center small"></td>
+                                                        <td class="text-center small">
+                                                            {{ round($response->data->indicators->total->KPI_100, 2) }}
+                                                        </td>
+                                                        <td class="text-center small">
+                                                            {{ round($response->data->indicators->total->KPI_110, 2) }}
+                                                        </td>
+                                                        <td class="text-center small"></td>
+                                                        <td class="text-center small"></td>
+                                                    </tr>
+                                                    <tr class="bg-info">
+                                                        <td class="small">PERFORMANCE INDIKATOR</td>
+                                                        <td class="text-center small"></td>
+                                                        <td class="text-center small">
+                                                            {{ round($response->data->indicators->total->PI_100, 2) }}
+                                                        </td>
+                                                        <td class="text-center small">
+                                                            {{ round($response->data->indicators->total->PI_110. 2) }}
+                                                        </td>
+                                                        <td class="text-center small"></td>
+                                                        <td class="text-center small"></td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
