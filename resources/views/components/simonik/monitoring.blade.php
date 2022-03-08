@@ -154,7 +154,10 @@
         $('.chart').click(function() {
             let id = $(this).data("id");
             let prefix = $(this).data("prefix");
+            let unit = $(this).data("unit");
+            let year = $(this).data("year");
             let month = $(this).data("month");
+            let status = $(this).data("status");
 
             let host = $('meta[name="host"]').attr('content');
             let user = $('meta[name="user"]').attr('content');
@@ -171,10 +174,10 @@
                             type: 'line'
                         },
                         title: {
-                            text: res.data.indicator.indicator
+                            text: `${res.data.indicator.indicator} - (${res.data.indicator.type})`
                         },
                         subtitle: {
-                            text: res.data.indicator.type
+                            text: `Unit Kerja: ${unit} - Bulan: s.d ${month.toUpperCase()} - Tahun: ${year} - Status: ${status}`
                         },
                         yAxis: {
                             title: {
@@ -502,7 +505,7 @@
                                                             </td>
                                                             <td class="text-center small">
                                                                 @if (!is_null($indicator->status))
-                                                                    <button type="button" class="btn btn-sm btn-outline-info chart" data-id="{{ $indicator->id }}" data-prefix="{{ $indicator->prefix }}" data-month="{{ $indicator->month_selected }}"><i class="fas fa-chart-bar"></i></button>
+                                                                    <button type="button" class="btn btn-sm btn-outline-info chart" data-id="{{ $indicator->id }}" data-prefix="{{ $indicator->prefix }}" data-unit="{{ cast_to_upper(request()->query('unit')) }}" data-year="{{ request()->query('tahun') }}" data-month="{{ request()->query('bulan') }}" data-status="{{ $indicator->status }}"><i class="fas fa-chart-bar"></i></button>
                                                                 @endif
                                                             </td>
                                                         </tr>
@@ -560,7 +563,7 @@
                                                         <td class="text-center small"></td>
                                                     </tr>
                                                     <tr class="bg-success">
-                                                        <td class="small">TOTAL PROPORSIONAL PENILAIAN KINERJA (NKO)</td>
+                                                        <td class="small">TOTAL PROPORSIONAL PENILAIAN KINERJA</td>
                                                         <td class="text-center small"></td>
                                                         <td class="text-center small">
                                                             {{ number_format($response->data->indicators->total->PPK_100, 2, ',', '') }}
