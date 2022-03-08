@@ -484,17 +484,17 @@
                                                             </td>
                                                             <td class="text-center small">
                                                                 @if (!is_null($indicator->achievement))
-                                                                    {{ round($indicator->achievement, 2) }}
+                                                                    {{ number_format($indicator->achievement, 2, ',', '') }}
                                                                 @endif
                                                             </td>
                                                             <td class="text-center small">
                                                                 @if (!is_null($indicator->capping_value_100))
-                                                                    {{ $indicator->capping_value_100 === 'BELUM DINILAI' ? $indicator->capping_value_100 : round($indicator->capping_value_100, 2) }}
+                                                                    {{ $indicator->capping_value_100 === 'BELUM DINILAI' ? $indicator->capping_value_100 : number_format($indicator->capping_value_100, 2, ',', '') }}
                                                                 @endif
                                                             </td>
                                                             <td class="text-center small">
                                                                 @if (!is_null($indicator->capping_value_110))
-                                                                    {{ $indicator->capping_value_110 === 'BELUM DINILAI' ? $indicator->capping_value_110 : round($indicator->capping_value_110, 2) }}
+                                                                    {{ $indicator->capping_value_110 === 'BELUM DINILAI' ? $indicator->capping_value_110 : number_format($indicator->capping_value_110, 2, ',', '') }}
                                                                 @endif
                                                             </td>
                                                             <td class="text-center {{ 'bg-'.$indicator->status_color }} small">
@@ -507,14 +507,22 @@
                                                             </td>
                                                         </tr>
                                                     @endforeach
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
                                                     <tr class="bg-info">
                                                         <td class="small">KEY PERFORMANCE INDIKATOR</td>
                                                         <td class="text-center small"></td>
                                                         <td class="text-center small">
-                                                            {{ round($response->data->indicators->total->KPI_100, 2) }}
+                                                            {{ number_format($response->data->indicators->total->KPI_100, 2, ',', '') }}
                                                         </td>
                                                         <td class="text-center small">
-                                                            {{ round($response->data->indicators->total->KPI_110, 2) }}
+                                                            {{ number_format($response->data->indicators->total->KPI_110, 2, ',', '') }}
                                                         </td>
                                                         <td class="text-center small"></td>
                                                         <td class="text-center small"></td>
@@ -523,10 +531,42 @@
                                                         <td class="small">PERFORMANCE INDIKATOR</td>
                                                         <td class="text-center small"></td>
                                                         <td class="text-center small">
-                                                            {{ round($response->data->indicators->total->PI_100, 2) }}
+                                                            {{ number_format($response->data->indicators->total->PI_100, 2, ',', '') }}
                                                         </td>
                                                         <td class="text-center small">
-                                                            {{ round($response->data->indicators->total->PI_110. 2) }}
+                                                            {{ number_format($response->data->indicators->total->PI_110, 2, ',', '') }}
+                                                        </td>
+                                                        <td class="text-center small"></td>
+                                                        <td class="text-center small"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr class="bg-success">
+                                                        <td class="small">TOTAL PENILAIAN KINERJA</td>
+                                                        <td class="text-center small"></td>
+                                                        <td class="text-center small">
+                                                            {{ number_format($response->data->indicators->total->PK_100, 2, ',', '') }}
+                                                        </td>
+                                                        <td class="text-center small">
+                                                            {{ number_format($response->data->indicators->total->PK_110, 2, ',', '') }}
+                                                        </td>
+                                                        <td class="text-center small"></td>
+                                                        <td class="text-center small"></td>
+                                                    </tr>
+                                                    <tr class="bg-success">
+                                                        <td class="small">TOTAL PROPORSIONAL PENILAIAN KINERJA</td>
+                                                        <td class="text-center small"></td>
+                                                        <td class="text-center small">
+                                                            {{ number_format($response->data->indicators->total->PPK_100, 2, ',', '') }}
+                                                        </td>
+                                                        <td class="text-center small">
+                                                            {{ number_format($response->data->indicators->total->PPK_110, 2, ',', '') }}
                                                         </td>
                                                         <td class="text-center small"></td>
                                                         <td class="text-center small"></td>
