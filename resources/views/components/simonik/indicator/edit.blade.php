@@ -78,8 +78,6 @@
                 $('.validity-group').attr("disabled", false);
                 $('.weight-group').prop('disabled', false);
                 $('#multiple-add-weight').prop('disabled', false);
-                $('.weight-group-counted').prop('disabled', false);
-                $('#multiple-add-weight-counted').prop('disabled', false);
             } else {
                 $('input[name="reducing_factor"]').attr("disabled", true);
                 $('input[name="polarity"]').attr("disabled", true);
@@ -87,8 +85,6 @@
                 $('.validity-group').attr("disabled", true);
                 $('.weight-group').prop('disabled', true);
                 $('#multiple-add-weight').prop('disabled', true);
-                $('.weight-group-counted').prop('disabled', true);
-                $('#multiple-add-weight-counted').prop('disabled', true);
             }
         }
 
@@ -465,91 +461,6 @@
                                     <div class="form-group">
                                         <p class="text-center small">Dec</p>
                                         <input type="number" class="form-control form-control-sm weight-group" name="weight[dec]" value="{{ $response->data->indicator->weight->dec->value }}">
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <p class="text-center font-weight-bold small">Bobot Terhitung <span class="text-danger">*</span></p>
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <p class="text-center text-info small"><strong>Noted!</strong> bobot terhitung akan diabaikan jika masa berlaku tidak dipilih</p>
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <p class="text-center text-info small"><small>jika bobot terhitung jan s.d dec sama cukup isi field dibawah ini</small></p>
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <input type="number" class="form-control form-control-sm mb-2" id="multiple-add-weight-counted" value="0">
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">Jan</p>
-                                        <input type="number" class="form-control form-control-sm weight-group-counted" name="weight_counted[jan]" value="0">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">Feb</p>
-                                        <input type="number" class="form-control form-control-sm weight-group-counted" name="weight_counted[feb]" value="0">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">Mar</p>
-                                        <input type="number" class="form-control form-control-sm weight-group-counted" name="weight_counted[mar]" value="0">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">Apr</p>
-                                        <input type="number" class="form-control form-control-sm weight-group-counted" name="weight_counted[apr]" value="0">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">May</p>
-                                        <input type="number" class="form-control form-control-sm weight-group-counted" name="weight_counted[may]" value="0">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">Jun</p>
-                                        <input type="number" class="form-control form-control-sm weight-group-counted" name="weight_counted[jun]" value="0">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">Jul</p>
-                                        <input type="number" class="form-control form-control-sm weight-group-counted" name="weight_counted[jul]" value="0">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">Aug</p>
-                                        <input type="number" class="form-control form-control-sm weight-group-counted" name="weight_counted[aug]" value="0">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">Sep</p>
-                                        <input type="number" class="form-control form-control-sm weight-group-counted" name="weight_counted[sep]" value="0">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">Oct</p>
-                                        <input type="number" class="form-control form-control-sm weight-group-counted" name="weight_counted[oct]" value="0">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">Nov</p>
-                                        <input type="number" class="form-control form-control-sm weight-group-counted" name="weight_counted[nov]" value="0">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-1 col-lg-1 col-xl-1">
-                                    <div class="form-group">
-                                        <p class="text-center small">Dec</p>
-                                        <input type="number" class="form-control form-control-sm weight-group-counted" name="weight_counted[dec]" value="0">
                                     </div>
                                 </div>
 

@@ -37,7 +37,6 @@ class IndicatorController extends Controller
             'measure' => ['nullable', 'string'],
             'validity' => ['nullable'],
             'weight' => ['nullable'],
-            'weight_counted' => ['nullable'],
         ];
 
         $messages = [
@@ -66,12 +65,6 @@ class IndicatorController extends Controller
             }
         }
 
-        if (!is_null($request->post('weight_counted'))) {
-            foreach ($request->post('weight_counted') as $key => $value) {
-                $attributes["weight_counted.$key"] = ['numeric'];
-            }
-        }
-
         $request->validate($attributes, $messages);
 
         $data = [
@@ -84,7 +77,6 @@ class IndicatorController extends Controller
             'measure' => $request->post('measure'),
             'validity' => $request->post('validity'),
             'weight' => $request->post('weight'),
-            'weight_counted' => $request->post('weight_counted'),
         ];
 
         $response = SIMONIK_sevices('/indicator', 'post', $data);
@@ -146,7 +138,6 @@ class IndicatorController extends Controller
             'measure' => ['nullable', 'string'],
             'validity' => ['nullable'],
             'weight' => ['nullable'],
-            'weight_counted' => ['nullable'],
         ];
 
         $messages = [
@@ -175,12 +166,6 @@ class IndicatorController extends Controller
             }
         }
 
-        if (!is_null($request->post('weight_counted'))) {
-            foreach ($request->post('weight_counted') as $key => $value) {
-                $attributes["weight_counted.$key"] = ['numeric'];
-            }
-        }
-
         $request->validate($attributes, $messages);
 
         $data = [
@@ -193,7 +178,6 @@ class IndicatorController extends Controller
             'measure' => $request->post('measure'),
             'validity' => $request->post('validity'),
             'weight' => $request->post('weight'),
-            'weight_counted' => $request->post('weight_counted'),
         ];
 
         $response = SIMONIK_sevices("/indicator/$id", 'put', $data);
