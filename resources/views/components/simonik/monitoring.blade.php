@@ -560,7 +560,7 @@
                                                         <td class="text-center small"></td>
                                                     </tr>
                                                     <tr class="bg-success">
-                                                        <td class="small">TOTAL PROPORSIONAL PENILAIAN KINERJA</td>
+                                                        <td class="small">TOTAL PROPORSIONAL PENILAIAN KINERJA (NKO)</td>
                                                         <td class="text-center small"></td>
                                                         <td class="text-center small">
                                                             {{ number_format($response->data->indicators->total->PPK_100, 2, ',', '') }}
