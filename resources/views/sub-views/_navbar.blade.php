@@ -13,7 +13,7 @@
     <!-- Sidebar Control -->
     <li class="nav-item">
       <a class="nav-link" href="{{ route('logout') }}">
-        Sign Out
+        Logout
       </a>
     </li>
     <!-- End Sidebar Control -->
