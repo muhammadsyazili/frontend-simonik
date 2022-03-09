@@ -18,6 +18,7 @@ class MonitoringController extends Controller
                 'unit' => $request->query('unit'),
                 'tahun' => (int) $request->query('tahun'),
                 'bulan' => $request->query('bulan'),
+                'auth' => '1',
             ]);
 
             if ($response->clientError()) {

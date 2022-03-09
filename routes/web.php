@@ -56,7 +56,7 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
                 return redirect()->route('logout');
             }
 
-            return $response->object()->data->user->actived ? redirect()->route('simonik.indicators.paper-work.index') : redirect()->route('simonik.user.password.change.form', ['id' => $id]);
+            return $response->object()->data->user->actived ? redirect()->route('simonik.dashboard.after') : redirect()->route('simonik.user.password.change.form', ['id' => $id]);
         } else if ($request->cookie('X-App') === 'fdx') {
             return redirect()->route('fdx.indicators.index');
         } else {

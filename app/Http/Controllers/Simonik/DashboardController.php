@@ -18,6 +18,7 @@ class DashboardController extends Controller
                 'unit' => $request->query('unit'),
                 'tahun' => (int) $request->query('tahun'),
                 'bulan' => $request->query('bulan'),
+                'auth' => '0',
             ]);
 
             if ($response->clientError()) {
@@ -44,6 +45,7 @@ class DashboardController extends Controller
                 'unit' => $request->query('unit'),
                 'tahun' => (int) $request->query('tahun'),
                 'bulan' => $request->query('bulan'),
+                'auth' => '0',
             ]);
 
             if ($response->clientError()) {

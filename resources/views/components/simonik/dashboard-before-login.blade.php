@@ -112,22 +112,22 @@
 
     <style>
         #container-1 {
-            height: 250px;
+            height: 350px;
         }
         #container-2 {
-            height: 200px;
+            height: 300px;
         }
         #container-3 {
-            height: 200px;
+            height: 300px;
         }
         #container-4 {
-            height: 250px;
+            height: 350px;
         }
         #container-5 {
-            height: 200px;
+            height: 300px;
         }
         #container-6 {
-            height: 200px;
+            height: 300px;
         }
 
         .highcharts-figure,
@@ -336,19 +336,6 @@
                         title: {
                             text: '%'
                         },
-                        plotBands: [{
-                            from: 0,
-                            to: 95,
-                            color: '#DF5353' // red
-                        }, {
-                            from: 95,
-                            to: 100,
-                            color: '#DDDF0D' // yellow
-                        }, {
-                            from: 100,
-                            to: 200,
-                            color: '#55BF3B' // green
-                        }]
                     },
                     series: [{
                         name: container2Name,
@@ -419,19 +406,6 @@
                         title: {
                             text: '%'
                         },
-                        plotBands: [{
-                            from: 0,
-                            to: 95,
-                            color: '#DF5353' // red
-                        }, {
-                            from: 95,
-                            to: 100,
-                            color: '#DDDF0D' // yellow
-                        }, {
-                            from: 100,
-                            to: 200,
-                            color: '#55BF3B' // green
-                        }]
                     },
                     series: [{
                         name: container3Name,
@@ -588,19 +562,6 @@
                         title: {
                             text: '%'
                         },
-                        plotBands: [{
-                            from: 0,
-                            to: 95,
-                            color: '#DF5353' // red
-                        }, {
-                            from: 95,
-                            to: 100,
-                            color: '#DDDF0D' // yellow
-                        }, {
-                            from: 100,
-                            to: 200,
-                            color: '#55BF3B' // green
-                        }]
                     },
                     series: [{
                         name: container5Name,
@@ -671,19 +632,6 @@
                         title: {
                             text: '%'
                         },
-                        plotBands: [{
-                            from: 0,
-                            to: 95,
-                            color: '#DF5353' // red
-                        }, {
-                            from: 95,
-                            to: 100,
-                            color: '#DDDF0D' // yellow
-                        }, {
-                            from: 100,
-                            to: 200,
-                            color: '#55BF3B' // green
-                        }]
                     },
                     series: [{
                         name: container6Name,
