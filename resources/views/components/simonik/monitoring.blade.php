@@ -388,14 +388,14 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Monitoring
-                            / Level :
+                        <h3 class="card-title">MONITORING
+                            / LEVEL :
                             {{ request()->query('level') == null ? '-' : cast_to_upper(request()->query('level')) }}
-                            / Unit :
+                            / UNIT :
                             {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }}
-                            / Tahun :
+                            / TAHUN :
                             {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }}
-                            / Bulan :
+                            / BULAN :
                             {{ request()->query('bulan') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }}
                         </h3>
                     </div>

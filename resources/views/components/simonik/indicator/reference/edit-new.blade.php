@@ -170,7 +170,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Referensi - KPI / Level : {{ cast_to_upper($level) }} / Unit : {{ $level === 'super-master' ? '-' : cast_to_upper($unit) }} / Tahun : {{ $level === 'super-master' ? '-' : cast_to_upper($tahun) }}</h3>
+                        <h3 class="card-title">REFERENSI - KPI / LEVEL : {{ cast_to_upper($level) }} / UNIT : {{ $level === 'super-master' ? '-' : cast_to_upper($unit) }} / TAHUN : {{ $level === 'super-master' ? '-' : cast_to_upper($tahun) }}</h3>
                     </div>
                     <!-- end : card-header -->
 

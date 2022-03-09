@@ -274,7 +274,7 @@
                         <div class="card border-0 shadow rounded">
                             <!-- card-header -->
                             <div class="card-header">
-                                <h3 class="card-title">Add Target Via Excel</h3>
+                                <h3 class="card-title">ADD TARGET VIA EXCEL</h3>
                             </div>
                             <!-- end : card-header -->
 
@@ -313,12 +313,12 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">Kertas Kerja - Target
-                            / Level :
+                        <h3 class="card-title">KERTAS KERJA - TARGET
+                            / LEVEL :
                             {{ request()->query('level') == null ? '-' : cast_to_upper(request()->query('level')) }}
-                            / Unit :
+                            / UNIT :
                             {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }}
-                            / Tahun :
+                            / TAHUN :
                             {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }}
                         </h3>
                     </div>
