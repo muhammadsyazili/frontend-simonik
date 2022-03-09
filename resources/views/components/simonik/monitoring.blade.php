@@ -122,6 +122,71 @@
         }
 
     </style>
+
+    <style>
+        #container-1 {
+            height: 300px;
+        }
+        #container-2 {
+            height: 250px;
+        }
+        #container-3 {
+            height: 250px;
+        }
+        #container-4 {
+            height: 300px;
+        }
+        #container-5 {
+            height: 250px;
+        }
+        #container-6 {
+            height: 250px;
+        }
+
+        .highcharts-figure,
+        .highcharts-data-table table {
+            min-width: 310px;
+            max-width: 500px;
+            margin: 1em auto;
+        }
+
+        .highcharts-data-table table {
+            font-family: Verdana, sans-serif;
+            border-collapse: collapse;
+            border: 1px solid #ebebeb;
+            margin: 10px auto;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .highcharts-data-table caption {
+            padding: 1em 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .highcharts-data-table th {
+            font-weight: 600;
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table td,
+        .highcharts-data-table th,
+        .highcharts-data-table caption {
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table thead tr,
+        .highcharts-data-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        .highcharts-data-table tr:hover {
+            background: #f1f7ff;
+        }
+
+    </style>
 @endpush
 
 {{-- ========================================================== --}}
@@ -149,6 +214,8 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
 
     <script>
         $('.chart').click(function() {
@@ -226,6 +293,547 @@
                 }
             });
         });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            if ($('#PPK_100').val() !== undefined && $('#PPK_110').val() !== undefined) {
+                let container1Name = 'NKO 100%';
+                Highcharts.chart('container-1', {
+
+                    chart: {
+                        type: 'gauge',
+                        plotBackgroundColor: null,
+                        plotBackgroundImage: null,
+                        plotBorderWidth: 0,
+                        plotShadow: false
+                    },
+
+                    title: {
+                        text: container1Name
+                    },
+
+                    pane: {
+                        startAngle: -90,
+                        endAngle: 90,
+                        background: [{
+                            backgroundColor: '#DDD',
+                            borderWidth: 0,
+                            outerRadius: '120%',
+                            innerRadius: '100%'
+                        }]
+                    },
+
+                    // the value axis
+                    yAxis: {
+                        min: 0,
+                        max: 200,
+
+                        minorTickInterval: 'auto',
+                        minorTickWidth: 1,
+                        minorTickLength: 10,
+                        minorTickPosition: 'inside',
+                        minorTickColor: '#666',
+
+                        tickPixelInterval: 30,
+                        tickWidth: 2,
+                        tickPosition: 'inside',
+                        tickLength: 10,
+                        tickColor: '#666',
+                        labels: {
+                            step: 2,
+                            rotation: 'auto'
+                        },
+                        title: {
+                            text: '%'
+                        },
+                        plotBands: [{
+                            from: 0,
+                            to: 95,
+                            color: '#DF5353' // red
+                        }, {
+                            from: 95,
+                            to: 100,
+                            color: '#DDDF0D' // yellow
+                        }, {
+                            from: 100,
+                            to: 200,
+                            color: '#55BF3B' // green
+                        }]
+                    },
+
+                    series: [{
+                        name: container1Name,
+                        data: [0],
+                        tooltip: {
+                            valueSuffix: ' %'
+                        }
+                    }]
+
+                },
+                // Add some life
+                function (chart) {
+                    if (!chart.renderer.forExport) {
+                        let point = chart.series[0].points[0],
+                            newVal,
+                            inc = parseFloat($('#PPK_100').val());
+
+                        newVal = point.y + inc;
+                        if (newVal < 0 || newVal > 200) {
+                            newVal = point.y - inc;
+                        }
+
+                        point.update(newVal);
+                    }
+                });
+
+                let container2Name = 'KPI 100%';
+                Highcharts.chart('container-2', {
+
+                    chart: {
+                        type: 'gauge',
+                        plotBackgroundColor: null,
+                        plotBackgroundImage: null,
+                        plotBorderWidth: 0,
+                        plotShadow: false
+                    },
+
+                    title: {
+                        text: container2Name
+                    },
+
+                    pane: {
+                        startAngle: -90,
+                        endAngle: 90,
+                        background: [{
+                            backgroundColor: '#DDD',
+                            borderWidth: 0,
+                            outerRadius: '120%',
+                            innerRadius: '100%'
+                        }]
+                    },
+
+                    // the value axis
+                    yAxis: {
+                        min: 0,
+                        max: 200,
+
+                        minorTickInterval: 'auto',
+                        minorTickWidth: 1,
+                        minorTickLength: 10,
+                        minorTickPosition: 'inside',
+                        minorTickColor: '#666',
+
+                        tickPixelInterval: 30,
+                        tickWidth: 2,
+                        tickPosition: 'inside',
+                        tickLength: 10,
+                        tickColor: '#666',
+                        labels: {
+                            step: 2,
+                            rotation: 'auto'
+                        },
+                        title: {
+                            text: '%'
+                        },
+                        plotBands: [{
+                            from: 0,
+                            to: 95,
+                            color: '#DF5353' // red
+                        }, {
+                            from: 95,
+                            to: 100,
+                            color: '#DDDF0D' // yellow
+                        }, {
+                            from: 100,
+                            to: 200,
+                            color: '#55BF3B' // green
+                        }]
+                    },
+
+                    series: [{
+                        name: container2Name,
+                        data: [0],
+                        tooltip: {
+                            valueSuffix: ' %'
+                        }
+                    }]
+
+                },
+                // Add some life
+                function (chart) {
+                    if (!chart.renderer.forExport) {
+                        let point = chart.series[0].points[0],
+                            newVal,
+                            inc = parseFloat($('#KPI_100').val());
+
+                        newVal = point.y + inc;
+                        if (newVal < 0 || newVal > 200) {
+                            newVal = point.y - inc;
+                        }
+
+                        point.update(newVal);
+                    }
+                });
+
+                let container3Name = 'PI 100%';
+                Highcharts.chart('container-3', {
+
+                    chart: {
+                        type: 'gauge',
+                        plotBackgroundColor: null,
+                        plotBackgroundImage: null,
+                        plotBorderWidth: 0,
+                        plotShadow: false
+                    },
+
+                    title: {
+                        text: container3Name
+                    },
+
+                    pane: {
+                        startAngle: -90,
+                        endAngle: 90,
+                        background: [{
+                            backgroundColor: '#DDD',
+                            borderWidth: 0,
+                            outerRadius: '120%',
+                            innerRadius: '100%'
+                        }]
+                    },
+
+                    // the value axis
+                    yAxis: {
+                        min: 0,
+                        max: 200,
+
+                        minorTickInterval: 'auto',
+                        minorTickWidth: 1,
+                        minorTickLength: 10,
+                        minorTickPosition: 'inside',
+                        minorTickColor: '#666',
+
+                        tickPixelInterval: 30,
+                        tickWidth: 2,
+                        tickPosition: 'inside',
+                        tickLength: 10,
+                        tickColor: '#666',
+                        labels: {
+                            step: 2,
+                            rotation: 'auto'
+                        },
+                        title: {
+                            text: '%'
+                        },
+                        plotBands: [{
+                            from: 0,
+                            to: 95,
+                            color: '#DF5353' // red
+                        }, {
+                            from: 95,
+                            to: 100,
+                            color: '#DDDF0D' // yellow
+                        }, {
+                            from: 100,
+                            to: 200,
+                            color: '#55BF3B' // green
+                        }]
+                    },
+
+                    series: [{
+                        name: container3Name,
+                        data: [0],
+                        tooltip: {
+                            valueSuffix: ' %'
+                        }
+                    }]
+
+                },
+                // Add some life
+                function (chart) {
+                    if (!chart.renderer.forExport) {
+                        let point = chart.series[0].points[0],
+                            newVal,
+                            inc = parseFloat($('#PI_100').val());
+
+                        newVal = point.y + inc;
+                        if (newVal < 0 || newVal > 200) {
+                            newVal = point.y - inc;
+                        }
+
+                        point.update(newVal);
+                    }
+                });
+
+                let container4Name = 'NKO 110%';
+                Highcharts.chart('container-4', {
+
+                    chart: {
+                        type: 'gauge',
+                        plotBackgroundColor: null,
+                        plotBackgroundImage: null,
+                        plotBorderWidth: 0,
+                        plotShadow: false
+                    },
+
+                    title: {
+                        text: container4Name
+                    },
+
+                    pane: {
+                        startAngle: -90,
+                        endAngle: 90,
+                        background: [{
+                            backgroundColor: '#DDD',
+                            borderWidth: 0,
+                            outerRadius: '120%',
+                            innerRadius: '100%'
+                        }]
+                    },
+
+                    // the value axis
+                    yAxis: {
+                        min: 0,
+                        max: 200,
+
+                        minorTickInterval: 'auto',
+                        minorTickWidth: 1,
+                        minorTickLength: 10,
+                        minorTickPosition: 'inside',
+                        minorTickColor: '#666',
+
+                        tickPixelInterval: 30,
+                        tickWidth: 2,
+                        tickPosition: 'inside',
+                        tickLength: 10,
+                        tickColor: '#666',
+                        labels: {
+                            step: 2,
+                            rotation: 'auto'
+                        },
+                        title: {
+                            text: '%'
+                        },
+                        plotBands: [{
+                            from: 0,
+                            to: 95,
+                            color: '#DF5353' // red
+                        }, {
+                            from: 95,
+                            to: 100,
+                            color: '#DDDF0D' // yellow
+                        }, {
+                            from: 100,
+                            to: 200,
+                            color: '#55BF3B' // green
+                        }]
+                    },
+
+                    series: [{
+                        name: container4Name,
+                        data: [0],
+                        tooltip: {
+                            valueSuffix: ' %'
+                        }
+                    }]
+
+                },
+                // Add some life
+                function (chart) {
+                    if (!chart.renderer.forExport) {
+                        let point = chart.series[0].points[0],
+                            newVal,
+                            inc = parseFloat($('#PPK_110').val());
+
+                        newVal = point.y + inc;
+                        if (newVal < 0 || newVal > 200) {
+                            newVal = point.y - inc;
+                        }
+
+                        point.update(newVal);
+                    }
+                });
+
+                let container5Name = 'KPI 110%';
+                Highcharts.chart('container-5', {
+
+                    chart: {
+                        type: 'gauge',
+                        plotBackgroundColor: null,
+                        plotBackgroundImage: null,
+                        plotBorderWidth: 0,
+                        plotShadow: false
+                    },
+
+                    title: {
+                        text: container5Name
+                    },
+
+                    pane: {
+                        startAngle: -90,
+                        endAngle: 90,
+                        background: [{
+                            backgroundColor: '#DDD',
+                            borderWidth: 0,
+                            outerRadius: '120%',
+                            innerRadius: '100%'
+                        }]
+                    },
+
+                    // the value axis
+                    yAxis: {
+                        min: 0,
+                        max: 200,
+
+                        minorTickInterval: 'auto',
+                        minorTickWidth: 1,
+                        minorTickLength: 10,
+                        minorTickPosition: 'inside',
+                        minorTickColor: '#666',
+
+                        tickPixelInterval: 30,
+                        tickWidth: 2,
+                        tickPosition: 'inside',
+                        tickLength: 10,
+                        tickColor: '#666',
+                        labels: {
+                            step: 2,
+                            rotation: 'auto'
+                        },
+                        title: {
+                            text: '%'
+                        },
+                        plotBands: [{
+                            from: 0,
+                            to: 95,
+                            color: '#DF5353' // red
+                        }, {
+                            from: 95,
+                            to: 100,
+                            color: '#DDDF0D' // yellow
+                        }, {
+                            from: 100,
+                            to: 200,
+                            color: '#55BF3B' // green
+                        }]
+                    },
+
+                    series: [{
+                        name: container5Name,
+                        data: [0],
+                        tooltip: {
+                            valueSuffix: ' %'
+                        }
+                    }]
+
+                },
+                // Add some life
+                function (chart) {
+                    if (!chart.renderer.forExport) {
+                        let point = chart.series[0].points[0],
+                            newVal,
+                            inc = parseFloat($('#KPI_110').val());
+
+                        newVal = point.y + inc;
+                        if (newVal < 0 || newVal > 200) {
+                            newVal = point.y - inc;
+                        }
+
+                        point.update(newVal);
+                    }
+                });
+
+                let container6Name = 'PI 110%';
+                Highcharts.chart('container-6', {
+
+                    chart: {
+                        type: 'gauge',
+                        plotBackgroundColor: null,
+                        plotBackgroundImage: null,
+                        plotBorderWidth: 0,
+                        plotShadow: false
+                    },
+
+                    title: {
+                        text: container6Name
+                    },
+
+                    pane: {
+                        startAngle: -90,
+                        endAngle: 90,
+                        background: [{
+                            backgroundColor: '#DDD',
+                            borderWidth: 0,
+                            outerRadius: '120%',
+                            innerRadius: '100%'
+                        }]
+                    },
+
+                    // the value axis
+                    yAxis: {
+                        min: 0,
+                        max: 200,
+
+                        minorTickInterval: 'auto',
+                        minorTickWidth: 1,
+                        minorTickLength: 10,
+                        minorTickPosition: 'inside',
+                        minorTickColor: '#666',
+
+                        tickPixelInterval: 30,
+                        tickWidth: 2,
+                        tickPosition: 'inside',
+                        tickLength: 10,
+                        tickColor: '#666',
+                        labels: {
+                            step: 2,
+                            rotation: 'auto'
+                        },
+                        title: {
+                            text: '%'
+                        },
+                        plotBands: [{
+                            from: 0,
+                            to: 95,
+                            color: '#DF5353' // red
+                        }, {
+                            from: 95,
+                            to: 100,
+                            color: '#DDDF0D' // yellow
+                        }, {
+                            from: 100,
+                            to: 200,
+                            color: '#55BF3B' // green
+                        }]
+                    },
+
+                    series: [{
+                        name: container6Name,
+                        data: [0],
+                        tooltip: {
+                            valueSuffix: ' %'
+                        }
+                    }]
+
+                },
+                // Add some life
+                function (chart) {
+                    if (!chart.renderer.forExport) {
+                        let point = chart.series[0].points[0],
+                            newVal,
+                            inc = parseFloat($('#PI_110').val());
+
+                        newVal = point.y + inc;
+                        if (newVal < 0 || newVal > 200) {
+                            newVal = point.y - inc;
+                        }
+
+                        point.update(newVal);
+                    }
+                });
+            }
+        });
+
     </script>
 
     {{-- Change Color Row Table on Click --}}
@@ -454,6 +1062,39 @@
                                     @if (empty($response->data->indicators))
                                         <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                     @else
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                <figure class="highcharts-figure">
+                                                    <div id="container-1"></div>
+                                                </figure>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                <figure class="highcharts-figure">
+                                                    <div id="container-2"></div>
+                                                </figure>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                <figure class="highcharts-figure">
+                                                    <div id="container-3"></div>
+                                                </figure>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                <figure class="highcharts-figure">
+                                                    <div id="container-4"></div>
+                                                </figure>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                <figure class="highcharts-figure">
+                                                    <div id="container-5"></div>
+                                                </figure>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                <figure class="highcharts-figure">
+                                                    <div id="container-6"></div>
+                                                </figure>
+                                            </div>
+                                        </div>
+
                                         {{-- <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari KPI.."> --}}
 
                                         <a href="#table"><span class="badge badge-pill badge-info">Focus on table</span></a>
@@ -519,9 +1160,11 @@
                                                         <td class="text-center"></td>
                                                         <td class="text-center">
                                                             {{ number_format($response->data->indicators->total->KPI_100, 2, ',', '') }}
+                                                            <input type="hidden" id="KPI_100" value="{{ number_format($response->data->indicators->total->KPI_100, 2, '.', '') }}">
                                                         </td>
                                                         <td class="text-center">
                                                             {{ number_format($response->data->indicators->total->KPI_110, 2, ',', '') }}
+                                                            <input type="hidden" id="KPI_110" value="{{ number_format($response->data->indicators->total->KPI_110, 2, '.', '') }}">
                                                         </td>
                                                         <td class="text-center"></td>
                                                         <td class="text-center"></td>
@@ -531,9 +1174,11 @@
                                                         <td class="text-center"></td>
                                                         <td class="text-center">
                                                             {{ number_format($response->data->indicators->total->PI_100, 2, ',', '') }}
+                                                            <input type="hidden" id="PI_100" value="{{ number_format($response->data->indicators->total->PI_100, 2, '.', '') }}">
                                                         </td>
                                                         <td class="text-center">
                                                             {{ number_format($response->data->indicators->total->PI_110, 2, ',', '') }}
+                                                            <input type="hidden" id="PI_110" value="{{ number_format($response->data->indicators->total->PI_110, 2, '.', '') }}">
                                                         </td>
                                                         <td class="text-center"></td>
                                                         <td class="text-center"></td>
@@ -563,9 +1208,11 @@
                                                         <td class="text-center"></td>
                                                         <td class="text-center">
                                                             {{ number_format($response->data->indicators->total->PPK_100, 2, ',', '') }}
+                                                            <input type="hidden" id="PPK_100" value="{{ number_format($response->data->indicators->total->PPK_100, 2, '.', '') }}">
                                                         </td>
                                                         <td class="text-center">
                                                             {{ number_format($response->data->indicators->total->PPK_110, 2, ',', '') }}
+                                                            <input type="hidden" id="PPK_110" value="{{ number_format($response->data->indicators->total->PPK_110, 2, '.', '') }}">
                                                         </td>
                                                         <td class="text-center"></td>
                                                         <td class="text-center"></td>

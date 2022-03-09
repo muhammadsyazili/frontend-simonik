@@ -44,6 +44,6 @@ class AuthController extends Controller
     public function logout()
     {
         CustomAuth::destroy();
-        return redirect()->route('login');
+        return redirect()->route('simonik.dashboard.before');
     }
 }

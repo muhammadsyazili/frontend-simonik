@@ -31,7 +31,7 @@
         @if (request()->cookie('X-App') === 'simonik')
             <li class="nav-header">SIMONIK</li>
             <li class="nav-item">
-                <a href="{{ route('simonik.dashboard') }}" class="nav-link">
+                <a href="{{ route('simonik.dashboard.after') }}" class="nav-link">
                 <i class="fas fa-circle nav-icon text-warning"></i>
                 <p>
                     Dashboard

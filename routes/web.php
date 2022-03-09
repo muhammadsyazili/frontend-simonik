@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 */
 
 Route::get('/', function () {
-    return redirect()->route('login.form');
+    return redirect()->route('simonik.dashboard.before');
 });
 
 //Sign In - Form
@@ -28,10 +28,13 @@ Route::get('/login', [App\Http\Controllers\AuthController::class, 'loginForm'])
 Route::post('/login', [App\Http\Controllers\AuthController::class, 'login'])
     ->name('login');
 
-Route::get('/simonik/dashboard', [App\Http\Controllers\Simonik\DashboardController::class, 'dashboard'])
-    ->name('simonik.dashboard');
+Route::get('/dashboard', [App\Http\Controllers\Simonik\DashboardController::class, 'dashboard_before_login'])
+    ->name('simonik.dashboard.before');
 
 Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
+
+    Route::get('/simonik/dashboard', [App\Http\Controllers\Simonik\DashboardController::class, 'dashboard_after_login'])
+        ->name('simonik.dashboard.after');
 
     //Sign Out
     Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout'])
