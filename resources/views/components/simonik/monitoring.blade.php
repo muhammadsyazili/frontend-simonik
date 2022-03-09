@@ -52,7 +52,7 @@
     {{-- Table Header Fixed --}}
     <style>
         .table-responsive {
-            height: 400px;
+            height: 100vh;
             overflow: scroll;
         }
 
@@ -406,7 +406,7 @@
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <form action="{{ route('simonik.monitoring') }}" method="get">
-                                    <div class="input-group mb-3">
+                                    <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-append">
                                             <span class="input-group-text">Level</span>
                                         </span>
@@ -414,7 +414,7 @@
                                         <select class="custom-select" name="level"></select>
 
                                         <span class="input-group-append">
-                                            <span class="input-group-text">Unit</span>
+                                            <span class="input-group-text">Unit Kerja</span>
                                         </span>
 
                                         <select class="custom-select" name="unit"></select>
@@ -462,8 +462,8 @@
 
                                         <a href="#table"><span class="badge badge-pill badge-info">Focus on table</span></a>
 
-                                        <div class="table-responsive-sm">
-                                            <table class="table table-bordered" id="table">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-sm" id="table">
                                                 <thead class="small">
                                                     <tr>
                                                         <th class="text-center">KPI</th>
@@ -474,10 +474,10 @@
                                                         <th class="text-center">CHART</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody id="myTable">
+                                                <tbody class="small" id="myTable">
                                                     @foreach ($response->data->indicators->partials as $indicator)
                                                         <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
-                                                            <td class="small">
+                                                            <td>
                                                                 <div style="width: 300px;">
                                                                     <p style="margin: 0">{{ $indicator->indicator }} <span class="badge badge-info">{{ $indicator->type }}</span></p>
                                                                     <p style="margin: 0">Formula: {{ $indicator->formula }}</p>
@@ -485,25 +485,25 @@
                                                                     <p style="margin: 0">Polaritas: <span class="badge badge-secondary">{!! $indicator->polarity !!}</span></p>
                                                                 </div>
                                                             </td>
-                                                            <td class="text-center small">
+                                                            <td class="text-center">
                                                                 @if (!is_null($indicator->achievement))
                                                                     {{ number_format($indicator->achievement, 2, ',', '') }}
                                                                 @endif
                                                             </td>
-                                                            <td class="text-center small">
+                                                            <td class="text-center">
                                                                 @if (!is_null($indicator->capping_value_100))
                                                                     {{ $indicator->capping_value_100 === 'BELUM DINILAI' ? $indicator->capping_value_100 : number_format($indicator->capping_value_100, 2, ',', '') }}
                                                                 @endif
                                                             </td>
-                                                            <td class="text-center small">
+                                                            <td class="text-center">
                                                                 @if (!is_null($indicator->capping_value_110))
                                                                     {{ $indicator->capping_value_110 === 'BELUM DINILAI' ? $indicator->capping_value_110 : number_format($indicator->capping_value_110, 2, ',', '') }}
                                                                 @endif
                                                             </td>
-                                                            <td class="text-center {{ 'bg-'.$indicator->status_color }} small">
+                                                            <td class="text-center {{ 'bg-'.$indicator->status_color }}">
                                                                 {{ $indicator->status }}
                                                             </td>
-                                                            <td class="text-center small">
+                                                            <td class="text-center">
                                                                 @if (!is_null($indicator->status))
                                                                     <button type="button" class="btn btn-sm btn-outline-info chart" data-id="{{ $indicator->id }}" data-prefix="{{ $indicator->prefix }}" data-unit="{{ cast_to_upper(request()->query('unit')) }}" data-year="{{ request()->query('tahun') }}" data-month="{{ request()->query('bulan') }}" data-status="{{ $indicator->status }}"><i class="fas fa-chart-bar"></i></button>
                                                                 @endif
@@ -519,28 +519,28 @@
                                                         <td></td>
                                                     </tr>
                                                     <tr class="bg-info">
-                                                        <td class="small">KEY PERFORMANCE INDIKATOR</td>
-                                                        <td class="text-center small"></td>
-                                                        <td class="text-center small">
+                                                        <td class="text-center">KEY PERFORMANCE INDIKATOR</td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center">
                                                             {{ number_format($response->data->indicators->total->KPI_100, 2, ',', '') }}
                                                         </td>
-                                                        <td class="text-center small">
+                                                        <td class="text-center">
                                                             {{ number_format($response->data->indicators->total->KPI_110, 2, ',', '') }}
                                                         </td>
-                                                        <td class="text-center small"></td>
-                                                        <td class="text-center small"></td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center"></td>
                                                     </tr>
                                                     <tr class="bg-info">
-                                                        <td class="small">PERFORMANCE INDIKATOR</td>
-                                                        <td class="text-center small"></td>
-                                                        <td class="text-center small">
+                                                        <td class="text-center">PERFORMANCE INDIKATOR</td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center">
                                                             {{ number_format($response->data->indicators->total->PI_100, 2, ',', '') }}
                                                         </td>
-                                                        <td class="text-center small">
+                                                        <td class="text-center">
                                                             {{ number_format($response->data->indicators->total->PI_110, 2, ',', '') }}
                                                         </td>
-                                                        <td class="text-center small"></td>
-                                                        <td class="text-center small"></td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center"></td>
                                                     </tr>
                                                     <tr>
                                                         <td></td>
@@ -551,28 +551,28 @@
                                                         <td></td>
                                                     </tr>
                                                     <tr class="bg-success">
-                                                        <td class="small">TOTAL PENILAIAN KINERJA</td>
-                                                        <td class="text-center small"></td>
-                                                        <td class="text-center small">
+                                                        <td class="text-center">TOTAL PENILAIAN KINERJA</td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center">
                                                             {{ number_format($response->data->indicators->total->PK_100, 2, ',', '') }}
                                                         </td>
-                                                        <td class="text-center small">
+                                                        <td class="text-center">
                                                             {{ number_format($response->data->indicators->total->PK_110, 2, ',', '') }}
                                                         </td>
-                                                        <td class="text-center small"></td>
-                                                        <td class="text-center small"></td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center"></td>
                                                     </tr>
                                                     <tr class="bg-success">
-                                                        <td class="small">TOTAL PROPORSIONAL PENILAIAN KINERJA</td>
-                                                        <td class="text-center small"></td>
-                                                        <td class="text-center small">
+                                                        <td class="text-center">TOTAL PROPORSIONAL PENILAIAN KINERJA</td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center">
                                                             {{ number_format($response->data->indicators->total->PPK_100, 2, ',', '') }}
                                                         </td>
-                                                        <td class="text-center small">
+                                                        <td class="text-center">
                                                             {{ number_format($response->data->indicators->total->PPK_110, 2, ',', '') }}
                                                         </td>
-                                                        <td class="text-center small"></td>
-                                                        <td class="text-center small"></td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center"></td>
                                                     </tr>
                                                 </tbody>
                                             </table>

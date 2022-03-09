@@ -121,8 +121,10 @@
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <h1 class="text-center text-danger"><i class="fas fa-exclamation-triangle"></i></h1>
-                                <h5 class="text-center">Anda yakin ingin menghapus kertas kerja KPI <strong>LEVEL: {{ cast_to_upper($level) }} - UNIT: @if ($unit === 'master') SEMUA UNIT KERJA LEVEL {{ cast_to_upper($level) }} @else{{ cast_to_upper($unit) }}@endif - TAHUN: {{ cast_to_upper($tahun) }}</strong> ?</h5>
-                                @if ($unit === 'master') <p class="text-center"><strong>Noted!</strong> Aksi ini akan menghapus semua kertas kerja KPI beserta target & realisasi di <strong>SEMUA UNIT KERJA</strong> pada <strong>LEVEL: {{ cast_to_upper($level) }}</strong>.</p> @endif
+                                <p class="text-center small">ANDA YAKIN INGIN MENGHAPUS KERTAS KERJA KPI <strong>LEVEL: {{ cast_to_upper($level) }} - UNIT: @if ($unit === 'master') SEMUA UNIT KERJA LEVEL {{ cast_to_upper($level) }} @else{{ cast_to_upper($unit) }}@endif - TAHUN: {{ cast_to_upper($tahun) }}</strong> ?</p>
+                                @if ($unit === 'master')
+                                    <small><p class="text-center small"><strong>Noted!</strong> Aksi ini akan menghapus semua Kertas Kerja KPI beserta Kertas Kerja Target & Kertas Kerja Realisasi di <strong>SEMUA UNIT KERJA</strong> pada <strong>LEVEL: {{ cast_to_upper($level) }}</strong>.</p></small>
+                                @endif
                             </div>
                         </div>
                     </div>

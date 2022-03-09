@@ -303,19 +303,19 @@
                             <!-- card-body -->
                             <div class="card-body">
                                 <div class="row mb-3">
-                                    <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                                    <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
                                         <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="buttom" title="Download Template"><i class="fas fa-file-download"></i></button>
                                     </div>
-                                    <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                                    <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
                                         <form action="#" method="post">
-                                            <div class="form-group">
+                                            <div class="form-group form-group-sm">
                                                 <div class="input-group">
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input" id="template">
                                                         <label class="custom-file-label" for="template">Choose file</label>
                                                     </div>
                                                     <div class="input-group-append">
-                                                        <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="buttom" title="Upload Template"><i class="fas fa-file-upload"></i></button>
+                                                        <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="buttom" title="Upload File"><i class="fas fa-file-upload"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -351,7 +351,7 @@
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <form action="{{ route('simonik.realizations.paper-work.index') }}" method="get">
-                                    <div class="input-group mb-3">
+                                    <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-append">
                                             <span class="input-group-text">Level</span>
                                         </span>
@@ -359,7 +359,7 @@
                                         <select class="custom-select" name="level"></select>
 
                                         <span class="input-group-append">
-                                            <span class="input-group-text">Unit</span>
+                                            <span class="input-group-text">Unit Kerja</span>
                                         </span>
 
                                         <select class="custom-select" name="unit"></select>
@@ -394,8 +394,8 @@
                                             <a href="#table"><span class="badge badge-pill badge-info">Focus on table</span></a>
 
                                             <div class="table-responsive">
-                                                <table class="table table-bordered" id="table">
-                                                    <thead>
+                                                <table class="table table-bordered table-sm" id="table">
+                                                    <thead class="small">
                                                         <tr class="first">
                                                             <th class="text-center" rowspan="2">KPI</th>
                                                             <th class="text-center" rowspan="2">FORMULA</th>
@@ -420,31 +420,31 @@
                                                             <th class="text-center">Dec</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody class="text-nowrap" id="myTable">
+                                                    <tbody class="text-nowrap small" id="myTable">
                                                         @foreach ($response->data->indicators as $indicator)
                                                             <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if ($indicator->bg_color->r < 127.5 && $indicator->bg_color->g < 127.5 && $indicator->bg_color->b < 127.5) color: white; @endif">
-                                                                <td class="small">
+                                                                <td>
                                                                     <p>{{ $indicator->indicator }} <span class="badge badge-info">{{ $indicator->type }}</span></p>
                                                                 </td>
                                                                 <td class="small">
-                                                                    <small>{{ $indicator->formula }}</small>
+                                                                    {{ $indicator->formula }}
                                                                 </td>
-                                                                <td class="text-center small">
+                                                                <td class="text-center">
                                                                     {{ $indicator->measure }}
                                                                 </td>
-                                                                <td class="text-center small">
+                                                                <td class="text-center">
                                                                     <span class="badge badge-secondary">
                                                                         {!! $indicator->polarity !!}
                                                                     </span>
                                                                 </td>
-                                                                <td class="text-center small">
+                                                                <td class="text-center">
                                                                     @forelse ($indicator->validity as $key => $value)
                                                                         <span class="badge badge-secondary">{{ $key }}</span>
                                                                     @empty
                                                                         <p>-</p>
                                                                     @endforelse
                                                                 </td>
-                                                                <td class="text-center small">
+                                                                <td class="text-center">
                                                                     @forelse ($indicator->weight as $key => $value)
                                                                         <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span>
                                                                     @empty
@@ -452,7 +452,7 @@
                                                                     @endforelse
                                                                 </td>
                                                                 {{-- ------------------------------------------------------------------------------ --}}
-                                                                <td class="text-center small">
+                                                                <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->jan->value))
                                                                         @if (!is_null($indicator->targets->jan->value))
                                                                             <div class="input-group input-group-sm mb-3">
@@ -475,11 +475,11 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->jan->updated_at }}</small></p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->jan->updated_at }}</p>
                                                                     @endif
                                                                 </td>
 
-                                                                <td class="text-center small">
+                                                                <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->feb->value))
                                                                         @if (!is_null($indicator->targets->feb->value))
                                                                             <div class="input-group input-group-sm mb-3">
@@ -502,11 +502,11 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->feb->updated_at }}</small></p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->feb->updated_at }}</p>
                                                                     @endif
                                                                 </td>
 
-                                                                <td class="text-center small">
+                                                                <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->mar->value))
                                                                         @if (!is_null($indicator->targets->mar->value))
                                                                             <div class="input-group input-group-sm mb-3">
@@ -529,11 +529,11 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->mar->updated_at }}</small></p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->mar->updated_at }}</p>
                                                                     @endif
                                                                 </td>
 
-                                                                <td class="text-center small">
+                                                                <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->apr->value))
                                                                         @if (!is_null($indicator->targets->apr->value))
                                                                             <div class="input-group input-group-sm mb-3">
@@ -556,11 +556,11 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->apr->updated_at }}</small></p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->apr->updated_at }}</p>
                                                                     @endif
                                                                 </td>
 
-                                                                <td class="text-center small">
+                                                                <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->may->value))
                                                                         @if (!is_null($indicator->targets->may->value))
                                                                             <div class="input-group input-group-sm mb-3">
@@ -583,11 +583,11 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->may->updated_at }}</small></p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->may->updated_at }}</p>
                                                                     @endif
                                                                 </td>
 
-                                                                <td class="text-center small">
+                                                                <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->jun->value))
                                                                         @if (!is_null($indicator->targets->jun->value))
                                                                             <div class="input-group input-group-sm mb-3">
@@ -610,11 +610,11 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->jun->updated_at }}</small></p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->jun->updated_at }}</p>
                                                                     @endif
                                                                 </td>
 
-                                                                <td class="text-center small">
+                                                                <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->jul->value))
                                                                         @if (!is_null($indicator->targets->jul->value))
                                                                             <div class="input-group input-group-sm mb-3">
@@ -637,11 +637,11 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->jul->updated_at }}</small></p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->jul->updated_at }}</p>
                                                                     @endif
                                                                 </td>
 
-                                                                <td class="text-center small">
+                                                                <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->aug->value))
                                                                         @if (!is_null($indicator->targets->aug->value))
                                                                             <div class="input-group input-group-sm mb-3">
@@ -664,11 +664,11 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->aug->updated_at }}</small></p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->aug->updated_at }}</p>
                                                                     @endif
                                                                 </td>
 
-                                                                <td class="text-center small">
+                                                                <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->sep->value))
                                                                         @if (!is_null($indicator->targets->sep->value))
                                                                             <div class="input-group input-group-sm mb-3">
@@ -691,11 +691,11 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->sep->updated_at }}</small></p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->sep->updated_at }}</p>
                                                                     @endif
                                                                 </td>
 
-                                                                <td class="text-center small">
+                                                                <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->oct->value))
                                                                         @if (!is_null($indicator->targets->oct->value))
                                                                             <div class="input-group input-group-sm mb-3">
@@ -718,11 +718,11 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->oct->updated_at }}</small></p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->oct->updated_at }}</p>
                                                                     @endif
                                                                 </td>
 
-                                                                <td class="text-center small">
+                                                                <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->nov->value))
                                                                         @if (!is_null($indicator->targets->nov->value))
                                                                             <div class="input-group input-group-sm mb-3">
@@ -745,11 +745,11 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->nov->updated_at }}</small></p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->nov->updated_at }}</p>
                                                                     @endif
                                                                 </td>
 
-                                                                <td class="text-center small">
+                                                                <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->dec->value))
                                                                         @if (!is_null($indicator->targets->dec->value))
                                                                             <div class="input-group input-group-sm mb-3">
@@ -772,7 +772,7 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info"><small>Last update: {{ $indicator->realizations->dec->updated_at }}</small></p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->dec->updated_at }}</p>
                                                                     @endif
                                                                 </td>
                                                                 {{-- ------------------------------------------------------------------------------ --}}

@@ -60,7 +60,7 @@
     {{-- Table Header Fixed --}}
     <style>
         .table-responsive {
-            height: 400px;
+            height: 100vh;
             overflow: scroll;
         }
 
@@ -387,7 +387,7 @@
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <form action="{{ route('simonik.indicators.paper-work.index') }}" method="get">
-                                    <div class="input-group mb-3">
+                                    <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-append">
                                             <span class="input-group-text">Level</span>
                                         </span>
@@ -395,7 +395,7 @@
                                         <select class="custom-select" name="level"></select>
 
                                         <span class="input-group-append">
-                                            <span class="input-group-text">Unit</span>
+                                            <span class="input-group-text">Unit Kerja</span>
                                         </span>
 
                                         <select class="custom-select" name="unit"></select>
@@ -426,9 +426,11 @@
                                             @csrf
                                             @method('put')
 
-                                            <div class="table-responsive-sm">
-                                                <table class="table table-bordered" id="drag-drop-table-sorting">
-                                                    <thead>
+                                            <a href="#drag-drop-table-sorting"><span class="badge badge-pill badge-info">Focus on table</span></a>
+
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered table-sm" id="drag-drop-table-sorting">
+                                                    <thead class="small">
                                                         <tr>
                                                             <th class="text-center">KPI</th>
                                                             <th class="text-center">FORMULA</th>
@@ -439,38 +441,38 @@
                                                             <th class="text-center"></th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody id="myTable">
+                                                    <tbody id="myTable" class="small">
                                                         @foreach ($response->data->indicators as $indicator)
                                                             <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
-                                                                <td class="small">
+                                                                <td>
                                                                     <p>{{ $indicator->indicator }} <span class="badge badge-info">{{ $indicator->type }}</span></p>
                                                                 </td>
                                                                 <td class="small">
-                                                                    <small>{{ $indicator->formula }}</small>
+                                                                    {{ $indicator->formula }}
                                                                 </td>
-                                                                <td class="text-center small">
+                                                                <td class="text-center">
                                                                     {{ $indicator->measure }}
                                                                 </td>
-                                                                <td class="text-center small">
+                                                                <td class="text-center">
                                                                     <span class="badge badge-secondary">
                                                                         {!! $indicator->polarity !!}
                                                                     </span>
                                                                 </td>
-                                                                <td class="text-center small">
+                                                                <td class="text-center">
                                                                     @forelse ($indicator->validity as $key => $value)
                                                                         <span class="badge badge-secondary">{{ $key }}</span>
                                                                     @empty
                                                                         <p>-</p>
                                                                     @endforelse
                                                                 </td>
-                                                                <td class="text-center small">
+                                                                <td class="text-center">
                                                                     @forelse ($indicator->weight as $key => $value)
                                                                         <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span>
                                                                     @empty
                                                                         <p>-</p>
                                                                     @endforelse
                                                                 </td>
-                                                                <td class="text-center small">
+                                                                <td class="text-center">
                                                                     <div class="btn-group">
                                                                         @if ($response->data->permissions->indicator->edit)
                                                                             <a href="{{ route('simonik.indicators.edit', ['id' => $indicator->id]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></a>
@@ -489,7 +491,7 @@
                                             </div>
 
                                             @if ($response->data->permissions->indicator->changes_order)
-                                                <button type="submit" class="btn btn-sm btn-info float-right">Reordering KPI</button>
+                                                <button type="submit" class="btn btn-sm btn-info float-right mt-2">Reordering KPI</button>
                                             @endif
                                         </form>
                                     @endif

@@ -55,7 +55,7 @@
     {{-- Table Header Fixed --}}
     <style>
         .table-responsive {
-            height: 400px;
+            height: 100vh;
             overflow: scroll;
         }
 
@@ -187,12 +187,11 @@
                                     </div>
                                 @else
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <a href="#table"><span class="badge badge-pill badge-info">Focus on table</span></a>
 
-                                        <input class="form-control form-control-sm mb-3" id="myInput" type="text" style="width: 25vw;" placeholder="Cari KPI..">
-
-                                        <div class="table-responsive-sm">
-                                            <table class="table table-bordered">
-                                                <thead>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-sm" id="table">
+                                                <thead class="small">
                                                     <tr>
                                                         <th class="text-center">KPI</th>
                                                         <th class="text-center">FORMULA</th>
@@ -200,42 +199,42 @@
                                                         <th class="text-center">POLARITAS</th>
                                                         <th class="text-center">BERLAKU</th>
                                                         <th class="text-center">BOBOT</th>
-                                                        <th class="text-center">REFERENSI KPI <span class="badge badge-pill badge-light" data-toggle="tooltip" data-placement="right" title="Not referenced">&#128681; (Belum direferensikan)</span></th>
+                                                        <th class="text-center">REFERENSI KPI <span class="badge badge-pill badge-light" data-toggle="tooltip" data-placement="right" title="Belum direferensikan">&#128681;</span></th>
                                                         <th class="text-center"></th>
                                                     </tr>
                                                 </thead>
-                                                <tbody id="myTable">
+                                                <tbody class="small" id="myTable">
                                                     @foreach ($response->data->indicators as $indicator)
                                                         <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
-                                                            <td class="small">
+                                                            <td>
                                                                 <p>{{ $indicator->indicator }} <span class="badge badge-info">{{ $indicator->type }}</span></p>
                                                             </td>
                                                             <td class="small">
-                                                                <small>{{ $indicator->formula }}</small>
+                                                                {{ $indicator->formula }}
                                                             </td>
-                                                            <td class="text-center small">
+                                                            <td class="text-center">
                                                                 {{ $indicator->measure }}
                                                             </td>
-                                                            <td class="text-center small">
+                                                            <td class="text-center">
                                                                 <span class="badge badge-secondary">
                                                                     {!! $indicator->polarity !!}
                                                                 </span>
                                                             </td>
-                                                            <td class="text-center small">
+                                                            <td class="text-center">
                                                                 @forelse ($indicator->validity as $key => $value)
                                                                     <span class="badge badge-secondary">{{ $key }}</span>
                                                                 @empty
                                                                     <p>-</p>
                                                                 @endforelse
                                                             </td>
-                                                            <td class="text-center small">
+                                                            <td class="text-center">
                                                                 @forelse ($indicator->weight as $key => $value)
                                                                     <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span>
                                                                 @empty
                                                                     <p>-</p>
                                                                 @endforelse
                                                             </td>
-                                                            <td class="text-center small">
+                                                            <td class="text-center">
                                                                 <select class="form-control form-control-sm" name="preferences[]">
                                                                     @foreach ($indicator->preferences as $preference)
                                                                         @if ($preference->showed)
@@ -246,7 +245,7 @@
                                                                     @endforeach
                                                                 </select>
                                                             </td>
-                                                            <td class="text-center small">
+                                                            <td class="text-center">
                                                                 <div class="btn-group">
                                                                     <a href="{{ route('simonik.indicators.edit', ['id' => $indicator->id]) }}" class="btn btn-sm btn-outline-info" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></a>
                                                                     <a href="{{ route('simonik.indicators.delete', ['id' => $indicator->id, 'name' => $indicator->indicator]) }}" class="btn btn-sm btn-outline-info" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></a>

@@ -53,14 +53,13 @@
     {{-- Table Header Fixed --}}
     <style>
         .table-responsive {
-            height: 400px;
+            height: 100vh;
             overflow: scroll;
         }
 
         thead tr:nth-child(1) th {
             color: #ffffff !important;
             background-color: #135b96 !important;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='540' height='450' viewBox='0 0 1080 900'%3E%3Cg fill-opacity='.1'%3E%3Cpolygon fill='%23444' points='90 150 0 300 180 300'/%3E%3Cpolygon points='90 150 180 0 0 0'/%3E%3Cpolygon fill='%23AAA' points='270 150 360 0 180 0'/%3E%3Cpolygon fill='%23DDD' points='450 150 360 300 540 300'/%3E%3Cpolygon fill='%23999' points='450 150 540 0 360 0'/%3E%3Cpolygon points='630 150 540 300 720 300'/%3E%3Cpolygon fill='%23DDD' points='630 150 720 0 540 0'/%3E%3Cpolygon fill='%23444' points='810 150 720 300 900 300'/%3E%3Cpolygon fill='%23FFF' points='810 150 900 0 720 0'/%3E%3Cpolygon fill='%23DDD' points='990 150 900 300 1080 300'/%3E%3Cpolygon fill='%23444' points='990 150 1080 0 900 0'/%3E%3Cpolygon fill='%23DDD' points='90 450 0 600 180 600'/%3E%3Cpolygon points='90 450 180 300 0 300'/%3E%3Cpolygon fill='%23666' points='270 450 180 600 360 600'/%3E%3Cpolygon fill='%23AAA' points='270 450 360 300 180 300'/%3E%3Cpolygon fill='%23DDD' points='450 450 360 600 540 600'/%3E%3Cpolygon fill='%23999' points='450 450 540 300 360 300'/%3E%3Cpolygon fill='%23999' points='630 450 540 600 720 600'/%3E%3Cpolygon fill='%23FFF' points='630 450 720 300 540 300'/%3E%3Cpolygon points='810 450 720 600 900 600'/%3E%3Cpolygon fill='%23DDD' points='810 450 900 300 720 300'/%3E%3Cpolygon fill='%23AAA' points='990 450 900 600 1080 600'/%3E%3Cpolygon fill='%23444' points='990 450 1080 300 900 300'/%3E%3Cpolygon fill='%23222' points='90 750 0 900 180 900'/%3E%3Cpolygon points='270 750 180 900 360 900'/%3E%3Cpolygon fill='%23DDD' points='270 750 360 600 180 600'/%3E%3Cpolygon points='450 750 540 600 360 600'/%3E%3Cpolygon points='630 750 540 900 720 900'/%3E%3Cpolygon fill='%23444' points='630 750 720 600 540 600'/%3E%3Cpolygon fill='%23AAA' points='810 750 720 900 900 900'/%3E%3Cpolygon fill='%23666' points='810 750 900 600 720 600'/%3E%3Cpolygon fill='%23999' points='990 750 900 900 1080 900'/%3E%3Cpolygon fill='%23999' points='180 0 90 150 270 150'/%3E%3Cpolygon fill='%23444' points='360 0 270 150 450 150'/%3E%3Cpolygon fill='%23FFF' points='540 0 450 150 630 150'/%3E%3Cpolygon points='900 0 810 150 990 150'/%3E%3Cpolygon fill='%23222' points='0 300 -90 450 90 450'/%3E%3Cpolygon fill='%23FFF' points='0 300 90 150 -90 150'/%3E%3Cpolygon fill='%23FFF' points='180 300 90 450 270 450'/%3E%3Cpolygon fill='%23666' points='180 300 270 150 90 150'/%3E%3Cpolygon fill='%23222' points='360 300 270 450 450 450'/%3E%3Cpolygon fill='%23FFF' points='360 300 450 150 270 150'/%3E%3Cpolygon fill='%23444' points='540 300 450 450 630 450'/%3E%3Cpolygon fill='%23222' points='540 300 630 150 450 150'/%3E%3Cpolygon fill='%23AAA' points='720 300 630 450 810 450'/%3E%3Cpolygon fill='%23666' points='720 300 810 150 630 150'/%3E%3Cpolygon fill='%23FFF' points='900 300 810 450 990 450'/%3E%3Cpolygon fill='%23999' points='900 300 990 150 810 150'/%3E%3Cpolygon points='0 600 -90 750 90 750'/%3E%3Cpolygon fill='%23666' points='0 600 90 450 -90 450'/%3E%3Cpolygon fill='%23AAA' points='180 600 90 750 270 750'/%3E%3Cpolygon fill='%23444' points='180 600 270 450 90 450'/%3E%3Cpolygon fill='%23444' points='360 600 270 750 450 750'/%3E%3Cpolygon fill='%23999' points='360 600 450 450 270 450'/%3E%3Cpolygon fill='%23666' points='540 600 630 450 450 450'/%3E%3Cpolygon fill='%23222' points='720 600 630 750 810 750'/%3E%3Cpolygon fill='%23FFF' points='900 600 810 750 990 750'/%3E%3Cpolygon fill='%23222' points='900 600 990 450 810 450'/%3E%3Cpolygon fill='%23DDD' points='0 900 90 750 -90 750'/%3E%3Cpolygon fill='%23444' points='180 900 270 750 90 750'/%3E%3Cpolygon fill='%23FFF' points='360 900 450 750 270 750'/%3E%3Cpolygon fill='%23AAA' points='540 900 630 750 450 750'/%3E%3Cpolygon fill='%23FFF' points='720 900 810 750 630 750'/%3E%3Cpolygon fill='%23222' points='900 900 990 750 810 750'/%3E%3Cpolygon fill='%23222' points='1080 300 990 450 1170 450'/%3E%3Cpolygon fill='%23FFF' points='1080 300 1170 150 990 150'/%3E%3Cpolygon points='1080 600 990 750 1170 750'/%3E%3Cpolygon fill='%23666' points='1080 600 1170 450 990 450'/%3E%3Cpolygon fill='%23DDD' points='1080 900 1170 750 990 750'/%3E%3C/g%3E%3C/svg%3E");
             position: sticky;
             top: 0;
             z-index: 10;
@@ -89,7 +88,7 @@
 
     {{-- Change Color Row Table on Click --}}
     <script>
-        $('#drag-drop-table-sorting').on('click', 'tbody tr', function(event) {
+        $('#table').on('click', 'tbody tr', function(event) {
             $(this).addClass('highlight').siblings().removeClass('highlight');
         });
     </script>
@@ -173,11 +172,13 @@
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <a href="{{ route('simonik.user.create') }}" class="btn btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Add">Add</a>
 
-                                <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari KPI..">
+                                <input class="form-control form-control-sm mb-2" id="myInput" type="text" placeholder="Cari User..">
 
-                                <div class="table-responsive-sm">
-                                    <table class="table table-bordered" id="drag-drop-table-sorting">
-                                        <thead>
+                                <a href="#table"><span class="badge badge-pill badge-info">Focus on table</span></a>
+
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-sm" id="table">
+                                        <thead class="small">
                                             <tr>
                                                 <th class="text-center">No</th>
                                                 <th class="text-center">Nama</th>
@@ -190,18 +191,18 @@
                                                 <th class="text-center"></th>
                                             </tr>
                                         </thead>
-                                        <tbody id="myTable">
+                                        <tbody class="small" id="myTable">
                                             @forelse ($response->data->users as $user)
                                                 <tr>
-                                                    <td class="text-center small">{{ $loop->iteration }}</td>
-                                                    <td class="text-center small">{{ $user->name }}</td>
-                                                    <td class="text-center small">{{ is_null($user->nip) ? '-' : $user->nip }}</td>
-                                                    <td class="text-center small">{{ $user->username }}</td>
-                                                    <td class="text-center small">{{ $user->email }}</td>
-                                                    <td class="text-center small {{ $user->bg_color_actived }}">{{ $user->actived }}</td>
-                                                    <td class="text-center small">{{ $user->unit_name }}</td>
-                                                    <td class="text-center small">{{ $user->role_name }}</td>
-                                                    <td class="text-center small">
+                                                    <td class="text-center">{{ $loop->iteration }}</td>
+                                                    <td class="text-center">{{ $user->name }}</td>
+                                                    <td class="text-center">{{ is_null($user->nip) ? '-' : $user->nip }}</td>
+                                                    <td class="text-center">{{ $user->username }}</td>
+                                                    <td class="text-center">{{ $user->email }}</td>
+                                                    <td class="text-center {{ $user->bg_color_actived }}">{{ $user->actived }}</td>
+                                                    <td class="text-center">{{ $user->unit_name }}</td>
+                                                    <td class="text-center">{{ $user->role_name }}</td>
+                                                    <td class="text-center">
                                                         <div class="btn-group mb-1">
                                                             @if ($user->edit_modificable)
                                                                 <a href="{{ route('simonik.user.edit', ['id' => $user->id]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></a>

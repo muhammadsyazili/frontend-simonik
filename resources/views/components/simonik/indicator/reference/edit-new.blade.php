@@ -55,7 +55,7 @@
     {{-- Table Header Fixed --}}
     <style>
         .table-responsive {
-            height: 400px;
+            height: 100vh;
             overflow: scroll;
         }
 
@@ -188,11 +188,13 @@
                                 @else
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
-                                        <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari KPI..">
+                                        <input class="form-control form-control-sm mb-2" id="myInput" type="text" placeholder="Cari KPI..">
 
-                                        <div class="table-responsive-sm">
-                                            <table class="table table-bordered">
-                                                <thead>
+                                        <a href="#table"><span class="badge badge-pill badge-info">Focus on table</span></a>
+
+                                        <div class="table-responsive mb-2">
+                                            <table class="table table-bordered table-sm" id="table">
+                                                <thead class="small">
                                                     <tr>
                                                         <th class="text-center">KPI</th>
                                                         <th class="text-center">FORMULA</th>
@@ -203,38 +205,38 @@
                                                         <th class="text-center">REFERENSI KPI</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody id="myTable">
+                                                <tbody class="small" id="myTable">
                                                     @foreach ($response->data->indicators as $indicator)
                                                         <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
-                                                            <td class="small">
+                                                            <td>
                                                                 <p>{{ $indicator->indicator }} <span class="badge badge-info">{{ $indicator->type }}</span></p>
                                                             </td>
                                                             <td class="small">
-                                                                <small>{{ $indicator->formula }}</small>
+                                                                {{ $indicator->formula }}
                                                             </td>
-                                                            <td class="text-center small">
+                                                            <td class="text-center">
                                                                 {{ $indicator->measure }}
                                                             </td>
-                                                            <td class="text-center small">
+                                                            <td class="text-center">
                                                                 <span class="badge badge-secondary">
                                                                     {!! $indicator->polarity !!}
                                                                 </span>
                                                             </td>
-                                                            <td class="text-center small">
+                                                            <td class="text-center">
                                                                 @forelse ($indicator->validity as $key => $value)
                                                                     <span class="badge badge-secondary">{{ $key }}</span>
                                                                 @empty
                                                                     <p>-</p>
                                                                 @endforelse
                                                             </td>
-                                                            <td class="text-center small">
+                                                            <td class="text-center">
                                                                 @forelse ($indicator->weight as $key => $value)
                                                                     <span class="badge badge-secondary">{{ $key }} : {{ $value }}</span>
                                                                 @empty
                                                                     <p>-</p>
                                                                 @endforelse
                                                             </td>
-                                                            <td class="text-center small">
+                                                            <td class="text-center">
                                                                 <select class="form-control form-control-sm" name="preferences[]">
                                                                     @foreach ($indicator->preferences as $preference)
                                                                         @if ($preference->showed)
@@ -258,7 +260,7 @@
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                             <h1 class="text-center text-danger"><i class="fas fa-exclamation-triangle"></i></h1>
                                             <h5 class="text-center text-danger"><strong>Danger Zone!</strong></h5>
-                                            <p class="text-center"><small><strong>Noted!</strong> Aksi ini akan mengubah referensi KPI di <strong>LEVEL: {{ cast_to_upper($level) }} - UNIT: @if ($unit === 'master') SEMUA UNIT LEVEL {{ cast_to_upper($level) }} @else{{ cast_to_upper($unit) }}@endif - TAHUN: {{ cast_to_upper($tahun) }}</strong>.</small></p>
+                                            <p class="text-center"><small><strong>Noted!</strong> Aksi Ini Akan Mengubah Referensi KPI di <strong>LEVEL: {{ cast_to_upper($level) }} - UNIT: @if ($unit === 'master') SEMUA UNIT LEVEL {{ cast_to_upper($level) }} @else{{ cast_to_upper($unit) }}@endif - TAHUN: {{ cast_to_upper($tahun) }}</strong>.</small></p>
                                         </div>
                                     @endif
                                 @endif
