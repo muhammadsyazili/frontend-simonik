@@ -160,14 +160,10 @@
             let status = $(this).data("status");
 
             let host = $('meta[name="host"]').attr('content');
-            let user = $('meta[name="user"]').attr('content');
 
             $.ajax({
                 type: 'GET',
                 url: `${host}/analytic/${id}/${prefix}/${month}`,
-                headers: {
-                    'X-User-Id':user
-                },
                 success: function(res) {
                     Highcharts.chart('chart-container', {
                         chart: {

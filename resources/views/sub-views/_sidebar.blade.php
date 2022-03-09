@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4 sidebar-light-danger">
   <!-- Brand Logo -->
   <a href="#" class="brand-link">
-    <img src="{{ asset('brand-icon.png') }}" alt="brand-icon" class="brand-image">
+    <img src="{{ asset('icon-brand.png') }}" alt="icon-brand" class="brand-image">
     <span class="brand-text font-weight-light" style="color: white;">SIMONIK</span>
   </a>
   <!-- End Brand Logo -->
@@ -30,6 +30,14 @@
 
         @if (request()->cookie('X-App') === 'simonik')
             <li class="nav-header">SIMONIK</li>
+            <li class="nav-item">
+                <a href="{{ route('simonik.dashboard') }}" class="nav-link">
+                <i class="fas fa-circle nav-icon text-warning"></i>
+                <p>
+                    Dashboard
+                </p>
+                </a>
+            </li>
             <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link">
                 <i class="fas fa-circle nav-icon text-warning"></i>

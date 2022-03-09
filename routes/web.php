@@ -28,7 +28,7 @@ Route::get('/login', [App\Http\Controllers\AuthController::class, 'loginForm'])
 Route::post('/login', [App\Http\Controllers\AuthController::class, 'login'])
     ->name('login');
 
-Route::post('/simonik/dashboard', [App\Http\Controllers\Simonik\DashboardController::class, 'dashboard'])
+Route::get('/simonik/dashboard', [App\Http\Controllers\Simonik\DashboardController::class, 'dashboard'])
     ->name('simonik.dashboard');
 
 Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {

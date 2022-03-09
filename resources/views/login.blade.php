@@ -149,7 +149,7 @@
 @section('content')
     <div class="login-box">
         <div class="login-logo">
-            <img src="{{ asset('brand-icon.png') }}" alt="brand-icon" width="30%">
+            <img src="{{ asset('icon-brand.png') }}" alt="icon-brand" width="30%">
         </div>
 
         {{-- <h1 class="login-box-msg text-center ml11">
