@@ -434,28 +434,15 @@
                             rotation: 'auto'
                         },
                         title: {
-                            text: '%'
+                            text: '.'
                         },
-                        plotBands: [{
-                            from: 0,
-                            to: 95,
-                            color: '#DF5353' // red
-                        }, {
-                            from: 95,
-                            to: 100,
-                            color: '#DDDF0D' // yellow
-                        }, {
-                            from: 100,
-                            to: 200,
-                            color: '#55BF3B' // green
-                        }]
                     },
 
                     series: [{
                         name: container2Name,
                         data: [0],
                         tooltip: {
-                            valueSuffix: ' %'
+                            valueSuffix: ' .'
                         }
                     }]
 
@@ -523,28 +510,15 @@
                             rotation: 'auto'
                         },
                         title: {
-                            text: '%'
+                            text: '.'
                         },
-                        plotBands: [{
-                            from: 0,
-                            to: 95,
-                            color: '#DF5353' // red
-                        }, {
-                            from: 95,
-                            to: 100,
-                            color: '#DDDF0D' // yellow
-                        }, {
-                            from: 100,
-                            to: 200,
-                            color: '#55BF3B' // green
-                        }]
                     },
 
                     series: [{
                         name: container3Name,
                         data: [0],
                         tooltip: {
-                            valueSuffix: ' %'
+                            valueSuffix: ' .'
                         }
                     }]
 
@@ -701,28 +675,15 @@
                             rotation: 'auto'
                         },
                         title: {
-                            text: '%'
+                            text: '.'
                         },
-                        plotBands: [{
-                            from: 0,
-                            to: 95,
-                            color: '#DF5353' // red
-                        }, {
-                            from: 95,
-                            to: 100,
-                            color: '#DDDF0D' // yellow
-                        }, {
-                            from: 100,
-                            to: 200,
-                            color: '#55BF3B' // green
-                        }]
                     },
 
                     series: [{
                         name: container5Name,
                         data: [0],
                         tooltip: {
-                            valueSuffix: ' %'
+                            valueSuffix: ' .'
                         }
                     }]
 
@@ -790,28 +751,15 @@
                             rotation: 'auto'
                         },
                         title: {
-                            text: '%'
+                            text: '.'
                         },
-                        plotBands: [{
-                            from: 0,
-                            to: 95,
-                            color: '#DF5353' // red
-                        }, {
-                            from: 95,
-                            to: 100,
-                            color: '#DDDF0D' // yellow
-                        }, {
-                            from: 100,
-                            to: 200,
-                            color: '#55BF3B' // green
-                        }]
                     },
 
                     series: [{
                         name: container6Name,
                         data: [0],
                         tooltip: {
-                            valueSuffix: ' %'
+                            valueSuffix: ' .'
                         }
                     }]
 

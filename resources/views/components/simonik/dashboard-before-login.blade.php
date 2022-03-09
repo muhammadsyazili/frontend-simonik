@@ -334,14 +334,14 @@
                             rotation: 'auto'
                         },
                         title: {
-                            text: '%'
+                            text: '.'
                         },
                     },
                     series: [{
                         name: container2Name,
                         data: [0],
                         tooltip: {
-                            valueSuffix: ' %'
+                            valueSuffix: ' .'
                         }
                     }]
                 },
@@ -404,14 +404,14 @@
                             rotation: 'auto'
                         },
                         title: {
-                            text: '%'
+                            text: '.'
                         },
                     },
                     series: [{
                         name: container3Name,
                         data: [0],
                         tooltip: {
-                            valueSuffix: ' %'
+                            valueSuffix: ' .'
                         }
                     }]
                 },
@@ -560,14 +560,14 @@
                             rotation: 'auto'
                         },
                         title: {
-                            text: '%'
+                            text: '.'
                         },
                     },
                     series: [{
                         name: container5Name,
                         data: [0],
                         tooltip: {
-                            valueSuffix: ' %'
+                            valueSuffix: ' .'
                         }
                     }]
                 },
@@ -630,14 +630,14 @@
                             rotation: 'auto'
                         },
                         title: {
-                            text: '%'
+                            text: '.'
                         },
                     },
                     series: [{
                         name: container6Name,
                         data: [0],
                         tooltip: {
-                            valueSuffix: ' %'
+                            valueSuffix: ' .'
                         }
                     }]
                 },
