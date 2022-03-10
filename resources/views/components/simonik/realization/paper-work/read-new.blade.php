@@ -304,7 +304,7 @@
                             <div class="card-body">
                                 <div class="row mb-3">
                                     <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-                                        <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="buttom" title="Download Template"><i class="fas fa-file-download"></i></button>
+                                        <a href="{{ route('simonik.realizations.paper-work.export', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="bottom" title="Download Template"><i class="fas fa-file-download"></i></a>
                                     </div>
                                     <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
                                         <form action="#" method="post">

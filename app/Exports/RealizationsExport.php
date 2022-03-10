@@ -8,7 +8,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithCustomStartCell;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class TargetsExport implements FromCollection, WithHeadings, WithCustomStartCell, ShouldAutoSize
+class RealizationsExport implements FromCollection, WithHeadings, WithCustomStartCell, ShouldAutoSize
 {
     private $indicators;
 
@@ -31,18 +31,18 @@ class TargetsExport implements FromCollection, WithHeadings, WithCustomStartCell
             'ID (jangan diubah)',
             'KPI',
             'Satuan',
-            'Target - Jan',
-            'Target - Feb',
-            'Target - Mar',
-            'Target - Apr',
-            'Target - May',
-            'Target - Jun',
-            'Target - Jul',
-            'Target - Aug',
-            'Target - Sep',
-            'Target - Oct',
-            'Target - Nov',
-            'Target - Dec',
+            'Realisasi - Jan',
+            'Realisasi - Feb',
+            'Realisasi - Mar',
+            'Realisasi - Apr',
+            'Realisasi - May',
+            'Realisasi - Jun',
+            'Realisasi - Jul',
+            'Realisasi - Aug',
+            'Realisasi - Sep',
+            'Realisasi - Oct',
+            'Realisasi - Nov',
+            'Realisasi - Dec',
         ];
     }
 

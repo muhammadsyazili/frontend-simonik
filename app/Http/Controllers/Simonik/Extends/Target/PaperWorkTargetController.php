@@ -78,7 +78,7 @@ class PaperWorkTargetController extends Controller
 
     public function export($level, $unit, $tahun)
     {
-        $response = SIMONIK_sevices('/targets/paper-work/edit', 'get', [
+        $response = SIMONIK_sevices('/targets/paper-work/export', 'get', [
             'level' => $level,
             'unit' => $unit,
             'tahun' => $tahun,
@@ -93,8 +93,8 @@ class PaperWorkTargetController extends Controller
             return redirect()->back();
         }
 
-        return Excel::download(new TargetsExport($level, $unit, $tahun, $response->object()->data->indicators), "$level-$unit-$tahun.xlsx", \Maatwebsite\Excel\Excel::XLSX, [
+        return Excel::download(new TargetsExport($response->object()->data->indicators), "Target@$level@$unit@$tahun.xlsx", \Maatwebsite\Excel\Excel::XLSX, [
             'Content-Type' => 'text/csv',
-      ]);
+        ]);
     }
 }

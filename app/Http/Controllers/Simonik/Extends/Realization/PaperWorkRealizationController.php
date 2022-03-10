@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Simonik\Extends\Realization;
 
+use App\Exports\RealizationsExport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PaperWorkRealizationController extends Controller
 {
@@ -73,5 +75,27 @@ class PaperWorkRealizationController extends Controller
 
         Session::flash('info_message', $response->object()->message);
         return redirect()->route('simonik.realizations.paper-work.index', ['level' => $request->level, 'unit' => $request->unit, 'tahun' => $request->tahun]);
+    }
+
+    public function export($level, $unit, $tahun)
+    {
+        $response = SIMONIK_sevices('/realizations/paper-work/export', 'get', [
+            'level' => $level,
+            'unit' => $unit,
+            'tahun' => $tahun,
+        ]);
+
+        if ($response->clientError()) {
+            return redirect()->back()->withErrors($response->object()->errors);
+        }
+
+        if ($response->serverError()) {
+            Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
+            return redirect()->back();
+        }
+
+        return Excel::download(new RealizationsExport($response->object()->data->indicators), "Realisasi@$level@$unit@$tahun.xlsx", \Maatwebsite\Excel\Excel::XLSX, [
+            'Content-Type' => 'text/csv',
+        ]);
     }
 }

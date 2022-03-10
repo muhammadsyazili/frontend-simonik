@@ -135,6 +135,10 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
             ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdminOrDataEntry::class])
             ->name('simonik.realizations.paper-work.update');
 
+        Route::get('/simonik/realizations/paper-work/{level}/{unit}/{tahun}/export', [App\Http\Controllers\Simonik\Extends\Realization\PaperWorkRealizationController::class, 'export'])
+            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdminOrDataEntry::class])
+            ->name('simonik.realizations.paper-work.export');
+
         //paper work - target
         Route::get('/simonik/targets/paper-work', [App\Http\Controllers\Simonik\Extends\Target\PaperWorkTargetController::class, 'index'])
             ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
@@ -144,7 +148,7 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
             ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
             ->name('simonik.targets.paper-work.update');
 
-        Route::get('/simonik/targets/paper-work/{level}/{unit}/{tahun}/export/', [App\Http\Controllers\Simonik\Extends\Target\PaperWorkTargetController::class, 'export'])
+        Route::get('/simonik/targets/paper-work/{level}/{unit}/{tahun}/export', [App\Http\Controllers\Simonik\Extends\Target\PaperWorkTargetController::class, 'export'])
             ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
             ->name('simonik.targets.paper-work.export');
 
