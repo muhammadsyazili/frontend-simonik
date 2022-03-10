@@ -112,22 +112,22 @@
 
     <style>
         #container-1 {
-            height: 350px;
+            height: 250px;
         }
         #container-2 {
-            height: 300px;
+            height: 200px;
         }
         #container-3 {
-            height: 300px;
+            height: 200px;
         }
         #container-4 {
-            height: 350px;
+            height: 250px;
         }
         #container-5 {
-            height: 300px;
+            height: 200px;
         }
         #container-6 {
-            height: 300px;
+            height: 200px;
         }
 
         .highcharts-figure,
@@ -830,7 +830,8 @@
                                 @else
                                     <div class="row">
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                            <p class="text-center">UNIT KERJA : {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }} - TAHUN : {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }} - BULAN : {{ request()->query('bulan') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }} </p>
+                                            <p class="text-center">UNIT KERJA : {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }} - TAHUN : {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }} - BULAN : {{ request()->query('bulan') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }}</p>
+                                            <p class="text-center"><span class="badge badge-danger">MASALAH : NKO < 95%</span> <span class="badge badge-warning">HATI-HATI : NKO &ge; 95% s.d < 100%</span> <span class="badge badge-success">BAIK : NKO &ge; 100%</span></p>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                             <figure class="highcharts-figure">

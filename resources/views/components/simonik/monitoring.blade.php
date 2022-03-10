@@ -300,7 +300,6 @@
             if ($('#PPK_100').val() !== undefined && $('#PPK_110').val() !== undefined) {
                 let container1Name = 'NKO 100%';
                 Highcharts.chart('container-1', {
-
                     chart: {
                         type: 'gauge',
                         plotBackgroundColor: null,
@@ -308,11 +307,12 @@
                         plotBorderWidth: 0,
                         plotShadow: false
                     },
-
                     title: {
                         text: container1Name
                     },
-
+                    subtitle: {
+                        text: $('#PPK_100_status').val()
+                    },
                     pane: {
                         startAngle: -90,
                         endAngle: 90,
@@ -323,7 +323,6 @@
                             innerRadius: '100%'
                         }]
                     },
-
                     // the value axis
                     yAxis: {
                         min: 0,
@@ -361,7 +360,6 @@
                             color: '#55BF3B' // green
                         }]
                     },
-
                     series: [{
                         name: container1Name,
                         data: [0],
@@ -369,7 +367,6 @@
                             valueSuffix: ' %'
                         }
                     }]
-
                 },
                 // Add some life
                 function (chart) {
@@ -389,7 +386,6 @@
 
                 let container2Name = 'KPI 100%';
                 Highcharts.chart('container-2', {
-
                     chart: {
                         type: 'gauge',
                         plotBackgroundColor: null,
@@ -397,11 +393,9 @@
                         plotBorderWidth: 0,
                         plotShadow: false
                     },
-
                     title: {
                         text: container2Name
                     },
-
                     pane: {
                         startAngle: -90,
                         endAngle: 90,
@@ -412,7 +406,6 @@
                             innerRadius: '100%'
                         }]
                     },
-
                     // the value axis
                     yAxis: {
                         min: 0,
@@ -437,7 +430,6 @@
                             text: '.'
                         },
                     },
-
                     series: [{
                         name: container2Name,
                         data: [0],
@@ -445,7 +437,6 @@
                             valueSuffix: ' .'
                         }
                     }]
-
                 },
                 // Add some life
                 function (chart) {
@@ -465,7 +456,6 @@
 
                 let container3Name = 'PI 100%';
                 Highcharts.chart('container-3', {
-
                     chart: {
                         type: 'gauge',
                         plotBackgroundColor: null,
@@ -473,11 +463,9 @@
                         plotBorderWidth: 0,
                         plotShadow: false
                     },
-
                     title: {
                         text: container3Name
                     },
-
                     pane: {
                         startAngle: -90,
                         endAngle: 90,
@@ -488,7 +476,6 @@
                             innerRadius: '100%'
                         }]
                     },
-
                     // the value axis
                     yAxis: {
                         min: 0,
@@ -513,7 +500,6 @@
                             text: '.'
                         },
                     },
-
                     series: [{
                         name: container3Name,
                         data: [0],
@@ -521,7 +507,6 @@
                             valueSuffix: ' .'
                         }
                     }]
-
                 },
                 // Add some life
                 function (chart) {
@@ -541,7 +526,6 @@
 
                 let container4Name = 'NKO 110%';
                 Highcharts.chart('container-4', {
-
                     chart: {
                         type: 'gauge',
                         plotBackgroundColor: null,
@@ -549,11 +533,12 @@
                         plotBorderWidth: 0,
                         plotShadow: false
                     },
-
                     title: {
                         text: container4Name
                     },
-
+                    subtitle: {
+                        text: $('#PPK_110_status').val()
+                    },
                     pane: {
                         startAngle: -90,
                         endAngle: 90,
@@ -564,7 +549,6 @@
                             innerRadius: '100%'
                         }]
                     },
-
                     // the value axis
                     yAxis: {
                         min: 0,
@@ -602,7 +586,6 @@
                             color: '#55BF3B' // green
                         }]
                     },
-
                     series: [{
                         name: container4Name,
                         data: [0],
@@ -610,7 +593,6 @@
                             valueSuffix: ' %'
                         }
                     }]
-
                 },
                 // Add some life
                 function (chart) {
@@ -630,7 +612,6 @@
 
                 let container5Name = 'KPI 110%';
                 Highcharts.chart('container-5', {
-
                     chart: {
                         type: 'gauge',
                         plotBackgroundColor: null,
@@ -638,11 +619,9 @@
                         plotBorderWidth: 0,
                         plotShadow: false
                     },
-
                     title: {
                         text: container5Name
                     },
-
                     pane: {
                         startAngle: -90,
                         endAngle: 90,
@@ -653,7 +632,6 @@
                             innerRadius: '100%'
                         }]
                     },
-
                     // the value axis
                     yAxis: {
                         min: 0,
@@ -678,7 +656,6 @@
                             text: '.'
                         },
                     },
-
                     series: [{
                         name: container5Name,
                         data: [0],
@@ -686,7 +663,6 @@
                             valueSuffix: ' .'
                         }
                     }]
-
                 },
                 // Add some life
                 function (chart) {
@@ -706,7 +682,6 @@
 
                 let container6Name = 'PI 110%';
                 Highcharts.chart('container-6', {
-
                     chart: {
                         type: 'gauge',
                         plotBackgroundColor: null,
@@ -714,11 +689,9 @@
                         plotBorderWidth: 0,
                         plotShadow: false
                     },
-
                     title: {
                         text: container6Name
                     },
-
                     pane: {
                         startAngle: -90,
                         endAngle: 90,
@@ -729,7 +702,6 @@
                             innerRadius: '100%'
                         }]
                     },
-
                     // the value axis
                     yAxis: {
                         min: 0,
@@ -754,7 +726,6 @@
                             text: '.'
                         },
                     },
-
                     series: [{
                         name: container6Name,
                         data: [0],
@@ -762,7 +733,6 @@
                             valueSuffix: ' .'
                         }
                     }]
-
                 },
                 // Add some life
                 function (chart) {
@@ -940,16 +910,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">MONITORING
-                            / LEVEL :
-                            {{ request()->query('level') == null ? '-' : cast_to_upper(request()->query('level')) }}
-                            / UNIT :
-                            {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }}
-                            / TAHUN :
-                            {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }}
-                            / BULAN :
-                            {{ request()->query('bulan') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }}
-                        </h3>
+                        <h3 class="card-title">MONITORING</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -1011,6 +972,10 @@
                                         <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                     @else
                                         <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                <p class="text-center"> UNIT KERJA : {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }} - TAHUN : {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }} - BULAN : {{ request()->query('bulan') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }}</p>
+                                                <p class="text-center"><span class="badge badge-danger">MASALAH : NKO < 95%</span> <span class="badge badge-warning">HATI-HATI : NKO &ge; 95% s.d < 100%</span> <span class="badge badge-success">BAIK : NKO &ge; 100%</span></p>
+                                            </div>
                                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                 <figure class="highcharts-figure">
                                                     <div id="container-1"></div>
@@ -1055,7 +1020,7 @@
                                                         <th class="text-center">% PENCAPAIAN</th>
                                                         <th class="text-center">NILAI (CAPPING 100%)</th>
                                                         <th class="text-center">NILAI (CAPPING 110%)</th>
-                                                        <th class="text-center">INDIKATOR</th>
+                                                        <th class="text-center">STATUS <span data-toggle="tooltip" data-placement="right" title="MASALAH : < 95%, HATI-HATI : &ge; 95% s.d < 100%, BAIK : &ge; 100%"><i class="fas fa-info-circle"></i></span></th>
                                                         <th class="text-center">CHART</th>
                                                     </tr>
                                                 </thead>
@@ -1072,17 +1037,17 @@
                                                             </td>
                                                             <td class="text-center">
                                                                 @if (!is_null($indicator->achievement))
-                                                                    {{ number_format($indicator->achievement, 2, ',', '') }}
+                                                                    {{ number_format($indicator->achievement, 2, ',', '') }} %
                                                                 @endif
                                                             </td>
                                                             <td class="text-center">
                                                                 @if (!is_null($indicator->capping_value_100))
-                                                                    {{ $indicator->capping_value_100 === 'BELUM DINILAI' ? $indicator->capping_value_100 : number_format($indicator->capping_value_100, 2, ',', '') }}
+                                                                    {{ $indicator->capping_value_100 === 'BELUM DINILAI' ? $indicator->capping_value_100 : number_format($indicator->capping_value_100, 2, ',', '').' %' }}
                                                                 @endif
                                                             </td>
                                                             <td class="text-center">
                                                                 @if (!is_null($indicator->capping_value_110))
-                                                                    {{ $indicator->capping_value_110 === 'BELUM DINILAI' ? $indicator->capping_value_110 : number_format($indicator->capping_value_110, 2, ',', '') }}
+                                                                    {{ $indicator->capping_value_110 === 'BELUM DINILAI' ? $indicator->capping_value_110 : number_format($indicator->capping_value_110, 2, ',', '').' %' }}
                                                                 @endif
                                                             </td>
                                                             <td class="text-center {{ 'bg-'.$indicator->status_color }}">
@@ -1107,11 +1072,11 @@
                                                         <td class="text-center">KEY PERFORMANCE INDIKATOR</td>
                                                         <td class="text-center"></td>
                                                         <td class="text-center">
-                                                            {{ number_format($response->data->indicators->total->KPI_100, 2, ',', '') }}
+                                                            {{ number_format($response->data->indicators->total->KPI_100, 2, ',', '') }} %
                                                             <input type="hidden" id="KPI_100" value="{{ number_format($response->data->indicators->total->KPI_100, 2, '.', '') }}">
                                                         </td>
                                                         <td class="text-center">
-                                                            {{ number_format($response->data->indicators->total->KPI_110, 2, ',', '') }}
+                                                            {{ number_format($response->data->indicators->total->KPI_110, 2, ',', '') }} %
                                                             <input type="hidden" id="KPI_110" value="{{ number_format($response->data->indicators->total->KPI_110, 2, '.', '') }}">
                                                         </td>
                                                         <td class="text-center"></td>
@@ -1121,11 +1086,11 @@
                                                         <td class="text-center">PERFORMANCE INDIKATOR</td>
                                                         <td class="text-center"></td>
                                                         <td class="text-center">
-                                                            {{ number_format($response->data->indicators->total->PI_100, 2, ',', '') }}
+                                                            {{ number_format($response->data->indicators->total->PI_100, 2, ',', '') }} %
                                                             <input type="hidden" id="PI_100" value="{{ number_format($response->data->indicators->total->PI_100, 2, '.', '') }}">
                                                         </td>
                                                         <td class="text-center">
-                                                            {{ number_format($response->data->indicators->total->PI_110, 2, ',', '') }}
+                                                            {{ number_format($response->data->indicators->total->PI_110, 2, ',', '') }} %
                                                             <input type="hidden" id="PI_110" value="{{ number_format($response->data->indicators->total->PI_110, 2, '.', '') }}">
                                                         </td>
                                                         <td class="text-center"></td>
@@ -1143,10 +1108,10 @@
                                                         <td class="text-center">TOTAL PENILAIAN KINERJA</td>
                                                         <td class="text-center"></td>
                                                         <td class="text-center">
-                                                            {{ number_format($response->data->indicators->total->PK_100, 2, ',', '') }}
+                                                            {{ number_format($response->data->indicators->total->PK_100, 2, ',', '') }} %
                                                         </td>
                                                         <td class="text-center">
-                                                            {{ number_format($response->data->indicators->total->PK_110, 2, ',', '') }}
+                                                            {{ number_format($response->data->indicators->total->PK_110, 2, ',', '') }} %
                                                         </td>
                                                         <td class="text-center"></td>
                                                         <td class="text-center"></td>
@@ -1155,12 +1120,14 @@
                                                         <td class="text-center">TOTAL PROPORSIONAL PENILAIAN KINERJA</td>
                                                         <td class="text-center"></td>
                                                         <td class="text-center">
-                                                            {{ number_format($response->data->indicators->total->PPK_100, 2, ',', '') }}
+                                                            {{ number_format($response->data->indicators->total->PPK_100, 2, ',', '') }} %
                                                             <input type="hidden" id="PPK_100" value="{{ number_format($response->data->indicators->total->PPK_100, 2, '.', '') }}">
+                                                            <input type="hidden" id="PPK_100_status" value="{{ $response->data->indicators->total->PPK_100_status }}">
                                                         </td>
                                                         <td class="text-center">
-                                                            {{ number_format($response->data->indicators->total->PPK_110, 2, ',', '') }}
+                                                            {{ number_format($response->data->indicators->total->PPK_110, 2, ',', '') }} %
                                                             <input type="hidden" id="PPK_110" value="{{ number_format($response->data->indicators->total->PPK_110, 2, '.', '') }}">
+                                                            <input type="hidden" id="PPK_110_status" value="{{ $response->data->indicators->total->PPK_110_status }}">
                                                         </td>
                                                         <td class="text-center"></td>
                                                         <td class="text-center"></td>
