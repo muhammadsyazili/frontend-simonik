@@ -94,8 +94,6 @@ class PaperWorkRealizationController extends Controller
             return redirect()->back();
         }
 
-        return Excel::download(new RealizationsExport($response->object()->data->indicators), "Realisasi@$level@$unit@$tahun.xlsx", \Maatwebsite\Excel\Excel::XLSX, [
-            'Content-Type' => 'text/csv',
-        ]);
+        return Excel::download(new RealizationsExport($response->object()->data->indicators), "Realisasi@$level@$unit@$tahun.xlsx", \Maatwebsite\Excel\Excel::XLSX);
     }
 }
