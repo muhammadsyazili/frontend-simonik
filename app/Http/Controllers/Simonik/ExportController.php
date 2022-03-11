@@ -14,13 +14,11 @@ class ExportController extends Controller
     public function index(Request $request)
     {
         $response = null;
-        if (!is_null($request->query('level')) && !is_null($request->query('unit')) && !is_null($request->query('tahun')) && !is_null($request->query('bulan'))) {
-            $response = SIMONIK_sevices('/analytic', 'get', [
+        if (!is_null($request->query('level')) && !is_null($request->query('unit')) && !is_null($request->query('tahun'))) {
+            $response = SIMONIK_sevices('/export', 'get', [
                 'level' => $request->query('level'),
                 'unit' => $request->query('unit'),
                 'tahun' => (int) $request->query('tahun'),
-                'bulan' => $request->query('bulan'),
-                'auth' => '1',
             ]);
 
             if ($response->clientError()) {
@@ -40,7 +38,7 @@ class ExportController extends Controller
 
     public function export($level, $unit, $tahun)
     {
-        $response = SIMONIK_sevices('/targets/paper-work/export', 'get', [
+        $response = SIMONIK_sevices('/export', 'get', [
             'level' => $level,
             'unit' => $unit,
             'tahun' => $tahun,
@@ -55,6 +53,6 @@ class ExportController extends Controller
             return redirect()->back();
         }
 
-        return Excel::download(new ExportExport($response->object()->data->indicators), "Target@$level@$unit@$tahun.xlsx", \Maatwebsite\Excel\Excel::XLSX);
+        return Excel::download(new ExportExport($response->object()->data->indicators), "Kertas Kerja@$level@$unit@$tahun.xlsx", \Maatwebsite\Excel\Excel::XLSX);
     }
 }

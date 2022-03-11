@@ -230,7 +230,7 @@
 
             $.ajax({
                 type: 'GET',
-                url: `${host}/analytic/${id}/${prefix}/${month}`,
+                url: `${host}/monitoring/${id}/${prefix}/${month}`,
                 success: function(res) {
                     Highcharts.chart('chart-container', {
                         chart: {
@@ -980,31 +980,39 @@
                                                 <figure class="highcharts-figure">
                                                     <div id="container-1"></div>
                                                 </figure>
+                                                <input type="hidden" id="PPK_100" value="{{ number_format($response->data->indicators->total->PPK_100, 2, '.', '') }}">
+                                                <input type="hidden" id="PPK_100_status" value="{{ $response->data->indicators->total->PPK_100_status }}">
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                 <figure class="highcharts-figure">
                                                     <div id="container-2"></div>
                                                 </figure>
+                                                <input type="hidden" id="KPI_100" value="{{ number_format($response->data->indicators->total->KPI_100, 2, '.', '') }}">
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                 <figure class="highcharts-figure">
                                                     <div id="container-3"></div>
                                                 </figure>
+                                                <input type="hidden" id="PI_100" value="{{ number_format($response->data->indicators->total->PI_100, 2, '.', '') }}">
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                 <figure class="highcharts-figure">
                                                     <div id="container-4"></div>
                                                 </figure>
+                                                <input type="hidden" id="PPK_110" value="{{ number_format($response->data->indicators->total->PPK_110, 2, '.', '') }}">
+                                                <input type="hidden" id="PPK_110_status" value="{{ $response->data->indicators->total->PPK_110_status }}">
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                 <figure class="highcharts-figure">
                                                     <div id="container-5"></div>
                                                 </figure>
+                                                <input type="hidden" id="KPI_110" value="{{ number_format($response->data->indicators->total->KPI_110, 2, '.', '') }}">
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                 <figure class="highcharts-figure">
                                                     <div id="container-6"></div>
                                                 </figure>
+                                                <input type="hidden" id="PI_110" value="{{ number_format($response->data->indicators->total->PI_110, 2, '.', '') }}">
                                             </div>
                                         </div>
 
@@ -1073,11 +1081,9 @@
                                                         <td class="text-center"></td>
                                                         <td class="text-center">
                                                             {{ number_format($response->data->indicators->total->KPI_100, 2, ',', '') }} %
-                                                            <input type="hidden" id="KPI_100" value="{{ number_format($response->data->indicators->total->KPI_100, 2, '.', '') }}">
                                                         </td>
                                                         <td class="text-center">
                                                             {{ number_format($response->data->indicators->total->KPI_110, 2, ',', '') }} %
-                                                            <input type="hidden" id="KPI_110" value="{{ number_format($response->data->indicators->total->KPI_110, 2, '.', '') }}">
                                                         </td>
                                                         <td class="text-center"></td>
                                                         <td class="text-center"></td>
@@ -1087,11 +1093,9 @@
                                                         <td class="text-center"></td>
                                                         <td class="text-center">
                                                             {{ number_format($response->data->indicators->total->PI_100, 2, ',', '') }} %
-                                                            <input type="hidden" id="PI_100" value="{{ number_format($response->data->indicators->total->PI_100, 2, '.', '') }}">
                                                         </td>
                                                         <td class="text-center">
                                                             {{ number_format($response->data->indicators->total->PI_110, 2, ',', '') }} %
-                                                            <input type="hidden" id="PI_110" value="{{ number_format($response->data->indicators->total->PI_110, 2, '.', '') }}">
                                                         </td>
                                                         <td class="text-center"></td>
                                                         <td class="text-center"></td>
@@ -1121,13 +1125,9 @@
                                                         <td class="text-center"></td>
                                                         <td class="text-center">
                                                             {{ number_format($response->data->indicators->total->PPK_100, 2, ',', '') }} %
-                                                            <input type="hidden" id="PPK_100" value="{{ number_format($response->data->indicators->total->PPK_100, 2, '.', '') }}">
-                                                            <input type="hidden" id="PPK_100_status" value="{{ $response->data->indicators->total->PPK_100_status }}">
                                                         </td>
                                                         <td class="text-center">
                                                             {{ number_format($response->data->indicators->total->PPK_110, 2, ',', '') }} %
-                                                            <input type="hidden" id="PPK_110" value="{{ number_format($response->data->indicators->total->PPK_110, 2, '.', '') }}">
-                                                            <input type="hidden" id="PPK_110_status" value="{{ $response->data->indicators->total->PPK_110_status }}">
                                                         </td>
                                                         <td class="text-center"></td>
                                                         <td class="text-center"></td>

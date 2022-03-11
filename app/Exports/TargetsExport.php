@@ -48,6 +48,6 @@ class TargetsExport implements FromCollection, WithHeadings, WithCustomStartCell
 
     public function startCell(): string
     {
-        return 'B2';
+        return 'A2';
     }
 }

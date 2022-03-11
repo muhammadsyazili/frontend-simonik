@@ -48,6 +48,6 @@ class RealizationsExport implements FromCollection, WithHeadings, WithCustomStar
 
     public function startCell(): string
     {
-        return 'B2';
+        return 'A2';
     }
 }

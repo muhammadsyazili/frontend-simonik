@@ -28,9 +28,11 @@ class ExportExport implements FromCollection, WithHeadings, WithCustomStartCell,
     public function headings(): array
     {
         return [
-            'ID (jangan diubah)',
             'KPI',
+            'Tipe',
+            'Formula',
             'Satuan',
+            'Polaritas',
             'Target - Jan',
             'Target - Feb',
             'Target - Mar',
@@ -43,11 +45,23 @@ class ExportExport implements FromCollection, WithHeadings, WithCustomStartCell,
             'Target - Oct',
             'Target - Nov',
             'Target - Dec',
+            'Realisasi - Jan',
+            'Realisasi - Feb',
+            'Realisasi - Mar',
+            'Realisasi - Apr',
+            'Realisasi - May',
+            'Realisasi - Jun',
+            'Realisasi - Jul',
+            'Realisasi - Aug',
+            'Realisasi - Sep',
+            'Realisasi - Oct',
+            'Realisasi - Nov',
+            'Realisasi - Dec',
         ];
     }
 
     public function startCell(): string
     {
-        return 'B2';
+        return 'A2';
     }
 }

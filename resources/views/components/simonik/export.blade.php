@@ -135,10 +135,6 @@
                     if ($(this).val() == $('meta[name="unit"]').attr('content'))
                         $(this).attr("selected", "selected");
                 });
-                $('select[name="bulan"] option').each(function() {
-                    if ($(this).val() == $('meta[name="bulan"]').attr('content'))
-                        $(this).attr("selected", "selected");
-                });
                 $('input[name="tahun"]').val($('meta[name="tahun"]').attr('content'));
             }, 2000);
         });
@@ -279,25 +275,6 @@
                                         </span>
 
                                         <input type="text" class="form-control" name="tahun" />
-
-                                        <span class="input-group-append">
-                                            <span class="input-group-text">Bulan</span>
-                                        </span>
-
-                                        <select class="custom-select" name="bulan">
-                                            <option value="jan">s.d. Jan</option>
-                                            <option value="feb">s.d. Feb</option>
-                                            <option value="mar">s.d. Mar</option>
-                                            <option value="apr">s.d. Apr</option>
-                                            <option value="may">s.d. May</option>
-                                            <option value="jun">s.d. Jun</option>
-                                            <option value="jul">s.d. Jul</option>
-                                            <option value="aug">s.d. Aug</option>
-                                            <option value="sep">s.d. Sep</option>
-                                            <option value="oct">s.d. Oct</option>
-                                            <option value="nov">s.d. Nov</option>
-                                            <option value="dec">s.d. Dec</option>
-                                        </select>
 
                                         <span class="input-group-append">
                                             <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip" data-placement="buttom" title="Search"><i class="fas fa-search"></i></button>
