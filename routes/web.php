@@ -276,6 +276,9 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
         Route::get('/simonik/monitoring', [App\Http\Controllers\Simonik\MonitoringController::class, 'monitoring'])
             ->name('simonik.monitoring');
 
+        Route::get('/simonik/monitoring/{level}/{unit}/{tahun}/{bulan}/export', [App\Http\Controllers\Simonik\MonitoringController::class, 'export'])
+            ->name('simonik.monitoring.export');
+
         //export
         Route::get('/simonik/export/index', [App\Http\Controllers\Simonik\ExportController::class, 'index'])
             ->name('simonik.export.index');

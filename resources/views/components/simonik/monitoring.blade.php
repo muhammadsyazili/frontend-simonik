@@ -1135,6 +1135,8 @@
                                                 </tbody>
                                             </table>
                                         </div>
+
+                                        <a href="{{ route('simonik.monitoring.export', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun'),'bulan' => request()->query('bulan')]) }}" class="btn btn-sm btn-info mt-3">Download Hasil Monitoring</a>
                                     @endif
                                 @endif
                             </div>
