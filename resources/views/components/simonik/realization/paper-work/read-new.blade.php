@@ -475,7 +475,7 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->jan->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->jan->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->jan->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
@@ -502,7 +502,7 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->feb->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->feb->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->feb->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
@@ -529,7 +529,7 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->mar->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->mar->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->mar->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
@@ -556,7 +556,7 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->apr->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->apr->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->apr->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
@@ -583,7 +583,7 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->may->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->may->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->may->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
@@ -610,7 +610,7 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->jun->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->jun->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->jun->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
@@ -637,7 +637,7 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->jul->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->jul->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->jul->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
@@ -664,7 +664,7 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->aug->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->aug->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->aug->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
@@ -691,7 +691,7 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->sep->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->sep->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->sep->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
@@ -718,7 +718,7 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->oct->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->oct->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->oct->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
@@ -745,7 +745,7 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->nov->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->nov->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->nov->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
@@ -772,7 +772,7 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->dec->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->dec->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->dec->status }}</span></p>
                                                                     @endif
                                                                 </td>
                                                                 {{-- ------------------------------------------------------------------------------ --}}

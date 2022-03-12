@@ -432,84 +432,84 @@
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->targets->jan->value))
                                                                         <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][jan]" value="{{ $indicator->targets->jan->value }}" style="width: 200px;">
-                                                                        <p class="text-info small">Last update: {{ $indicator->targets->jan->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->targets->jan->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Target Masih Default, M: Target Sudah Modified">{{ $indicator->targets->jan->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->targets->feb->value))
                                                                         <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][feb]" value="{{ $indicator->targets->feb->value }}" style="width: 200px;">
-                                                                        <p class="text-info small">Last update: {{ $indicator->targets->feb->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->targets->feb->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Target Masih Default, M: Target Sudah Modified">{{ $indicator->targets->feb->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->targets->mar->value))
                                                                         <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][mar]" value="{{ $indicator->targets->mar->value }}" style="width: 200px;">
-                                                                        <p class="text-info small">Last update: {{ $indicator->targets->mar->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->targets->mar->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Target Masih Default, M: Target Sudah Modified">{{ $indicator->targets->mar->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->targets->apr->value))
                                                                         <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][apr]" value="{{ $indicator->targets->apr->value }}" style="width: 200px;">
-                                                                        <p class="text-info small">Last update: {{ $indicator->targets->apr->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->targets->apr->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Target Masih Default, M: Target Sudah Modified">{{ $indicator->targets->apr->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->targets->may->value))
                                                                         <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][may]" value="{{ $indicator->targets->may->value }}" style="width: 200px;">
-                                                                        <p class="text-info small">Last update: {{ $indicator->targets->may->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->targets->may->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Target Masih Default, M: Target Sudah Modified">{{ $indicator->targets->may->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->targets->jun->value))
                                                                         <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][jun]" value="{{ $indicator->targets->jun->value }}" style="width: 200px;">
-                                                                        <p class="text-info small">Last update: {{ $indicator->targets->jun->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->targets->jun->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Target Masih Default, M: Target Sudah Modified">{{ $indicator->targets->jun->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->targets->jul->value))
                                                                         <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][jul]" value="{{ $indicator->targets->jul->value }}" style="width: 200px;">
-                                                                        <p class="text-info small">Last update: {{ $indicator->targets->jul->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->targets->jul->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Target Masih Default, M: Target Sudah Modified">{{ $indicator->targets->jul->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->targets->aug->value))
                                                                         <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][aug]" value="{{ $indicator->targets->aug->value }}" style="width: 200px;">
-                                                                        <p class="text-info small">Last update: {{ $indicator->targets->aug->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->targets->aug->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Target Masih Default, M: Target Sudah Modified">{{ $indicator->targets->aug->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->targets->sep->value))
                                                                         <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][sep]" value="{{ $indicator->targets->sep->value }}" style="width: 200px;">
-                                                                        <p class="text-info small">Last update: {{ $indicator->targets->sep->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->targets->sep->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Target Masih Default, M: Target Sudah Modified">{{ $indicator->targets->sep->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->targets->oct->value))
                                                                         <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][oct]" value="{{ $indicator->targets->oct->value }}" style="width: 200px;">
-                                                                        <p class="text-info small">Last update: {{ $indicator->targets->oct->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->targets->oct->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Target Masih Default, M: Target Sudah Modified">{{ $indicator->targets->oct->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->targets->nov->value))
                                                                         <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][nov]" value="{{ $indicator->targets->nov->value }}" style="width: 200px;">
-                                                                        <p class="text-info small">Last update: {{ $indicator->targets->nov->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->targets->nov->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Target Masih Default, M: Target Sudah Modified">{{ $indicator->targets->nov->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->targets->dec->value))
                                                                         <input type="number" step="any" min="0" class="form-control form-control-sm" name="targets[{{ $indicator->id }}][dec]" value="{{ $indicator->targets->dec->value }}" style="width: 200px;">
-                                                                        <p class="text-info small">Last update: {{ $indicator->targets->dec->updated_at }}</p>
+                                                                        <p class="text-info small">Last update: {{ $indicator->targets->dec->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Target Masih Default, M: Target Sudah Modified">{{ $indicator->targets->dec->status }}</span></p>
                                                                     @endif
                                                                 </td>
                                                                 {{-- ------------------------------------------------------------------------------ --}}
