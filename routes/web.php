@@ -135,6 +135,10 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
             ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdminOrDataEntry::class])
             ->name('simonik.realizations.paper-work.update');
 
+        Route::post('/simonik/realizations/paper-work/import', [App\Http\Controllers\Simonik\Extends\Realization\PaperWorkRealizationController::class, 'import'])
+            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdminOrDataEntry::class])
+            ->name('simonik.realizations.paper-work.import');
+
         Route::get('/simonik/realizations/paper-work/{level}/{unit}/{tahun}/export', [App\Http\Controllers\Simonik\Extends\Realization\PaperWorkRealizationController::class, 'export'])
             ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdminOrDataEntry::class])
             ->name('simonik.realizations.paper-work.export');
@@ -147,6 +151,10 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
         Route::put('/simonik/targets/paper-work', [App\Http\Controllers\Simonik\Extends\Target\PaperWorkTargetController::class, 'update'])
             ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
             ->name('simonik.targets.paper-work.update');
+
+        Route::post('/simonik/targets/paper-work/import', [App\Http\Controllers\Simonik\Extends\Target\PaperWorkTargetController::class, 'import'])
+            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
+            ->name('simonik.targets.paper-work.import');
 
         Route::get('/simonik/targets/paper-work/{level}/{unit}/{tahun}/export', [App\Http\Controllers\Simonik\Extends\Target\PaperWorkTargetController::class, 'export'])
             ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])

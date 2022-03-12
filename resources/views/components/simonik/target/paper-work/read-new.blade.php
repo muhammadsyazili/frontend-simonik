@@ -285,7 +285,10 @@
                                         <a href="{{ route('simonik.targets.paper-work.export', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="bottom" title="Download Template"><i class="fas fa-file-download"></i></a>
                                     </div>
                                     <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                                        <form action="#" method="post">
+                                        <form action="{{ route('simonik.targets.paper-work.import') }}" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('post')
+
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <div class="custom-file">

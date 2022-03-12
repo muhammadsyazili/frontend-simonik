@@ -76,6 +76,11 @@ class PaperWorkTargetController extends Controller
         return redirect()->route('simonik.targets.paper-work.index', ['level' => $request->level, 'unit' => $request->unit, 'tahun' => $request->tahun]);
     }
 
+    public function import()
+    {
+
+    }
+
     public function export($level, $unit, $tahun)
     {
         $response = SIMONIK_sevices('/targets/paper-work/export', 'get', [
