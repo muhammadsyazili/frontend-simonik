@@ -5,15 +5,20 @@ namespace App\Exports;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\WithCustomStartCell;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class RealizationsExport implements FromCollection, WithHeadings, WithCustomStartCell, ShouldAutoSize
+class RealizationsExport implements FromCollection, WithHeadings, ShouldAutoSize
 {
+    private $level;
+    private $unit;
+    private $tahun;
     private $indicators;
 
-    public function __construct($indicators)
+    public function __construct($level, $unit, $tahun, $indicators)
     {
+        $this->level = $level;
+        $this->unit = $unit;
+        $this->tahun = $tahun;
         $this->indicators = $indicators;
     }
 
@@ -27,27 +32,31 @@ class RealizationsExport implements FromCollection, WithHeadings, WithCustomStar
 
     public function headings(): array
     {
-        return [
-            'ID (jangan diubah)',
-            'KPI',
-            'Satuan',
-            'Realisasi - Jan',
-            'Realisasi - Feb',
-            'Realisasi - Mar',
-            'Realisasi - Apr',
-            'Realisasi - May',
-            'Realisasi - Jun',
-            'Realisasi - Jul',
-            'Realisasi - Aug',
-            'Realisasi - Sep',
-            'Realisasi - Oct',
-            'Realisasi - Nov',
-            'Realisasi - Dec',
-        ];
-    }
+        $level = $this->level;
+        $unit = $this->unit;
+        $tahun = $this->tahun;
 
-    public function startCell(): string
-    {
-        return 'A2';
+        return [
+            // [
+            //     "Level: $level - Unit: $unit - Tahun: $tahun",
+            // ],
+            [
+                'ID (jangan diubah)',
+                'KPI',
+                'Satuan',
+                'Realisasi - Jan',
+                'Realisasi - Feb',
+                'Realisasi - Mar',
+                'Realisasi - Apr',
+                'Realisasi - May',
+                'Realisasi - Jun',
+                'Realisasi - Jul',
+                'Realisasi - Aug',
+                'Realisasi - Sep',
+                'Realisasi - Oct',
+                'Realisasi - Nov',
+                'Realisasi - Dec',
+            ]
+        ];
     }
 }

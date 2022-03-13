@@ -51,6 +51,12 @@ class IndicatorController extends Controller
             'required_if' => ':attribute tidak boleh kosong.',
             'in' => ':attribute yang dipilih tidak sah.',
             'numeric' => ':attribute harus numerik.',
+            'gte' => [
+                'numeric' => ':attribute harus lebih besar dari atau sama dengan :value.',
+                'file'    => ':attribute harus lebih besar dari atau sama dengan :value kilobytes.',
+                'string'  => ':attribute harus lebih besar dari atau sama dengan :value characters.',
+                'array'   => ':attribute harus memiliki :value item atau lebih.',
+            ],
         ];
 
         if (!is_null($request->post('validity'))) {
@@ -61,7 +67,7 @@ class IndicatorController extends Controller
 
         if (!is_null($request->post('weight'))) {
             foreach ($request->post('weight') as $key => $value) {
-                $attributes["weight.$key"] = ['numeric'];
+                $attributes["weight.$key"] = ['numeric', 'gte:0'];
             }
         }
 
@@ -152,6 +158,12 @@ class IndicatorController extends Controller
             'required_if' => ':attribute tidak boleh kosong.',
             'in' => ':attribute yang dipilih tidak sah.',
             'numeric' => ':attribute harus numerik.',
+            'gte' => [
+                'numeric' => ':attribute harus lebih besar dari atau sama dengan :value.',
+                'file'    => ':attribute harus lebih besar dari atau sama dengan :value kilobytes.',
+                'string'  => ':attribute harus lebih besar dari atau sama dengan :value characters.',
+                'array'   => ':attribute harus memiliki :value item atau lebih.',
+            ],
         ];
 
         if (!is_null($request->post('validity'))) {
@@ -162,7 +174,7 @@ class IndicatorController extends Controller
 
         if (!is_null($request->post('weight'))) {
             foreach ($request->post('weight') as $key => $value) {
-                $attributes["weight.$key"] = ['numeric'];
+                $attributes["weight.$key"] = ['numeric', 'gte:0'];
             }
         }
 

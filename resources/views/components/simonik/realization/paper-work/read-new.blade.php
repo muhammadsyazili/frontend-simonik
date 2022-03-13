@@ -292,43 +292,45 @@
             {{-- section: template download/upload --}}
             @if (!is_null($response))
                 @if (!empty($response->data->indicators))
-                    <div class="col-md-12">
-                        <div class="card border-0 shadow rounded">
-                            <!-- card-header -->
-                            <div class="card-header">
-                                <h3 class="card-title">ADD REALISASI VIA EXCEL</h3>
-                            </div>
-                            <!-- end : card-header -->
+                    @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
+                        <div class="col-md-12">
+                            <div class="card border-0 shadow rounded">
+                                <!-- card-header -->
+                                <div class="card-header">
+                                    <h3 class="card-title">ADD REALISASI VIA EXCEL</h3>
+                                </div>
+                                <!-- end : card-header -->
 
-                            <!-- card-body -->
-                            <div class="card-body">
-                                <div class="row mb-3">
-                                    <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-                                        <a href="{{ route('simonik.realizations.paper-work.export', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="bottom" title="Download Template"><i class="fas fa-file-download"></i></a>
-                                    </div>
-                                    <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
-                                        <form action="{{ route('simonik.realizations.paper-work.import') }}" method="post" enctype="multipart/form-data">
-                                            @csrf
-                                            @method('post')
+                                <!-- card-body -->
+                                <div class="card-body">
+                                    <div class="row mb-3">
+                                        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                            <a href="{{ route('simonik.realizations.paper-work.export', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="bottom" title="Download Template"><i class="fas fa-file-download"></i></a>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
+                                            <form action="{{ route('simonik.realizations.paper-work.import', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" method="post" enctype="multipart/form-data">
+                                                @csrf
+                                                @method('post')
 
-                                            <div class="form-group form-group-sm">
-                                                <div class="input-group">
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="template">
-                                                        <label class="custom-file-label" for="template">Choose file</label>
-                                                    </div>
-                                                    <div class="input-group-append">
-                                                        <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="buttom" title="Upload File"><i class="fas fa-file-upload"></i></button>
+                                                <div class="form-group form-group-sm">
+                                                    <div class="input-group">
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" name="file" id="template">
+                                                            <label class="custom-file-label" for="template">Choose file</label>
+                                                        </div>
+                                                        <div class="input-group-append">
+                                                            <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="buttom" title="Upload File" onclick="javascript: return confirm('Anda yakin ingin menambahkan realisasi via excel untuk level: {{ cast_to_upper(request()->query('level')) }} - unit kerja: {{ cast_to_upper(request()->query('unit')) }} - tahun: {{ cast_to_upper(request()->query('tahun')) }} ?')"><i class="fas fa-file-upload"></i></button>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </form>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
+                                <!-- end : card-body -->
                             </div>
-                            <!-- end : card-body -->
                         </div>
-                    </div>
+                    @endif
                 @endif
             @endif
             {{-- end section: template download/upload --}}
@@ -341,7 +343,7 @@
                         <h3 class="card-title">KERTAS KERJA - REALISASI
                             / LEVEL :
                             {{ request()->query('level') == null ? '-' : cast_to_upper(request()->query('level')) }}
-                            / UNIT :
+                            / UNIT KERJA :
                             {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }}
                             / TAHUN :
                             {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }}

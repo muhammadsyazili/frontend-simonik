@@ -319,7 +319,7 @@
                         <h3 class="card-title">KERTAS KERJA - TARGET
                             / LEVEL :
                             {{ request()->query('level') == null ? '-' : cast_to_upper(request()->query('level')) }}
-                            / UNIT :
+                            / UNIT KERJA :
                             {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }}
                             / TAHUN :
                             {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }}
