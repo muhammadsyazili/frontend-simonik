@@ -781,25 +781,25 @@
                                         <span class="input-group-text">Level</span>
                                     </span>
 
-                                    <select class="custom-select" name="level" data-intro="Silakan pilih 'Level'"></select>
+                                    <select class="custom-select" name="level" data-intro="Silakan pilih <strong>Level</strong>"></select>
 
                                     <span class="input-group-append">
                                         <span class="input-group-text">Unit Kerja</span>
                                     </span>
 
-                                    <select class="custom-select" name="unit" data-intro="Silakan pilih 'Unit Kerja'"></select>
+                                    <select class="custom-select" name="unit" data-intro="Silakan pilih <strong>Unit Kerja</strong>"></select>
 
                                     <span class="input-group-append">
                                         <span class="input-group-text">Tahun</span>
                                     </span>
 
-                                    <input type="text" class="form-control" name="tahun" data-intro="Silakan isi 'Tahun'" />
+                                    <input type="text" class="form-control" name="tahun" data-intro="Silakan isi <strong>Tahun</strong>" />
 
                                     <span class="input-group-append">
                                         <span class="input-group-text">Bulan</span>
                                     </span>
 
-                                    <select class="custom-select" name="bulan" data-intro="Silakan pilih 'Bulan'">
+                                    <select class="custom-select" name="bulan" data-intro="Silakan pilih <strong>Bulan</strong>">
                                         <option value="jan">s.d. Jan</option>
                                         <option value="feb">s.d. Feb</option>
                                         <option value="mar">s.d. Mar</option>
@@ -815,7 +815,7 @@
                                     </select>
 
                                     <span class="input-group-append">
-                                        <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip" data-placement="buttom" title="Search" data-intro="Silakan tekan tombol 'Search'"><i class="fas fa-search"></i></button>
+                                        <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip" data-placement="buttom" title="Search" data-intro="Silakan tekan tombol <strong>Search</strong>"><i class="fas fa-search"></i></button>
                                     </span>
                                 </div>
                             </form>

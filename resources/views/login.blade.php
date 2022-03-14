@@ -85,7 +85,7 @@
                 @method('post')
                 @csrf
 
-                <div class="form-group row" data-intro="Silakan isi username">
+                <div class="form-group row" data-intro="Silakan isi <strong>Username</strong>">
                     <label for="username"
                         class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 col-form-label text-left">Username</label>
                     <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
@@ -93,7 +93,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row" data-intro="Silakan isi password">
+                <div class="form-group row" data-intro="Silakan isi <strong>Password</strong>">
                     <label for="password"
                         class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 col-form-label text-left">Password</label>
                     <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
@@ -104,7 +104,7 @@
                 <div class="form-group text-left row">
                     <div class="offset-sm-2 col-sm-10">
                         <input type="hidden" name="app" value="simonik">
-                        <button type="submit" class="btn btn-info btn-sm" data-intro="Silakan Login">Login</button>
+                        <button type="submit" class="btn btn-info btn-sm" data-intro="Silakan tekan tombol <strong>Login</strong>">Login</button>
                     </div>
                 </div>
             </form>
