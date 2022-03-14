@@ -152,7 +152,7 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
             ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
             ->name('simonik.targets.paper-work.update');
 
-        Route::post('/simonik/targets/paper-work/import', [App\Http\Controllers\Simonik\Extends\Target\PaperWorkTargetController::class, 'import'])
+        Route::post('/simonik/targets/paper-work/{level}/{unit}/{tahun}/import', [App\Http\Controllers\Simonik\Extends\Target\PaperWorkTargetController::class, 'import'])
             ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
             ->name('simonik.targets.paper-work.import');
 

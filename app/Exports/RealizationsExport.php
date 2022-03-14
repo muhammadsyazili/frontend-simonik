@@ -37,26 +37,21 @@ class RealizationsExport implements FromCollection, WithHeadings, ShouldAutoSize
         $tahun = $this->tahun;
 
         return [
-            // [
-            //     "Level: $level - Unit: $unit - Tahun: $tahun",
-            // ],
-            [
-                'ID (jangan diubah)',
-                'KPI',
-                'Satuan',
-                'Realisasi - Jan',
-                'Realisasi - Feb',
-                'Realisasi - Mar',
-                'Realisasi - Apr',
-                'Realisasi - May',
-                'Realisasi - Jun',
-                'Realisasi - Jul',
-                'Realisasi - Aug',
-                'Realisasi - Sep',
-                'Realisasi - Oct',
-                'Realisasi - Nov',
-                'Realisasi - Dec',
-            ]
+            'ID (jangan diubah)',
+            'KPI',
+            'Satuan',
+            'Realisasi - Jan',
+            'Realisasi - Feb',
+            'Realisasi - Mar',
+            'Realisasi - Apr',
+            'Realisasi - May',
+            'Realisasi - Jun',
+            'Realisasi - Jul',
+            'Realisasi - Aug',
+            'Realisasi - Sep',
+            'Realisasi - Oct',
+            'Realisasi - Nov',
+            'Realisasi - Dec',
         ];
     }
 }

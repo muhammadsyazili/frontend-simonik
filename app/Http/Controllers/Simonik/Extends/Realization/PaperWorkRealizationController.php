@@ -100,7 +100,6 @@ class PaperWorkRealizationController extends Controller
         $result = Excel::toArray([], public_path("/files/$fileName"));
 
         $realizations = [];
-        $iter = 0;
         for ($i = 1; $i < count($result[0]); $i++) {
             $realizations[$result[0][$i][0]]['jan'] = $result[0][$i][3];
             $realizations[$result[0][$i][0]]['feb'] = $result[0][$i][4];
@@ -124,15 +123,18 @@ class PaperWorkRealizationController extends Controller
         ]);
 
         if ($response->clientError()) {
+            unlink(public_path("/files/$fileName"));
             return redirect()->back()->withErrors($response->object()->errors);
         }
 
         if ($response->serverError()) {
             Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
+            unlink(public_path("/files/$fileName"));
             return redirect()->back();
         }
 
         Session::flash('info_message', $response->object()->message);
+        unlink(public_path("/files/$fileName"));
         return redirect()->route('simonik.realizations.paper-work.index', ['level' => $level, 'unit' => $unit, 'tahun' => $tahun]);
     }
 

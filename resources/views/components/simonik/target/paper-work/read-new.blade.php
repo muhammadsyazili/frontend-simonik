@@ -274,7 +274,7 @@
                         <div class="card border-0 shadow rounded">
                             <!-- card-header -->
                             <div class="card-header">
-                                <h3 class="card-title">ADD TARGET VIA EXCEL</h3>
+                                <h3 class="card-title">PENGISIAN TARGET VIA EXCEL</h3>
                             </div>
                             <!-- end : card-header -->
 
@@ -285,18 +285,18 @@
                                         <a href="{{ route('simonik.targets.paper-work.export', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="bottom" title="Download Template"><i class="fas fa-file-download"></i></a>
                                     </div>
                                     <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                                        <form action="{{ route('simonik.targets.paper-work.import') }}" method="post" enctype="multipart/form-data">
+                                        <form action="{{ route('simonik.targets.paper-work.import', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" method="post" enctype="multipart/form-data">
                                             @csrf
                                             @method('post')
 
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="template">
+                                                        <input type="file" class="custom-file-input" name="file" id="template">
                                                         <label class="custom-file-label" for="template">Choose file</label>
                                                     </div>
                                                     <div class="input-group-append">
-                                                        <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="buttom" title="Upload File"><i class="fas fa-file-upload"></i></button>
+                                                        <button type="submit" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="buttom" title="Upload File" onclick="javascript: return confirm('Anda yakin ingin menambahkan target via excel untuk level: {{ cast_to_upper(request()->query('level')) }} - unit kerja: {{ cast_to_upper(request()->query('unit')) }} - tahun: {{ cast_to_upper(request()->query('tahun')) }} ?')"><i class="fas fa-file-upload"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
