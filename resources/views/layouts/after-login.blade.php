@@ -12,6 +12,15 @@
 
   <title>SIMONIK | @yield('title')</title>
 
+  <!-- Intro -->
+  <link href="https://unpkg.com/intro.js/minified/introjs.min.css" rel="stylesheet">
+  <!-- Custom Intro -->
+  <style>
+      .introjs-tooltip {
+          color: #000000;
+      }
+  </style>
+
   <!-- Style -->
   @stack('style')
 </head>
@@ -26,6 +35,12 @@
 
     <!-- Script -->
     @stack('script')
+    <script src="https://unpkg.com/intro.js/minified/intro.min.js"></script>
+    <!-- Intro -->
+    <script src="https://unpkg.com/intro.js/minified/intro.min.js"></script>
+    <script>
+        introJs().start();
+    </script>
     @stack('ajax-request')
 </body>
 </html>

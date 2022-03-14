@@ -761,7 +761,7 @@
                 </div>
             @endif
 
-            <div class="card border-0 shadow rounded mt-3">
+            <div class="card border-0 shadow rounded mt-3" data-title="Selamat Datang!" data-intro="Hi! 👋">
                 <div class="card-header">
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -781,25 +781,25 @@
                                         <span class="input-group-text">Level</span>
                                     </span>
 
-                                    <select class="custom-select" name="level"></select>
+                                    <select class="custom-select" name="level" data-intro="Silakan pilih 'Level'"></select>
 
                                     <span class="input-group-append">
                                         <span class="input-group-text">Unit Kerja</span>
                                     </span>
 
-                                    <select class="custom-select" name="unit"></select>
+                                    <select class="custom-select" name="unit" data-intro="Silakan pilih 'Unit Kerja'"></select>
 
                                     <span class="input-group-append">
                                         <span class="input-group-text">Tahun</span>
                                     </span>
 
-                                    <input type="text" class="form-control" name="tahun" />
+                                    <input type="text" class="form-control" name="tahun" data-intro="Silakan isi 'Tahun'" />
 
                                     <span class="input-group-append">
                                         <span class="input-group-text">Bulan</span>
                                     </span>
 
-                                    <select class="custom-select" name="bulan">
+                                    <select class="custom-select" name="bulan" data-intro="Silakan pilih 'Bulan'">
                                         <option value="jan">s.d. Jan</option>
                                         <option value="feb">s.d. Feb</option>
                                         <option value="mar">s.d. Mar</option>
@@ -815,7 +815,7 @@
                                     </select>
 
                                     <span class="input-group-append">
-                                        <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip" data-placement="buttom" title="Search"><i class="fas fa-search"></i></button>
+                                        <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip" data-placement="buttom" title="Search" data-intro="Silakan tekan tombol 'Search'"><i class="fas fa-search"></i></button>
                                     </span>
                                 </div>
                             </form>

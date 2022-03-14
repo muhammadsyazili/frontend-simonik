@@ -12,6 +12,14 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> {{-- required --}}
 
+    <link href="https://unpkg.com/intro.js/minified/introjs.min.css" rel="stylesheet">
+
+    <style>
+        .introjs-tooltip {
+            color: #000000;
+        }
+    </style>
+
     <!-- Custom Bootstrap -->
     <style>
         .login-box,
@@ -48,6 +56,54 @@
 
     </style>
     <!-- End : Custom Bootstrap -->
+
+    <!-- Running Text Animation -->
+    <style>
+        @media (max-width:576px) {
+            .ml11 {
+                font-weight: 700;
+                font-size: 0.75em;
+            }
+        }
+
+        @media (min-width:576px) {
+            .ml11 {
+                font-weight: 700;
+                font-size: 1.5em;
+            }
+        }
+
+
+        .ml11 .text-wrapper {
+            position: relative;
+            display: inline-block;
+            padding-top: 0.1em;
+            padding-right: 0.05em;
+            padding-bottom: 0.15em;
+        }
+
+        .ml11 .line {
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            height: 100%;
+            width: 3px;
+            background-color: #fff;
+            transform-origin: 0 50%;
+        }
+
+        .ml11 .line1 {
+            top: 0;
+            left: 0;
+        }
+
+        .ml11 .letter {
+            display: inline-block;
+            line-height: 1em;
+        }
+
+    </style>
+    <!-- End : Running Text Animation -->
 @endpush
 
 @push('script')
@@ -57,6 +113,48 @@
     <script src="{{ asset('template/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script> {{-- required --}}
     <!-- AdminLTE App -->
     <script src="{{ asset('template/dist/js/adminlte.min.js') }}"></script> {{-- required --}}
+    <!-- Running Text Animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script> {{-- required --}}
+    <script>
+        let textWrapper = document.querySelector('.ml11 .letters');
+        textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
+
+        anime.timeline({
+                loop: true
+            })
+            .add({
+                targets: '.ml11 .line',
+                scaleY: [0, 1],
+                opacity: [0.5, 1],
+                easing: "easeOutExpo",
+                duration: 700
+            })
+            .add({
+                targets: '.ml11 .line',
+                translateX: [0, document.querySelector('.ml11 .letters').getBoundingClientRect().width + 10],
+                easing: "easeOutExpo",
+                duration: 700,
+                delay: 100
+            }).add({
+                targets: '.ml11 .letter',
+                opacity: [0, 1],
+                easing: "easeOutExpo",
+                duration: 600,
+                offset: '-=775',
+                delay: (el, i) => 34 * (i + 1)
+            }).add({
+                targets: '.ml11',
+                opacity: 0,
+                duration: 1000,
+                easing: "easeOutExpo",
+                delay: 1000
+            });
+    </script>
+    <!-- End : Running Text Animation -->
+    <script src="https://unpkg.com/intro.js/minified/intro.min.js"></script>
+    <script>
+        introJs().start();
+    </script>
 @endpush
 
 @section('content')
@@ -64,6 +162,13 @@
         <div class="login-logo">
             <img src="{{ asset('icon-brand.png') }}" alt="icon-brand" width="30%">
         </div>
+
+        {{-- <h1 class="login-box-msg text-center ml11">
+            <span class="text-wrapper">
+                <span class="line line1"></span>
+                <span class="letters">SISTEM INFORMASI MONITORING KINERJA DAN RESIKO</span>
+            </span>
+        </h1> --}}
 
         <div class="text-center font-weight-bold">
 
@@ -85,7 +190,7 @@
                 @method('post')
                 @csrf
 
-                <div class="form-group row" data-intro="Silakan isi username">
+                <div class="form-group row" data-intro="Isi Username">
                     <label for="username"
                         class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 col-form-label text-left">Username</label>
                     <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
@@ -93,7 +198,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row" data-intro="Silakan isi password">
+                <div class="form-group row" data-intro="Isi Password">
                     <label for="password"
                         class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 col-form-label text-left">Password</label>
                     <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
@@ -101,10 +206,25 @@
                     </div>
                 </div>
 
+                {{-- <div class="form-group text-left row">
+                    <div class="offset-sm-2 col-sm-10">
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="app" value="simonik" checked>SIMONIK
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="app" value="fdx">4DX
+                            </label>
+                        </div>
+                    </div>
+                </div> --}}
+
                 <div class="form-group text-left row">
                     <div class="offset-sm-2 col-sm-10">
                         <input type="hidden" name="app" value="simonik">
-                        <button type="submit" class="btn btn-info btn-sm" data-intro="Silakan Login">Login</button>
+                        <button type="submit" class="btn btn-info btn-sm">Sign In</button>
                     </div>
                 </div>
             </form>
