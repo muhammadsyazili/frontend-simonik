@@ -432,6 +432,7 @@
                                                 <table class="table table-bordered table-sm" id="drag-drop-table-sorting">
                                                     <thead class="small">
                                                         <tr>
+                                                            <th class="text-center">UBAH URUTAN</th>
                                                             <th class="text-center">KPI</th>
                                                             <th class="text-center">FORMULA</th>
                                                             <th class="text-center">SATUAN</th>
@@ -444,6 +445,9 @@
                                                     <tbody id="myTable" class="small">
                                                         @foreach ($response->data->indicators as $indicator)
                                                             <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
+                                                                <td class="text-center">
+                                                                    <span><i class="fas fa-arrows-alt-v"></i></span>
+                                                                </td>
                                                                 <td>
                                                                     <p>{{ $indicator->indicator }} <span class="badge badge-info">{{ $indicator->type }}</span></p>
                                                                 </td>
@@ -491,7 +495,7 @@
                                             </div>
 
                                             @if ($response->data->permissions->indicator->changes_order)
-                                                <button type="submit" class="btn btn-sm btn-info float-right mt-2">Reordering KPI</button>
+                                                <button type="submit" class="btn btn-sm btn-info float-right mt-2">Simpan Perubahan Urutan</button>
                                             @endif
                                         </form>
                                     @endif

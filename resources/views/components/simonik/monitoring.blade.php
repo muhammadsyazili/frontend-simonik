@@ -973,7 +973,7 @@
                                     @else
                                         <div class="row">
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                <p class="text-center"> UNIT KERJA : {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }} - TAHUN : {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }} - BULAN : {{ request()->query('bulan') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }}</p>
+                                                <p class="text-center">UNIT KERJA : {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }} - TAHUN : {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }} - BULAN : {{ request()->query('bulan') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }}</p>
                                                 <p class="text-center"><span class="badge badge-danger">MASALAH : NKO < 95%</span> <span class="badge badge-warning">HATI-HATI : NKO &ge; 95% s.d < 100%</span> <span class="badge badge-success">BAIK : NKO &ge; 100%</span></p>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
@@ -1045,17 +1045,20 @@
                                                             </td>
                                                             <td class="text-center">
                                                                 @if (!is_null($indicator->achievement))
-                                                                    {{ number_format($indicator->achievement, 2, ',', '') }} %
+                                                                    <p class="font-weight-bold">{{ number_format($indicator->achievement, 2, ',', '') }} %</p>
+                                                                    <p class="small">{{ $indicator->achievement }} %</p>
                                                                 @endif
                                                             </td>
                                                             <td class="text-center">
                                                                 @if (!is_null($indicator->capping_value_100))
-                                                                    {{ $indicator->capping_value_100 === 'BELUM DINILAI' ? $indicator->capping_value_100 : number_format($indicator->capping_value_100, 2, ',', '').' %' }}
+                                                                    <p class="font-weight-bold">{{ $indicator->capping_value_100 === 'BELUM DINILAI' ? $indicator->capping_value_100 : number_format($indicator->capping_value_100, 2, ',', '').' %' }}</p>
+                                                                    <p class="small">{{ $indicator->capping_value_100 === 'BELUM DINILAI' ? $indicator->capping_value_100 : $indicator->capping_value_100.' %' }}</p>
                                                                 @endif
                                                             </td>
                                                             <td class="text-center">
                                                                 @if (!is_null($indicator->capping_value_110))
-                                                                    {{ $indicator->capping_value_110 === 'BELUM DINILAI' ? $indicator->capping_value_110 : number_format($indicator->capping_value_110, 2, ',', '').' %' }}
+                                                                    <p class="font-weight-bold">{{ $indicator->capping_value_110 === 'BELUM DINILAI' ? $indicator->capping_value_110 : number_format($indicator->capping_value_110, 2, ',', '').' %' }}</p>
+                                                                    <p class="small">{{ $indicator->capping_value_110 === 'BELUM DINILAI' ? $indicator->capping_value_110 : $indicator->capping_value_110.' %' }}</p>
                                                                 @endif
                                                             </td>
                                                             <td class="text-center {{ 'bg-'.$indicator->status_color }}">
@@ -1080,10 +1083,12 @@
                                                         <td class="text-center">KEY PERFORMANCE INDIKATOR</td>
                                                         <td class="text-center"></td>
                                                         <td class="text-center">
-                                                            {{ number_format($response->data->indicators->total->KPI_100, 2, ',', '') }} %
+                                                            <p class="font-weight-bold">{{ number_format($response->data->indicators->total->KPI_100, 2, ',', '') }}</p>
+                                                            <p class="small">{{ $response->data->indicators->total->KPI_100 }}</p>
                                                         </td>
                                                         <td class="text-center">
-                                                            {{ number_format($response->data->indicators->total->KPI_110, 2, ',', '') }} %
+                                                            <p class="font-weight-bold">{{ number_format($response->data->indicators->total->KPI_110, 2, ',', '') }}</p>
+                                                            <p class="small">{{ $response->data->indicators->total->KPI_110 }}</p>
                                                         </td>
                                                         <td class="text-center"></td>
                                                         <td class="text-center"></td>
@@ -1092,10 +1097,12 @@
                                                         <td class="text-center">PERFORMANCE INDIKATOR</td>
                                                         <td class="text-center"></td>
                                                         <td class="text-center">
-                                                            {{ number_format($response->data->indicators->total->PI_100, 2, ',', '') }} %
+                                                            <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PI_100, 2, ',', '') }}</p>
+                                                            <p class="small">{{ $response->data->indicators->total->PI_100 }}</p>
                                                         </td>
                                                         <td class="text-center">
-                                                            {{ number_format($response->data->indicators->total->PI_110, 2, ',', '') }} %
+                                                            <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PI_110, 2, ',', '') }}</p>
+                                                            <p class="small">{{ $response->data->indicators->total->PI_110 }}</p>
                                                         </td>
                                                         <td class="text-center"></td>
                                                         <td class="text-center"></td>
@@ -1112,10 +1119,12 @@
                                                         <td class="text-center">TOTAL PENILAIAN KINERJA</td>
                                                         <td class="text-center"></td>
                                                         <td class="text-center">
-                                                            {{ number_format($response->data->indicators->total->PK_100, 2, ',', '') }} %
+                                                            <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PK_100, 2, ',', '') }} %</p>
+                                                            <p class="small">{{ $response->data->indicators->total->PK_100 }} %</p>
                                                         </td>
                                                         <td class="text-center">
-                                                            {{ number_format($response->data->indicators->total->PK_110, 2, ',', '') }} %
+                                                            <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PK_110, 2, ',', '') }} %</p>
+                                                            <p class="small">{{ $response->data->indicators->total->PK_110 }} %</p>
                                                         </td>
                                                         <td class="text-center"></td>
                                                         <td class="text-center"></td>
@@ -1124,10 +1133,12 @@
                                                         <td class="text-center">TOTAL PROPORSIONAL PENILAIAN KINERJA</td>
                                                         <td class="text-center"></td>
                                                         <td class="text-center">
-                                                            {{ number_format($response->data->indicators->total->PPK_100, 2, ',', '') }} %
+                                                            <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PPK_100, 2, ',', '') }} %</p>
+                                                            <p class="small">{{ $response->data->indicators->total->PPK_100 }} %</p>
                                                         </td>
                                                         <td class="text-center">
-                                                            {{ number_format($response->data->indicators->total->PPK_110, 2, ',', '') }} %
+                                                            <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PPK_110, 2, ',', '') }} %</p>
+                                                            <p class="small">{{ $response->data->indicators->total->PPK_110 }} %</p>
                                                         </td>
                                                         <td class="text-center"></td>
                                                         <td class="text-center"></td>
@@ -1136,7 +1147,7 @@
                                             </table>
                                         </div>
 
-                                        <a href="{{ route('simonik.monitoring.export', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun'),'bulan' => request()->query('bulan')]) }}" class="btn btn-sm btn-info mt-3">Download Hasil Monitoring</a>
+                                        <a href="{{ route('simonik.monitoring.export', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun'),'bulan' => request()->query('bulan')]) }}" class="btn btn-sm btn-info mt-3">Download Hasil Monitoring UNIT KERJA : {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }} - TAHUN : {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }} - BULAN : {{ request()->query('bulan') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }}</a>
                                     @endif
                                 @endif
                             </div>
