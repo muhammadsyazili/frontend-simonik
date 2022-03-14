@@ -97,7 +97,7 @@
                 <li class="nav-item">
                     <a href="{{ route('simonik.unit.index') }}" class="nav-link">
                     <i class="nav-icon far fa-circle text-warning"></i>
-                    <p>Unit</p>
+                    <p>Unit Kerja</p>
                     </a>
                 </li>
                 </ul>
