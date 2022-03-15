@@ -125,9 +125,21 @@
 
     <style>
         #container-1 {
+            height: 300px;
+        }
+        #container-2 {
+            height: 250px;
+        }
+        #container-3 {
             height: 250px;
         }
         #container-4 {
+            height: 300px;
+        }
+        #container-5 {
+            height: 250px;
+        }
+        #container-6 {
             height: 250px;
         }
 
@@ -372,6 +384,146 @@
                     }
                 });
 
+                // let container2Name = 'KPI 100%';
+                // Highcharts.chart('container-2', {
+                //     chart: {
+                //         type: 'gauge',
+                //         plotBackgroundColor: null,
+                //         plotBackgroundImage: null,
+                //         plotBorderWidth: 0,
+                //         plotShadow: false
+                //     },
+                //     title: {
+                //         text: container2Name
+                //     },
+                //     pane: {
+                //         startAngle: -90,
+                //         endAngle: 90,
+                //         background: [{
+                //             backgroundColor: '#DDD',
+                //             borderWidth: 0,
+                //             outerRadius: '120%',
+                //             innerRadius: '100%'
+                //         }]
+                //     },
+                //     // the value axis
+                //     yAxis: {
+                //         min: 0,
+                //         max: 200,
+
+                //         minorTickInterval: 'auto',
+                //         minorTickWidth: 1,
+                //         minorTickLength: 10,
+                //         minorTickPosition: 'inside',
+                //         minorTickColor: '#666',
+
+                //         tickPixelInterval: 30,
+                //         tickWidth: 2,
+                //         tickPosition: 'inside',
+                //         tickLength: 10,
+                //         tickColor: '#666',
+                //         labels: {
+                //             step: 2,
+                //             rotation: 'auto'
+                //         },
+                //         title: {
+                //             text: '.'
+                //         },
+                //     },
+                //     series: [{
+                //         name: container2Name,
+                //         data: [0],
+                //         tooltip: {
+                //             valueSuffix: ' .'
+                //         }
+                //     }]
+                // },
+                // // Add some life
+                // function (chart) {
+                //     if (!chart.renderer.forExport) {
+                //         let point = chart.series[0].points[0],
+                //             newVal,
+                //             inc = parseFloat($('#KPI_100').val());
+
+                //         newVal = point.y + inc;
+                //         if (newVal < 0 || newVal > 200) {
+                //             newVal = point.y - inc;
+                //         }
+
+                //         point.update(newVal);
+                //     }
+                // });
+
+                // let container3Name = 'PI 100%';
+                // Highcharts.chart('container-3', {
+                //     chart: {
+                //         type: 'gauge',
+                //         plotBackgroundColor: null,
+                //         plotBackgroundImage: null,
+                //         plotBorderWidth: 0,
+                //         plotShadow: false
+                //     },
+                //     title: {
+                //         text: container3Name
+                //     },
+                //     pane: {
+                //         startAngle: -90,
+                //         endAngle: 90,
+                //         background: [{
+                //             backgroundColor: '#DDD',
+                //             borderWidth: 0,
+                //             outerRadius: '120%',
+                //             innerRadius: '100%'
+                //         }]
+                //     },
+                //     // the value axis
+                //     yAxis: {
+                //         min: 0,
+                //         max: 200,
+
+                //         minorTickInterval: 'auto',
+                //         minorTickWidth: 1,
+                //         minorTickLength: 10,
+                //         minorTickPosition: 'inside',
+                //         minorTickColor: '#666',
+
+                //         tickPixelInterval: 30,
+                //         tickWidth: 2,
+                //         tickPosition: 'inside',
+                //         tickLength: 10,
+                //         tickColor: '#666',
+                //         labels: {
+                //             step: 2,
+                //             rotation: 'auto'
+                //         },
+                //         title: {
+                //             text: '.'
+                //         },
+                //     },
+                //     series: [{
+                //         name: container3Name,
+                //         data: [0],
+                //         tooltip: {
+                //             valueSuffix: ' .'
+                //         }
+                //     }]
+                // },
+                // // Add some life
+                // function (chart) {
+                //     if (!chart.renderer.forExport) {
+                //         let point = chart.series[0].points[0],
+                //             newVal,
+                //             inc = parseFloat($('#PI_100').val());
+
+                //         newVal = point.y + inc;
+                //         if (newVal < 0 || newVal > 200) {
+                //             newVal = point.y - inc;
+                //         }
+
+                //         point.update(newVal);
+                //     }
+                // });
+
                 let container4Name = 'NKO 110%';
                 Highcharts.chart('container-4', {
                     chart: {
@@ -457,6 +609,146 @@
                         point.update(newVal);
                     }
                 });
+
+                // let container5Name = 'KPI 110%';
+                // Highcharts.chart('container-5', {
+                //     chart: {
+                //         type: 'gauge',
+                //         plotBackgroundColor: null,
+                //         plotBackgroundImage: null,
+                //         plotBorderWidth: 0,
+                //         plotShadow: false
+                //     },
+                //     title: {
+                //         text: container5Name
+                //     },
+                //     pane: {
+                //         startAngle: -90,
+                //         endAngle: 90,
+                //         background: [{
+                //             backgroundColor: '#DDD',
+                //             borderWidth: 0,
+                //             outerRadius: '120%',
+                //             innerRadius: '100%'
+                //         }]
+                //     },
+                //     // the value axis
+                //     yAxis: {
+                //         min: 0,
+                //         max: 200,
+
+                //         minorTickInterval: 'auto',
+                //         minorTickWidth: 1,
+                //         minorTickLength: 10,
+                //         minorTickPosition: 'inside',
+                //         minorTickColor: '#666',
+
+                //         tickPixelInterval: 30,
+                //         tickWidth: 2,
+                //         tickPosition: 'inside',
+                //         tickLength: 10,
+                //         tickColor: '#666',
+                //         labels: {
+                //             step: 2,
+                //             rotation: 'auto'
+                //         },
+                //         title: {
+                //             text: '.'
+                //         },
+                //     },
+                //     series: [{
+                //         name: container5Name,
+                //         data: [0],
+                //         tooltip: {
+                //             valueSuffix: ' .'
+                //         }
+                //     }]
+                // },
+                // // Add some life
+                // function (chart) {
+                //     if (!chart.renderer.forExport) {
+                //         let point = chart.series[0].points[0],
+                //             newVal,
+                //             inc = parseFloat($('#KPI_110').val());
+
+                //         newVal = point.y + inc;
+                //         if (newVal < 0 || newVal > 200) {
+                //             newVal = point.y - inc;
+                //         }
+
+                //         point.update(newVal);
+                //     }
+                // });
+
+                // let container6Name = 'PI 110%';
+                // Highcharts.chart('container-6', {
+                //     chart: {
+                //         type: 'gauge',
+                //         plotBackgroundColor: null,
+                //         plotBackgroundImage: null,
+                //         plotBorderWidth: 0,
+                //         plotShadow: false
+                //     },
+                //     title: {
+                //         text: container6Name
+                //     },
+                //     pane: {
+                //         startAngle: -90,
+                //         endAngle: 90,
+                //         background: [{
+                //             backgroundColor: '#DDD',
+                //             borderWidth: 0,
+                //             outerRadius: '120%',
+                //             innerRadius: '100%'
+                //         }]
+                //     },
+                //     // the value axis
+                //     yAxis: {
+                //         min: 0,
+                //         max: 200,
+
+                //         minorTickInterval: 'auto',
+                //         minorTickWidth: 1,
+                //         minorTickLength: 10,
+                //         minorTickPosition: 'inside',
+                //         minorTickColor: '#666',
+
+                //         tickPixelInterval: 30,
+                //         tickWidth: 2,
+                //         tickPosition: 'inside',
+                //         tickLength: 10,
+                //         tickColor: '#666',
+                //         labels: {
+                //             step: 2,
+                //             rotation: 'auto'
+                //         },
+                //         title: {
+                //             text: '.'
+                //         },
+                //     },
+                //     series: [{
+                //         name: container6Name,
+                //         data: [0],
+                //         tooltip: {
+                //             valueSuffix: ' .'
+                //         }
+                //     }]
+                // },
+                // // Add some life
+                // function (chart) {
+                //     if (!chart.renderer.forExport) {
+                //         let point = chart.series[0].points[0],
+                //             newVal,
+                //             inc = parseFloat($('#PI_110').val());
+
+                //         newVal = point.y + inc;
+                //         if (newVal < 0 || newVal > 200) {
+                //             newVal = point.y - inc;
+                //         }
+
+                //         point.update(newVal);
+                //     }
+                // });
             }
         });
 
@@ -683,173 +975,194 @@
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                                 <p class="text-center">UNIT KERJA : {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }} - TAHUN : {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }} - BULAN : {{ request()->query('bulan') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }}</p>
                                                 <p class="text-center"><span class="badge badge-danger">MASALAH : NKO < 95%</span> <span class="badge badge-warning">HATI-HATI : NKO &ge; 95% s.d < 100%</span> <span class="badge badge-success">BAIK : NKO &ge; 100%</span></p>
-                                                <a href="#table"><span class="badge badge-pill badge-info">Focus on table</span></a>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                                                <div class="row">
-                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                        <figure class="highcharts-figure">
-                                                            <div id="container-1"></div>
-                                                        </figure>
-                                                        <input type="hidden" id="PPK_100" value="{{ number_format($response->data->indicators->total->PPK_100, 2, '.', '') }}">
-                                                        <input type="hidden" id="PPK_100_status" value="{{ $response->data->indicators->total->PPK_100_status }}">
-                                                    </div>
-                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                        <figure class="highcharts-figure">
-                                                            <div id="container-4"></div>
-                                                        </figure>
-                                                        <input type="hidden" id="PPK_110" value="{{ number_format($response->data->indicators->total->PPK_110, 2, '.', '') }}">
-                                                        <input type="hidden" id="PPK_110_status" value="{{ $response->data->indicators->total->PPK_110_status }}">
-                                                    </div>
-                                                </div>
+                                                <figure class="highcharts-figure">
+                                                    <div id="container-1"></div>
+                                                </figure>
+                                                <input type="hidden" id="PPK_100" value="{{ number_format($response->data->indicators->total->PPK_100, 2, '.', '') }}">
+                                                <input type="hidden" id="PPK_100_status" value="{{ $response->data->indicators->total->PPK_100_status }}">
                                             </div>
-                                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
-                                                <div class="table-responsive">
-                                                    <table class="table table-bordered table-sm" id="table">
-                                                        <thead class="text-nowrap small">
-                                                            <tr>
-                                                                <th class="text-center">KPI</th>
-                                                                <th class="text-center">BOBOT</th>
-                                                                <th class="text-center">TARGET</th>
-                                                                <th class="text-center">REALISASI</th>
-                                                                <th class="text-center">NILAI (CAPPING 100%)</th>
-                                                                <th class="text-center">NILAI (CAPPING 110%)</th>
-                                                                <th class="text-center">% PENCAPAIAN & STATUS <span data-toggle="tooltip" data-placement="right" title="MASALAH : < 95%, HATI-HATI : &ge; 95% s.d < 100%, BAIK : &ge; 100%"><i class="fas fa-info-circle"></i></span></th>
-                                                                <th class="text-center">CHART</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody class="text-nowrap small" id="myTable">
-                                                            @foreach ($response->data->indicators->partials as $indicator)
-                                                                <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
-                                                                    <td>
-                                                                        <div>
-                                                                            <p style="margin: 0">{{ $indicator->indicator }} <span class="small text-muted">({{ $indicator->measure }})</span> - <span class="badge badge-info">{{ $indicator->type }}</span></p>
-                                                                            <p style="margin: 0">Polaritas: <span class="badge badge-secondary">{!! $indicator->polarity !!}</span></p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td class="text-center">
-                                                                        {{ $indicator->selected_weight }}
-                                                                    </td>
-                                                                    <td class="text-center">
-                                                                        {{ in_array(gettype($indicator->selected_target), ['double', 'integer']) ? number_format($indicator->selected_target, 2, ',', '') : $indicator->selected_target }}
-                                                                    </td>
-                                                                    <td class="text-center">
-                                                                        {{ in_array(gettype($indicator->selected_realization), ['double', 'integer']) ? number_format($indicator->selected_realization, 2, ',', '') : $indicator->selected_realization }}
-                                                                    </td>
-                                                                    <td class="text-center">
-                                                                        @if (!is_null($indicator->capping_value_100))
-                                                                            <p class="font-weight-bold">{{ in_array(gettype($indicator->capping_value_100), ['double', 'integer']) ? number_format($indicator->capping_value_100, 2, ',', '').' %' : $indicator->capping_value_100 }}</p>
-                                                                            {{-- <p class="small">{{ $indicator->capping_value_100 === 'BELUM DINILAI' ? $indicator->capping_value_100 : $indicator->capping_value_100.' %' }}</p> --}}
-                                                                        @endif
-                                                                    </td>
-                                                                    <td class="text-center">
-                                                                        @if (!is_null($indicator->capping_value_110))
-                                                                            <p class="font-weight-bold">{{ in_array(gettype($indicator->capping_value_110), ['double', 'integer']) ? number_format($indicator->capping_value_110, 2, ',', '').' %' : $indicator->capping_value_110 }}</p>
-                                                                            {{-- <p class="small">{{ $indicator->capping_value_110 === 'BELUM DINILAI' ? $indicator->capping_value_110 : $indicator->capping_value_110.' %' }}</p> --}}
-                                                                        @endif
-                                                                    </td>
-                                                                    <td class="text-center {{ 'bg-'.$indicator->status_color }}">
-                                                                        @if (!is_null($indicator->achievement))
-                                                                            <p class="font-weight-bold">{{ number_format($indicator->achievement, 2, ',', '') }} %</p>
-                                                                            {{-- <p class="small">{{ $indicator->achievement }} %</p> --}}
-                                                                        @endif
-                                                                        {{ $indicator->status }}
-                                                                    </td>
-                                                                    <td class="text-center">
-                                                                        @if (!$indicator->dummy)
-                                                                            <button type="button" class="btn btn-sm btn-outline-info chart" data-id="{{ $indicator->id }}" data-prefix="{{ $indicator->prefix }}" data-unit="{{ cast_to_upper(request()->query('unit')) }}" data-year="{{ request()->query('tahun') }}" data-month="{{ request()->query('bulan') }}" data-status="{{ $indicator->status }}"><i class="fas fa-chart-bar"></i></button>
-                                                                        @endif
-                                                                    </td>
-                                                                </tr>
-                                                            @endforeach
-                                                            <tr>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                            </tr>
-                                                            <tr class="bg-info">
-                                                                <td class="text-center">KEY PERFORMANCE INDIKATOR</td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center">
-                                                                    <p class="font-weight-bold">{{ number_format($response->data->indicators->total->KPI_100, 2, ',', '') }}</p>
-                                                                    {{-- <p class="small">{{ $response->data->indicators->total->KPI_100 }}</p> --}}
-                                                                </td>
-                                                                <td class="text-center">
-                                                                    <p class="font-weight-bold">{{ number_format($response->data->indicators->total->KPI_110, 2, ',', '') }}</p>
-                                                                    {{-- <p class="small">{{ $response->data->indicators->total->KPI_110 }}</p> --}}
-                                                                </td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"></td>
-                                                            </tr>
-                                                            <tr class="bg-info">
-                                                                <td class="text-center">PERFORMANCE INDIKATOR</td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center">
-                                                                    <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PI_100, 2, ',', '') }}</p>
-                                                                    {{-- <p class="small">{{ $response->data->indicators->total->PI_100 }}</p> --}}
-                                                                </td>
-                                                                <td class="text-center">
-                                                                    <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PI_110, 2, ',', '') }}</p>
-                                                                    {{-- <p class="small">{{ $response->data->indicators->total->PI_110 }}</p> --}}
-                                                                </td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                            </tr>
-                                                            <tr class="bg-success">
-                                                                <td class="text-center">TOTAL</td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center">
-                                                                    <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PK_100, 2, ',', '') }} %</p>
-                                                                    {{-- <p class="small">{{ $response->data->indicators->total->PK_100 }} %</p> --}}
-                                                                </td>
-                                                                <td class="text-center">
-                                                                    <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PK_110, 2, ',', '') }} %</p>
-                                                                    {{-- <p class="small">{{ $response->data->indicators->total->PK_110 }} %</p> --}}
-                                                                </td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"></td>
-                                                            </tr>
-                                                            <tr class="bg-success">
-                                                                <td class="text-center">NILAI KINERJA ORGANISASI (NKO)</td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center">
-                                                                    <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PPK_100, 2, ',', '') }} %</p>
-                                                                    {{-- <p class="small">{{ $response->data->indicators->total->PPK_100 }} %</p> --}}
-                                                                </td>
-                                                                <td class="text-center">
-                                                                    <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PPK_110, 2, ',', '') }} %</p>
-                                                                    {{-- <p class="small">{{ $response->data->indicators->total->PPK_110 }} %</p> --}}
-                                                                </td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                <figure class="highcharts-figure">
+                                                    <div id="container-2"></div>
+                                                </figure>
+                                                <input type="hidden" id="KPI_100" value="{{ number_format($response->data->indicators->total->KPI_100, 2, '.', '') }}">
                                             </div>
-                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                <a href="{{ route('simonik.monitoring.export', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun'),'bulan' => request()->query('bulan')]) }}" class="btn btn-sm btn-info btn-block mt-3">Download Hasil Monitoring UNIT KERJA : {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }} - TAHUN : {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }} - BULAN : {{ request()->query('bulan') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }}</a>
+                                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                <figure class="highcharts-figure">
+                                                    <div id="container-3"></div>
+                                                </figure>
+                                                <input type="hidden" id="PI_100" value="{{ number_format($response->data->indicators->total->PI_100, 2, '.', '') }}">
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                <figure class="highcharts-figure">
+                                                    <div id="container-4"></div>
+                                                </figure>
+                                                <input type="hidden" id="PPK_110" value="{{ number_format($response->data->indicators->total->PPK_110, 2, '.', '') }}">
+                                                <input type="hidden" id="PPK_110_status" value="{{ $response->data->indicators->total->PPK_110_status }}">
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                <figure class="highcharts-figure">
+                                                    <div id="container-5"></div>
+                                                </figure>
+                                                <input type="hidden" id="KPI_110" value="{{ number_format($response->data->indicators->total->KPI_110, 2, '.', '') }}">
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                <figure class="highcharts-figure">
+                                                    <div id="container-6"></div>
+                                                </figure>
+                                                <input type="hidden" id="PI_110" value="{{ number_format($response->data->indicators->total->PI_110, 2, '.', '') }}">
                                             </div>
                                         </div>
+
+                                        {{-- <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari KPI.."> --}}
+
+                                        <a href="#table"><span class="badge badge-pill badge-info">Focus on table</span></a>
+
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-sm" id="table">
+                                                <thead class="small">
+                                                    <tr>
+                                                        <th class="text-center">KPI</th>
+                                                        <th class="text-center">BOBOT</th>
+                                                        <th class="text-center">TARGET</th>
+                                                        <th class="text-center">REALISASI</th>
+                                                        <th class="text-center">NILAI (CAPPING 100%)</th>
+                                                        <th class="text-center">NILAI (CAPPING 110%)</th>
+                                                        <th class="text-center">% PENCAPAIAN & STATUS <span data-toggle="tooltip" data-placement="right" title="MASALAH : < 95%, HATI-HATI : &ge; 95% s.d < 100%, BAIK : &ge; 100%"><i class="fas fa-info-circle"></i></span></th>
+                                                        <th class="text-center">CHART</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="small" id="myTable">
+                                                    @foreach ($response->data->indicators->partials as $indicator)
+                                                        <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
+                                                            <td>
+                                                                <div style="width: 400px;">
+                                                                    <p style="margin: 0">{{ $indicator->indicator }} <span class="small text-muted">({{ $indicator->measure }})</span> - <span class="badge badge-info">{{ $indicator->type }}</span></p>
+                                                                    <p style="margin: 0">Polaritas: <span class="badge badge-secondary">{!! $indicator->polarity !!}</span></p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                {{ $indicator->selected_weight }}
+                                                            </td>
+                                                            <td class="text-center">
+                                                                {{ in_array(gettype($indicator->selected_target), ['double', 'integer']) ? number_format($indicator->selected_target, 2, ',', '') : $indicator->selected_target }}
+                                                            </td>
+                                                            <td class="text-center">
+                                                                {{ in_array(gettype($indicator->selected_realization), ['double', 'integer']) ? number_format($indicator->selected_realization, 2, ',', '') : $indicator->selected_realization }}
+                                                            </td>
+                                                            <td class="text-center">
+                                                                @if (!is_null($indicator->capping_value_100))
+                                                                    <p class="font-weight-bold">{{ in_array(gettype($indicator->capping_value_100), ['double', 'integer']) ? number_format($indicator->capping_value_100, 2, ',', '').' %' : $indicator->capping_value_100 }}</p>
+                                                                    {{-- <p class="small">{{ $indicator->capping_value_100 === 'BELUM DINILAI' ? $indicator->capping_value_100 : $indicator->capping_value_100.' %' }}</p> --}}
+                                                                @endif
+                                                            </td>
+                                                            <td class="text-center">
+                                                                @if (!is_null($indicator->capping_value_110))
+                                                                    <p class="font-weight-bold">{{ in_array(gettype($indicator->capping_value_110), ['double', 'integer']) ? number_format($indicator->capping_value_110, 2, ',', '').' %' : $indicator->capping_value_110 }}</p>
+                                                                    {{-- <p class="small">{{ $indicator->capping_value_110 === 'BELUM DINILAI' ? $indicator->capping_value_110 : $indicator->capping_value_110.' %' }}</p> --}}
+                                                                @endif
+                                                            </td>
+                                                            <td class="text-center {{ 'bg-'.$indicator->status_color }}">
+                                                                @if (!is_null($indicator->achievement))
+                                                                    <p class="font-weight-bold">{{ number_format($indicator->achievement, 2, ',', '') }} %</p>
+                                                                    {{-- <p class="small">{{ $indicator->achievement }} %</p> --}}
+                                                                @endif
+                                                                {{ $indicator->status }}
+                                                            </td>
+                                                            <td class="text-center">
+                                                                @if (!$indicator->dummy)
+                                                                    <button type="button" class="btn btn-sm btn-outline-info chart" data-id="{{ $indicator->id }}" data-prefix="{{ $indicator->prefix }}" data-unit="{{ cast_to_upper(request()->query('unit')) }}" data-year="{{ request()->query('tahun') }}" data-month="{{ request()->query('bulan') }}" data-status="{{ $indicator->status }}"><i class="fas fa-chart-bar"></i></button>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr class="bg-info">
+                                                        <td class="text-center">KEY PERFORMANCE INDIKATOR</td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center">
+                                                            <p class="font-weight-bold">{{ number_format($response->data->indicators->total->KPI_100, 2, ',', '') }}</p>
+                                                            {{-- <p class="small">{{ $response->data->indicators->total->KPI_100 }}</p> --}}
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <p class="font-weight-bold">{{ number_format($response->data->indicators->total->KPI_110, 2, ',', '') }}</p>
+                                                            {{-- <p class="small">{{ $response->data->indicators->total->KPI_110 }}</p> --}}
+                                                        </td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center"></td>
+                                                    </tr>
+                                                    <tr class="bg-info">
+                                                        <td class="text-center">PERFORMANCE INDIKATOR</td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center">
+                                                            <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PI_100, 2, ',', '') }}</p>
+                                                            {{-- <p class="small">{{ $response->data->indicators->total->PI_100 }}</p> --}}
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PI_110, 2, ',', '') }}</p>
+                                                            {{-- <p class="small">{{ $response->data->indicators->total->PI_110 }}</p> --}}
+                                                        </td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr class="bg-success">
+                                                        <td class="text-center">TOTAL</td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center">
+                                                            <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PK_100, 2, ',', '') }} %</p>
+                                                            {{-- <p class="small">{{ $response->data->indicators->total->PK_100 }} %</p> --}}
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PK_110, 2, ',', '') }} %</p>
+                                                            {{-- <p class="small">{{ $response->data->indicators->total->PK_110 }} %</p> --}}
+                                                        </td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center"></td>
+                                                    </tr>
+                                                    <tr class="bg-success">
+                                                        <td class="text-center">NILAI KINERJA ORGANISASI (NKO)</td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center">
+                                                            <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PPK_100, 2, ',', '') }} %</p>
+                                                            {{-- <p class="small">{{ $response->data->indicators->total->PPK_100 }} %</p> --}}
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PPK_110, 2, ',', '') }} %</p>
+                                                            {{-- <p class="small">{{ $response->data->indicators->total->PPK_110 }} %</p> --}}
+                                                        </td>
+                                                        <td class="text-center"></td>
+                                                        <td class="text-center"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <a href="{{ route('simonik.monitoring.export', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun'),'bulan' => request()->query('bulan')]) }}" class="btn btn-sm btn-info mt-3">Download Hasil Monitoring UNIT KERJA : {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }} - TAHUN : {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }} - BULAN : {{ request()->query('bulan') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }}</a>
                                     @endif
                                 @endif
                             </div>

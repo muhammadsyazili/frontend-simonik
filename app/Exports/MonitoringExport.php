@@ -42,6 +42,32 @@ class MonitoringExport implements FromCollection, WithHeadings, WithCustomStartC
             'Nilai CAPPING 100',
             'Nilai CAPPING 110',
             'Status',
+
+            'Target Jan',
+            'Target Feb',
+            'Target Mar',
+            'Target Apr',
+            'Target May',
+            'Target Jun',
+            'Target Jul',
+            'Target Aug',
+            'Target Sep',
+            'Target Oct',
+            'Target Nov',
+            'Target Dec',
+
+            'Realization Jan',
+            'Realization Feb',
+            'Realization Mar',
+            'Realization Apr',
+            'Realization May',
+            'Realization Jun',
+            'Realization Jul',
+            'Realization Aug',
+            'Realization Sep',
+            'Realization Oct',
+            'Realization Nov',
+            'Realization Dec',
         ];
     }
 
