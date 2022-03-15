@@ -54,6 +54,12 @@
             margin: 0;
             padding: 0;
         }
+
+        .canvas-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 
     {{-- Table Header Fixed --}}
@@ -129,59 +135,6 @@
         }
 
     </style>
-
-    <style>
-        #container-1 {
-            height: 250px;
-        }
-        #container-4 {
-            height: 250px;
-        }
-
-        .highcharts-figure,
-        .highcharts-data-table table {
-            min-width: 310px;
-            max-width: 500px;
-            margin: 1em auto;
-        }
-
-        .highcharts-data-table table {
-            font-family: Verdana, sans-serif;
-            border-collapse: collapse;
-            border: 1px solid #ebebeb;
-            margin: 10px auto;
-            text-align: center;
-            width: 100%;
-            max-width: 500px;
-        }
-
-        .highcharts-data-table caption {
-            padding: 1em 0;
-            font-size: 1.2em;
-            color: #555;
-        }
-
-        .highcharts-data-table th {
-            font-weight: 600;
-            padding: 0.5em;
-        }
-
-        .highcharts-data-table td,
-        .highcharts-data-table th,
-        .highcharts-data-table caption {
-            padding: 0.5em;
-        }
-
-        .highcharts-data-table thead tr,
-        .highcharts-data-table tr:nth-child(even) {
-            background: #f8f8f8;
-        }
-
-        .highcharts-data-table tr:hover {
-            background: #f1f7ff;
-        }
-
-    </style>
 @endpush
 
 {{-- ========================================================== --}}
@@ -203,14 +156,71 @@
     <!-- AdminLTE For Demo Purposes -->
     <script src="{{ asset('template/dist/js/demo.js') }}"></script> {{-- required --}}
 
+    <!-- Gauge Chart -->
+    <script src="{{ asset('libraries/gauge-chart/gauge.min.js') }}"></script> {{-- required --}}
+    <script>
+        let opts = {
+            angle: 0,
+            lineWidth: 0.25,
+            radiusScale: 1,
+            pointer: {
+                length: 0.5,
+                strokeWidth: 0.035,
+                color: '#000000'
+            },
+            staticZones: [
+                {strokeStyle: "#F03E3E", min: 0, max: 95},
+                {strokeStyle: "#FFDD00", min: 95, max: 100},
+                {strokeStyle: "#30B32D", min: 100, max: 200}
+            ],
+            staticLabels: {
+                font: "10px sans-serif",
+                labels: [0, 25, 50, 75, 100, 125, 150, 175, 200],
+                color: "#000000",
+                fractionDigits: 0
+            },
+            renderTicks: {
+                divisions: 8,
+                divWidth: 1.1,
+                divLength: 0.7,
+                divColor: '#333333',
+                subDivisions: 5,
+                subLength: 0.5,
+                subWidth: 0.6,
+                subColor: '#666666'
+            },
+            limitMax: false,
+            limitMin: false,
+            colorStart: '#6FADCF',
+            colorStop: '#8FC0DA',
+            strokeColor: '#E0E0E0',
+            generateGradient: true,
+            highDpiSupport: true,
+        };
+
+        let target100 = document.getElementById('gauge-100');
+        let gauge100 = new Gauge(target100).setOptions(opts);
+        gauge100.minValue = 0;
+        gauge100.maxValue = 200;
+        gauge100.animationSpeed = 50;
+        gauge100.set(parseFloat($('#PPK_100').val()));
+        gauge100.setTextField(document.getElementById("gauge-label-100"), 2);
+
+        let target110 = document.getElementById('gauge-110');
+        let gauge110 = new Gauge(target110).setOptions(opts);
+        gauge110.minValue = 0;
+        gauge110.maxValue = 200;
+        gauge110.animationSpeed = 50;
+        gauge110.set(parseFloat($('#PPK_110').val()));
+        gauge110.setTextField(document.getElementById("gauge-label-110"), 2);
+    </script>
+
     {{-- highcharts --}}
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/series-label.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
-    <script src="https://code.highcharts.com/highcharts-more.js"></script>
 
     <script>
         $('.chart').click(function() {
@@ -288,185 +298,6 @@
                 }
             });
         });
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            if ($('#PPK_100').val() !== undefined && $('#PPK_110').val() !== undefined) {
-                let container1Name = 'NKO 100%';
-                Highcharts.chart('container-1', {
-                    chart: {
-                        type: 'gauge',
-                        plotBackgroundColor: null,
-                        plotBackgroundImage: null,
-                        plotBorderWidth: 0,
-                        plotShadow: false
-                    },
-                    title: {
-                        text: container1Name
-                    },
-                    subtitle: {
-                        text: $('#PPK_100_status').val()
-                    },
-                    pane: {
-                        startAngle: -90,
-                        endAngle: 90,
-                        background: [{
-                            backgroundColor: '#DDD',
-                            borderWidth: 0,
-                            outerRadius: '120%',
-                            innerRadius: '100%'
-                        }]
-                    },
-                    // the value axis
-                    yAxis: {
-                        min: 0,
-                        max: 200,
-
-                        minorTickInterval: 'auto',
-                        minorTickWidth: 1,
-                        minorTickLength: 10,
-                        minorTickPosition: 'inside',
-                        minorTickColor: '#666',
-
-                        tickPixelInterval: 30,
-                        tickWidth: 2,
-                        tickPosition: 'inside',
-                        tickLength: 10,
-                        tickColor: '#666',
-                        labels: {
-                            step: 2,
-                            rotation: 'auto'
-                        },
-                        title: {
-                            text: '%'
-                        },
-                        plotBands: [{
-                            from: 0,
-                            to: 95,
-                            color: '#DF5353' // red
-                        }, {
-                            from: 95,
-                            to: 100,
-                            color: '#DDDF0D' // yellow
-                        }, {
-                            from: 100,
-                            to: 200,
-                            color: '#55BF3B' // green
-                        }]
-                    },
-                    series: [{
-                        name: container1Name,
-                        data: [0],
-                        tooltip: {
-                            valueSuffix: ' %'
-                        }
-                    }]
-                },
-                // Add some life
-                function (chart) {
-                    if (!chart.renderer.forExport) {
-                        let point = chart.series[0].points[0],
-                            newVal,
-                            inc = parseFloat($('#PPK_100').val());
-
-                        newVal = point.y + inc;
-                        if (newVal < 0 || newVal > 200) {
-                            newVal = point.y - inc;
-                        }
-
-                        point.update(newVal);
-                    }
-                });
-
-                let container4Name = 'NKO 110%';
-                Highcharts.chart('container-4', {
-                    chart: {
-                        type: 'gauge',
-                        plotBackgroundColor: null,
-                        plotBackgroundImage: null,
-                        plotBorderWidth: 0,
-                        plotShadow: false
-                    },
-                    title: {
-                        text: container4Name
-                    },
-                    subtitle: {
-                        text: $('#PPK_110_status').val()
-                    },
-                    pane: {
-                        startAngle: -90,
-                        endAngle: 90,
-                        background: [{
-                            backgroundColor: '#DDD',
-                            borderWidth: 0,
-                            outerRadius: '120%',
-                            innerRadius: '100%'
-                        }]
-                    },
-                    // the value axis
-                    yAxis: {
-                        min: 0,
-                        max: 200,
-
-                        minorTickInterval: 'auto',
-                        minorTickWidth: 1,
-                        minorTickLength: 10,
-                        minorTickPosition: 'inside',
-                        minorTickColor: '#666',
-
-                        tickPixelInterval: 30,
-                        tickWidth: 2,
-                        tickPosition: 'inside',
-                        tickLength: 10,
-                        tickColor: '#666',
-                        labels: {
-                            step: 2,
-                            rotation: 'auto'
-                        },
-                        title: {
-                            text: '%'
-                        },
-                        plotBands: [{
-                            from: 0,
-                            to: 95,
-                            color: '#DF5353' // red
-                        }, {
-                            from: 95,
-                            to: 100,
-                            color: '#DDDF0D' // yellow
-                        }, {
-                            from: 100,
-                            to: 200,
-                            color: '#55BF3B' // green
-                        }]
-                    },
-                    series: [{
-                        name: container4Name,
-                        data: [0],
-                        tooltip: {
-                            valueSuffix: ' %'
-                        }
-                    }]
-                },
-                // Add some life
-                function (chart) {
-                    if (!chart.renderer.forExport) {
-                        let point = chart.series[0].points[0],
-                            newVal,
-                            inc = parseFloat($('#PPK_110').val());
-
-                        newVal = point.y + inc;
-                        if (newVal < 0 || newVal > 200) {
-                            newVal = point.y - inc;
-                        }
-
-                        point.update(newVal);
-                    }
-                });
-            }
-        });
-
     </script>
 
     {{-- Change Color Row Table on Click --}}
@@ -694,28 +525,28 @@
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                                 <p class="reset text-center small">UNIT KERJA : {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }} - TAHUN : {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }} - BULAN : {{ request()->query('bulan') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }}</p>
                                                 <p class="reset text-center small"><span class="badge badge-danger">MASALAH : NKO < 95%</span> <span class="badge badge-warning">HATI-HATI : NKO &ge; 95% s.d < 100%</span> <span class="badge badge-success">BAIK : NKO &ge; 100%</span></p>
-                                                <hr>
-                                                <a class="reset" href="#table"><span class="badge badge-pill badge-info">Focus on table</span></a>
                                             </div>
-                                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                                                <div class="row">
-                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                        <figure class="highcharts-figure">
-                                                            <div id="container-1"></div>
-                                                        </figure>
-                                                        <input type="hidden" id="PPK_100" value="{{ number_format($response->data->indicators->total->PPK_100, 2, '.', '') }}">
-                                                        <input type="hidden" id="PPK_100_status" value="{{ $response->data->indicators->total->PPK_100_status }}">
-                                                    </div>
-                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                        <figure class="highcharts-figure">
-                                                            <div id="container-4"></div>
-                                                        </figure>
-                                                        <input type="hidden" id="PPK_110" value="{{ number_format($response->data->indicators->total->PPK_110, 2, '.', '') }}">
-                                                        <input type="hidden" id="PPK_110_status" value="{{ $response->data->indicators->total->PPK_110_status }}">
-                                                    </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                <p class="text-center reset">NKO 100%</p>
+                                                <div class="canvas-container">
+                                                    <canvas id="gauge-100"></canvas>
                                                 </div>
+                                                <div class="text-center reset" id="gauge-label-100"></div>
+                                                <p class="text-center small reset"><span class="badge badge-{{ $response->data->indicators->total->PPK_100_color_status }}">{{ $response->data->indicators->total->PPK_100_status }}</span></p>
+                                                <input type="hidden" id="PPK_100" value="{{ number_format($response->data->indicators->total->PPK_100, 2, '.', '') }}">
                                             </div>
-                                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                <p class="text-center reset">NKO 110%</p>
+                                                <div class="canvas-container">
+                                                    <canvas id="gauge-110"></canvas>
+                                                </div>
+                                                <div class="text-center reset" id="gauge-label-110"></div>
+                                                <p class="text-center small reset"><span class="badge badge-{{ $response->data->indicators->total->PPK_110_color_status }}">{{ $response->data->indicators->total->PPK_110_status }}</span></p>
+                                                <input type="hidden" id="PPK_110" value="{{ number_format($response->data->indicators->total->PPK_110, 2, '.', '') }}">
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                <a class="reset" href="#table"><span class="badge badge-pill badge-info">Focus on table</span></a>
+
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered table-sm" id="table">
                                                         <thead class="text-nowrap small">
@@ -734,10 +565,8 @@
                                                             @foreach ($response->data->indicators->partials as $indicator)
                                                                 <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
                                                                     <td>
-                                                                        <div>
-                                                                            <p style="margin: 0">{{ $indicator->indicator }} <span class="small text-muted">({{ $indicator->measure }})</span> - <span class="badge badge-info">{{ $indicator->type }}</span></p>
-                                                                            <p style="margin: 0">Polaritas: <span class="badge badge-secondary">{!! $indicator->polarity !!}</span></p>
-                                                                        </div>
+                                                                        <p style="margin: 0">{{ $indicator->indicator }} <span class="small text-muted">({{ $indicator->measure }})</span> - <span class="badge badge-info">{{ $indicator->type }}</span></p>
+                                                                        <p style="margin: 0">Polaritas: <span class="badge badge-secondary">{!! $indicator->polarity !!}</span></p>
                                                                     </td>
                                                                     <td class="text-center">
                                                                         {{ $indicator->selected_weight }}
@@ -858,9 +687,6 @@
                                                     </table>
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                <a href="{{ route('simonik.monitoring.export', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun'),'bulan' => request()->query('bulan')]) }}" class="btn btn-sm btn-info btn-block mt-3">Download Hasil Monitoring <span class="font-weight-bold">(UNIT KERJA : {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }} - TAHUN : {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }} - BULAN : {{ request()->query('bulan') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }})</span></a>
-                                            </div>
                                         </div>
                                     @endif
                                 @endif
@@ -870,7 +696,9 @@
                     <!-- end : card-body -->
 
                     <!-- card-footer -->
-                    <div class="card-footer clearfix"></div>
+                    <div class="card-footer clearfix">
+                        <a href="{{ route('simonik.monitoring.export', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun'),'bulan' => request()->query('bulan')]) }}" class="btn btn-sm btn-info btn-block mt-3">Download Hasil Monitoring <span class="font-weight-bold">(UNIT KERJA : {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }} - TAHUN : {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }} - BULAN : {{ request()->query('bulan') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }})</span></a>
+                    </div>
                     <!-- end : card-footer -->
                 </div>
             </div>
