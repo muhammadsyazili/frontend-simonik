@@ -35,7 +35,6 @@
 
     <!-- Script -->
     @stack('script')
-    <script src="https://unpkg.com/intro.js/minified/intro.min.js"></script>
     <!-- Intro -->
     <script src="https://unpkg.com/intro.js/minified/intro.min.js"></script>
     <script>

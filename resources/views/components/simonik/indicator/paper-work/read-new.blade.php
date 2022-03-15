@@ -22,7 +22,7 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     {{-- required --}}
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 
     <!-- Custom Style for Sidebar -->
     <style>
@@ -102,10 +102,10 @@
 
 @push('script')
     <!-- jQuery -->
-    <script src="{{ asset('template/plugins/jquery/jquery.js') }}"></script> {{-- required --}}
-    <script src="{{ asset('template/plugins/jquery/jquery.min.js') }}"></script> {{-- required --}}
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    {{-- <script src="{{ asset('template/plugins/jquery/jquery.js') }}"></script> --}} {{-- required --}}
+    {{-- <script src="{{ asset('template/plugins/jquery/jquery.min.js') }}"></script> --}} {{-- required --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <!-- Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -116,17 +116,17 @@
     <script src="{{ asset('template/dist/js/demo.js') }}"></script> {{-- required --}}
 
     {{-- Drag Drop Table Sorting --}}
-    <script src="{{ asset('drag-drop-table-sorting/js/jquery.tablednd.js') }}"></script>
+    <script src="{{ asset('libraries/tableDnD/jquery.tablednd.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('#drag-drop-table-sorting').tableDnD();
+            $('#table').tableDnD();
         });
     </script>
     {{-- End : Drag Drop Table Sorting --}}
 
     {{-- Change Color Row Table on Click --}}
     <script>
-        $('#drag-drop-table-sorting').on('click', 'tbody tr', function(event) {
+        $('#table').on('click', 'tbody tr', function(event) {
             $(this).addClass('highlight').siblings().removeClass('highlight');
         });
     </script>
@@ -426,10 +426,10 @@
                                             @csrf
                                             @method('put')
 
-                                            <a href="#drag-drop-table-sorting"><span class="badge badge-pill badge-info">Focus on table</span></a>
+                                            <a href="#table"><span class="badge badge-pill badge-info">Focus on table</span></a>
 
                                             <div class="table-responsive">
-                                                <table class="table table-bordered table-sm" id="drag-drop-table-sorting">
+                                                <table class="table table-bordered table-sm" id="table">
                                                     <thead class="small">
                                                         <tr>
                                                             <th class="text-center">UBAH URUTAN</th>

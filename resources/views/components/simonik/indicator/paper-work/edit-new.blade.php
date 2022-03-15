@@ -15,7 +15,7 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     {{-- required --}}
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 
     <!-- Custom Style for Sidebar -->
     <style>
@@ -76,8 +76,8 @@
 
 @push('script')
     <!-- jQuery -->
-    <script src="{{ asset('template/plugins/jquery/jquery.js') }}"></script> {{-- required --}}
-    <script src="{{ asset('template/plugins/jquery/jquery.min.js') }}"></script> {{-- required --}}
+    {{-- <script src="{{ asset('template/plugins/jquery/jquery.js') }}"></script> --}} {{-- required --}}
+    {{-- <script src="{{ asset('template/plugins/jquery/jquery.min.js') }}"></script> --}} {{-- required --}}
     <!-- Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Bootstrap 4 -->

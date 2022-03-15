@@ -27,9 +27,6 @@
  * onDragStart
  *     Pass a function that will be called when the user starts dragging. The function takes 2 parameters: the
  *     table and the row which the user has started to drag.
- * onDragStop
- *     Pass a function that will be called when the user stops dragging regardless of if the rows have been
- *     rearranged. The function takes 2 parameters: the table and the row which the user was dragging.
  * onAllowDrop
  *     Pass a function that will be called as a row is over another row. If the function returns true, allow
  *     dropping on that row, otherwise not. The function takes 2 parameters: the dragged row and the row under
@@ -84,9 +81,17 @@
 !function ($, window, document, undefined) {
 // Determine if this is a touch device
 var hasTouch   = 'ontouchstart' in document.documentElement,
-    startEvent = 'touchstart mousedown',
-    moveEvent  = 'touchmove mousemove',
-    endEvent   = 'touchend mouseup';
+    startEvent = hasTouch ? 'touchstart' : 'mousedown',
+    moveEvent  = hasTouch ? 'touchmove'  : 'mousemove',
+    endEvent   = hasTouch ? 'touchend'   : 'mouseup';
+
+// If we're on a touch device, then wire up the events
+// see http://stackoverflow.com/a/8456194/1316086
+hasTouch
+    && $.each("touchstart touchmove touchend".split(" "), function(i, name) {
+        $.event.fixHooks[name] = $.event.mouseHooks;
+    });
+
 
 $(document).ready(function () {
     function parseStyle(css) {
@@ -106,7 +111,6 @@ $(document).ready(function () {
                 onDragClass: $(this).data('ondragclass') == undefined && "tDnD_whileDrag" || $(this).data('ondragclass'),
                 onDrop: $(this).data('ondrop') && new Function('table', 'row', $(this).data('ondrop')), // 'return eval("'+$(this).data('ondrop')+'");') || null,
                 onDragStart: $(this).data('ondragstart') && new Function('table', 'row' ,$(this).data('ondragstart')), // 'return eval("'+$(this).data('ondragstart')+'");') || null,
-                onDragStop: $(this).data('ondragstop') && new Function('table', 'row' ,$(this).data('ondragstop')),
                 scrollAmount: $(this).data('scrollamount') || 5,
                 sensitivity: $(this).data('sensitivity') || 10,
                 hierarchyLevel: $(this).data('hierarchylevel') || 0,
@@ -148,7 +152,6 @@ jQuery.tableDnD = {
                 onDragClass: "tDnD_whileDrag",
                 onDrop: null,
                 onDragStart: null,
-                onDragStop: null,
                 scrollAmount: 5,
                 /** Sensitivity setting will throttle the trigger rate for movement detection */
                 sensitivity: 10,
@@ -246,8 +249,6 @@ jQuery.tableDnD = {
                             return false;
                         }
                     }).css("cursor", "move"); // Store the tableDnD object
-                } else {
-                    $(this).css("cursor", ""); // Remove the cursor if we don't have the nodrag class
                 }
             });
     },
@@ -282,12 +283,12 @@ jQuery.tableDnD = {
     },
     /** Get the mouse coordinates from the event (allowing for browser differences) */
     mouseCoords: function(e) {
-        if (e.originalEvent.changedTouches)
+        if (hasTouch)
             return {
-                x: e.originalEvent.changedTouches[0].clientX,
-                y: e.originalEvent.changedTouches[0].clientY
+                x: event.changedTouches[0].clientX,
+                y: event.changedTouches[0].clientY
             };
-
+        
         if(e.pageX || e.pageY)
             return {
                 x: e.pageX,
@@ -498,13 +499,13 @@ jQuery.tableDnD = {
         return null;
     },
     processMouseup: function() {
-        if (!this.currentTable || !this.dragObject)
-            return null;
-
         var config      = this.currentTable.tableDnDConfig,
             droppedRow  = this.dragObject,
             parentLevel = 0,
             myLevel     = 0;
+
+        if (!this.currentTable || !droppedRow)
+            return null;
 
         // Unbind the event handlers
         $(document)
@@ -544,10 +545,6 @@ jQuery.tableDnD = {
             && $(droppedRow).hide().fadeIn('fast')
             && config.onDrop(this.currentTable, droppedRow);
 
-        // Call the onDragStop method if there is one
-        config.onDragStop
-            && config.onDragStop(this.currentTable, droppedRow);
-
         this.currentTable = null; // let go of the table too
     },
     mouseup: function(e) {
@@ -585,7 +582,7 @@ jQuery.tableDnD = {
     serializeTables: function() {
         var result = [];
         $('table').each(function() {
-            this.id && result.push($.param($.tableDnD.tableData(this)));
+            this.id && result.push($.param(this.tableData(this)));
         });
         return result.join('&');
     },
@@ -603,11 +600,9 @@ jQuery.tableDnD = {
 
         if (!table)
             table = this.currentTable;
-        if (!table || !table.rows || !table.rows.length)
-            return {error: { code: 500, message: "Not a valid table."}};
-        if (!table.id && !config.serializeParamName)
-            return {error: { code: 500, message: "No serializable unique id provided."}};
-        
+        if (!table || !table.id || !table.rows || !table.rows.length)
+            return {error: { code: 500, message: "Not a valid table, no serializable unique id provided."}};
+
         rows      = config.autoCleanRelations
                         && table.rows
                         || $.makeArray(table.rows);
