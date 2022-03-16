@@ -20,25 +20,25 @@ Route::get('/', function () {
     return redirect()->route('simonik.dashboard.before');
 });
 
-//Sign In - Form
+//Login - Form
 Route::get('/login', [App\Http\Controllers\AuthController::class, 'loginForm'])
     ->name('login.form');
 
-//Sign In
+//Login
 Route::post('/login', [App\Http\Controllers\AuthController::class, 'login'])
     ->name('login');
 
 Route::get('/dashboard', [App\Http\Controllers\Simonik\DashboardController::class, 'dashboard_before_login'])
     ->name('simonik.dashboard.before');
 
+//Logout
+Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout'])
+    ->name('logout');
+
 Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
 
     Route::get('/simonik/dashboard', [App\Http\Controllers\Simonik\DashboardController::class, 'dashboard_after_login'])
         ->name('simonik.dashboard.after');
-
-    //Sign Out
-    Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout'])
-        ->name('logout');
 
     //Home
     Route::get('/home', function (Request $request) {
