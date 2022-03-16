@@ -46,6 +46,7 @@
     <!-- jQuery -->
     {{-- <script src="{{ asset('template/plugins/jquery/jquery.js') }}"></script> --}} {{-- required --}}
     {{-- <script src="{{ asset('template/plugins/jquery/jquery.min.js') }}"></script> --}} {{-- required --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -170,7 +171,7 @@
                     </div>
                     <!-- end : card-header -->
 
-                    <form action="{{ route('simonik.indicators.update', ['id' => $response->data->indicator->id]) }}" method="post">
+                    <form action="{{ route('simonik.indicators.update', ['id' => $response->data->indicator->id, 'level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" method="post">
                         @method('put')
                         @csrf
 

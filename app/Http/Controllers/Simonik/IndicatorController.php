@@ -215,7 +215,7 @@ class IndicatorController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.indicators.paper-work.index', params());
+        return redirect()->route('simonik.indicators.paper-work.index', ['level' => $request->query('level'), 'unit' => $request->query('unit'), 'tahun' => $request->query('tahun')]);
     }
 
     /**
@@ -235,7 +235,7 @@ class IndicatorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $response = SIMONIK_sevices("/indicator/$id", 'delete');
 
@@ -249,6 +249,6 @@ class IndicatorController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.indicators.paper-work.index', params());
+        return redirect()->route('simonik.indicators.paper-work.index', ['level' => $request->query('level'), 'unit' => $request->query('unit'), 'tahun' => $request->query('tahun')]);
     }
 }

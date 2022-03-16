@@ -479,10 +479,10 @@
                                                                 <td class="text-center">
                                                                     <div class="btn-group">
                                                                         @if ($response->data->permissions->indicator->edit)
-                                                                            <a href="{{ route('simonik.indicators.edit', ['id' => $indicator->id]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></a>
+                                                                            <a href="{{ route('simonik.indicators.edit', ['id' => $indicator->id, 'level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></a>
                                                                         @endif
                                                                         @if ($response->data->permissions->indicator->delete)
-                                                                            <a href="{{ route('simonik.indicators.delete', ['id' => $indicator->id, 'name' => $indicator->indicator]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></a>
+                                                                            <a href="{{ route('simonik.indicators.delete', ['id' => $indicator->id, 'name' => $indicator->indicator, 'level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></a>
                                                                         @endif
                                                                     </div>
 

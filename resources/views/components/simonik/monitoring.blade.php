@@ -49,6 +49,7 @@
     </style>
     <!-- End : Custom Style for Navbar -->
 
+    <!-- Custom Style for Content -->
     <style>
         .reset {
             margin: 0;
@@ -61,6 +62,7 @@
             justify-content: center;
         }
     </style>
+    <!-- End : Custom Style for Content -->
 
     {{-- Table Header Fixed --}}
     <style>
@@ -90,7 +92,7 @@
     </style>
     <!-- End : Change Color Row Table on Click -->
 
-    {{-- highcharts --}}
+    {{-- Highcharts --}}
     <style>
         .highcharts-figure,
         .highcharts-data-table table {
@@ -215,13 +217,12 @@
         gauge110.setTextField(document.getElementById("gauge-label-110"), 2);
     </script>
 
-    {{-- highcharts --}}
+    {{-- Highcharts --}}
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/series-label.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
     <script>
         $('.chart').click(function() {
             let id = $(this).data("id");
@@ -511,10 +512,6 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-
-                            </div>
-
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 @if (is_null($response))
                                     <h3 class="text-center font-weight-bold">Lakukan Filter</h3>
                                 @else
@@ -697,7 +694,9 @@
 
                     <!-- card-footer -->
                     <div class="card-footer clearfix">
-                        <a href="{{ route('simonik.monitoring.export', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun'),'bulan' => request()->query('bulan')]) }}" class="btn btn-sm btn-info btn-block mt-3">Download Hasil Monitoring <span class="font-weight-bold">(UNIT KERJA : {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }} - TAHUN : {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }} - BULAN : {{ request()->query('bulan') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }})</span></a>
+                        @if (!is_null($response) && !empty($response->data->indicators))
+                            <a href="{{ route('simonik.monitoring.export', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun'),'bulan' => request()->query('bulan')]) }}" class="btn btn-sm btn-info btn-block mt-3">Download Hasil Monitoring <span class="font-weight-bold">(UNIT KERJA : {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }} - TAHUN : {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }} - BULAN : {{ request()->query('bulan') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }})</span></a>
+                        @endif
                     </div>
                     <!-- end : card-footer -->
                 </div>

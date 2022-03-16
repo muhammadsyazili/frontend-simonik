@@ -46,6 +46,7 @@
     <!-- jQuery -->
     {{-- <script src="{{ asset('template/plugins/jquery/jquery.js') }}"></script> --}} {{-- required --}}
     {{-- <script src="{{ asset('template/plugins/jquery/jquery.min.js') }}"></script> --}} {{-- required --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -128,10 +129,10 @@
                     <div class="card-footer clearfix">
                         <div class="row">
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <a href="{{ route('simonik.indicators.paper-work.index') }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="No">No</a>
+                                <a href="{{ route('simonik.indicators.paper-work.index', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="No">No</a>
                             </div>
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <form action="{{ route('simonik.indicators.destroy', ['id' => $id]) }}" method="post">
+                                <form action="{{ route('simonik.indicators.destroy', ['id' => $id, 'level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" method="post">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-block btn-danger btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Yes">Yes</button>
