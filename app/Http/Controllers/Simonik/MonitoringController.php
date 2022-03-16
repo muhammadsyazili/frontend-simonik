@@ -56,6 +56,6 @@ class MonitoringController extends Controller
             return redirect()->back();
         }
 
-        return Excel::download(new MonitoringExport($response->object()->data->indicators), "Kertas Kerja@$level@$unit@$tahun@s.d.$bulan.xlsx", \Maatwebsite\Excel\Excel::XLSX);
+        return Excel::download(new MonitoringExport($response->object()->data->indicators, $bulan), "Kertas Kerja@$level@$unit@$tahun@s.d.$bulan.xlsx", \Maatwebsite\Excel\Excel::XLSX);
     }
 }

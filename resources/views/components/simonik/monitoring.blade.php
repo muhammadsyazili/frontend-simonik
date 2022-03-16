@@ -51,11 +51,6 @@
 
     <!-- Custom Style for Content -->
     <style>
-        .reset {
-            margin: 0;
-            padding: 0;
-        }
-
         .canvas-container {
             display: flex;
             align-items: center;
@@ -308,17 +303,6 @@
         });
     </script>
     {{-- End : Change Color Row Table on Click --}}
-
-    <script>
-        $(document).ready(function() {
-            $("#myInput").on("keyup", function() {
-                let value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
 @endpush
 
 {{-- ========================================================== --}}

@@ -31,10 +31,10 @@
         @if (request()->cookie('X-App') === 'simonik')
             <li class="nav-header">SIMONIK</li>
             <li class="nav-item">
-                <a href="{{ route('simonik.dashboard.after') }}" class="nav-link">
+                <a href="{{ route('simonik.monitoring') }}" class="nav-link">
                 <i class="fas fa-circle nav-icon text-warning"></i>
                 <p>
-                    Dashboard
+                    Monitoring
                 </p>
                 </a>
             </li>
@@ -103,93 +103,6 @@
                 </ul>
             </li>
             @endif
-
-            <li class="nav-item">
-                <a href="{{ route('simonik.monitoring') }}" class="nav-link">
-                <i class="fas fa-circle nav-icon text-warning"></i>
-                <p>
-                    Monitoring
-                </p>
-                </a>
-            </li>
-        @endif
-
-        @if (request()->cookie('X-App') === '4dx')
-            <li class="nav-header">4 DX</li>
-            <li class="nav-item has-treeview menu-open">
-                <a href="#" class="nav-link">
-                <i class="fas fa-circle nav-icon text-warning"></i>
-                <p>
-                    Kertas Kerja
-                    <i class="right fas fa-angle-left"></i>
-                </p>
-                </a>
-                <ul class="nav nav-treeview" style="display: block;">
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon far fa-circle text-warning"></i>
-                    <p>LM</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon far fa-circle text-warning"></i>
-                    <p>Target LM</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon far fa-circle text-warning"></i>
-                    <p>Realisasi LM</p>
-                    </a>
-                </li>
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon far fa-circle text-warning"></i>
-                    <p>
-                        Level 2
-                        <i class="right fas fa-angle-left"></i>
-                    </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                        <i class="far fa-dot-circle nav-icon"></i>
-                        <p>Level 3</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                        <i class="far fa-dot-circle nav-icon"></i>
-                        <p>Level 3</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                        <i class="far fa-dot-circle nav-icon"></i>
-                        <p>Level 3</p>
-                        </a>
-                    </li>
-                    </ul>
-                </li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                <i class="fas fa-circle nav-icon text-warning"></i>
-                <p>
-                    Analytic(s)
-                </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                <i class="fas fa-circle nav-icon text-warning"></i>
-                <p>
-                    Export
-                </p>
-                </a>
-            </li>
         @endif
       </ul>
     </nav>

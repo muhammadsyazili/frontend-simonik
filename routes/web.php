@@ -37,9 +37,6 @@ Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout'])
 
 Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
 
-    Route::get('/simonik/dashboard', [App\Http\Controllers\Simonik\DashboardController::class, 'dashboard_after_login'])
-        ->name('simonik.dashboard.after');
-
     //Home
     Route::get('/home', function (Request $request) {
         if ($request->cookie('X-App') === 'simonik') {
@@ -56,9 +53,9 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
                 return redirect()->route('logout');
             }
 
-            return $response->object()->data->user->actived ? redirect()->route('simonik.dashboard.after') : redirect()->route('simonik.user.password.change.form', ['id' => $id]);
+            return $response->object()->data->user->actived ? redirect()->route('simonik.monitoring') : redirect()->route('simonik.user.password.change.form', ['id' => $id]);
         } else if ($request->cookie('X-App') === 'fdx') {
-            return redirect()->route('fdx.indicators.index');
+            return 'FDX page';
         } else {
             return redirect()->route('logout');
         }
@@ -293,83 +290,5 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
 
         Route::get('/simonik/export/{level}/{unit}/{tahun}', [App\Http\Controllers\Simonik\ExportController::class, 'export'])
             ->name('simonik.export');
-    });
-
-
-    //------------------------------------------------------------
-    // 4dx
-    //------------------------------------------------------------
-
-    Route::middleware([\App\Http\Middleware\FDX\Is__FDX::class])->group(function () {
-        //indicator
-        Route::get('/fdx/indicators', [App\Http\Controllers\Fdx\IndicatorController::class, 'index'])
-            ->name('fdx.indicators.index');
-
-        Route::get('/fdx/indicators/create', [App\Http\Controllers\Fdx\IndicatorController::class, 'create'])
-            ->name('fdx.indicators.create');
-
-        Route::post('/fdx/indicators', [App\Http\Controllers\Fdx\IndicatorController::class, 'store'])
-            ->name('fdx.indicators.store');
-
-        Route::get('/fdx/indicators/{indicator}/edit', [App\Http\Controllers\Fdx\IndicatorController::class, 'edit'])
-            ->name('fdx.indicators.edit');
-
-        Route::put('/fdx/indicators/{indicator}', [App\Http\Controllers\Fdx\IndicatorController::class, 'update'])
-            ->name('fdx.indicators.update');
-
-        Route::delete('/fdx/indicators/{indicator}', [App\Http\Controllers\Fdx\IndicatorController::class, 'destroy'])
-            ->name('fdx.indicators.destroy');
-
-        //paper work - indicator
-        Route::get('/fdx/indicators/paper-work/create', [App\Http\Controllers\Fdx\Extends\Indicator\PaperWorkIndicatorController::class, 'create'])
-            ->name('fdx.indicators.paper-work.create');
-
-        Route::post('/fdx/indicators/paper-work', [App\Http\Controllers\Fdx\Extends\Indicator\PaperWorkIndicatorController::class, 'store'])
-            ->name('fdx.indicators.paper-work.store');
-
-        Route::get('/fdx/indicators/paper-work/{level}/{unit?}/{tahun?}/edit', [App\Http\Controllers\Fdx\Extends\Indicator\PaperWorkIndicatorController::class, 'edit'])
-            ->name('fdx.indicators.paper-work.edit');
-
-        Route::put('/fdx/indicators/paper-work/{level}/{unit?}/{tahun?}', [App\Http\Controllers\Fdx\Extends\Indicator\PaperWorkIndicatorController::class, 'update'])
-            ->name('fdx.indicators.paper-work.update');
-
-        Route::delete('/fdx/indicators/paper-work/{level}/{unit?}/{tahun?}', [App\Http\Controllers\Fdx\Extends\Indicator\PaperWorkIndicatorController::class, 'destroy'])
-            ->name('fdx.indicators.paper-work.destroy');
-
-        //order
-        Route::put('/fdx/indicators/paper-work/{level}/{unit?}/{tahun?}/order', [App\Http\Controllers\Fdx\Extends\Indicator\PaperWorkIndicatorController::class, 'updateOrder'])
-            ->name('fdx.indicators.paper-work.order.update');
-
-        //reference - first
-        Route::get('/fdx/indicators/paper-work/reference/first/edit', [App\Http\Controllers\Fdx\Extends\Indicator\PaperWorkIndicatorController::class, 'editReferencesFirst'])
-            ->name('fdx.indicators.paper-work.reference.first.edit');
-
-        Route::put('/fdx/indicators/paper-work/reference/first', [App\Http\Controllers\Fdx\Extends\Indicator\PaperWorkIndicatorController::class, 'updateReferenceFirst'])
-            ->name('fdx.indicators.paper-work.reference.first.update');
-
-        //reference
-        Route::get('/fdx/indicators/paper-work/reference/{level}/{unit?}/{tahun?}/edit', [App\Http\Controllers\Fdx\Extends\Indicator\PaperWorkIndicatorController::class, 'editReference'])
-            ->name('fdx.indicators.paper-work.reference.edit');
-
-        Route::put('/fdx/indicators/paper-work/reference/{level}/{unit?}/{tahun?}', [App\Http\Controllers\Fdx\Extends\Indicator\PaperWorkIndicatorController::class, 'updateReference'])
-            ->name('fdx.indicators.paper-work.reference.update');
-
-        //paper work - realization
-        Route::get('/fdx/realizations/paper-work/{level}/{unit}/{tahun}/edit', [App\Http\Controllers\Fdx\Extends\Realization\PaperWorkRealizationController::class, 'edit'])
-            ->name('fdx.realizations.paper-work.edit');
-
-        Route::put('/fdx/realizations/paper-work/{level}/{unit}/{tahun}', [App\Http\Controllers\Fdx\Extends\Realization\PaperWorkRealizationController::class, 'update'])
-            ->name('fdx.realizations.paper-work.update');
-
-        //paper work - target
-        Route::get('/fdx/targets/paper-work/{level}/{unit}/{tahun}/edit', [App\Http\Controllers\Fdx\Extends\Target\PaperWorkTargetController::class, 'edit'])
-            ->name('fdx.targets.paper-work.edit');
-
-        Route::put('/fdx/targets/paper-work/{level}/{unit}/{tahun}', [App\Http\Controllers\Fdx\Extends\Target\PaperWorkTargetController::class, 'update'])
-            ->name('fdx.targets.paper-work.update');
-
-        //analytic
-        Route::get('/fdx/{level?}/{unit?}/{tahun?}/analytic', [App\Http\Controllers\Fdx\AnalyticController::class, 'index'])
-            ->name('fdx.analytic');
     });
 });

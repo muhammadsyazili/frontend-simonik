@@ -11,10 +11,12 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 class MonitoringExport implements FromCollection, WithHeadings, WithCustomStartCell, ShouldAutoSize
 {
     private $indicators;
+    private $month;
 
-    public function __construct($indicators)
+    public function __construct($indicators, $month)
     {
         $this->indicators = $indicators;
+        $this->month = $month;
     }
 
     /**
@@ -27,6 +29,8 @@ class MonitoringExport implements FromCollection, WithHeadings, WithCustomStartC
 
     public function headings(): array
     {
+        $month = $this->month;
+
         return [
             'No',
             'KPI',
@@ -36,8 +40,8 @@ class MonitoringExport implements FromCollection, WithHeadings, WithCustomStartC
             'Polaritas',
             'Bobot',
             'Bobot Terhitung',
-            'Target',
-            'Realisasi',
+            "Target s.d $month",
+            "Realisasi s.d $month",
             '% Pencapaian',
             'Nilai CAPPING 100',
             'Nilai CAPPING 110',
@@ -56,18 +60,18 @@ class MonitoringExport implements FromCollection, WithHeadings, WithCustomStartC
             'Target Nov',
             'Target Dec',
 
-            'Realization Jan',
-            'Realization Feb',
-            'Realization Mar',
-            'Realization Apr',
-            'Realization May',
-            'Realization Jun',
-            'Realization Jul',
-            'Realization Aug',
-            'Realization Sep',
-            'Realization Oct',
-            'Realization Nov',
-            'Realization Dec',
+            'Realisasi Jan',
+            'Realisasi Feb',
+            'Realisasi Mar',
+            'Realisasi Apr',
+            'Realisasi May',
+            'Realisasi Jun',
+            'Realisasi Jul',
+            'Realisasi Aug',
+            'Realisasi Sep',
+            'Realisasi Oct',
+            'Realisasi Nov',
+            'Realisasi Dec',
         ];
     }
 

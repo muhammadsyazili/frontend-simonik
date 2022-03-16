@@ -16,9 +16,14 @@
   <link href="https://unpkg.com/intro.js/minified/introjs.min.css" rel="stylesheet">
   <!-- Custom Intro -->
   <style>
-      .introjs-tooltip {
-          color: #000000;
-      }
+        .reset {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .introjs-tooltip {
+            color: #000000;
+        }
   </style>
 
   <!-- Style -->
