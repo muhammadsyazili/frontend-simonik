@@ -33,6 +33,6 @@ class DashboardController extends Controller
             $response = $response->object();
         }
 
-        return view('components.simonik.dashboard-before-login', compact('response'));
+        return view('components.simonik.dashboard', compact('response'));
     }
 }

@@ -121,7 +121,7 @@
         let opts = {
             angle: 0,
             lineWidth: 0.25,
-            radiusScale: 1,
+            radiusScale: 0.75,
             pointer: {
                 length: 0.5,
                 strokeWidth: 0.035,
@@ -285,9 +285,12 @@
             <div class="card border-0 shadow rounded mt-3" data-title="Selamat Datang!" data-intro="Hi! 👋">
                 <div class="card-header">
                     <div class="row">
+                        <div class="col-12 col-sm-12 col-md-2 col-lg-1 col-xl-1">
+                            <a class="btn btn-block btn-info btn-sm font-weight-bold" href="{{ route('login.form') }}" data-intro="Silakan tekan tombol ini jika ingin <strong>Login</strong>"> Login</a>
+                         </div>
                         <div class="col-12 col-sm-12 col-md-10 col-lg-11 col-xl-11">
                             <form action="{{ route('simonik.dashboard.before') }}" method="get">
-                                <div class="row">
+                                <div class="row" data-intro="Lakukan <strong>Filter</strong> !">
                                     <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                                         <div class="input-group input-group-sm mb-3">
                                             <span class="input-group-append">
@@ -339,9 +342,6 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-2 col-lg-1 col-xl-1">
-                           <a class="btn btn-block btn-info btn-sm font-weight-bold" href="{{ route('login.form') }}" data-intro="Silakan tekan tombol ini jika ingin <strong>Login</strong>"> Login</a>
-                        </div>
                     </div>
                 </div>
                 <div class="card-body">
@@ -367,6 +367,7 @@
                                                 <div class="text-center reset" id="gauge-label-100"></div>
                                                 <p class="text-center small reset"><span class="badge badge-{{ $response->data->indicators->total->PPK_100_color_status }}">{{ $response->data->indicators->total->PPK_100_status }}</span></p>
                                                 <input type="hidden" id="PPK_100" value="{{ number_format($response->data->indicators->total->PPK_100, 2, '.', '') }}">
+                                                <hr>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                                 <p class="text-center reset">NKO 110%</p>
@@ -386,27 +387,25 @@
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                                     <div class="table-responsive">
-                                                        <table class="table table-sm" id="table">
+                                                        <table class="table table-bordered table-sm" id="table">
                                                             <thead class="text-nowrap small">
                                                                 <tr>
-                                                                    <th class="text-center">KPI</th>
+                                                                    <th class="text-center">Indikator</th>
                                                                     <th class="text-center">% PENCAPAIAN <span data-toggle="tooltip" data-placement="right" title="MASALAH : < 95%, HATI-HATI : &ge; 95% s.d < 100%, BAIK : &ge; 100%"><i class="fas fa-info-circle"></i></span></th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody class="text-nowrap small" id="myTable">
                                                                 @foreach ($response->data->indicators->partials as $indicator)
-                                                                    @if (in_array($indicator->status, ['MASALAH', 'HATI-HATI']))
+                                                                    @if (in_array($indicator->status_symbol, ['-1', '0'], true))
                                                                         <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
-                                                                            <td>
-                                                                                <p style="margin: 0">{{ $indicator->indicator }} <span class="small text-muted">({{ $indicator->measure }})</span> - <span class="badge badge-info">{{ $indicator->type }}</span></p>
-                                                                                <p style="margin: 0">Polaritas: <span class="badge badge-secondary">{!! $indicator->polarity !!}</span></p>
+                                                                            <td class="small">
+                                                                                <p class="reset">{{ $indicator->indicator }} | <span class="badge badge-info">{{ $indicator->type }}</span> | Satuan: {{ $indicator->measure }} | Polaritas: <span class="badge badge-secondary">{!! $indicator->polarity !!}</span></p>
                                                                             </td>
-                                                                            <td class="text-center {{ 'bg-'.$indicator->status_color }}">
+                                                                            <td class="small text-center {{ 'bg-'.$indicator->status_color }}">
                                                                                 @if (!is_null($indicator->achievement))
-                                                                                    <p class="font-weight-bold reset">{{ number_format($indicator->achievement, 2, ',', '') }} %</p>
+                                                                                    <p class="font-weight-bold reset">{{ number_format($indicator->achievement, 2, ',', '') }} % | {{ $indicator->status }}</p>
                                                                                     {{-- <p class="small">{{ $indicator->achievement }} %</p> --}}
                                                                                 @endif
-                                                                                <p class="reset">{{ $indicator->status }}</p>
                                                                             </td>
                                                                         </tr>
                                                                     @endif

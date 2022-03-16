@@ -532,7 +532,7 @@
                                                     <table class="table table-bordered table-sm" id="table">
                                                         <thead class="text-nowrap small">
                                                             <tr>
-                                                                <th class="text-center">KPI</th>
+                                                                <th class="text-center">Indikator</th>
                                                                 <th class="text-center">BOBOT</th>
                                                                 <th class="text-center">TARGET</th>
                                                                 <th class="text-center">REALISASI</th>
@@ -546,8 +546,8 @@
                                                             @foreach ($response->data->indicators->partials as $indicator)
                                                                 <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
                                                                     <td>
-                                                                        <p style="margin: 0">{{ $indicator->indicator }} <span class="small text-muted">({{ $indicator->measure }})</span> - <span class="badge badge-info">{{ $indicator->type }}</span></p>
-                                                                        <p style="margin: 0">Polaritas: <span class="badge badge-secondary">{!! $indicator->polarity !!}</span></p>
+                                                                        <p class="reset">{{ $indicator->indicator }} | <span class="badge badge-info">{{ $indicator->type }}</span> | Satuan: {{ $indicator->measure }}</p>
+                                                                        <p class="reset">Polaritas: <span class="badge badge-secondary">{!! $indicator->polarity !!}</span></p>
                                                                     </td>
                                                                     <td class="text-center">
                                                                         {{ $indicator->selected_weight }}
