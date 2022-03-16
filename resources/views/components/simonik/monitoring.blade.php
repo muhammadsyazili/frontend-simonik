@@ -591,10 +591,10 @@
                                                                     </td>
                                                                     <td class="text-center {{ 'bg-'.$indicator->status_color }}">
                                                                         @if (!is_null($indicator->achievement))
-                                                                            <p class="font-weight-bold">{{ number_format($indicator->achievement, 2, ',', '') }} %</p>
+                                                                            <p class="font-weight-bold reset">{{ number_format($indicator->achievement, 2, ',', '') }} %</p>
                                                                             {{-- <p class="small">{{ $indicator->achievement }} %</p> --}}
                                                                         @endif
-                                                                        {{ $indicator->status }}
+                                                                        <p class="reset">{{ $indicator->status }}</p>
                                                                     </td>
                                                                     <td class="text-center">
                                                                         @if (!$indicator->dummy)
