@@ -1,6 +1,6 @@
 @extends('layouts/after-login')
 
-@section('title', 'Kertas Kerja - KPI')
+@section('title', 'Kertas Kerja - Indikator')
 
 {{-- ========================================================== --}}
 @push('metadata')
@@ -283,12 +283,6 @@
             @if (!is_null(request()->query('level')) && in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
                 <div class="col-md-12">
                     <div class="card border-0 shadow rounded">
-                        <!-- card-header -->
-                        <div class="card-header">
-                            <h3 class="card-title">FITUR</h3>
-                        </div>
-                        <!-- end : card-header -->
-
                         <!-- card-body -->
                         <div class="card-body">
                             <div class="row">
@@ -296,7 +290,7 @@
                                     @if (!empty($response->data->permissions) && $response->data->permissions->indicator->create)
                                         <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
                                             <fieldset class="scheduler-border">
-                                                <legend class="scheduler-border"><i class="fas fa-key"></i> KPI</legend>
+                                                <legend class="scheduler-border"><i class="fas fa-key"></i> Indikator</legend>
                                                 <a href="{{ route('simonik.indicators.create') }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Create">Create</a>
                                             </fieldset>
                                         </div>
@@ -305,7 +299,7 @@
                                     @if ((!empty($response->data->permissions) && $response->data->permissions->reference->create) || (!empty($response->data->permissions) && $response->data->permissions->reference->edit))
                                         <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                             <fieldset class="scheduler-border">
-                                                <legend class="scheduler-border"><i class="fas fa-link"></i> Referensi - KPI</legend>
+                                                <legend class="scheduler-border"><i class="fas fa-link"></i> Referensi - Indikator</legend>
 
                                                 <div class="row">
                                                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -326,7 +320,7 @@
                                     @if ((!empty($response->data->permissions) && $response->data->permissions->paper_work->indicator->create) || (!empty($response->data->permissions) && $response->data->permissions->paper_work->indicator->edit) || (!empty($response->data->permissions) && $response->data->permissions->paper_work->indicator->delete))
                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                             <fieldset class="scheduler-border">
-                                                <legend class="scheduler-border"><i class="fas fa-list-ol"></i> Kertas Kerja - KPI</legend>
+                                                <legend class="scheduler-border"><i class="fas fa-list-ol"></i> Kertas Kerja - Indikator</legend>
 
                                                 <div class="row">
                                                     <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
@@ -369,14 +363,7 @@
 
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">KERTAS KERJA - KPI
-                            / LEVEL :
-                            {{ request()->query('level') == null ? '-' : cast_to_upper(request()->query('level')) }}
-                            / UNIT :
-                            {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }}
-                            / TAHUN :
-                            {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }}
-                        </h3>
+                        <h3 class="card-title">KERTAS KERJA - INDIKATOR / LEVEL : {{ is_null(request()->query('level')) ? '-' : cast_to_upper(request()->query('level')) }} / UNIT : {{ is_null(request()->query('unit')) ? '-' : cast_to_upper(request()->query('unit')) }} / TAHUN : {{ is_null(request()->query('tahun')) ? '-' : cast_to_upper(request()->query('tahun')) }}</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -387,28 +374,34 @@
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <form action="{{ route('simonik.indicators.paper-work.index') }}" method="get">
-                                    <div class="input-group input-group-sm mb-3">
-                                        <span class="input-group-append">
-                                            <span class="input-group-text">Level</span>
-                                        </span>
-
-                                        <select class="custom-select" name="level"></select>
-
-                                        <span class="input-group-append">
-                                            <span class="input-group-text">Unit Kerja</span>
-                                        </span>
-
-                                        <select class="custom-select" name="unit"></select>
-
-                                        <span class="input-group-append">
-                                            <span class="input-group-text">Tahun</span>
-                                        </span>
-
-                                        <input type="text" class="form-control" name="tahun" />
-
-                                        <span class="input-group-append">
-                                            <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip" data-placement="buttom" title="Search"><i class="fas fa-search"></i></button>
-                                        </span>
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-append">
+                                                    <span class="input-group-text">Level</span>
+                                                </span>
+                                                <select class="custom-select" name="level"></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-append">
+                                                    <span class="input-group-text">Unit Kerja</span>
+                                                </span>
+                                                <select class="custom-select" name="unit"></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-append">
+                                                    <span class="input-group-text">Tahun</span>
+                                                </span>
+                                                <input type="text" class="form-control" name="tahun" />
+                                                <span class="input-group-append">
+                                                    <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip" data-placement="buttom" title="Search"><i class="fas fa-search"></i></button>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -420,7 +413,7 @@
                                     @if (empty($response->data->indicators))
                                         <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                     @else
-                                        <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari KPI..">
+                                        <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari Indikator..">
 
                                         <form action="{{ route('simonik.indicators.paper-work.reorder', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" method="post">
                                             @csrf
@@ -430,10 +423,10 @@
 
                                             <div class="table-responsive">
                                                 <table class="table table-bordered table-sm" id="table">
-                                                    <thead class="small">
+                                                    <thead class="text-nowrap small">
                                                         <tr>
                                                             <th class="text-center">UBAH URUTAN</th>
-                                                            <th class="text-center">KPI</th>
+                                                            <th class="text-center">INDIKATOR</th>
                                                             <th class="text-center">FORMULA</th>
                                                             <th class="text-center">SATUAN</th>
                                                             <th class="text-center">POLARITAS</th>

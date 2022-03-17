@@ -35,10 +35,10 @@ class TargetsExport implements FromCollection, WithHeadings, ShouldAutoSize
         $level = $this->level;
         $unit = $this->unit;
         $tahun = $this->tahun;
-        
+
         return [
             'ID (jangan diubah)',
-            'KPI',
+            'Indikator',
             'Satuan',
             'Target - Jan',
             'Target - Feb',

@@ -286,17 +286,17 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-2 col-lg-1 col-xl-1">
-                            <a class="btn btn-block btn-info btn-sm font-weight-bold" href="{{ route('login.form') }}" data-intro="Silakan tekan tombol ini jika ingin <strong>Login</strong>"> Login</a>
+                            <a class="btn btn-block btn-info btn-sm font-weight-bold" href="{{ route('login.form') }}" data-intro="Klik disini jika ingin <strong>Login</strong>"> Login</a>
                          </div>
                         <div class="col-12 col-sm-12 col-md-10 col-lg-11 col-xl-11">
                             <form action="{{ route('simonik.dashboard.before') }}" method="get">
-                                <div class="row" data-intro="Lakukan <strong>Filter</strong> !">
+                                <div class="row" data-intro="Lakukan <strong>Filter</strong> dahulu !">
                                     <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                                         <div class="input-group input-group-sm mb-3">
                                             <span class="input-group-append">
                                                 <span class="input-group-text">Level</span>
                                             </span>
-                                            <select class="custom-select" name="level" data-intro="Silakan pilih <strong>Level</strong>"></select>
+                                            <select class="custom-select" name="level" data-intro="Pilih <strong>Level</strong>"></select>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
@@ -304,7 +304,7 @@
                                             <span class="input-group-append">
                                                 <span class="input-group-text">Unit Kerja</span>
                                             </span>
-                                            <select class="custom-select" name="unit" data-intro="Silakan pilih <strong>Unit Kerja</strong>"></select>
+                                            <select class="custom-select" name="unit" data-intro="Pilih <strong>Unit Kerja</strong>"></select>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
@@ -312,7 +312,7 @@
                                             <span class="input-group-append">
                                                 <span class="input-group-text">Tahun</span>
                                             </span>
-                                            <input type="text" class="form-control" name="tahun" data-intro="Silakan isi <strong>Tahun</strong>" />
+                                            <input type="text" class="form-control" name="tahun" data-intro="Isi <strong>Tahun</strong>" />
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
@@ -320,7 +320,7 @@
                                             <span class="input-group-append">
                                                 <span class="input-group-text">Bulan</span>
                                             </span>
-                                            <select class="custom-select" name="bulan" data-intro="Silakan pilih <strong>Bulan</strong>">
+                                            <select class="custom-select" name="bulan" data-intro="Pilih <strong>Bulan</strong>">
                                                 <option value="jan">s.d. Jan</option>
                                                 <option value="feb">s.d. Feb</option>
                                                 <option value="mar">s.d. Mar</option>
@@ -335,7 +335,7 @@
                                                 <option value="dec">s.d. Dec</option>
                                             </select>
                                             <span class="input-group-append">
-                                                <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip" data-placement="buttom" title="Search" data-intro="Silakan tekan tombol <strong>Search</strong>"><i class="fas fa-search"></i></button>
+                                                <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip" data-placement="buttom" title="Search" data-intro="Tekan tombol <strong>Search</strong>"><i class="fas fa-search"></i></button>
                                             </span>
                                         </div>
                                     </div>

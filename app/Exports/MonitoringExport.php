@@ -33,7 +33,7 @@ class MonitoringExport implements FromCollection, WithHeadings, WithCustomStartC
 
         return [
             'No',
-            'KPI',
+            'Indikator',
             'Tipe',
             'Formula',
             'Satuan',

@@ -444,47 +444,55 @@
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <form action="{{ route('simonik.monitoring') }}" method="get">
-                                    <div class="input-group input-group-sm mb-3">
-                                        <span class="input-group-append">
-                                            <span class="input-group-text">Level</span>
-                                        </span>
-
-                                        <select class="custom-select" name="level"></select>
-
-                                        <span class="input-group-append">
-                                            <span class="input-group-text">Unit Kerja</span>
-                                        </span>
-
-                                        <select class="custom-select" name="unit"></select>
-
-                                        <span class="input-group-append">
-                                            <span class="input-group-text">Tahun</span>
-                                        </span>
-
-                                        <input type="text" class="form-control" name="tahun" />
-
-                                        <span class="input-group-append">
-                                            <span class="input-group-text">Bulan</span>
-                                        </span>
-
-                                        <select class="custom-select" name="bulan">
-                                            <option value="jan">s.d. Jan</option>
-                                            <option value="feb">s.d. Feb</option>
-                                            <option value="mar">s.d. Mar</option>
-                                            <option value="apr">s.d. Apr</option>
-                                            <option value="may">s.d. May</option>
-                                            <option value="jun">s.d. Jun</option>
-                                            <option value="jul">s.d. Jul</option>
-                                            <option value="aug">s.d. Aug</option>
-                                            <option value="sep">s.d. Sep</option>
-                                            <option value="oct">s.d. Oct</option>
-                                            <option value="nov">s.d. Nov</option>
-                                            <option value="dec">s.d. Dec</option>
-                                        </select>
-
-                                        <span class="input-group-append">
-                                            <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip" data-placement="buttom" title="Search"><i class="fas fa-search"></i></button>
-                                        </span>
+                                    <div class="row" data-intro="Lakukan <strong>Filter</strong> dahulu !">
+                                        <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-append">
+                                                    <span class="input-group-text">Level</span>
+                                                </span>
+                                                <select class="custom-select" name="level" data-intro="Pilih <strong>Level</strong>"></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-append">
+                                                    <span class="input-group-text">Unit Kerja</span>
+                                                </span>
+                                                <select class="custom-select" name="unit" data-intro="Pilih <strong>Unit Kerja</strong>"></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-append">
+                                                    <span class="input-group-text">Tahun</span>
+                                                </span>
+                                                <input type="text" class="form-control" name="tahun" data-intro="Isi <strong>Tahun</strong>" />
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-append">
+                                                    <span class="input-group-text">Bulan</span>
+                                                </span>
+                                                <select class="custom-select" name="bulan" data-intro="Pilih <strong>Bulan</strong>">
+                                                    <option value="jan">s.d. Jan</option>
+                                                    <option value="feb">s.d. Feb</option>
+                                                    <option value="mar">s.d. Mar</option>
+                                                    <option value="apr">s.d. Apr</option>
+                                                    <option value="may">s.d. May</option>
+                                                    <option value="jun">s.d. Jun</option>
+                                                    <option value="jul">s.d. Jul</option>
+                                                    <option value="aug">s.d. Aug</option>
+                                                    <option value="sep">s.d. Sep</option>
+                                                    <option value="oct">s.d. Oct</option>
+                                                    <option value="nov">s.d. Nov</option>
+                                                    <option value="dec">s.d. Dec</option>
+                                                </select>
+                                                <span class="input-group-append">
+                                                    <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip" data-placement="buttom" title="Search" data-intro="Klik tombol <strong>Search</strong>"><i class="fas fa-search"></i></button>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -526,13 +534,19 @@
                                                 <input type="hidden" id="PPK_110" value="{{ number_format($response->data->indicators->total->PPK_110, 2, '.', '') }}">
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                <a class="reset" href="#table"><span class="badge badge-pill badge-info">Focus on table</span></a>
-
+                                                <div class="float-left">
+                                                    <a class="reset" href="#table"><span class="badge badge-pill badge-info">Focus on table</span></a>
+                                                </div>
+                                                <div class="float-right">
+                                                    <a class="badge badge-pill badge-info" href="{{ route('simonik.monitoring.export', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun'),'bulan' => request()->query('bulan')]) }}">Download Hasil Monitoring <span data-toggle="tooltip" data-placement="right" title="Sesuai filter"><i class="fas fa-info-circle"></i></span></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered table-sm" id="table">
                                                         <thead class="text-nowrap small">
                                                             <tr>
-                                                                <th class="text-center">Indikator</th>
+                                                                <th class="text-center">INDIKATOR</th>
                                                                 <th class="text-center">BOBOT</th>
                                                                 <th class="text-center">TARGET</th>
                                                                 <th class="text-center">REALISASI</th>
@@ -578,7 +592,7 @@
                                                                         <p class="reset">{{ $indicator->status }}</p>
                                                                     </td>
                                                                     <td class="text-center">
-                                                                        @if (!$indicator->dummy)
+                                                                        @if (!$indicator->dummy && !$indicator->reducing_factor)
                                                                             <button type="button" class="btn btn-sm btn-outline-info chart" data-id="{{ $indicator->id }}" data-prefix="{{ $indicator->prefix }}" data-unit="{{ cast_to_upper(request()->query('unit')) }}" data-year="{{ request()->query('tahun') }}" data-month="{{ request()->query('bulan') }}" data-status="{{ $indicator->status }}"><i class="fas fa-chart-bar"></i></button>
                                                                         @endif
                                                                     </td>
@@ -677,11 +691,7 @@
                     <!-- end : card-body -->
 
                     <!-- card-footer -->
-                    <div class="card-footer clearfix">
-                        @if (!is_null($response) && !empty($response->data->indicators))
-                            <a href="{{ route('simonik.monitoring.export', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun'),'bulan' => request()->query('bulan')]) }}" class="btn btn-sm btn-info btn-block mt-3">Download Hasil Monitoring <span class="font-weight-bold">(UNIT KERJA : {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }} - TAHUN : {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }} - BULAN : {{ request()->query('bulan') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }})</span></a>
-                        @endif
-                    </div>
+                    <div class="card-footer clearfix"></div>
                     <!-- end : card-footer -->
                 </div>
             </div>

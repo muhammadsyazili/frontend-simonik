@@ -1,6 +1,6 @@
 @extends('layouts/after-login')
 
-@section('title', 'Ubah :: KPI')
+@section('title', 'Ubah :: Indikator')
 
 {{-- ========================================================== --}}
 
@@ -167,7 +167,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">UBAH KPI</h3>
+                        <h3 class="card-title">UBAH INDIKATOR</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -180,7 +180,7 @@
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small">Nama KPI <span class="text-danger">*</span></label>
+                                        <label class="small">Nama Indikator <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control form-control-sm" name="indicator" value="{{ $response->data->indicator->indicator }}">
                                     </div>
                                 </div>
@@ -202,7 +202,7 @@
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                                    <label class="small">KPI Tidak Memiliki Bobot ? <span class="text-danger">*</span></label>
+                                    <label class="small">Indikator Tidak Memiliki Bobot ? <span class="text-danger">*</span></label>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
                                     <div class="form-group clearfix">
@@ -218,7 +218,7 @@
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                                    <label class="small">KPI Faktor Pengurang ? <span class="text-danger">*</span></label>
+                                    <label class="small">Indikator Faktor Pengurang ? <span class="text-danger">*</span></label>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
                                     <div class="form-group clearfix">
@@ -469,7 +469,7 @@
                                     @if ($response->data->indicator->label === 'master')
                                         <h1 class="text-center text-danger"><i class="fas fa-exclamation-triangle"></i></h1>
                                         <h5 class="text-center text-danger"><strong>Danger Zone!</strong></h5>
-                                        <p class="text-center"><small><strong>Noted!</strong> Aksi ini akan mengubah semua KPI beserta target & realisasi yang bersesuaian di semua unit kerja di level: <strong>{{ $response->data->indicator->level_name }}</strong>.</small></p>
+                                        <p class="text-center"><small><strong>Noted!</strong> Aksi ini akan mengubah semua indikator beserta target & realisasi yang bersesuaian di semua unit kerja di level: <strong>{{ $response->data->indicator->level_name }}</strong>.</small></p>
                                     @endif
                                 </div>
                             </div>

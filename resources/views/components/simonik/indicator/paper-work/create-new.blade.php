@@ -1,6 +1,6 @@
 @extends('layouts/after-login')
 
-@section('title', 'Tambah :: Kertas Kerja - KPI')
+@section('title', 'Tambah :: Kertas Kerja - Indikator')
 
 {{-- ========================================================== --}}
 
@@ -167,7 +167,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">TAMBAH KERTAS KERJA - KPI</h3>
+                        <h3 class="card-title">TAMBAH KERTAS KERJA - INDIKATOR</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -180,7 +180,7 @@
                                 </div>
                             @else
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <input class="form-control form-control-sm mb-2" id="myInput" type="text" placeholder="Cari KPI..">
+                                    <input class="form-control form-control-sm mb-2" id="myInput" type="text" placeholder="Cari Indikator..">
                                 </div>
 
                                 <form action="{{ route('simonik.indicators.paper-work.store') }}" method="post">
@@ -192,7 +192,7 @@
 
                                         <div class="form-check mb-1">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input" id="check-handler"><small>Select All KPI</small>
+                                                <input type="checkbox" class="form-check-input" id="check-handler"><small>Select All Indicator</small>
                                             </label>
                                         </div>
 
@@ -201,7 +201,7 @@
                                                 <thead class="small">
                                                     <tr>
                                                         <th class="text-center"></th>
-                                                        <th class="text-center">KPI</th>
+                                                        <th class="text-center">INDIKATOR</th>
                                                         <th class="text-center">FORMULA</th>
                                                         <th class="text-center">SATUAN</th>
                                                         <th class="text-center">POLARITAS</th>

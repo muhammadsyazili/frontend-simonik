@@ -1,6 +1,6 @@
 @extends('layouts/after-login')
 
-@section('title', 'Ubah :: Kertas Kerja - KPI')
+@section('title', 'Ubah :: Kertas Kerja - Indikator')
 
 {{-- ========================================================== --}}
 
@@ -168,7 +168,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">UBAH KERTAS KERJA - KPI / LEVEL : {{ cast_to_upper($level) }} / UNIT : {{ $level === 'super-master' ? '-' : cast_to_upper($unit) }} / TAHUN : {{ $level === 'super-master' ? '-' : cast_to_upper($tahun) }}</h3>
+                        <h3 class="card-title">UBAH KERTAS KERJA - INDIKATOR / LEVEL : {{ cast_to_upper($level) }} / UNIT : {{ $level === 'super-master' ? '-' : cast_to_upper($unit) }} / TAHUN : {{ $level === 'super-master' ? '-' : cast_to_upper($tahun) }}</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -181,7 +181,7 @@
                                 </div>
                             @else
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <input class="form-control form-control-sm mb-2" id="myInput" type="text" placeholder="Cari KPI..">
+                                    <input class="form-control form-control-sm mb-2" id="myInput" type="text" placeholder="Cari Indikator..">
                                 </div>
 
                                 <form action="{{ route('simonik.indicators.paper-work.update', ['level' => $level, 'unit' => $unit, 'tahun' => $tahun]) }}" method="post">
@@ -193,7 +193,7 @@
 
                                         <div class="form-check mb-1">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input" id="check-handler"><small>Select All KPI</small>
+                                                <input type="checkbox" class="form-check-input" id="check-handler"><small>Select All Indicator</small>
                                             </label>
                                         </div>
 
@@ -202,7 +202,7 @@
                                                 <thead class="small">
                                                     <tr>
                                                         <th class="text-center"></th>
-                                                        <th class="text-center">KPI</th>
+                                                        <th class="text-center">INDIKATOR</th>
                                                         <th class="text-center">FORMULA</th>
                                                         <th class="text-center">SATUAN</th>
                                                         <th class="text-center">POLARITAS</th>
@@ -254,8 +254,8 @@
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                         <p class="text-danger"><i class="fas fa-exclamation-triangle"></i> <strong>Danger Zone!</strong></p>
                                         <ul>
-                                            <li class="small">Aksi ini akan menambahkan KPI beserta target & realisasi pada KPI yang di <strong>checked</strong>.</li>
-                                            <li class="small">Aksi ini akan menghapus KPI beserta target & realisasi pada KPI yang di <strong>un-checked</strong>.</li>
+                                            <li class="small">Aksi ini akan menambahkan indikator beserta target & realisasi pada indikator yang di <strong>checked</strong>.</li>
+                                            <li class="small">Aksi ini akan menghapus indikator beserta target & realisasi pada indikator yang di <strong>un-checked</strong>.</li>
                                             <li class="small">Aksi ini akan berkalu pada <strong>LEVEL: {{ cast_to_upper($level) }} - UNIT: @if ($unit === 'master') SEMUA UNIT KERJA LEVEL {{ cast_to_upper($level) }} @else{{ cast_to_upper($unit) }}@endif - TAHUN: {{ cast_to_upper($tahun) }}</strong>.</li>
                                         </ul>
                                     </div>

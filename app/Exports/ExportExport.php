@@ -28,7 +28,7 @@ class ExportExport implements FromCollection, WithHeadings, WithCustomStartCell,
     public function headings(): array
     {
         return [
-            'KPI',
+            'Indikator',
             'Tipe',
             'Formula',
             'Satuan',

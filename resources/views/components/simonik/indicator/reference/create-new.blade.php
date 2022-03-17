@@ -1,6 +1,6 @@
 @extends('layouts/after-login')
 
-@section('title', 'Referensi - KPI')
+@section('title', 'Referensi - Indikator')
 
 {{-- ========================================================== --}}
 
@@ -171,7 +171,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">REFERENSI - KPI</h3>
+                        <h3 class="card-title">REFERENSI - INDIKATOR</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -194,13 +194,13 @@
                                             <table class="table table-bordered table-sm" id="table">
                                                 <thead class="small">
                                                     <tr>
-                                                        <th class="text-center">KPI</th>
+                                                        <th class="text-center">INDIKATOR</th>
                                                         <th class="text-center">FORMULA</th>
                                                         <th class="text-center">SATUAN</th>
                                                         <th class="text-center">POLARITAS</th>
                                                         <th class="text-center">BERLAKU</th>
                                                         <th class="text-center">BOBOT</th>
-                                                        <th class="text-center">REFERENSI KPI <span class="badge badge-pill badge-light" data-toggle="tooltip" data-placement="right" title="Belum direferensikan">&#128681;</span></th>
+                                                        <th class="text-center">REFERENSI INDIKATOR <span class="badge badge-pill badge-light" data-toggle="tooltip" data-placement="right" title="Belum direferensikan">&#128681;</span></th>
                                                         <th class="text-center"></th>
                                                     </tr>
                                                 </thead>

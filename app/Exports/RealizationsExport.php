@@ -38,7 +38,7 @@ class RealizationsExport implements FromCollection, WithHeadings, ShouldAutoSize
 
         return [
             'ID (jangan diubah)',
-            'KPI',
+            'Indikator',
             'Satuan',
             'Realisasi - Jan',
             'Realisasi - Feb',

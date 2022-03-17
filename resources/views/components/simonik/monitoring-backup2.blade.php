@@ -1016,7 +1016,7 @@
                                             </div>
                                         </div>
 
-                                        {{-- <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari KPI.."> --}}
+                                        {{-- <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari Indikator.."> --}}
 
                                         <a href="#table"><span class="badge badge-pill badge-info">Focus on table</span></a>
 
@@ -1024,7 +1024,7 @@
                                             <table class="table table-bordered table-sm" id="table">
                                                 <thead class="small">
                                                     <tr>
-                                                        <th class="text-center">KPI</th>
+                                                        <th class="text-center">INDIKATOR</th>
                                                         <th class="text-center">BOBOT</th>
                                                         <th class="text-center">TARGET</th>
                                                         <th class="text-center">REALISASI</th>

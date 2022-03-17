@@ -467,7 +467,7 @@
                                     @else
                                         <div id="container"></div>
 
-                                        {{-- <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari KPI.."> --}}
+                                        {{-- <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari Indikator.."> --}}
 
                                         <a href="#table"><span class="badge badge-pill badge-info">Focus on table</span></a>
 
@@ -475,11 +475,11 @@
                                             <table class="table table-bordered" id="table">
                                                 <thead class="small">
                                                     <tr class="first">
-                                                        <th class="text-center" rowspan="2">KPI</th>
+                                                        <th class="text-center" rowspan="2">INDIKATOR</th>
                                                         <th class="text-center" rowspan="2">% PENCAPAIAN</th>
                                                         <th class="text-center" rowspan="2">NILAI (CAPPING 100%)</th>
                                                         <th class="text-center" rowspan="2">NILAI (CAPPING 110%)</th>
-                                                        <th class="text-center" rowspan="2">INDIKATOR</th>
+                                                        <th class="text-center" rowspan="2">STATUS</th>
                                                         <th class="text-center" rowspan="2">CHART</th>
                                                         {{-- <th class="text-center" colspan="12">TARGET (T) & REALISASI (R)</th> --}}
                                                     </tr>

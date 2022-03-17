@@ -1,6 +1,6 @@
 @extends('layouts/after-login')
 
-@section('title', 'Referensi - KPI')
+@section('title', 'Referensi - Indikator')
 
 {{-- ========================================================== --}}
 
@@ -171,7 +171,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">REFERENSI - KPI / LEVEL : {{ cast_to_upper($level) }} / UNIT : {{ $level === 'super-master' ? '-' : cast_to_upper($unit) }} / TAHUN : {{ $level === 'super-master' ? '-' : cast_to_upper($tahun) }}</h3>
+                        <h3 class="card-title">REFERENSI - INDIKATOR / LEVEL : {{ cast_to_upper($level) }} / UNIT : {{ $level === 'super-master' ? '-' : cast_to_upper($unit) }} / TAHUN : {{ $level === 'super-master' ? '-' : cast_to_upper($tahun) }}</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -189,7 +189,7 @@
                                 @else
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
-                                        <input class="form-control form-control-sm mb-2" id="myInput" type="text" placeholder="Cari KPI..">
+                                        <input class="form-control form-control-sm mb-2" id="myInput" type="text" placeholder="Cari Indikator..">
 
                                         <a href="#table"><span class="badge badge-pill badge-info">Focus on table</span></a>
 
@@ -197,13 +197,13 @@
                                             <table class="table table-bordered table-sm" id="table">
                                                 <thead class="small">
                                                     <tr>
-                                                        <th class="text-center">KPI</th>
+                                                        <th class="text-center">INDIKATOR</th>
                                                         <th class="text-center">FORMULA</th>
                                                         <th class="text-center">SATUAN</th>
                                                         <th class="text-center">POLARITAS</th>
                                                         <th class="text-center">BERLAKU</th>
                                                         <th class="text-center">BOBOT</th>
-                                                        <th class="text-center">REFERENSI KPI</th>
+                                                        <th class="text-center">REFERENSI INDIKATOR</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody class="small" id="myTable">
@@ -261,7 +261,7 @@
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                             <h1 class="text-center text-danger"><i class="fas fa-exclamation-triangle"></i></h1>
                                             <h5 class="text-center text-danger"><strong>Danger Zone!</strong></h5>
-                                            <p class="text-center"><small><strong>Noted!</strong> Aksi Ini Akan Mengubah Referensi KPI di <strong>LEVEL: {{ cast_to_upper($level) }} - UNIT: @if ($unit === 'master') SEMUA UNIT LEVEL {{ cast_to_upper($level) }} @else{{ cast_to_upper($unit) }}@endif - TAHUN: {{ cast_to_upper($tahun) }}</strong>.</small></p>
+                                            <p class="text-center"><small><strong>Noted!</strong> Aksi Ini Akan Mengubah Referensi Indikator di <strong>LEVEL: {{ cast_to_upper($level) }} - UNIT: @if ($unit === 'master') SEMUA UNIT LEVEL {{ cast_to_upper($level) }} @else{{ cast_to_upper($unit) }}@endif - TAHUN: {{ cast_to_upper($tahun) }}</strong>.</small></p>
                                         </div>
                                     @endif
                                 @endif

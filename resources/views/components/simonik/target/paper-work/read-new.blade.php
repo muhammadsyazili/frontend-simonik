@@ -365,7 +365,7 @@
                                     @if (empty($response->data->indicators))
                                         <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                     @else
-                                        <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari KPI..">
+                                        <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari Indikator..">
 
                                         <form action="{{ route('simonik.targets.paper-work.update') }}" method="post">
                                             @csrf
@@ -377,7 +377,7 @@
                                                 <table class="table table-bordered table-sm" id="table">
                                                     <thead class="small">
                                                         <tr class="first">
-                                                            <th class="text-center" rowspan="2">KPI</th>
+                                                            <th class="text-center" rowspan="2">INDIKATOR</th>
                                                             <th class="text-center" rowspan="2">FORMULA</th>
                                                             <th class="text-center" rowspan="2">SATUAN</th>
                                                             <th class="text-center" rowspan="2">POLARITAS</th>

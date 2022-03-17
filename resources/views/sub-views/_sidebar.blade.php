@@ -50,7 +50,7 @@
                 <li class="nav-item">
                     <a href="{{ route('simonik.indicators.paper-work.index') }}" class="nav-link">
                     <i class="nav-icon far fa-circle text-warning"></i>
-                    <p>KPI</p>
+                    <p>Indikator</p>
                     </a>
                 </li>
                 @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
