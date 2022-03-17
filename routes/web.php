@@ -284,6 +284,10 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
         Route::get('/simonik/monitoring/{level}/{unit}/{tahun}/{bulan}/export', [App\Http\Controllers\Simonik\MonitoringController::class, 'export'])
             ->name('simonik.monitoring.export');
 
+        //rangking
+        Route::get('/simonik/rangking', [App\Http\Controllers\Simonik\RangkingController::class, 'rangking'])
+            ->name('simonik.rangking');
+
         //export
         Route::get('/simonik/export/index', [App\Http\Controllers\Simonik\ExportController::class, 'index'])
             ->name('simonik.export.index');

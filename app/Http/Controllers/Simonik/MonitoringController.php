@@ -14,7 +14,7 @@ class MonitoringController extends Controller
     public function monitoring(Request $request)
     {
         $response = null;
-        if (!is_null($request->query('level')) && !is_null($request->query('unit')) && !is_null($request->query('tahun')) && !is_null($request->query('bulan'))) {
+        if (!is_null($request->query('level')) && !is_null($request->query('tahun')) && !is_null($request->query('bulan'))) {
             $response = SIMONIK_sevices('/monitoring', 'get', [
                 'level' => $request->query('level'),
                 'unit' => $request->query('unit'),
