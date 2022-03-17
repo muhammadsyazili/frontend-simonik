@@ -356,28 +356,34 @@
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <form action="{{ route('simonik.realizations.paper-work.index') }}" method="get">
-                                    <div class="input-group input-group-sm mb-3">
-                                        <span class="input-group-append">
-                                            <span class="input-group-text">Level</span>
-                                        </span>
-
-                                        <select class="custom-select" name="level"></select>
-
-                                        <span class="input-group-append">
-                                            <span class="input-group-text">Unit Kerja</span>
-                                        </span>
-
-                                        <select class="custom-select" name="unit"></select>
-
-                                        <span class="input-group-append">
-                                            <span class="input-group-text">Tahun</span>
-                                        </span>
-
-                                        <input type="text" class="form-control" name="tahun" />
-
-                                        <span class="input-group-append">
-                                            <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip" data-placement="buttom" title="Search"><i class="fas fa-search"></i></button>
-                                        </span>
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-append">
+                                                    <span class="input-group-text">Level</span>
+                                                </span>
+                                                <select class="custom-select" name="level"></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-append">
+                                                    <span class="input-group-text">Unit Kerja</span>
+                                                </span>
+                                                <select class="custom-select" name="unit"></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-append">
+                                                    <span class="input-group-text">Tahun</span>
+                                                </span>
+                                                <input type="text" class="form-control" name="tahun" />
+                                                <span class="input-group-append">
+                                                    <button type="submit" class="btn btn-info btn-flat" data-toggle="tooltip" data-placement="buttom" title="Search"><i class="fas fa-search"></i></button>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
