@@ -6,7 +6,7 @@
 @push('metadata')
     <meta name="host" content="{{ env('HOST_SIMONIK') }}">
 
-    <meta name="level" content="{{ request()->query('level') }}">
+    <meta name="kategori_level" content="{{ request()->query('kategori_level') }}">
     <meta name="tahun" content="{{ request()->query('tahun') }}">
     <meta name="bulan" content="{{ request()->query('bulan') }}">
 @endpush
@@ -46,6 +46,16 @@
 
     </style>
     <!-- End : Custom Style for Navbar -->
+
+    {{-- Custom Style for Content --}}
+    <style>
+        thead tr:nth-child(1) th {
+            color: #ffffff !important;
+            background-color: #135b96 !important;
+        }
+
+    </style>
+    {{-- End : Custom Style for Content --}}
 
     <!-- Change Color Row Table on Click -->
     <style>
@@ -96,8 +106,8 @@
 
             //mapping option selected in filter from query params
             setTimeout(function() {
-                $('select[name="level"] option').each(function() {
-                    if ($(this).val() == $('meta[name="level"]').attr('content'))
+                $('select[name="kategori_level"] option').each(function() {
+                    if ($(this).val() == $('meta[name="kategori_level"]').attr('content'))
                         $(this).attr("selected", "selected");
                 });
                 $('select[name="bulan"] option').each(function() {
@@ -120,7 +130,7 @@
                         for (let i = 0; i < res.data.length; i++) {
                             html += `<option value="${res.data[i].id}">${res.data[i].name}</option>`;
                         }
-                        $('select[name="level"]').append(html);
+                        $('select[name="kategori_level"]').append(html);
                     }
                 },
                 error: function(res) {
@@ -194,7 +204,7 @@
                                                 <span class="input-group-append">
                                                     <span class="input-group-text">Level</span>
                                                 </span>
-                                                <select class="custom-select" name="level" data-intro="Pilih <strong>Level</strong>"></select>
+                                                <select class="custom-select" name="kategori_level" data-intro="Pilih <strong>Level</strong>"></select>
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
@@ -243,7 +253,7 @@
                                 @if (is_null($response))
                                     <h3 class="text-center font-weight-bold">Lakukan Filter</h3>
                                 @else
-                                    @if (empty($response->data->indicators))
+                                    @if (empty($response->data->units))
                                         <h3 class="text-center font-weight-bold">Data Tidak Tersedia</h3>
                                     @else
                                         <div class="row">
@@ -253,6 +263,32 @@
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered table-sm" id="table">
+                                                        <thead class="text-nowrap small">
+                                                            <tr>
+                                                                <th class="text-center">RANGKING</th>
+                                                                <th class="text-center">UNIT KERJA</th>
+                                                                <th class="text-center">NKO | STATUS</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="text-nowrap small" id="myTable">
+                                                            @foreach ($response->data->units as $unit)
+                                                                <tr>
+                                                                    <td class="text-center">
+                                                                        {{ $loop->iteration }}
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        {{ $unit->name }}
+                                                                    </td>
+                                                                    <td class="text-center {{ 'bg-'.$unit->color_status }}">
+                                                                        {{ number_format($unit->value, 2, ',', '') }} | {{ $unit->status }}
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     @endif
