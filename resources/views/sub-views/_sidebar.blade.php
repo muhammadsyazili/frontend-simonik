@@ -35,7 +35,7 @@
                     <i class="fas fa-circle nav-icon text-warning"></i>
                     <p>Kertas Kerja <i class="right fas fa-angle-left"></i></p>
                 </a>
-                <ul class="nav nav-treeview" style="display: block;">
+                <ul class="nav nav-treeview">
                     @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin', 'data-entry']))
                         <li class="nav-item">
                             <a href="{{ route('simonik.indicators.paper-work.index') }}" class="nav-link">
@@ -64,12 +64,12 @@
             </li>
 
             @if (request()->cookie('X-Role') === 'super-admin')
-            <li class="nav-item has-treeview menu-open">
+            <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                     <i class="fas fa-circle nav-icon text-warning"></i>
                     <p>Supporting <i class="right fas fa-angle-left"></i></p>
                 </a>
-                <ul class="nav nav-treeview" style="display: block;">
+                <ul class="nav nav-treeview">
                     <li class="nav-item">
                         <a href="{{ route('simonik.user.index') }}" class="nav-link">
                         <i class="nav-icon far fa-circle text-warning"></i>

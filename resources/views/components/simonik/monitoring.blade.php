@@ -441,6 +441,12 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
+                        <h3 class="card-title">MONITORING</h3>
+                    </div>
+                    <!-- end : card-header -->
+
+                    <!-- card-body -->
+                    <div class="card-body">
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <form action="{{ route('simonik.monitoring') }}" method="get">
@@ -496,13 +502,6 @@
                                     </div>
                                 </form>
                             </div>
-                        </div>
-                    </div>
-                    <!-- end : card-header -->
-
-                    <!-- card-body -->
-                    <div class="card-body">
-                        <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 @if (is_null($response))
                                     <h3 class="text-center font-weight-bold">Lakukan Filter</h3>
@@ -575,19 +574,16 @@
                                                                     <td class="text-center">
                                                                         @if (!is_null($indicator->capping_value_100))
                                                                             <p class="font-weight-bold">{{ in_array(gettype($indicator->capping_value_100), ['double', 'integer']) ? number_format($indicator->capping_value_100, 2, ',', '').' %' : $indicator->capping_value_100 }}</p>
-                                                                            {{-- <p class="small">{{ $indicator->capping_value_100 === 'BELUM DINILAI' ? $indicator->capping_value_100 : $indicator->capping_value_100.' %' }}</p> --}}
                                                                         @endif
                                                                     </td>
                                                                     <td class="text-center">
                                                                         @if (!is_null($indicator->capping_value_110))
                                                                             <p class="font-weight-bold">{{ in_array(gettype($indicator->capping_value_110), ['double', 'integer']) ? number_format($indicator->capping_value_110, 2, ',', '').' %' : $indicator->capping_value_110 }}</p>
-                                                                            {{-- <p class="small">{{ $indicator->capping_value_110 === 'BELUM DINILAI' ? $indicator->capping_value_110 : $indicator->capping_value_110.' %' }}</p> --}}
                                                                         @endif
                                                                     </td>
                                                                     <td class="text-center {{ 'bg-'.$indicator->status_color }}">
                                                                         @if (!is_null($indicator->achievement))
                                                                             <p class="font-weight-bold reset">{{ number_format($indicator->achievement, 2, ',', '') }} %</p>
-                                                                            {{-- <p class="small">{{ $indicator->achievement }} %</p> --}}
                                                                         @endif
                                                                         <p class="reset">{{ $indicator->status }}</p>
                                                                     </td>
@@ -613,11 +609,9 @@
                                                                 <td class="text-center"></td>
                                                                 <td class="text-center">
                                                                     <p class="font-weight-bold">{{ number_format($response->data->indicators->total->KPI_100, 2, ',', '') }}</p>
-                                                                    {{-- <p class="small">{{ $response->data->indicators->total->KPI_100 }}</p> --}}
                                                                 </td>
                                                                 <td class="text-center">
                                                                     <p class="font-weight-bold">{{ number_format($response->data->indicators->total->KPI_110, 2, ',', '') }}</p>
-                                                                    {{-- <p class="small">{{ $response->data->indicators->total->KPI_110 }}</p> --}}
                                                                 </td>
                                                                 <td class="text-center"></td>
                                                                 <td class="text-center"></td>
@@ -629,11 +623,9 @@
                                                                 <td class="text-center"></td>
                                                                 <td class="text-center">
                                                                     <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PI_100, 2, ',', '') }}</p>
-                                                                    {{-- <p class="small">{{ $response->data->indicators->total->PI_100 }}</p> --}}
                                                                 </td>
                                                                 <td class="text-center">
                                                                     <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PI_110, 2, ',', '') }}</p>
-                                                                    {{-- <p class="small">{{ $response->data->indicators->total->PI_110 }}</p> --}}
                                                                 </td>
                                                                 <td class="text-center"></td>
                                                                 <td class="text-center"></td>
@@ -653,11 +645,9 @@
                                                                 <td class="text-center"></td>
                                                                 <td class="text-center">
                                                                     <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PK_100, 2, ',', '') }} %</p>
-                                                                    {{-- <p class="small">{{ $response->data->indicators->total->PK_100 }} %</p> --}}
                                                                 </td>
                                                                 <td class="text-center">
                                                                     <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PK_110, 2, ',', '') }} %</p>
-                                                                    {{-- <p class="small">{{ $response->data->indicators->total->PK_110 }} %</p> --}}
                                                                 </td>
                                                                 <td class="text-center"></td>
                                                                 <td class="text-center"></td>
@@ -669,11 +659,9 @@
                                                                 <td class="text-center"></td>
                                                                 <td class="text-center">
                                                                     <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PPK_100, 2, ',', '') }} %</p>
-                                                                    {{-- <p class="small">{{ $response->data->indicators->total->PPK_100 }} %</p> --}}
                                                                 </td>
                                                                 <td class="text-center">
                                                                     <p class="font-weight-bold">{{ number_format($response->data->indicators->total->PPK_110, 2, ',', '') }} %</p>
-                                                                    {{-- <p class="small">{{ $response->data->indicators->total->PPK_110 }} %</p> --}}
                                                                 </td>
                                                                 <td class="text-center"></td>
                                                                 <td class="text-center"></td>

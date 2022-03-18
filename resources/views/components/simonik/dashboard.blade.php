@@ -347,10 +347,6 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-
-                        </div>
-
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             @if (is_null($response))
                                 <h3 class="text-center font-weight-bold">Lakukan Filter</h3>
                             @else
@@ -391,7 +387,7 @@
                                                             <thead class="text-nowrap small">
                                                                 <tr>
                                                                     <th class="text-center">Indikator</th>
-                                                                    <th class="text-center">% PENCAPAIAN <span data-toggle="tooltip" data-placement="right" title="MASALAH : < 95%, HATI-HATI : &ge; 95% s.d < 100%, BAIK : &ge; 100%"><i class="fas fa-info-circle"></i></span></th>
+                                                                    <th class="text-center">% PENCAPAIAN</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody class="text-nowrap small" id="myTable">
@@ -404,7 +400,6 @@
                                                                             <td class="small text-center {{ 'bg-'.$indicator->status_color }}">
                                                                                 @if (!is_null($indicator->achievement))
                                                                                     <p class="font-weight-bold reset">{{ number_format($indicator->achievement, 2, ',', '') }} % | {{ $indicator->status }}</p>
-                                                                                    {{-- <p class="small">{{ $indicator->achievement }} %</p> --}}
                                                                                 @endif
                                                                             </td>
                                                                         </tr>

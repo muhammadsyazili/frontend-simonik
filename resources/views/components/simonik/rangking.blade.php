@@ -195,12 +195,18 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
+                        <h3 class="card-title">RANGKING</h3>
+                    </div>
+                    <!-- end : card-header -->
+
+                    <!-- card-body -->
+                    <div class="card-body">
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <form action="{{ route('simonik.rangking') }}" method="get">
                                     <div class="row" data-intro="Lakukan <strong>Filter</strong> dahulu !">
                                         <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                                            <div class="input-group input-group-sm">
+                                            <div class="input-group input-group-sm mb-3">
                                                 <span class="input-group-append">
                                                     <span class="input-group-text">Level</span>
                                                 </span>
@@ -208,7 +214,7 @@
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                                            <div class="input-group input-group-sm">
+                                            <div class="input-group input-group-sm mb-3">
                                                 <span class="input-group-append">
                                                     <span class="input-group-text">Tahun</span>
                                                 </span>
@@ -216,7 +222,7 @@
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                                            <div class="input-group input-group-sm">
+                                            <div class="input-group input-group-sm mb-3">
                                                 <span class="input-group-append">
                                                     <span class="input-group-text">Bulan</span>
                                                 </span>
@@ -242,13 +248,6 @@
                                     </div>
                                 </form>
                             </div>
-                        </div>
-                    </div>
-                    <!-- end : card-header -->
-
-                    <!-- card-body -->
-                    <div class="card-body">
-                        <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 @if (is_null($response))
                                     <h3 class="text-center font-weight-bold">Lakukan Filter</h3>
