@@ -258,11 +258,6 @@
                                     @else
                                         <div class="row">
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                <div class="float-left">
-                                                    <a class="reset" href="#table"><span class="badge badge-pill badge-info">Focus on table</span></a>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered table-sm" id="table">
                                                         <thead class="text-nowrap small">
