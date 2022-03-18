@@ -110,7 +110,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">UBAH PASSWORD</h3>
+                        <h3 class="card-title">Change Password</h3>
                     </div>
                     <!-- end : card-header -->
 
@@ -130,7 +130,7 @@
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small">Konfirmasi Password <span class="text-danger">*</span></label>
+                                        <label class="small">Password Confirmation <span class="text-danger">*</span></label>
                                         <input type="password" class="form-control form-control-sm" name="password_confirmation" required>
                                     </div>
                                 </div>

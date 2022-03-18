@@ -12,19 +12,44 @@
 
   <title>SIMONIK | @yield('title')</title>
 
-  <!-- Intro -->
-  <link href="https://unpkg.com/intro.js/minified/introjs.min.css" rel="stylesheet">
-  <!-- Custom Intro -->
-  <style>
+    <!-- Intro -->
+    <link href="https://unpkg.com/intro.js/minified/introjs.min.css" rel="stylesheet">
+    <!-- Custom Intro -->
+    <style>
         .reset {
             margin: 0;
             padding: 0;
         }
-        
+
         .introjs-tooltip {
             color: #000000;
         }
-  </style>
+    </style>
+
+    <!-- Custom Scrollbar -->
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+            height: 7.5px;
+            width: 7.5px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #17a2b8;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ffc107;
+        }
+    </style>
+    <!-- End : Custom Scrollbar -->
 
   <!-- Style -->
   @stack('style')

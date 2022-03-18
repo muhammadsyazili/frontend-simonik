@@ -174,6 +174,8 @@
 
                                 <input class="form-control form-control-sm mb-3" id="myInput" type="text" placeholder="Cari Level..">
 
+                                <a class="reset" href="#table"><span class="badge badge-pill badge-info">Focus on table</span></a>
+
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-sm" id="table">
                                         <thead class="small">
