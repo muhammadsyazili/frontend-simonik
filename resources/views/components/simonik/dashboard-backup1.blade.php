@@ -698,7 +698,7 @@
 
             $.ajax({
                 type: 'GET',
-                url: `${host}/open/levels`,
+                url: `${host}/levels/public`,
                 success: function(res) {
                     if (res.data.length > 0) {
                         let html = '';

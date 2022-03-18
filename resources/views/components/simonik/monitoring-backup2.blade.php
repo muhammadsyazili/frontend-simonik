@@ -230,7 +230,10 @@
 
             $.ajax({
                 type: 'GET',
-                url: `${host}/monitoring/${id}/${prefix}/${month}`,
+                url: `${host}/monitoring/${id}/${month}`,
+                data: {
+                    "prefix": prefix
+                },
                 success: function(res) {
                     Highcharts.chart('chart-container', {
                         chart: {
@@ -811,7 +814,7 @@
 
             $.ajax({
                 type: 'GET',
-                url: `${host}/user/${user}/levels`,
+                url: `${host}/levels/user/${user}`,
                 data: {
                     "with-super-master": "false"
                 },

@@ -296,7 +296,7 @@
 
             $.ajax({
                 type: 'GET',
-                url: `${host}/user/${user}/levels`,
+                url: `${host}/levels/user/${user}`,
                 data: {
                     "with-super-master": "false"
                 },
