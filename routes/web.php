@@ -288,6 +288,10 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
         Route::get('/simonik/rangking', [App\Http\Controllers\Simonik\RangkingController::class, 'rangking'])
             ->name('simonik.rangking');
 
+        //comparing
+        Route::get('/simonik/comparing', [App\Http\Controllers\Simonik\ComparingController::class, 'comparing'])
+            ->name('simonik.comparing');
+
         //export
         Route::get('/simonik/export/index', [App\Http\Controllers\Simonik\ExportController::class, 'index'])
             ->name('simonik.export.index');

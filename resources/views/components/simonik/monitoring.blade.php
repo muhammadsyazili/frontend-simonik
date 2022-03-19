@@ -66,10 +66,24 @@
             overflow: scroll;
         }
 
-        thead tr:nth-child(1) th {
+        thead tr.first th,
+        thead tr.first td {
             color: #ffffff !important;
             background-color: #135b96 !important;
             position: sticky;
+            position: -webkit-sticky;
+            /* Safari */
+            top: 0;
+            z-index: 10;
+        }
+
+        thead tr.second th,
+        thead tr.second td {
+            color: #ffffff !important;
+            background-color: #135b96 !important;
+            position: sticky;
+            position: -webkit-sticky;
+            /* Safari */
             top: 0;
             z-index: 10;
         }
@@ -152,6 +166,15 @@
     <script src="{{ asset('template/dist/js/adminlte.min.js') }}"></script> {{-- required --}}
     <!-- AdminLTE For Demo Purposes -->
     <script src="{{ asset('template/dist/js/demo.js') }}"></script> {{-- required --}}
+
+    {{-- Table Header Fixed --}}
+    <script>
+        $(document).ready(function() {
+            let firstheight = $('.first').height();
+            $("thead tr.second th, thead tr.second td").css("top", firstheight);
+        });
+    </script>
+    {{-- End : Table Header Fixed --}}
 
     <!-- Gauge Chart -->
     <script src="{{ asset('libraries/gauge-chart/gauge.min.js') }}"></script> {{-- required --}}
@@ -548,15 +571,18 @@
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered table-sm" id="table">
                                                         <thead class="text-nowrap small">
-                                                            <tr>
-                                                                <th class="text-center">INDIKATOR</th>
-                                                                <th class="text-center">BOBOT</th>
-                                                                <th class="text-center">TARGET</th>
-                                                                <th class="text-center">REALISASI</th>
-                                                                <th class="text-center">NILAI (CAPPING 100%)</th>
-                                                                <th class="text-center">NILAI (CAPPING 110%)</th>
-                                                                <th class="text-center">% PENCAPAIAN & STATUS <span data-toggle="tooltip" data-placement="right" title="MASALAH : < 95%, HATI-HATI : &ge; 95% s.d < 100%, BAIK : &ge; 100%"><i class="fas fa-info-circle"></i></span></th>
-                                                                <th class="text-center">CHART</th>
+                                                            <tr class="first">
+                                                                <th class="text-center" rowspan="2">INDIKATOR</th>
+                                                                <th class="text-center" rowspan="2">BOBOT</th>
+                                                                <th class="text-center" rowspan="2">TARGET</th>
+                                                                <th class="text-center" rowspan="2">REALISASI</th>
+                                                                <th class="text-center" colspan="2">NILAI CAPPING</th>
+                                                                <th class="text-center" rowspan="2">PENCAPAIAN & STATUS <span data-toggle="tooltip" data-placement="right" title="MASALAH : < 95%, HATI-HATI : &ge; 95% s.d < 100%, BAIK : &ge; 100%"><i class="fas fa-info-circle"></i></span></th>
+                                                                <th class="text-center" rowspan="2">CHART</th>
+                                                            </tr>
+                                                            <tr class="second">
+                                                                <th class="text-center">100%</th>
+                                                                <th class="text-center">110%</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody class="text-nowrap small" id="myTable">
@@ -587,7 +613,7 @@
                                                                     </td>
                                                                     <td class="text-center {{ 'bg-'.$indicator->status_color }}">
                                                                         @if (!is_null($indicator->achievement))
-                                                                            <p class="font-weight-bold reset">{{ number_format($indicator->achievement, 2, ',', '') }} %</p>
+                                                                            <p class="font-weight-bold reset">{{ in_array(gettype($indicator->achievement), ['double', 'integer']) ? number_format($indicator->achievement, 2, ',', '').' %' : $indicator->achievement }}</p>
                                                                         @endif
                                                                         <p class="reset">{{ $indicator->status }}</p>
                                                                     </td>

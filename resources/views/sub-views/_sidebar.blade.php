@@ -105,7 +105,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('simonik.comparing') }}" class="nav-link">
                     <i class="fas fa-circle nav-icon text-warning {{ (request()->segment(2) === 'comparing') ? 'active' : '' }}"></i>
                     <p>Comparing</p>
                 </a>
