@@ -30,8 +30,8 @@
     <style>
         /* width */
         ::-webkit-scrollbar {
-            height: 7.5px;
-            width: 7.5px;
+            height: 10px;
+            width: 10px;
         }
 
         /* Track */

@@ -208,9 +208,9 @@
                                         <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                             <div class="input-group input-group-sm mb-3">
                                                 <span class="input-group-append">
-                                                    <span class="input-group-text">Kategori</span>
+                                                    <span class="input-group-text">Kategori Level</span>
                                                 </span>
-                                                <select class="custom-select" name="kategori" data-intro="Pilih <strong>Kategori</strong>"></select>
+                                                <select class="custom-select" name="kategori" data-intro="Pilih <strong>Kategori Level</strong>"></select>
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">

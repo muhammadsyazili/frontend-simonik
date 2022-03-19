@@ -387,7 +387,7 @@
                                                             <thead class="text-nowrap small">
                                                                 <tr>
                                                                     <th class="text-center">Indikator</th>
-                                                                    <th class="text-center">% PENCAPAIAN</th>
+                                                                    <th class="text-center">PENCAPAIAN | STATUS</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody class="text-nowrap small" id="myTable">
