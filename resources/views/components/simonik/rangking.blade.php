@@ -6,7 +6,7 @@
 @push('metadata')
     <meta name="host" content="{{ env('HOST_SIMONIK') }}">
 
-    <meta name="kategori_level" content="{{ request()->query('kategori_level') }}">
+    <meta name="kategori" content="{{ request()->query('kategori') }}">
     <meta name="tahun" content="{{ request()->query('tahun') }}">
     <meta name="bulan" content="{{ request()->query('bulan') }}">
 @endpush
@@ -106,8 +106,8 @@
 
             //mapping option selected in filter from query params
             setTimeout(function() {
-                $('select[name="kategori_level"] option').each(function() {
-                    if ($(this).val() == $('meta[name="kategori_level"]').attr('content'))
+                $('select[name="kategori"] option').each(function() {
+                    if ($(this).val() == $('meta[name="kategori"]').attr('content'))
                         $(this).attr("selected", "selected");
                 });
                 $('select[name="bulan"] option').each(function() {
@@ -130,7 +130,7 @@
                         for (let i = 0; i < res.data.length; i++) {
                             html += `<option value="${res.data[i].id}">${res.data[i].name}</option>`;
                         }
-                        $('select[name="kategori_level"]').append(html);
+                        $('select[name="kategori"]').append(html);
                     }
                 },
                 error: function(res) {
@@ -208,9 +208,9 @@
                                         <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                             <div class="input-group input-group-sm mb-3">
                                                 <span class="input-group-append">
-                                                    <span class="input-group-text">Level</span>
+                                                    <span class="input-group-text">Kategori</span>
                                                 </span>
-                                                <select class="custom-select" name="kategori_level" data-intro="Pilih <strong>Level</strong>"></select>
+                                                <select class="custom-select" name="kategori" data-intro="Pilih <strong>Kategori</strong>"></select>
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">

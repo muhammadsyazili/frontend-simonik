@@ -12,9 +12,9 @@ class RangkingController extends Controller
     public function rangking(Request $request)
     {
         $response = null;
-        if (!is_null($request->query('kategori_level')) && !is_null($request->query('tahun')) && !is_null($request->query('bulan'))) {
+        if (!is_null($request->query('kategori')) && !is_null($request->query('tahun')) && !is_null($request->query('bulan'))) {
             $response = SIMONIK_sevices('/rangking', 'get', [
-                'kategori_level' => $request->query('kategori_level'),
+                'kategori' => $request->query('kategori'),
                 'tahun' => (int) $request->query('tahun'),
                 'bulan' => $request->query('bulan'),
             ]);
