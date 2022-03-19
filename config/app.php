@@ -237,7 +237,6 @@ return [
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'CustomAuth' => App\Facades\CustomAuth::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        'HTMLMin' => HTMLMin\HTMLMin\Facades\HTMLMin::class,
     ],
 
 ];
