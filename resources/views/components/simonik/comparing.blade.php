@@ -27,8 +27,9 @@
     <!-- Theme Style -->
     <link rel="stylesheet" href="{{ asset('template/dist/css/adminlte.min.css') }}"> {{-- required --}}
     <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    {{-- required --}}
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> {{-- required --}}
+    <!-- Preloader -->
+    {{-- <link rel="stylesheet" href="{{ asset('libraries/preloder/dist/prelodr.min.css') }}"> --}}
 
     <!-- Custom Style for Sidebar -->
     <style>
@@ -85,6 +86,8 @@
     <script src="{{ asset('template/dist/js/adminlte.min.js') }}"></script> {{-- required --}}
     <!-- AdminLTE For Demo Purposes -->
     <script src="{{ asset('template/dist/js/demo.js') }}"></script> {{-- required --}}
+    <!-- Preorder -->
+    {{-- <script src="{{ asset('libraries/preloder/dist/prelodr.min.js') }}"></script> --}}
 @endpush
 
 {{-- ========================================================== --}}
@@ -96,6 +99,8 @@
         let user = $('meta[name="user"]').attr('content');
 
         $(document).ready(function() {
+            // prelodr.in('Loading...');
+
             let id_left = $('meta[name="id_left"]').attr('content');
             let level_left = $('meta[name="level_left"]').attr('content');
             let unit_left = $('meta[name="unit_left"]').attr('content');
@@ -155,6 +160,8 @@
                 });
                 $('input[name="tahun_right"]').val(tahun_right);
             }, 5000);
+
+            // prelodr.out();
         });
 
         $('select[name="level_left"]').click(function() {
@@ -166,7 +173,7 @@
                 let tahun_value = $('input[name="tahun_left"]').val();
 
                 indicators(selected_level, selected_unit, tahun_value, 'left');
-            }, 2000);
+            }, 5000);
         });
         $('select[name="level_right"]').click(function() {
             units($(this).val(), 'right');
@@ -177,7 +184,7 @@
                 let tahun_value = $('input[name="tahun_right"]').val();
 
                 indicators(selected_level, selected_unit, tahun_value, 'right');
-            }, 2000);
+            }, 5000);
         });
 
         $('select[name="unit_left"]').click(function() {

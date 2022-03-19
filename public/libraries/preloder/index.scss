@@ -1,0 +1,172 @@
+// Prelodr settings
+// -> Customize styles on demand here.
+
+$prelodr: '.prelodr';
+$prelodr-timing: 3s;
+$prelodr-color-white: #fff;
+$prelodr-color-green: #0f9d58;
+$prelodr-color-red: #da4733;
+$prelodr-color-blue: #1d6fee;
+$prelodr-color-yellow: #fdba2c;
+$prelodr-overlay-color: rgba($prelodr-color-white, .75);
+$prelodr-zindex: 100;
+$prelodr-ease: .3s cubic-bezier(.4, 0, .2, 1);
+
+#{$prelodr} {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: table;
+  left: 0;
+  top: 0;
+  background-color: $prelodr-overlay-color;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  cursor: default;
+  opacity: 0;
+  visibility: 0;
+  transition: opacity .3s $prelodr-ease;
+  z-index: $prelodr-zindex;
+
+  // Box wrapper
+  > span {
+    position: relative;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  // Box content
+  > span > span {
+    position: relative;
+    display: inline-block;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 0.7em;
+    padding-bottom: 0.9em;
+    background-color: #fff;
+    color: #545454;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: normal;
+    min-width: 150px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 5px 0 rgba(0,0,0,0.23);
+    transition:
+      opacity $prelodr-ease,
+      transform $prelodr-ease;
+    transform: scale(0.95);
+    transition-delay: .2s;
+    border-radius: 3px;
+  }
+
+  &#{$prelodr}-hide {
+    display: none;
+  }
+
+  &#{$prelodr}-in {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  & > span > span#{$prelodr}-in {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+
+  // Progressbar
+  #{$prelodr}-progressbar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding-top: 3px;
+    width: 100%;
+    background-color: $prelodr-color-green;
+    animation: prelodr-background linear #{$prelodr-timing} infinite;
+  }
+
+  #{$prelodr}-progressbar:before,
+  #{$prelodr}-progressbar:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    width: 0;
+    background-color: $prelodr-color-green;
+    height: 4px;
+    content: '';
+    animation: prelodr-front linear #{$prelodr-timing} infinite;
+  }
+
+  #{$prelodr}-progressbar:before {
+    right: 50%;
+  }
+
+  #{$prelodr}-progressbar:after {
+    left: 50%;
+  }
+}
+
+@keyframes prelodr-background {
+  0%,
+  24.9% {
+    background-color: $prelodr-color-green;
+  }
+
+  25%,
+  49.9% {
+    background-color: $prelodr-color-red;
+  }
+
+  50%,
+  74.9% {
+    background-color: $prelodr-color-blue;
+  }
+
+  75%,
+  100% {
+    background-color: $prelodr-color-yellow;
+  }
+}
+
+@keyframes prelodr-front {
+  0% {
+    background-color: $prelodr-color-red;
+    width: 0;
+  }
+
+  24.9% {
+    background-color: $prelodr-color-red;
+    width: 50%;
+  }
+
+  25% {
+    background-color: $prelodr-color-blue;
+    width: 0;
+  }
+
+  49.9% {
+    background-color: $prelodr-color-blue;
+    width: 50%;
+  }
+
+  50% {
+    background-color: $prelodr-color-yellow;
+    width: 0;
+  }
+
+  74.9% {
+    background-color: $prelodr-color-yellow;
+    width: 50%;
+  }
+
+  75% {
+    background-color: $prelodr-color-green;
+    width: 0;
+  }
+
+  100% {
+    background-color: $prelodr-color-green;
+    width: 50%;
+  }
+}
