@@ -66,13 +66,6 @@
         </div>
 
         <div class="text-center font-weight-bold">
-
-            @if (session()->has('danger_message'))
-                <div class="alert alert-danger alert-dismissible">
-                    <h1 class="text-center"><i class="icon fas fa-ban"></i> {{ session()->get('danger_message') }}</h1>
-                </div>
-            @endif
-
             @if ($errors->any())
                 <div class="alert alert-danger">
                     @foreach ($errors->all() as $errorV)

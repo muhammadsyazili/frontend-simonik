@@ -359,7 +359,7 @@
                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                             <div class="row">
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                    <p class="text-center small">Left</p>
+                                                    <p class="text-center small">Left Filter</p>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                                     <div class="input-group input-group-sm mb-1">
@@ -420,7 +420,7 @@
                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                             <div class="row">
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                    <p class="text-center small">Right</p>
+                                                    <p class="text-center small">Right Filter</p>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                                     <div class="input-group input-group-sm mb-1">
@@ -498,7 +498,7 @@
                                             </div>
 
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                                <p class="text-center small">Left</p>
+                                                <p class="text-center small">Left Result</p>
 
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered table-sm" id="table">
@@ -554,7 +554,7 @@
                                             </div>
 
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                                <p class="text-center small">Right</p>
+                                                <p class="text-center small">Right Result</p>
 
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered table-sm" id="table">
