@@ -169,18 +169,18 @@
         }
 
         function units(level) {
+            $('.unit-dynamic-option').remove();
+
             if (level.length > 0) {
                 let host = $('meta[name="host"]').attr('content');
                 $.ajax({
                     type: 'GET',
                     url: `${host}/level/${level}/units`,
                     success: function(res) {
-                        $('.dynamic-option').remove();
-
                         if (res.data.length > 0) {
                             let html = '';
                             for (let i = 0; i < res.data.length; i++) {
-                                html += `<option class="dynamic-option" value="${res.data[i].slug}">${res.data[i].name}</option>`;
+                                html += `<option class="unit-dynamic-option" value="${res.data[i].slug}">${res.data[i].name}</option>`;
                             }
                             $('select[name="unit"]').append(html);
                         }
