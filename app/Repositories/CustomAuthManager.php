@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Cookie;
+use Symfony\Component\HttpFoundation\Response;
 
 class CustomAuthManager
 {
@@ -28,16 +29,12 @@ class CustomAuthManager
         }
 
         if ($response->clientError()) {
-            $this->errorMessage = $response->object()->message;
             $this->errors = $response->object()->errors;
-
             return false;
         }
 
         if ($response->serverError()) {
-            $this->errorMessage = $response->object()->message;
-            $this->errors = null;
-
+            $this->errorMessage = Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR];
             return false;
         }
 
@@ -69,26 +66,14 @@ class CustomAuthManager
     public function destroy(): bool
     {
         if (!is_null(Cookie::get('X-Token'))) {
+            //logging
+            $output = new \Symfony\Component\Console\Output\ConsoleOutput();
+            $output->writeln('destroy');
+
             if (Cookie::get('X-App') === 'simonik') {
                 $response = SIMONIK_sevices('/logout', 'get');
             } else if (Cookie::get('X-App') === 'fdx') {
                 $response = FDX_sevices('/logout', 'get');
-            } else {
-                return false;
-            }
-
-            if ($response->clientError()) {
-                $this->errorMessage = $response->object()->message;
-                $this->errors = $response->object()->errors;
-
-                return false;
-            }
-
-            if ($response->serverError()) {
-                $this->errorMessage = $response->object()->message;
-                $this->errors = null;
-
-                return false;
             }
 
             Cookie::queue(Cookie::forget('X-Token'));
@@ -99,6 +84,13 @@ class CustomAuthManager
             Cookie::queue(Cookie::forget('X-Unit'));
             Cookie::queue(Cookie::forget('X-App'));
             Cookie::queue(Cookie::forget('X-Credential'));
+
+            Session::flush();
+
+            if ($response->serverError()) {
+                $this->errorMessage = Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR];
+                return false;
+            }
         }
 
         Session::flush();

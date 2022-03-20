@@ -11,6 +11,10 @@ class AuthController extends Controller
     public function loginForm()
     {
         if (CustomAuth::check()) {
+            //logging
+            $output = new \Symfony\Component\Console\Output\ConsoleOutput();
+            $output->writeln('login check success');
+
             return redirect()->route('home');
         }
         return view('login');
@@ -36,7 +40,9 @@ class AuthController extends Controller
         if ($attempt) {
             return redirect()->route('home');
         } else {
-            Session::flash('danger_message', CustomAuth::getErrorMessage());
+            if (!is_null(CustomAuth::getErrorMessage())) {
+                Session::flash('danger_message', CustomAuth::getErrorMessage());
+            }
             return redirect()->route('login.form')->withErrors(CustomAuth::getErrors());
         }
     }

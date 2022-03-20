@@ -52,10 +52,6 @@ class IndicatorReferenceController extends Controller
 
         $validated = $request->validate($attributes, $messages);
 
-        //logging
-        $output = new \Symfony\Component\Console\Output\ConsoleOutput();
-        $output->writeln(sprintf('data: %s', json_encode($validated)));
-
         $response = SIMONIK_sevices('/indicators/reference', 'post', $validated);
 
         if ($response->clientError()) {
@@ -138,10 +134,6 @@ class IndicatorReferenceController extends Controller
         ];
 
         $validated = $request->validate($attributes, $messages);
-
-        //logging
-        $output = new \Symfony\Component\Console\Output\ConsoleOutput();
-        $output->writeln(sprintf('data: %s', json_encode($validated)));
 
         $response = SIMONIK_sevices('/indicators/reference', 'put', $validated);
 

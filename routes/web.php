@@ -28,7 +28,7 @@ Route::get('/login', [App\Http\Controllers\AuthController::class, 'loginForm'])
 Route::post('/login', [App\Http\Controllers\AuthController::class, 'login'])
     ->name('login');
 
-Route::get('/dashboard', [App\Http\Controllers\Simonik\DashboardController::class, 'dashboard_before_login'])
+Route::get('/dashboard', [App\Http\Controllers\Simonik\DashboardController::class, 'dashboard'])
     ->name('simonik.dashboard.before');
 
 //Logout
@@ -45,10 +45,18 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
             $response = SIMONIK_sevices("/user/$id/active/check", 'get', []);
 
             if ($response->clientError()) {
+                //logging
+                $output = new \Symfony\Component\Console\Output\ConsoleOutput();
+                $output->writeln('clientError');
+
                 return redirect()->route('logout')->withErrors($response->object()->errors);
             }
 
             if ($response->serverError()) {
+                //logging
+                $output = new \Symfony\Component\Console\Output\ConsoleOutput();
+                $output->writeln('clientError');
+
                 Session::flash('danger_message', Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR]);
                 return redirect()->route('logout');
             }

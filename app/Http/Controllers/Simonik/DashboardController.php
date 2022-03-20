@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DashboardController extends Controller
 {
-    public function dashboard_before_login(Request $request)
+    public function dashboard(Request $request)
     {
         $response = null;
         if (!is_null($request->query('level')) && !is_null($request->query('unit')) && !is_null($request->query('tahun')) && !is_null($request->query('bulan'))) {

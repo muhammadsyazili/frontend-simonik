@@ -179,18 +179,6 @@ class IndicatorController extends Controller
 
         $request->validate($attributes, $messages);
 
-        //logging
-        $output = new \Symfony\Component\Console\Output\ConsoleOutput();
-        $output->writeln(sprintf('indicator: %s', $request->post('indicator')));
-        $output->writeln(sprintf('type: %s', $request->post('type')));
-        $output->writeln(sprintf('dummy: %s', $request->post('dummy')));
-        $output->writeln(sprintf('reducing_factor: %s', $request->post('reducing_factor')));
-        $output->writeln(sprintf('polarity: %s', $request->post('polarity')));
-        $output->writeln(sprintf('formula: %s', $request->post('formula')));
-        $output->writeln(sprintf('measure: %s', $request->post('measure')));
-        $output->writeln(sprintf('validity: %s', json_encode($request->post('validity'))));
-        $output->writeln(sprintf('weight: %s', json_encode($request->post('weight'))));
-
         $data = [
             'indicator' => $request->post('indicator'),
             'type' => $request->post('type'),
