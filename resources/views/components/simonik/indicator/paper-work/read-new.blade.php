@@ -287,66 +287,68 @@
                         <div class="card-body">
                             <div class="row">
                                 @if (!is_null($response))
-                                    @if (!empty($response->data->permissions) && $response->data->permissions->indicator->create)
-                                        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-                                            <fieldset class="scheduler-border">
-                                                <legend class="scheduler-border"><i class="fas fa-key"></i> Indikator</legend>
-                                                <a href="{{ route('simonik.indicators.create') }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Create">Create</a>
-                                            </fieldset>
-                                        </div>
-                                    @endif
+                                    @if (!empty($response->data->permissions))
+                                        @if ($response->data->permissions->indicator->create)
+                                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                                <fieldset class="scheduler-border">
+                                                    <legend class="scheduler-border"><i class="fas fa-key"></i> Indikator</legend>
+                                                    <a href="{{ route('simonik.indicators.create') }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Create">Create</a>
+                                                </fieldset>
+                                            </div>
+                                        @endif
 
-                                    @if ((!empty($response->data->permissions) && $response->data->permissions->reference->create) || (!empty($response->data->permissions) && $response->data->permissions->reference->edit))
-                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                                            <fieldset class="scheduler-border">
-                                                <legend class="scheduler-border"><i class="fas fa-link"></i> Referensi - Indikator</legend>
+                                        @if ($response->data->permissions->reference->create || $response->data->permissions->reference->edit)
+                                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                <fieldset class="scheduler-border">
+                                                    <legend class="scheduler-border"><i class="fas fa-link"></i> Referensi - Indikator</legend>
 
-                                                <div class="row">
-                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                        @if (!empty($response->data->permissions) && $response->data->permissions->reference->create)
-                                                            <a href="{{ route('simonik.indicators.paper-work.reference.create') }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Create">Create</a>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                        @if (!empty($response->data->permissions) && $response->data->permissions->reference->edit && (request()->query('level') === 'super-master' || request()->query('unit') === 'master'))
-                                                            <a href="{{ route('simonik.indicators.paper-work.reference.edit', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Edit">Edit</a>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                            </fieldset>
-                                        </div>
-                                    @endif
-
-                                    @if ((!empty($response->data->permissions) && $response->data->permissions->paper_work->indicator->create) || (!empty($response->data->permissions) && $response->data->permissions->paper_work->indicator->edit) || (!empty($response->data->permissions) && $response->data->permissions->paper_work->indicator->delete))
-                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                            <fieldset class="scheduler-border">
-                                                <legend class="scheduler-border"><i class="fas fa-list-ol"></i> Kertas Kerja - Indikator</legend>
-
-                                                <div class="row">
-                                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                                                        @if (!empty($response->data->permissions) && $response->data->permissions->paper_work->indicator->create)
-                                                            <a href="{{ route('simonik.indicators.paper-work.create') }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Create">Create</a>
-                                                        @endif
-                                                    </div>
-
-                                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                                                        @if (!empty($response->data->permissions) && $response->data->permissions->paper_work->indicator->edit)
-                                                            @if (request()->query('level') !== 'super-master')
-                                                                <a href="{{ route('simonik.indicators.paper-work.edit', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Edit">Edit</a>
+                                                    <div class="row">
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                            @if ($response->data->permissions->reference->create)
+                                                                <a href="{{ route('simonik.indicators.paper-work.reference.create') }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Create">Create</a>
                                                             @endif
-                                                        @endif
-                                                    </div>
-
-                                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                                                        @if (!empty($response->data->permissions) && $response->data->permissions->paper_work->indicator->delete)
-                                                            @if (request()->query('level') !== 'super-master')
-                                                                <a href="{{ route('simonik.indicators.paper-work.delete', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Delete">Delete</a>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                            @if ($response->data->permissions->reference->edit && (request()->query('level') === 'super-master' || request()->query('unit') === 'master'))
+                                                                <a href="{{ route('simonik.indicators.paper-work.reference.edit', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Edit">Edit</a>
                                                             @endif
-                                                        @endif
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </fieldset>
-                                        </div>
+                                                </fieldset>
+                                            </div>
+                                        @endif
+
+                                        @if ($response->data->permissions->paper_work->indicator->create || $response->data->permissions->paper_work->indicator->edit || $response->data->permissions->paper_work->indicator->delete)
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                <fieldset class="scheduler-border">
+                                                    <legend class="scheduler-border"><i class="fas fa-list-ol"></i> Kertas Kerja - Indikator</legend>
+
+                                                    <div class="row">
+                                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                            @if ($response->data->permissions->paper_work->indicator->create)
+                                                                <a href="{{ route('simonik.indicators.paper-work.create') }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Create">Create</a>
+                                                            @endif
+                                                        </div>
+
+                                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                            @if ($response->data->permissions->paper_work->indicator->edit)
+                                                                @if (request()->query('level') !== 'super-master')
+                                                                    <a href="{{ route('simonik.indicators.paper-work.edit', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Edit">Edit</a>
+                                                                @endif
+                                                            @endif
+                                                        </div>
+
+                                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                            @if ($response->data->permissions->paper_work->indicator->delete)
+                                                                @if (request()->query('level') !== 'super-master')
+                                                                    <a href="{{ route('simonik.indicators.paper-work.delete', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" class="btn btn-block btn-info btn-sm mb-3" data-toggle="tooltip" data-placement="bottom" title="Delete">Delete</a>
+                                                                @endif
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        @endif
                                     @endif
                                 @endif
                             </div>
