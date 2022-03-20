@@ -45,9 +45,6 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
             $response = SIMONIK_sevices("/user/$id/active/check", 'get', []);
 
             if ($response->clientError()) {
-                //logging
-                $output = new \Symfony\Component\Console\Output\ConsoleOutput();
-                $output->writeln('clientError');
 
                 return redirect()->route('logout')->withErrors($response->object()->errors);
             }

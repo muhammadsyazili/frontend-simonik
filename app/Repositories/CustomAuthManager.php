@@ -66,10 +66,6 @@ class CustomAuthManager
     public function destroy(): bool
     {
         if (!is_null(Cookie::get('X-Token'))) {
-            //logging
-            $output = new \Symfony\Component\Console\Output\ConsoleOutput();
-            $output->writeln('destroy');
-
             if (Cookie::get('X-App') === 'simonik') {
                 $response = SIMONIK_sevices('/logout', 'get');
             } else if (Cookie::get('X-App') === 'fdx') {
