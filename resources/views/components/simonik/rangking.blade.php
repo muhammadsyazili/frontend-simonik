@@ -275,7 +275,7 @@
                                                                         {{ $unit->name }}
                                                                     </td>
                                                                     <td class="text-center {{ 'bg-'.$unit->color_status }}">
-                                                                        {{ number_format($unit->value, 2, ',', '') }} | {{ $unit->status }}
+                                                                        {{ number_format($unit->value, 2, ',', '') }}% | {{ $unit->status }}
                                                                     </td>
                                                                 </tr>
                                                             @endforeach

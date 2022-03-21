@@ -30,8 +30,8 @@
         <style>
             /* width */
             ::-webkit-scrollbar {
-                height: 7.5px;
-                width: 7.5px;
+                height: 10px;
+                width: 10px;
             }
 
             /* Track */
@@ -46,7 +46,7 @@
 
             /* Handle on hover */
             ::-webkit-scrollbar-thumb:hover {
-                background: #ffc107;
+                background: #138496;
             }
         </style>
         <!-- End : Custom Scrollbar -->

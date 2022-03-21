@@ -475,7 +475,7 @@
                                                 <thead class="small">
                                                     <tr class="first">
                                                         <th class="text-center" rowspan="2">INDIKATOR</th>
-                                                        <th class="text-center" rowspan="2">% PENCAPAIAN</th>
+                                                        <th class="text-center" rowspan="2">PENCAPAIAN</th>
                                                         <th class="text-center" rowspan="2">NILAI (CAPPING 100%)</th>
                                                         <th class="text-center" rowspan="2">NILAI (CAPPING 110%)</th>
                                                         <th class="text-center" rowspan="2">STATUS</th>

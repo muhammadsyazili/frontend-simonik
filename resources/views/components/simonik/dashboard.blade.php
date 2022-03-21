@@ -346,10 +346,6 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <p>{{ request()->cookie('X-User-Id') }}</p>
-                            <p>{{ request()->cookie('X-Token') }}</p>
-                            <p>{{ request()->cookie('X-Credential') }}</p>
-                            <p>{{ request()->cookie('X-App') }}</p>
                             @if (is_null($response))
                                 <h3 class="text-center font-weight-bold">Lakukan Filter</h3>
                             @else

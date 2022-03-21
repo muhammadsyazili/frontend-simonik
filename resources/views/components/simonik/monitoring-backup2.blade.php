@@ -1032,7 +1032,7 @@
                                                         <th class="text-center">REALISASI</th>
                                                         <th class="text-center">NILAI (CAPPING 100%)</th>
                                                         <th class="text-center">NILAI (CAPPING 110%)</th>
-                                                        <th class="text-center">% PENCAPAIAN & STATUS <span data-toggle="tooltip" data-placement="right" title="MASALAH : < 95%, HATI-HATI : &ge; 95% s.d < 100%, BAIK : &ge; 100%"><i class="fas fa-info-circle"></i></span></th>
+                                                        <th class="text-center">PENCAPAIAN & STATUS <span data-toggle="tooltip" data-placement="right" title="MASALAH : < 95%, HATI-HATI : &ge; 95% s.d < 100%, BAIK : &ge; 100%"><i class="fas fa-info-circle"></i></span></th>
                                                         <th class="text-center">CHART</th>
                                                     </tr>
                                                 </thead>

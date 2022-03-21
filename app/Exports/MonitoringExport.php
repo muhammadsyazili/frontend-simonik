@@ -42,7 +42,7 @@ class MonitoringExport implements FromCollection, WithHeadings, WithCustomStartC
             'Bobot Terhitung',
             "Target s.d $month",
             "Realisasi s.d $month",
-            '% Pencapaian',
+            'Pencapaian',
             'Nilai CAPPING 100',
             'Nilai CAPPING 110',
             'Status',

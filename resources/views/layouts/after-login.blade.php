@@ -30,8 +30,8 @@
         <style>
             /* width */
             ::-webkit-scrollbar {
-                height: 10px;
-                width: 10px;
+                height: 12.5px;
+                width: 12.5px;
             }
 
             /* Track */
@@ -42,12 +42,12 @@
             /* Handle */
             ::-webkit-scrollbar-thumb {
                 background: #17a2b8;
-                border-radius: 10px;
+                /* border-radius: 10px; */
             }
 
             /* Handle on hover */
             ::-webkit-scrollbar-thumb:hover {
-                background: #ffc107;
+                background: #138496;
             }
         </style>
         <!-- End : Custom Scrollbar -->

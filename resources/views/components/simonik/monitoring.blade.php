@@ -576,7 +576,7 @@
                                                                 <th class="text-center" rowspan="2">TARGET</th>
                                                                 <th class="text-center" rowspan="2">REALISASI</th>
                                                                 <th class="text-center" colspan="2">NILAI CAPPING</th>
-                                                                <th class="text-center" rowspan="2">PENCAPAIAN & STATUS <span data-toggle="tooltip" data-placement="right" title="MASALAH : < 95%, HATI-HATI : &ge; 95% s.d < 100%, BAIK : &ge; 100%"><i class="fas fa-info-circle"></i></span></th>
+                                                                <th class="text-center" rowspan="2">PENCAPAIAN & STATUS <span data-toggle="tooltip" data-placement="right" title="MASALAH : PENCAPAIAN < 95%, HATI-HATI : PENCAPAIAN &ge; 95% s.d < 100%, BAIK : PENCAPAIAN &ge; 100%"><i class="fas fa-info-circle"></i></span></th>
                                                                 <th class="text-center" rowspan="2">CHART</th>
                                                             </tr>
                                                             <tr class="second">
