@@ -393,10 +393,10 @@
                                                                 @foreach ($response->data->indicators->partials as $indicator)
                                                                     @if (in_array($indicator->status_symbol, ['-1', '0'], true))
                                                                         <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
-                                                                            <td class="small">
+                                                                            <td>
                                                                                 <p class="reset">{{ $indicator->indicator }} | <span class="badge badge-info">{{ $indicator->type }}</span> | Satuan: {{ $indicator->measure }} | Polaritas: <span class="badge badge-secondary">{!! $indicator->polarity !!}</span></p>
                                                                             </td>
-                                                                            <td class="small text-center {{ 'bg-'.$indicator->status_color }}">
+                                                                            <td class="text-center {{ 'bg-'.$indicator->status_color }}">
                                                                                 @if (!is_null($indicator->achievement))
                                                                                     <p class="font-weight-bold reset">{{ number_format($indicator->achievement, 2, ',', '') }} % | {{ $indicator->status }}</p>
                                                                                 @endif
