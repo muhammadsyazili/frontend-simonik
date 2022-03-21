@@ -358,7 +358,7 @@
                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                             <div class="row">
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                    <p class="text-center small">Left Filter</p>
+                                                    <p class="text-center small font-weight-bold">Left Filter</p>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                                     <div class="input-group input-group-sm mb-1">
@@ -419,7 +419,7 @@
                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                             <div class="row">
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                    <p class="text-center small">Right Filter</p>
+                                                    <p class="text-center small font-weight-bold">Right Filter</p>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                                     <div class="input-group input-group-sm mb-1">
@@ -497,7 +497,8 @@
                                             </div>
 
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                                <p class="text-center small">Left Result</p>
+                                                <p class="reset text-center small font-weight-bold">Left Result</p>
+                                                <p class="reset text-center small"><small>UNIT KERJA : {{ request()->query('unit_left') == null ? '-' : cast_to_upper(request()->query('unit_left')) }} - TAHUN : {{ request()->query('tahun_left') == null ? '-' : cast_to_upper(request()->query('tahun_left')) }} - BULAN : {{ request()->query('bulan_left') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan_left')) }}</small></p>
 
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered table-sm" id="table">
@@ -553,7 +554,8 @@
                                             </div>
 
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                                <p class="text-center small">Right Result</p>
+                                                <p class="reset text-center small font-weight-bold">Right Result</p>
+                                                <p class="reset text-center small"><small>UNIT KERJA : {{ request()->query('unit_right') == null ? '-' : cast_to_upper(request()->query('unit_right')) }} - TAHUN : {{ request()->query('tahun_right') == null ? '-' : cast_to_upper(request()->query('tahun_right')) }} - BULAN : {{ request()->query('bulan_right') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan_right')) }}</small></p>
 
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered table-sm" id="table">
