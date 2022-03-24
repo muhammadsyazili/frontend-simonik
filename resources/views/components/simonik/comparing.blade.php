@@ -95,103 +95,40 @@
         let user = $('meta[name="user"]').attr('content');
 
         $(document).ready(function() {
-            let id_left = $('meta[name="id_left"]').attr('content');
-            let level_left = $('meta[name="level_left"]').attr('content');
-            let unit_left = $('meta[name="unit_left"]').attr('content');
-            let bulan_left = $('meta[name="bulan_left"]').attr('content');
-            let tahun_left = $('meta[name="tahun_left"]').attr('content');
-
-            let id_right = $('meta[name="id_right"]').attr('content');
-            let level_right = $('meta[name="level_right"]').attr('content');
-            let unit_right = $('meta[name="unit_right"]').attr('content');
-            let bulan_right = $('meta[name="bulan_right"]').attr('content');
-            let tahun_right = $('meta[name="tahun_right"]').attr('content');
-
             levels('left');
             levels('right')
 
-            units(level_left, 'left');
-            units(level_right, 'right');
+            units($('meta[name="level_left"]').attr('content'), 'left');
+            units($('meta[name="level_right"]').attr('content'), 'right');
 
-            indicators(level_left, unit_left, tahun_left, 'left');
-            indicators(level_right, unit_right, tahun_right, 'right');
+            indicators($('meta[name="level_left"]').attr('content'), $('meta[name="unit_left"]').attr('content'), $('meta[name="tahun_left"]').attr('content'), 'left');
+            indicators($('meta[name="level_right"]').attr('content'), $('meta[name="unit_right"]').attr('content'), $('meta[name="tahun_right"]').attr('content'), 'right');
 
-            //mapping option selected in filter from query params
-            setTimeout(function() {
-                $('select[name="id_left"] option').each(function() {
-                    if ($(this).val() == id_left)
-                        $(this).attr("selected", "selected");
-                });
-                $('select[name="level_left"] option').each(function() {
-                    if ($(this).val() == level_left)
-                        $(this).attr("selected", "selected");
-                });
-                $('select[name="unit_left"] option').each(function() {
-                    if ($(this).val() == unit_left)
-                        $(this).attr("selected", "selected");
-                });
-                $('select[name="bulan_left"] option').each(function() {
-                    if ($(this).val() == bulan_left)
-                        $(this).attr("selected", "selected");
-                });
-                $('input[name="tahun_left"]').val(tahun_left);
+            $('select[name="bulan_left"] option').each(function() {
+                if ($(this).val() == $('meta[name="bulan_left"]').attr('content'))
+                    $(this).attr("selected", "selected");
+            });
+            $('input[name="tahun_left"]').val($('meta[name="tahun_left"]').attr('content'));
 
-                $('select[name="id_right"] option').each(function() {
-                    if ($(this).val() == id_right)
-                        $(this).attr("selected", "selected");
-                });
-                $('select[name="level_right"] option').each(function() {
-                    if ($(this).val() == level_right)
-                        $(this).attr("selected", "selected");
-                });
-                $('select[name="unit_right"] option').each(function() {
-                    if ($(this).val() == unit_right)
-                        $(this).attr("selected", "selected");
-                });
-                $('select[name="bulan_right"] option').each(function() {
-                    if ($(this).val() == bulan_right)
-                        $(this).attr("selected", "selected");
-                });
-                $('input[name="tahun_right"]').val(tahun_right);
-            }, 5000);
+            $('select[name="bulan_right"] option').each(function() {
+                if ($(this).val() == $('meta[name="bulan_right"]').attr('content'))
+                    $(this).attr("selected", "selected");
+            });
+            $('input[name="tahun_right"]').val($('meta[name="tahun_right"]').attr('content'));
         });
 
         $('select[name="level_left"]').click(function() {
             units($(this).val(), 'left');
-
-            setTimeout(function() {
-                let selected_level = $('select[name="level_left"] option').filter(':selected').val();
-                let selected_unit = $('select[name="unit_left"] option').filter(':selected').val();
-                let tahun_value = $('input[name="tahun_left"]').val();
-
-                indicators(selected_level, selected_unit, tahun_value, 'left');
-            }, 5000);
         });
         $('select[name="level_right"]').click(function() {
             units($(this).val(), 'right');
-
-            setTimeout(function() {
-                let selected_level = $('select[name="level_right"] option').filter(':selected').val();
-                let selected_unit = $('select[name="unit_right"] option').filter(':selected').val();
-                let tahun_value = $('input[name="tahun_right"]').val();
-
-                indicators(selected_level, selected_unit, tahun_value, 'right');
-            }, 5000);
         });
 
         $('select[name="unit_left"]').click(function() {
-            let selected_level = $('select[name="level_left"] option').filter(':selected').val();
-            let selected_unit = $(this).val();
-            let tahun_value = $('input[name="tahun_left"]').val();
-
-            indicators(selected_level, selected_unit, tahun_value, 'left');
+            indicators($('select[name="level_left"] option').filter(':selected').val(), $(this).val(), $('input[name="tahun_left"]').val(), 'left');
         });
         $('select[name="unit_right"]').click(function() {
-            let selected_level = $('select[name="level_right"] option').filter(':selected').val();
-            let selected_unit = $(this).val();
-            let tahun_value = $('input[name="tahun_right"]').val();
-
-            indicators(selected_level, selected_unit, tahun_value, 'right');
+            indicators($('select[name="level_right"] option').filter(':selected').val(), $(this).val(), $('input[name="tahun_right"]').val(), 'right');
         });
 
         $('input[name="tahun_left"]').keyup(function() {
@@ -231,6 +168,12 @@
                 },
                 error: function(res) {
                     console.log(`Level : ${res.responseJSON.message}`);
+                },
+                complete: function () {
+                    $(`select[name="level_${position}"] option`).each(function() {
+                        if ($(this).val() == $(`meta[name="level_${position}"]`).attr('content'))
+                            $(this).attr("selected", "selected");
+                    });
                 }
             });
         }
@@ -257,6 +200,14 @@
                     },
                     error: function(res) {
                         console.log(`Unit : ${res.responseJSON.message}`);
+                    },
+                    complete: function () {
+                        $(`select[name="unit_${position}"] option`).each(function() {
+                            if ($(this).val() == $(`meta[name="unit_${position}"]`).attr('content'))
+                                $(this).attr("selected", "selected");
+                        });
+
+                        indicators($(`select[name="level_${position}"] option`).filter(`:selected`).val(), $(`select[name="unit_${position}"] option`).filter(`:selected`).val(), $(`input[name="tahun_${position}"]`).val(), position);
                     }
                 });
             }
@@ -284,6 +235,12 @@
                     },
                     error: function(res) {
                         console.log(`Level : ${res.responseJSON.message}`);
+                    },
+                    complete: function () {
+                        $(`select[name="id_${position}"] option`).each(function() {
+                            if ($(this).val() == $(`meta[name="id_${position}"]`).attr('content'))
+                                $(this).attr("selected", "selected");
+                        });
                     }
                 });
             }
