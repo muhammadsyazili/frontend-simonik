@@ -103,18 +103,11 @@
         $(document).ready(function() {
             level_categories()
 
-            //mapping option selected in filter from query params
-            setTimeout(function() {
-                $('select[name="kategori"] option').each(function() {
-                    if ($(this).val() == $('meta[name="kategori"]').attr('content'))
-                        $(this).attr("selected", "selected");
-                });
-                $('select[name="bulan"] option').each(function() {
-                    if ($(this).val() == $('meta[name="bulan"]').attr('content'))
-                        $(this).attr("selected", "selected");
-                });
-                $('input[name="tahun"]').val($('meta[name="tahun"]').attr('content'));
-            }, 5000);
+            $('select[name="bulan"] option').each(function() {
+                if ($(this).val() == $('meta[name="bulan"]').attr('content'))
+                    $(this).attr("selected", "selected");
+            });
+            $('input[name="tahun"]').val($('meta[name="tahun"]').attr('content'));
         });
 
         function level_categories() {
@@ -134,6 +127,12 @@
                 },
                 error: function(res) {
                     console.log(`Level : ${res.responseJSON.message}`);
+                },
+                complete: function () {
+                    $('select[name="kategori"] option').each(function() {
+                        if ($(this).val() == $('meta[name="kategori"]').attr('content'))
+                            $(this).attr("selected", "selected");
+                    });
                 }
             });
         }

@@ -152,20 +152,9 @@
             levels();
             units($('meta[name="level"]').attr('content'));
 
-            //mapping option selected in filter from query params
-            setTimeout(function() {
-                $('select[name="level"] option').each(function() {
-                    if ($(this).val() == $('meta[name="level"]').attr('content'))
-                        $(this).attr("selected", "selected");
-                });
-                $('select[name="unit"] option').each(function() {
-                    if ($(this).val() == $('meta[name="unit"]').attr('content'))
-                        $(this).attr("selected", "selected");
-                });
-                $('input[name="tahun"]').val($('meta[name="tahun"]').attr('content'));
+            $('input[name="tahun"]').val($('meta[name="tahun"]').attr('content'));
 
-                disablator($('select[name="level"]').val());
-            }, 5000);
+            disablator($('select[name="level"]').val());
         });
 
         $('select[name="level"]').click(function() {
@@ -199,6 +188,12 @@
                 },
                 error: function(res) {
                     console.log(`Level : ${res.responseJSON.message}`);
+                },
+                complete: function () {
+                    $('select[name="level"] option').each(function() {
+                        if ($(this).val() == $('meta[name="level"]').attr('content'))
+                            $(this).attr("selected", "selected");
+                    });
                 }
             });
         }
@@ -222,6 +217,12 @@
                     },
                     error: function(res) {
                         console.log(`Unit : ${res.responseJSON.message}`);
+                    },
+                    complete: function () {
+                        $('select[name="unit"] option').each(function() {
+                            if ($(this).val() == $('meta[name="unit"]').attr('content'))
+                                $(this).attr("selected", "selected");
+                        });
                     }
                 });
             }
