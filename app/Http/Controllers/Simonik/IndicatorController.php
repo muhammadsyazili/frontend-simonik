@@ -203,7 +203,7 @@ class IndicatorController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.indicators.paper-work.index', ['level' => $request->query('level'), 'unit' => $request->query('unit'), 'tahun' => $request->query('tahun')]);
+        return redirect()->route('simonik.indicators.paper-work.index', ['level' => $request->level, 'unit' => $request->unit, 'tahun' => $request->tahun]);
     }
 
     /**
@@ -237,6 +237,6 @@ class IndicatorController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.indicators.paper-work.index', ['level' => $request->query('level'), 'unit' => $request->query('unit'), 'tahun' => $request->query('tahun')]);
+        return redirect()->route('simonik.indicators.paper-work.index', ['level' => $request->level, 'unit' => $request->unit, 'tahun' => $request->tahun]);
     }
 }
