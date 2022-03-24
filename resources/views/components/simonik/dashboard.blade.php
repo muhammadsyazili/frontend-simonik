@@ -188,27 +188,11 @@
     {{-- Request Level & Unit --}}
     <script>
         $(document).ready(function() {
-            // levels();
-            // units($('meta[name="level"]').attr('content'));
+            levels();
+            units($('meta[name="level"]').attr('content'));
 
-            // //mapping option selected in filter from query params
-            // setTimeout(function() {
-            //     $('select[name="level"] option').each(function() {
-            //         if ($(this).val() == $('meta[name="level"]').attr('content'))
-            //             $(this).attr("selected", "selected");
-            //     });
-            //     $('select[name="unit"] option').each(function() {
-            //         if ($(this).val() == $('meta[name="unit"]').attr('content'))
-            //             $(this).attr("selected", "selected");
-            //     });
-            //     $('select[name="bulan"] option').each(function() {
-            //         if ($(this).val() == $('meta[name="bulan"]').attr('content'))
-            //             $(this).attr("selected", "selected");
-            //     });
-            //     $('input[name="tahun"]').val($('meta[name="tahun"]').attr('content'));
-            // }, 5000);
-
-            $.when(levels(), units($('meta[name="level"]').attr('content'))).done(function() {
+            //mapping option selected in filter from query params
+            setTimeout(function() {
                 $('select[name="level"] option').each(function() {
                     if ($(this).val() == $('meta[name="level"]').attr('content'))
                         $(this).attr("selected", "selected");
@@ -222,7 +206,7 @@
                         $(this).attr("selected", "selected");
                 });
                 $('input[name="tahun"]').val($('meta[name="tahun"]').attr('content'));
-            });
+            }, 5000);
         });
 
         $('select[name="level"]').click(function() {
