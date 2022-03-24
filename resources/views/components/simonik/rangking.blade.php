@@ -114,7 +114,7 @@
                         $(this).attr("selected", "selected");
                 });
                 $('input[name="tahun"]').val($('meta[name="tahun"]').attr('content'));
-            }, 2000);
+            }, 5000);
         });
 
         function level_categories() {

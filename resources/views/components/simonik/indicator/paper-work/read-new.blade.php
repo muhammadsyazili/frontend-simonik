@@ -165,7 +165,7 @@
                 $('input[name="tahun"]').val($('meta[name="tahun"]').attr('content'));
 
                 disablator($('select[name="level"]').val());
-            }, 2000);
+            }, 5000);
         });
 
         $('select[name="level"]').click(function() {
