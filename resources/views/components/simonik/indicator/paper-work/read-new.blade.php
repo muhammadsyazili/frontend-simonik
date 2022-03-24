@@ -153,19 +153,11 @@
             units($('meta[name="level"]').attr('content'));
 
             $('input[name="tahun"]').val($('meta[name="tahun"]').attr('content'));
-
-            disablator($('select[name="level"]').val());
         });
 
         $('select[name="level"]').click(function() {
-            disablator($(this).val());
             units($(this).val());
         });
-
-        function disablator(val) {
-            let disabled = val == 'super-master' ? true : false;
-            $('input[name="tahun"]').prop("disabled", disabled);
-        }
 
         function levels() {
             let host = $('meta[name="host"]').attr('content');
@@ -194,6 +186,8 @@
                         if ($(this).val() == $('meta[name="level"]').attr('content'))
                             $(this).attr("selected", "selected");
                     });
+
+                    disablator($('select[name="level"]').val());
                 }
             });
         }
@@ -223,9 +217,16 @@
                             if ($(this).val() == $('meta[name="unit"]').attr('content'))
                                 $(this).attr("selected", "selected");
                         });
+
+                        disablator($('select[name="level"]').val());
                     }
                 });
             }
+        }
+
+        function disablator(val) {
+            let disabled = val == 'super-master' ? true : false;
+            $('input[name="tahun"]').prop("disabled", disabled);
         }
     </script>
 @endpush
@@ -440,9 +441,7 @@
                                                     <tbody id="myTable" class="small">
                                                         @foreach ($response->data->indicators as $indicator)
                                                             <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
-                                                                <td class="text-center">
-                                                                    <span><i class="fas fa-arrows-alt-v"></i></span>
-                                                                </td>
+                                                                <td class="text-center"></td>
                                                                 <td>
                                                                     <p>{{ $indicator->indicator }} <span class="badge badge-info">{{ $indicator->type }}</span></p>
                                                                 </td>

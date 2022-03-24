@@ -216,7 +216,8 @@
                                                                 <input type="checkbox" class="check-item" name="indicators[]" value="{{ $indicator->id }}" @if ($indicator->selected) checked @endif>
                                                             </td>
                                                             <td>
-                                                                <p>{{ $indicator->indicator }} <span class="badge badge-info">{{ $indicator->type }}</span></p>
+                                                                <p class="reset">{{ $indicator->indicator }} <span class="badge badge-info">{{ $indicator->type }}</span></p>
+                                                                <p class="reset small text-info"><small>Create At: {{ $indicator->created_at }}</small></p>
                                                             </td>
                                                             <td class="small">
                                                                 {{ $indicator->formula }}

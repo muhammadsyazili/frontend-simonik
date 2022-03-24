@@ -203,7 +203,8 @@ class IndicatorController extends Controller
         }
 
         Session::flash('info_message', $response->object()->message);
-        return redirect()->route('simonik.indicators.paper-work.index', ['level' => $request->level, 'unit' => $request->unit, 'tahun' => $request->tahun]);
+
+        return $response->object()->data->referenced ? redirect()->route('simonik.indicators.paper-work.index', ['level' => $request->level, 'unit' => $request->unit, 'tahun' => $request->tahun]) : redirect()->route('simonik.indicators.paper-work.reference.create');
     }
 
     /**

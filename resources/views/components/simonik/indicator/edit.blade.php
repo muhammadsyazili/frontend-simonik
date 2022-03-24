@@ -170,7 +170,7 @@
                     </div>
                     <!-- end : card-header -->
 
-                    <form action="{{ route('simonik.indicators.update', ['id' => $response->data->indicator->id, 'level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun')]) }}" method="post">
+                    <form action="{{ route('simonik.indicators.update', ['id' => $response->data->indicator->id, 'level' => request()->query('level'), 'unit' => request()->query('unit'), 'tahun' => request()->query('tahun')]) }}" method="post">
                         @method('put')
                         @csrf
 
