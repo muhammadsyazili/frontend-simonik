@@ -62,7 +62,7 @@
 @section('content')
     <div class="login-box">
         <div class="login-logo">
-            <img src="{{ asset('icon-brand.png') }}" alt="icon-brand" width="30%">
+            <img src="{{ asset('icon-brand.svg') }}" alt="icon-brand" width="30%">
         </div>
 
         <div class="text-center font-weight-bold">
@@ -71,7 +71,7 @@
                     <h1 class="text-center"><i class="icon fas fa-ban"></i> {{ session()->get('danger_message') }}</h1>
                 </div>
             @endif
-            
+
             @if ($errors->any())
                 <div class="alert alert-danger">
                     @foreach ($errors->all() as $errorV)

@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-info elevation-4 sidebar-light-info">
   <!-- Brand Logo -->
   <a href="#" class="brand-link">
-    <img src="{{ asset('icon-brand.png') }}" alt="icon-brand" class="brand-image">
+    <img src="{{ asset('icon-brand.svg') }}" alt="icon-brand" class="brand-image">
     <span class="brand-text font-weight-light" style="color: white;">SIMONIK</span>
   </a>
   <!-- End Brand Logo -->
@@ -36,7 +36,7 @@
                     <p>Kertas Kerja <i class="right fas fa-angle-left"></i></p>
                 </a>
                 <ul class="nav nav-treeview">
-                    @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin', 'data-entry']))
+                    @if (in_array(request()->cookie('X-Role'), ['super-admin', 'admin']))
                         <li class="nav-item">
                             <a href="{{ route('simonik.indicators.paper-work.index') }}" class="nav-link {{ (request()->segment(2) === 'indicators') ? 'active' : '' }}">
                             <i class="nav-icon far fa-circle text-warning"></i>
