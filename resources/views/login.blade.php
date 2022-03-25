@@ -62,7 +62,7 @@
 @section('content')
     <div class="login-box">
         <div class="login-logo">
-            <img src="{{ asset('icon-brand.svg') }}" alt="icon-brand" width="30%">
+            <img src="{{ asset('icon-brand.png') }}" alt="icon-brand" width="30%">
         </div>
 
         <div class="text-center font-weight-bold">
@@ -110,9 +110,9 @@
         </div>
 
         <div class="lockscreen-footer text-center">
-            <i class="far fa-copyright"></i> PT. PLN(Persero) UIW S2JB - RENUS
-            <br />
-            {{ now()->year }}
+            <img src="{{ asset('powered.png') }}" alt="icon-brand" width="35%">
+            <p class="reset small text-center"><i class="far fa-copyright"></i> PT. PLN(Persero) UIW S2JB - RENUS</p>
+            <p class="reset small text-center">{{ now()->year }}</p>
         </div>
     </div>
 @endsection

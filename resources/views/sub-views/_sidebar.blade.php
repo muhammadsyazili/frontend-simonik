@@ -1,25 +1,18 @@
 <aside class="main-sidebar sidebar-dark-info elevation-4 sidebar-light-info">
-  <!-- Brand Logo -->
-  <a href="#" class="brand-link">
-    <img src="{{ asset('icon-brand.svg') }}" alt="icon-brand" class="brand-image">
-    <span class="brand-text font-weight-light" style="color: white;">SIMONIK</span>
-  </a>
-  <!-- End Brand Logo -->
-
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar User Panel -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
         <div class="image">
-            <h1 class="text-center"><i class="fas fa-user-circle"></i></h1>
+            <img src="{{ asset('icon-brand-without-text.png') }}" alt="User Image">
         </div>
         <div class="info">
             <a href="#" class="text-light d-block"><small><i class="fas fa-at"></i> {{ request()->cookie('X-Username') }}</small></a>
-            <a href="#" class="text-light d-block"><small>Role: {{ request()->cookie('X-Role') }}</small></a>
+            <a href="#" class="text-light d-block small"><small>Role: {{ request()->cookie('X-Role') }}</small></a>
             @if (request()->cookie('X-Role') !== 'super-admin')
-            <a href="#" class="text-light d-block"><small>Unit Kerja: {{ request()->cookie('X-Unit') }}</small></a>
+            <a href="#" class="text-light d-block small"><small>Unit Kerja: {{ request()->cookie('X-Unit') }}</small></a>
             @endif
-            <a href="{{ route('simonik.user.password.change.form', ['id' => request()->cookie('X-User-Id')]) }}" class="badge badge-warning text-dark">Change Password</a>
+            <a href="{{ route('simonik.user.password.change.form', ['id' => request()->cookie('X-User-Id')]) }}" class="badge badge-warning text-dark"><span class="small font-weight-bold">Change Password</span></a>
         </div>
     </div>
     <!-- End Sidebar User Panel -->
@@ -29,7 +22,7 @@
       <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent text-sm" data-widget="treeview" role="menu" data-accordion="false">
 
         @if (request()->cookie('X-App') === 'simonik')
-            <li class="nav-header text-light">SIMONIK</li>
+            <li class="nav-header text-light"><img src="{{ asset('icon-brand-without-image.png') }}" alt="icon-brand" width="62.5%"></li>
             <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link">
                     <i class="fas fa-circle nav-icon text-warning"></i>
