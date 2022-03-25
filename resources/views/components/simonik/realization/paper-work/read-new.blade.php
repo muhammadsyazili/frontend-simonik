@@ -465,7 +465,7 @@
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->jan->value))
                                                                         @if (!is_null($indicator->targets->jan->value))
-                                                                            <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group input-group-sm mb-1">
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
@@ -473,7 +473,7 @@
                                                                             </div>
                                                                         @endif
 
-                                                                        <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group input-group-sm mb-1">
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
@@ -485,14 +485,14 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->jan->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->jan->status }}</span></p>
+                                                                        <p class="reset text-info small">Last update: {{ $indicator->realizations->jan->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->jan->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->feb->value))
                                                                         @if (!is_null($indicator->targets->feb->value))
-                                                                            <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group input-group-sm mb-1">
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
@@ -500,7 +500,7 @@
                                                                             </div>
                                                                         @endif
 
-                                                                        <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group input-group-sm mb-1">
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
@@ -512,14 +512,14 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->feb->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->feb->status }}</span></p>
+                                                                        <p class="reset text-info small">Last update: {{ $indicator->realizations->feb->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->feb->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->mar->value))
                                                                         @if (!is_null($indicator->targets->mar->value))
-                                                                            <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group input-group-sm mb-1">
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
@@ -527,7 +527,7 @@
                                                                             </div>
                                                                         @endif
 
-                                                                        <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group input-group-sm mb-1">
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
@@ -539,14 +539,14 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->mar->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->mar->status }}</span></p>
+                                                                        <p class="reset text-info small">Last update: {{ $indicator->realizations->mar->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->mar->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->apr->value))
                                                                         @if (!is_null($indicator->targets->apr->value))
-                                                                            <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group input-group-sm mb-1">
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
@@ -554,7 +554,7 @@
                                                                             </div>
                                                                         @endif
 
-                                                                        <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group input-group-sm mb-1">
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
@@ -566,14 +566,14 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->apr->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->apr->status }}</span></p>
+                                                                        <p class="reset text-info small">Last update: {{ $indicator->realizations->apr->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->apr->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->may->value))
                                                                         @if (!is_null($indicator->targets->may->value))
-                                                                            <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group input-group-sm mb-1">
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
@@ -581,7 +581,7 @@
                                                                             </div>
                                                                         @endif
 
-                                                                        <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group input-group-sm mb-1">
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
@@ -593,14 +593,14 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->may->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->may->status }}</span></p>
+                                                                        <p class="reset text-info small">Last update: {{ $indicator->realizations->may->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->may->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->jun->value))
                                                                         @if (!is_null($indicator->targets->jun->value))
-                                                                            <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group input-group-sm mb-1">
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
@@ -608,7 +608,7 @@
                                                                             </div>
                                                                         @endif
 
-                                                                        <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group input-group-sm mb-1">
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
@@ -620,14 +620,14 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->jun->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->jun->status }}</span></p>
+                                                                        <p class="reset text-info small">Last update: {{ $indicator->realizations->jun->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->jun->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->jul->value))
                                                                         @if (!is_null($indicator->targets->jul->value))
-                                                                            <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group input-group-sm mb-1">
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
@@ -635,7 +635,7 @@
                                                                             </div>
                                                                         @endif
 
-                                                                        <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group input-group-sm mb-1">
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
@@ -647,14 +647,14 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->jul->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->jul->status }}</span></p>
+                                                                        <p class="reset text-info small">Last update: {{ $indicator->realizations->jul->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->jul->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->aug->value))
                                                                         @if (!is_null($indicator->targets->aug->value))
-                                                                            <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group input-group-sm mb-1">
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
@@ -662,7 +662,7 @@
                                                                             </div>
                                                                         @endif
 
-                                                                        <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group input-group-sm mb-1">
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
@@ -674,14 +674,14 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->aug->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->aug->status }}</span></p>
+                                                                        <p class="reset text-info small">Last update: {{ $indicator->realizations->aug->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->aug->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->sep->value))
                                                                         @if (!is_null($indicator->targets->sep->value))
-                                                                            <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group input-group-sm mb-1">
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
@@ -689,7 +689,7 @@
                                                                             </div>
                                                                         @endif
 
-                                                                        <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group input-group-sm mb-1">
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
@@ -701,14 +701,14 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->sep->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->sep->status }}</span></p>
+                                                                        <p class="reset text-info small">Last update: {{ $indicator->realizations->sep->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->sep->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->oct->value))
                                                                         @if (!is_null($indicator->targets->oct->value))
-                                                                            <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group input-group-sm mb-1">
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
@@ -716,7 +716,7 @@
                                                                             </div>
                                                                         @endif
 
-                                                                        <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group input-group-sm mb-1">
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
@@ -728,14 +728,14 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->oct->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->oct->status }}</span></p>
+                                                                        <p class="reset text-info small">Last update: {{ $indicator->realizations->oct->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->oct->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->nov->value))
                                                                         @if (!is_null($indicator->targets->nov->value))
-                                                                            <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group input-group-sm mb-1">
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
@@ -743,7 +743,7 @@
                                                                             </div>
                                                                         @endif
 
-                                                                        <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group input-group-sm mb-1">
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
@@ -755,14 +755,14 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->nov->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->nov->status }}</span></p>
+                                                                        <p class="reset text-info small">Last update: {{ $indicator->realizations->nov->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->nov->status }}</span></p>
                                                                     @endif
                                                                 </td>
 
                                                                 <td class="text-center">
                                                                     @if (!is_null($indicator->realizations->dec->value))
                                                                         @if (!is_null($indicator->targets->dec->value))
-                                                                            <div class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group input-group-sm mb-1">
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text">T</span>
                                                                                 </div>
@@ -770,7 +770,7 @@
                                                                             </div>
                                                                         @endif
 
-                                                                        <div class="input-group input-group-sm mb-3">
+                                                                        <div class="input-group input-group-sm mb-1">
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text">R</span>
                                                                             </div>
@@ -782,7 +782,7 @@
                                                                             @endif
                                                                         </div>
 
-                                                                        <p class="text-info small">Last update: {{ $indicator->realizations->dec->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->dec->status }}</span></p>
+                                                                        <p class="reset text-info small">Last update: {{ $indicator->realizations->dec->updated_at }} <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="bottom" title="D: Realisasi Masih Default, M: Realisasi Sudah Modified">{{ $indicator->realizations->dec->status }}</span></p>
                                                                     @endif
                                                                 </td>
                                                                 {{-- ------------------------------------------------------------------------------ --}}
