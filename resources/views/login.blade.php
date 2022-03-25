@@ -102,7 +102,7 @@
 
                 <div class="form-group text-left row">
                     <div class="offset-sm-2 col-sm-10">
-                        <input type="hidden" name="app" value="simonik">
+                        <input type="hidden" name="app" value="semongko">
                         <button type="submit" class="btn btn-info btn-sm" data-intro="Lanjut <strong>Login</strong> !">Login</button>
                     </div>
                 </div>

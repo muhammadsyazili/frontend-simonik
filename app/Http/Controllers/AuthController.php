@@ -25,7 +25,7 @@ class AuthController extends Controller
         $attributes = [
             'username' => ['required', 'string'],
             'password' => ['required', 'string'],
-            'app' => ['required', 'in:simonik,fdx'],
+            'app' => ['required', 'in:semongko,fdx'],
         ];
 
         $messages = [
@@ -50,6 +50,6 @@ class AuthController extends Controller
     public function logout()
     {
         CustomAuth::destroy();
-        return redirect()->route('simonik.dashboard.before');
+        return redirect()->route('semongko.dashboard.before');
     }
 }

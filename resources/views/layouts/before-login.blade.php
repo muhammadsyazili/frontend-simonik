@@ -10,7 +10,7 @@
         <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('favicon.ico') }}">
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 
-        <title>SIMONIK | @yield('title')</title>
+        <title>SEMONGKO | @yield('title')</title>
 
         <!-- Intro -->
         <link href="https://unpkg.com/intro.js/minified/introjs.min.css" rel="stylesheet">

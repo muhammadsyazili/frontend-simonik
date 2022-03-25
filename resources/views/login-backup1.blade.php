@@ -210,7 +210,7 @@
                     <div class="offset-sm-2 col-sm-10">
                         <div class="form-check-inline">
                             <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="app" value="simonik" checked>SIMONIK
+                            <input type="radio" class="form-check-input" name="app" value="semongko" checked>SEMONGKO
                             </label>
                         </div>
                         <div class="form-check-inline">
@@ -223,7 +223,7 @@
 
                 <div class="form-group text-left row">
                     <div class="offset-sm-2 col-sm-10">
-                        <input type="hidden" name="app" value="simonik">
+                        <input type="hidden" name="app" value="semongko">
                         <button type="submit" class="btn btn-info btn-sm">Sign In</button>
                     </div>
                 </div>

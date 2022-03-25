@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 */
 
 Route::get('/', function () {
-    return redirect()->route('simonik.dashboard.before');
+    return redirect()->route('semongko.dashboard.before');
 });
 
 //Login - Form
@@ -28,8 +28,8 @@ Route::get('/login', [App\Http\Controllers\AuthController::class, 'loginForm'])
 Route::post('/login', [App\Http\Controllers\AuthController::class, 'login'])
     ->name('login');
 
-Route::get('/dashboard', [App\Http\Controllers\Simonik\DashboardController::class, 'dashboard'])
-    ->name('simonik.dashboard.before');
+Route::get('/dashboard', [App\Http\Controllers\Semongko\DashboardController::class, 'dashboard'])
+    ->name('semongko.dashboard.before');
 
 //Logout
 Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout'])
@@ -39,10 +39,10 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
 
     //Home
     Route::get('/home', function (Request $request) {
-        if ($request->cookie('X-App') === 'simonik') {
+        if ($request->cookie('X-App') === 'semongko') {
             $id = $request->cookie('X-User-Id');
 
-            $response = SIMONIK_sevices("/user/$id/active/check", 'get', []);
+            $response = SEMONGKO_services("/user/$id/active/check", 'get', []);
 
             if ($response->clientError()) {
 
@@ -58,7 +58,7 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
                 return redirect()->route('logout');
             }
 
-            return $response->object()->data->user->actived ? redirect()->route('simonik.monitoring') : redirect()->route('simonik.user.password.change.form', ['id' => $id]);
+            return $response->object()->data->user->actived ? redirect()->route('semongko.monitoring') : redirect()->route('semongko.user.password.change.form', ['id' => $id]);
         } else if ($request->cookie('X-App') === 'fdx') {
             return 'FDX page';
         } else {
@@ -67,241 +67,241 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
     })->name('home');
 
     //------------------------------------------------------------
-    // SIMONIK
+    // SEMONGKO
     //------------------------------------------------------------
 
-    Route::middleware([\App\Http\Middleware\SIMONIK\Is__SIMONIK::class])->group(function () {
+    Route::middleware([\App\Http\Middleware\SEMONGKO\Is__SEMONGKO::class])->group(function () {
         //change password
-        Route::get('/simonik/user/{id}/password/change', [App\Http\Controllers\Simonik\UserController::class, 'password_change_form'])
-            ->name('simonik.user.password.change.form');
+        Route::get('/semongko/user/{id}/password/change', [App\Http\Controllers\Semongko\UserController::class, 'password_change_form'])
+            ->name('semongko.user.password.change.form');
 
-        Route::put('/simonik/user/{id}/password/change', [App\Http\Controllers\Simonik\UserController::class, 'password_change'])
-            ->name('simonik.user.password.change');
+        Route::put('/semongko/user/{id}/password/change', [App\Http\Controllers\Semongko\UserController::class, 'password_change'])
+            ->name('semongko.user.password.change');
 
         //paper work - indicator
-        Route::get('/simonik/indicators/paper-work', [App\Http\Controllers\Simonik\Extends\Indicator\PaperWorkIndicatorController::class, 'index'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class])
-            ->name('simonik.indicators.paper-work.index');
+        Route::get('/semongko/indicators/paper-work', [App\Http\Controllers\Semongko\Extends\Indicator\PaperWorkIndicatorController::class, 'index'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class])
+            ->name('semongko.indicators.paper-work.index');
 
-        Route::get('/simonik/indicators/paper-work/create', [App\Http\Controllers\Simonik\Extends\Indicator\PaperWorkIndicatorController::class, 'create'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
-            ->name('simonik.indicators.paper-work.create');
+        Route::get('/semongko/indicators/paper-work/create', [App\Http\Controllers\Semongko\Extends\Indicator\PaperWorkIndicatorController::class, 'create'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdminOrAdmin::class])
+            ->name('semongko.indicators.paper-work.create');
 
-        Route::post('/simonik/indicators/paper-work', [App\Http\Controllers\Simonik\Extends\Indicator\PaperWorkIndicatorController::class, 'store'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
-            ->name('simonik.indicators.paper-work.store');
+        Route::post('/semongko/indicators/paper-work', [App\Http\Controllers\Semongko\Extends\Indicator\PaperWorkIndicatorController::class, 'store'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdminOrAdmin::class])
+            ->name('semongko.indicators.paper-work.store');
 
-        Route::get('/simonik/indicators/paper-work/{level}/{unit}/{tahun}/edit', [App\Http\Controllers\Simonik\Extends\Indicator\PaperWorkIndicatorController::class, 'edit'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
-            ->name('simonik.indicators.paper-work.edit');
+        Route::get('/semongko/indicators/paper-work/{level}/{unit}/{tahun}/edit', [App\Http\Controllers\Semongko\Extends\Indicator\PaperWorkIndicatorController::class, 'edit'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdminOrAdmin::class])
+            ->name('semongko.indicators.paper-work.edit');
 
-        Route::put('/simonik/indicators/paper-work/{level}/{unit}/{tahun}', [App\Http\Controllers\Simonik\Extends\Indicator\PaperWorkIndicatorController::class, 'update'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
-            ->name('simonik.indicators.paper-work.update');
+        Route::put('/semongko/indicators/paper-work/{level}/{unit}/{tahun}', [App\Http\Controllers\Semongko\Extends\Indicator\PaperWorkIndicatorController::class, 'update'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdminOrAdmin::class])
+            ->name('semongko.indicators.paper-work.update');
 
-        Route::get('/simonik/indicators/paper-work/{level}/{unit}/{tahun}/delete', [App\Http\Controllers\Simonik\Extends\Indicator\PaperWorkIndicatorController::class, 'delete'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
-            ->name('simonik.indicators.paper-work.delete');
+        Route::get('/semongko/indicators/paper-work/{level}/{unit}/{tahun}/delete', [App\Http\Controllers\Semongko\Extends\Indicator\PaperWorkIndicatorController::class, 'delete'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdminOrAdmin::class])
+            ->name('semongko.indicators.paper-work.delete');
 
-        Route::delete('/simonik/indicators/paper-work/{level}/{unit}/{tahun}', [App\Http\Controllers\Simonik\Extends\Indicator\PaperWorkIndicatorController::class, 'destroy'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
-            ->name('simonik.indicators.paper-work.destroy');
+        Route::delete('/semongko/indicators/paper-work/{level}/{unit}/{tahun}', [App\Http\Controllers\Semongko\Extends\Indicator\PaperWorkIndicatorController::class, 'destroy'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdminOrAdmin::class])
+            ->name('semongko.indicators.paper-work.destroy');
 
-        Route::put('/simonik/indicators/paper-work/reorder', [App\Http\Controllers\Simonik\Extends\Indicator\PaperWorkIndicatorController::class, 'reorder'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
-            ->name('simonik.indicators.paper-work.reorder');
+        Route::put('/semongko/indicators/paper-work/reorder', [App\Http\Controllers\Semongko\Extends\Indicator\PaperWorkIndicatorController::class, 'reorder'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdminOrAdmin::class])
+            ->name('semongko.indicators.paper-work.reorder');
 
         //reference
-        Route::get('/simonik/indicators/paper-work/reference/create', [App\Http\Controllers\Simonik\Extends\Indicator\IndicatorReferenceController::class, 'create'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.indicators.paper-work.reference.create');
+        Route::get('/semongko/indicators/paper-work/reference/create', [App\Http\Controllers\Semongko\Extends\Indicator\IndicatorReferenceController::class, 'create'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.indicators.paper-work.reference.create');
 
-        Route::post('/simonik/indicators/paper-work/reference', [App\Http\Controllers\Simonik\Extends\Indicator\IndicatorReferenceController::class, 'store'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.indicators.paper-work.reference.store');
+        Route::post('/semongko/indicators/paper-work/reference', [App\Http\Controllers\Semongko\Extends\Indicator\IndicatorReferenceController::class, 'store'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.indicators.paper-work.reference.store');
 
-        Route::get('/simonik/indicators/paper-work/reference/edit', [App\Http\Controllers\Simonik\Extends\Indicator\IndicatorReferenceController::class, 'edit'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
-            ->name('simonik.indicators.paper-work.reference.edit');
+        Route::get('/semongko/indicators/paper-work/reference/edit', [App\Http\Controllers\Semongko\Extends\Indicator\IndicatorReferenceController::class, 'edit'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdminOrAdmin::class])
+            ->name('semongko.indicators.paper-work.reference.edit');
 
-        Route::put('/simonik/indicators/paper-work/reference/update', [App\Http\Controllers\Simonik\Extends\Indicator\IndicatorReferenceController::class, 'update'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
-            ->name('simonik.indicators.paper-work.reference.update');
+        Route::put('/semongko/indicators/paper-work/reference/update', [App\Http\Controllers\Semongko\Extends\Indicator\IndicatorReferenceController::class, 'update'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdminOrAdmin::class])
+            ->name('semongko.indicators.paper-work.reference.update');
 
         //paper work - realization
-        Route::get('/simonik/realizations/paper-work', [App\Http\Controllers\Simonik\Extends\Realization\PaperWorkRealizationController::class, 'index'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdminOrDataEntry::class])
-            ->name('simonik.realizations.paper-work.index');
+        Route::get('/semongko/realizations/paper-work', [App\Http\Controllers\Semongko\Extends\Realization\PaperWorkRealizationController::class, 'index'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdminOrAdminOrDataEntry::class])
+            ->name('semongko.realizations.paper-work.index');
 
-        Route::put('/simonik/realizations/paper-work', [App\Http\Controllers\Simonik\Extends\Realization\PaperWorkRealizationController::class, 'update'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdminOrDataEntry::class])
-            ->name('simonik.realizations.paper-work.update');
+        Route::put('/semongko/realizations/paper-work', [App\Http\Controllers\Semongko\Extends\Realization\PaperWorkRealizationController::class, 'update'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdminOrAdminOrDataEntry::class])
+            ->name('semongko.realizations.paper-work.update');
 
-        Route::post('/simonik/realizations/paper-work/{level}/{unit}/{tahun}/import', [App\Http\Controllers\Simonik\Extends\Realization\PaperWorkRealizationController::class, 'import'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
-            ->name('simonik.realizations.paper-work.import');
+        Route::post('/semongko/realizations/paper-work/{level}/{unit}/{tahun}/import', [App\Http\Controllers\Semongko\Extends\Realization\PaperWorkRealizationController::class, 'import'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdminOrAdmin::class])
+            ->name('semongko.realizations.paper-work.import');
 
-        Route::get('/simonik/realizations/paper-work/{level}/{unit}/{tahun}/export', [App\Http\Controllers\Simonik\Extends\Realization\PaperWorkRealizationController::class, 'export'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
-            ->name('simonik.realizations.paper-work.export');
+        Route::get('/semongko/realizations/paper-work/{level}/{unit}/{tahun}/export', [App\Http\Controllers\Semongko\Extends\Realization\PaperWorkRealizationController::class, 'export'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdminOrAdmin::class])
+            ->name('semongko.realizations.paper-work.export');
 
         //paper work - target
-        Route::get('/simonik/targets/paper-work', [App\Http\Controllers\Simonik\Extends\Target\PaperWorkTargetController::class, 'index'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
-            ->name('simonik.targets.paper-work.index');
+        Route::get('/semongko/targets/paper-work', [App\Http\Controllers\Semongko\Extends\Target\PaperWorkTargetController::class, 'index'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdminOrAdmin::class])
+            ->name('semongko.targets.paper-work.index');
 
-        Route::put('/simonik/targets/paper-work', [App\Http\Controllers\Simonik\Extends\Target\PaperWorkTargetController::class, 'update'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
-            ->name('simonik.targets.paper-work.update');
+        Route::put('/semongko/targets/paper-work', [App\Http\Controllers\Semongko\Extends\Target\PaperWorkTargetController::class, 'update'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdminOrAdmin::class])
+            ->name('semongko.targets.paper-work.update');
 
-        Route::post('/simonik/targets/paper-work/{level}/{unit}/{tahun}/import', [App\Http\Controllers\Simonik\Extends\Target\PaperWorkTargetController::class, 'import'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
-            ->name('simonik.targets.paper-work.import');
+        Route::post('/semongko/targets/paper-work/{level}/{unit}/{tahun}/import', [App\Http\Controllers\Semongko\Extends\Target\PaperWorkTargetController::class, 'import'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdminOrAdmin::class])
+            ->name('semongko.targets.paper-work.import');
 
-        Route::get('/simonik/targets/paper-work/{level}/{unit}/{tahun}/export', [App\Http\Controllers\Simonik\Extends\Target\PaperWorkTargetController::class, 'export'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
-            ->name('simonik.targets.paper-work.export');
+        Route::get('/semongko/targets/paper-work/{level}/{unit}/{tahun}/export', [App\Http\Controllers\Semongko\Extends\Target\PaperWorkTargetController::class, 'export'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdminOrAdmin::class])
+            ->name('semongko.targets.paper-work.export');
 
         //indicator
-        Route::get('/simonik/indicators/create', [App\Http\Controllers\Simonik\IndicatorController::class, 'create'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.indicators.create');
+        Route::get('/semongko/indicators/create', [App\Http\Controllers\Semongko\IndicatorController::class, 'create'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.indicators.create');
 
-        Route::post('/simonik/indicators', [App\Http\Controllers\Simonik\IndicatorController::class, 'store'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.indicators.store');
+        Route::post('/semongko/indicators', [App\Http\Controllers\Semongko\IndicatorController::class, 'store'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.indicators.store');
 
-        Route::get('/simonik/indicators/{id}/edit', [App\Http\Controllers\Simonik\IndicatorController::class, 'edit'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
-            ->name('simonik.indicators.edit');
+        Route::get('/semongko/indicators/{id}/edit', [App\Http\Controllers\Semongko\IndicatorController::class, 'edit'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdminOrAdmin::class])
+            ->name('semongko.indicators.edit');
 
-        Route::put('/simonik/indicators/{id}', [App\Http\Controllers\Simonik\IndicatorController::class, 'update'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdminOrAdmin::class])
-            ->name('simonik.indicators.update');
+        Route::put('/semongko/indicators/{id}', [App\Http\Controllers\Semongko\IndicatorController::class, 'update'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdminOrAdmin::class])
+            ->name('semongko.indicators.update');
 
-        Route::get('/simonik/indicators/{id}/{name}/delete', [App\Http\Controllers\Simonik\IndicatorController::class, 'delete'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.indicators.delete');
+        Route::get('/semongko/indicators/{id}/{name}/delete', [App\Http\Controllers\Semongko\IndicatorController::class, 'delete'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.indicators.delete');
 
-        Route::delete('/simonik/indicators/{id}', [App\Http\Controllers\Simonik\IndicatorController::class, 'destroy'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.indicators.destroy');
+        Route::delete('/semongko/indicators/{id}', [App\Http\Controllers\Semongko\IndicatorController::class, 'destroy'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.indicators.destroy');
 
         //user
-        Route::get('/simonik/users', [App\Http\Controllers\Simonik\UserController::class, 'index'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.user.index');
+        Route::get('/semongko/users', [App\Http\Controllers\Semongko\UserController::class, 'index'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.user.index');
 
-        Route::get('/simonik/user/create', [App\Http\Controllers\Simonik\UserController::class, 'create'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.user.create');
+        Route::get('/semongko/user/create', [App\Http\Controllers\Semongko\UserController::class, 'create'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.user.create');
 
-        Route::post('/simonik/user', [App\Http\Controllers\Simonik\UserController::class, 'store'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.user.store');
+        Route::post('/semongko/user', [App\Http\Controllers\Semongko\UserController::class, 'store'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.user.store');
 
-        Route::get('/simonik/user/{id}/edit', [App\Http\Controllers\Simonik\UserController::class, 'edit'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.user.edit');
+        Route::get('/semongko/user/{id}/edit', [App\Http\Controllers\Semongko\UserController::class, 'edit'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.user.edit');
 
-        Route::put('/simonik/user/{id}', [App\Http\Controllers\Simonik\UserController::class, 'update'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.user.update');
+        Route::put('/semongko/user/{id}', [App\Http\Controllers\Semongko\UserController::class, 'update'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.user.update');
 
-        Route::get('/simonik/user/{id}/{username}/delete', [App\Http\Controllers\Simonik\UserController::class, 'delete'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.user.delete');
+        Route::get('/semongko/user/{id}/{username}/delete', [App\Http\Controllers\Semongko\UserController::class, 'delete'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.user.delete');
 
-        Route::delete('/simonik/user/{id}', [App\Http\Controllers\Simonik\UserController::class, 'destroy'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.user.destroy');
+        Route::delete('/semongko/user/{id}', [App\Http\Controllers\Semongko\UserController::class, 'destroy'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.user.destroy');
 
-        Route::get('/simonik/user/{id}/{username}/password/reset', [App\Http\Controllers\Simonik\UserController::class, 'password_reset_form'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.user.password.reset.form');
+        Route::get('/semongko/user/{id}/{username}/password/reset', [App\Http\Controllers\Semongko\UserController::class, 'password_reset_form'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.user.password.reset.form');
 
-        Route::put('/simonik/user/{id}/password/reset', [App\Http\Controllers\Simonik\UserController::class, 'password_reset'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.user.password.reset');
+        Route::put('/semongko/user/{id}/password/reset', [App\Http\Controllers\Semongko\UserController::class, 'password_reset'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.user.password.reset');
 
         //level
-        Route::get('/simonik/levels', [App\Http\Controllers\Simonik\LevelController::class, 'index'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.level.index');
+        Route::get('/semongko/levels', [App\Http\Controllers\Semongko\LevelController::class, 'index'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.level.index');
 
-        Route::get('/simonik/level/create', [App\Http\Controllers\Simonik\LevelController::class, 'create'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.level.create');
+        Route::get('/semongko/level/create', [App\Http\Controllers\Semongko\LevelController::class, 'create'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.level.create');
 
-        Route::post('/simonik/level', [App\Http\Controllers\Simonik\LevelController::class, 'store'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.level.store');
+        Route::post('/semongko/level', [App\Http\Controllers\Semongko\LevelController::class, 'store'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.level.store');
 
-        Route::get('/simonik/level/{id}/edit', [App\Http\Controllers\Simonik\LevelController::class, 'edit'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.level.edit');
+        Route::get('/semongko/level/{id}/edit', [App\Http\Controllers\Semongko\LevelController::class, 'edit'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.level.edit');
 
-        Route::put('/simonik/level/{id}', [App\Http\Controllers\Simonik\LevelController::class, 'update'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.level.update');
+        Route::put('/semongko/level/{id}', [App\Http\Controllers\Semongko\LevelController::class, 'update'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.level.update');
 
-        Route::get('/simonik/level/{id}/{name}/delete', [App\Http\Controllers\Simonik\LevelController::class, 'delete'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.level.delete');
+        Route::get('/semongko/level/{id}/{name}/delete', [App\Http\Controllers\Semongko\LevelController::class, 'delete'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.level.delete');
 
-        Route::delete('/simonik/level/{id}', [App\Http\Controllers\Simonik\LevelController::class, 'destroy'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.level.destroy');
+        Route::delete('/semongko/level/{id}', [App\Http\Controllers\Semongko\LevelController::class, 'destroy'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.level.destroy');
 
         //unit
-        Route::get('/simonik/units', [App\Http\Controllers\Simonik\UnitController::class, 'index'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.unit.index');
+        Route::get('/semongko/units', [App\Http\Controllers\Semongko\UnitController::class, 'index'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.unit.index');
 
-        Route::get('/simonik/unit/create', [App\Http\Controllers\Simonik\UnitController::class, 'create'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.unit.create');
+        Route::get('/semongko/unit/create', [App\Http\Controllers\Semongko\UnitController::class, 'create'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.unit.create');
 
-        Route::post('/simonik/unit', [App\Http\Controllers\Simonik\UnitController::class, 'store'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.unit.store');
+        Route::post('/semongko/unit', [App\Http\Controllers\Semongko\UnitController::class, 'store'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.unit.store');
 
-        Route::get('/simonik/unit/{id}/edit', [App\Http\Controllers\Simonik\UnitController::class, 'edit'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.unit.edit');
+        Route::get('/semongko/unit/{id}/edit', [App\Http\Controllers\Semongko\UnitController::class, 'edit'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.unit.edit');
 
-        Route::put('/simonik/unit/{id}', [App\Http\Controllers\Simonik\UnitController::class, 'update'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.unit.update');
+        Route::put('/semongko/unit/{id}', [App\Http\Controllers\Semongko\UnitController::class, 'update'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.unit.update');
 
-        Route::get('/simonik/unit/{id}/{name}/delete', [App\Http\Controllers\Simonik\UnitController::class, 'delete'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.unit.delete');
+        Route::get('/semongko/unit/{id}/{name}/delete', [App\Http\Controllers\Semongko\UnitController::class, 'delete'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.unit.delete');
 
-        Route::delete('/simonik/unit/{id}', [App\Http\Controllers\Simonik\UnitController::class, 'destroy'])
-            ->middleware([\App\Http\Middleware\SIMONIK\IsActive::class, \App\Http\Middleware\SIMONIK\IsSuperAdmin::class])
-            ->name('simonik.unit.destroy');
+        Route::delete('/semongko/unit/{id}', [App\Http\Controllers\Semongko\UnitController::class, 'destroy'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.unit.destroy');
 
         //monitoring
-        Route::get('/simonik/monitoring', [App\Http\Controllers\Simonik\MonitoringController::class, 'monitoring'])
-            ->name('simonik.monitoring');
+        Route::get('/semongko/monitoring', [App\Http\Controllers\Semongko\MonitoringController::class, 'monitoring'])
+            ->name('semongko.monitoring');
 
-        Route::get('/simonik/monitoring/{level}/{unit}/{tahun}/{bulan}/export', [App\Http\Controllers\Simonik\MonitoringController::class, 'export'])
-            ->name('simonik.monitoring.export');
+        Route::get('/semongko/monitoring/{level}/{unit}/{tahun}/{bulan}/export', [App\Http\Controllers\Semongko\MonitoringController::class, 'export'])
+            ->name('semongko.monitoring.export');
 
         //rangking
-        Route::get('/simonik/rangking', [App\Http\Controllers\Simonik\RangkingController::class, 'rangking'])
-            ->name('simonik.rangking');
+        Route::get('/semongko/rangking', [App\Http\Controllers\Semongko\RangkingController::class, 'rangking'])
+            ->name('semongko.rangking');
 
         //comparing
-        Route::get('/simonik/comparing', [App\Http\Controllers\Simonik\ComparingController::class, 'comparing'])
-            ->name('simonik.comparing');
+        Route::get('/semongko/comparing', [App\Http\Controllers\Semongko\ComparingController::class, 'comparing'])
+            ->name('semongko.comparing');
 
         //export
-        Route::get('/simonik/export/index', [App\Http\Controllers\Simonik\ExportController::class, 'index'])
-            ->name('simonik.export.index');
+        Route::get('/semongko/export/index', [App\Http\Controllers\Semongko\ExportController::class, 'index'])
+            ->name('semongko.export.index');
 
-        Route::get('/simonik/export/{level}/{unit}/{tahun}', [App\Http\Controllers\Simonik\ExportController::class, 'export'])
-            ->name('simonik.export');
+        Route::get('/semongko/export/{level}/{unit}/{tahun}', [App\Http\Controllers\Semongko\ExportController::class, 'export'])
+            ->name('semongko.export');
     });
 });

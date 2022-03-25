@@ -18,11 +18,11 @@ class CustomAuthManager
         $response = null;
 
         switch ($app) {
-            case "simonik":
-                $response = SIMONIK_sevices('/login', 'post', ['username' => $username, 'password' => $password], false);
+            case "semongko":
+                $response = SEMONGKO_services('/login', 'post', ['username' => $username, 'password' => $password], false);
                 break;
             case "fdx":
-                $response = FDX_sevices('/login', 'post', ['username' => $username, 'password' => $password], false);
+                $response = FDX_services('/login', 'post', ['username' => $username, 'password' => $password], false);
                 break;
             default:
                 return false;
@@ -66,10 +66,10 @@ class CustomAuthManager
     public function destroy(): bool
     {
         if (!is_null(Cookie::get('X-Token'))) {
-            if (Cookie::get('X-App') === 'simonik') {
-                $response = SIMONIK_sevices('/logout', 'get');
+            if (Cookie::get('X-App') === 'semongko') {
+                $response = SEMONGKO_services('/logout', 'get');
             } else if (Cookie::get('X-App') === 'fdx') {
-                $response = FDX_sevices('/logout', 'get');
+                $response = FDX_services('/logout', 'get');
             }
 
             Cookie::queue(Cookie::forget('X-Token'));
