@@ -1,4 +1,9 @@
 <aside class="main-sidebar sidebar-dark-info elevation-4 sidebar-light-info">
+    <!-- Brand Logo -->
+    <a href="#" class="brand-link">
+        <span class="brand-text font-weight-light text-center"><img src="{{ asset('icon-brand-without-image.png') }}" alt="Logo" width="75%"></span>
+    </a>
+
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar User Panel -->
@@ -22,7 +27,6 @@
       <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent text-sm" data-widget="treeview" role="menu" data-accordion="false">
 
         @if (request()->cookie('X-App') === 'semongko')
-            <li class="nav-header text-light"><img src="{{ asset('icon-brand-without-image.png') }}" alt="icon-brand" width="62.5%"></li>
             <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link">
                     <i class="fas fa-circle nav-icon text-warning"></i>
