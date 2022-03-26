@@ -74,7 +74,6 @@
 
 @push('script')
     <!-- jQuery -->
-    {{-- <script src="{{ asset('template/plugins/jquery/jquery.js') }}"></script> --}} {{-- required --}}
     {{-- <script src="{{ asset('template/plugins/jquery/jquery.min.js') }}"></script> --}} {{-- required --}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Popper -->
