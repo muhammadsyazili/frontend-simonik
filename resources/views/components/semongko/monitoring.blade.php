@@ -549,7 +549,7 @@
                                                 <input type="hidden" id="PPK_100" value="{{ number_format($response->data->indicators->total->PPK_100, 2, '.', '') }}">
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                <p class="text-center reset">NKO 110%</p>
+                                                <p class="text-center reset">NKO 110% {{ $response->data->indicators->total->PPK_110 }}</p>
                                                 <div class="canvas-container">
                                                     <canvas id="gauge-110"></canvas>
                                                 </div>
