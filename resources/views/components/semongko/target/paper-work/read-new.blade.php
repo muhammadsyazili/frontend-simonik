@@ -317,11 +317,11 @@
                     <div class="card-header">
                         <h3 class="card-title">KERTAS KERJA - TARGET
                             / LEVEL :
-                            {{ request()->query('level') == null ? '-' : cast_to_upper(request()->query('level')) }}
+                            {{ is_null(request()->query('level')) ? '-' : cast_to_upper(request()->query('level')) }}
                             / UNIT KERJA :
-                            {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }}
+                            {{ is_null(request()->query('unit')) ? '-' : cast_to_upper(request()->query('unit')) }}
                             / TAHUN :
-                            {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }}
+                            {{ is_null(request()->query('tahun')) ? '-' : cast_to_upper(request()->query('tahun')) }}
                         </h3>
                     </div>
                     <!-- end : card-header -->

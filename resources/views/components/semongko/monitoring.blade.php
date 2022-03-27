@@ -536,11 +536,11 @@
                                     @else
                                         <div class="row">
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                <p class="reset text-center small">UNIT KERJA : {{ request()->query('unit') == null ? '-' : cast_to_upper(request()->query('unit')) }} - TAHUN : {{ request()->query('tahun') == null ? '-' : cast_to_upper(request()->query('tahun')) }} - BULAN : {{ request()->query('bulan') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }}</p>
+                                                <p class="reset text-center small">UNIT KERJA : {{ is_null(request()->query('unit')) ? '-' : cast_to_upper(request()->query('unit')) }} - TAHUN : {{ is_null(request()->query('tahun')) ? '-' : cast_to_upper(request()->query('tahun')) }} - BULAN : {{ is_null(request()->query('bulan')) ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }}</p>
                                                 <p class="reset text-center small"><span class="badge badge-danger">MASALAH : NKO < 95%</span> <span class="badge badge-warning">HATI-HATI : NKO &ge; 95% s.d < 100%</span> <span class="badge badge-success">BAIK : NKO &ge; 100%</span></p>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                <p class="text-center reset">NKO 100% - {{ $response->data->indicators->total->PPK_100 }}</p>
+                                                <p class="text-center reset">NKO 100%</p>
                                                 <div class="canvas-container">
                                                     <canvas id="gauge-100"></canvas>
                                                 </div>
@@ -549,7 +549,7 @@
                                                 <input type="hidden" id="PPK_100" value="{{ number_format($response->data->indicators->total->PPK_100, 2, '.', '') }}">
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                <p class="text-center reset">NKO 110% - {{ $response->data->indicators->total->PPK_110 }}</p>
+                                                <p class="text-center reset">NKO 110%</p>
                                                 <div class="canvas-container">
                                                     <canvas id="gauge-110"></canvas>
                                                 </div>

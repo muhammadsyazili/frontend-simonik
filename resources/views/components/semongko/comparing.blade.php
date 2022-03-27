@@ -454,7 +454,7 @@
 
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                                 <p class="reset text-center small font-weight-bold">Left Result</p>
-                                                <p class="reset text-center small"><small>UNIT KERJA : {{ request()->query('unit_left') == null ? '-' : cast_to_upper(request()->query('unit_left')) }} - TAHUN : {{ request()->query('tahun_left') == null ? '-' : cast_to_upper(request()->query('tahun_left')) }} - BULAN : {{ request()->query('bulan_left') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan_left')) }}</small></p>
+                                                <p class="reset text-center small"><small>UNIT KERJA : {{ is_null(request()->query('unit_left')) ? '-' : cast_to_upper(request()->query('unit_left')) }} - TAHUN : {{ is_null(request()->query('tahun_left')) ? '-' : cast_to_upper(request()->query('tahun_left')) }} - BULAN : {{ is_null(request()->query('bulan_left')) ? '-' : 's.d. '.cast_to_upper(request()->query('bulan_left')) }}</small></p>
 
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered table-sm" id="table">
@@ -511,7 +511,7 @@
 
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                                 <p class="reset text-center small font-weight-bold">Right Result</p>
-                                                <p class="reset text-center small"><small>UNIT KERJA : {{ request()->query('unit_right') == null ? '-' : cast_to_upper(request()->query('unit_right')) }} - TAHUN : {{ request()->query('tahun_right') == null ? '-' : cast_to_upper(request()->query('tahun_right')) }} - BULAN : {{ request()->query('bulan_right') == null ? '-' : 's.d. '.cast_to_upper(request()->query('bulan_right')) }}</small></p>
+                                                <p class="reset text-center small"><small>UNIT KERJA : {{ is_null(request()->query('unit_right')) ? '-' : cast_to_upper(request()->query('unit_right')) }} - TAHUN : {{ is_null(request()->query('tahun_right')) ? '-' : cast_to_upper(request()->query('tahun_right')) }} - BULAN : {{ is_null(request()->query('bulan_right')) ? '-' : 's.d. '.cast_to_upper(request()->query('bulan_right')) }}</small></p>
 
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered table-sm" id="table">
