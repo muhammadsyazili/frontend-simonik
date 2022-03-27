@@ -617,7 +617,7 @@
                                                                         <p class="reset">{{ $indicator->status }}</p>
                                                                     </td>
                                                                     <td class="text-center">
-                                                                        @if (!$indicator->dummy && !$indicator->reducing_factor)
+                                                                        @if (!$indicator->dummy && !$indicator->reducing_factor && !in_array($indicator->status_symbol, ['+0']))
                                                                             <button type="button" class="btn btn-sm btn-outline-info chart" data-id="{{ $indicator->id }}" data-prefix="{{ $indicator->prefix }}" data-unit="{{ cast_to_upper(request()->query('unit')) }}" data-year="{{ request()->query('tahun') }}" data-month="{{ request()->query('bulan') }}" data-status="{{ $indicator->status }}"><i class="fas fa-chart-bar"></i></button>
                                                                         @endif
                                                                     </td>
