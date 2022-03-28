@@ -254,6 +254,8 @@
                                     @else
                                         <div class="row">
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                <p class="text-center small"><span class="badge badge-danger">MASALAH : NKO < 95%</span> <span class="badge badge-warning">HATI-HATI : NKO &ge; 95% s.d < 100%</span> <span class="badge badge-success">BAIK : NKO &ge; 100%</span></p>
+
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered table-sm" id="table">
                                                         <thead class="text-nowrap small">
@@ -272,8 +274,8 @@
                                                                     <td class="text-center">
                                                                         {{ $unit->name }}
                                                                     </td>
-                                                                    <td class="text-center {{ 'bg-'.$unit->color_status }}">
-                                                                        {{ number_format($unit->value, 2, ',', '') }}% | {{ $unit->status }}
+                                                                    <td class="text-center bg-{{ $unit->color_status }}">
+                                                                        {{ $unit->value->showed }}% | {{ $unit->status }}
                                                                     </td>
                                                                 </tr>
                                                             @endforeach

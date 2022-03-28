@@ -315,14 +315,7 @@
                 <div class="card border-0 shadow rounded">
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">KERTAS KERJA - TARGET
-                            / LEVEL :
-                            {{ is_null(request()->query('level')) ? '-' : cast_to_upper(request()->query('level')) }}
-                            / UNIT KERJA :
-                            {{ is_null(request()->query('unit')) ? '-' : cast_to_upper(request()->query('unit')) }}
-                            / TAHUN :
-                            {{ is_null(request()->query('tahun')) ? '-' : cast_to_upper(request()->query('tahun')) }}
-                        </h3>
+                        <h3 class="card-title">KERTAS KERJA - TARGET / LEVEL : {{ cast_to_upper(request()->query('level'), '-') }} / UNIT KERJA : {{ cast_to_upper(request()->query('unit'), '-') }} / TAHUN : {{ cast_to_upper(request()->query('tahun'), '-') }}</h3>
                     </div>
                     <!-- end : card-header -->
 

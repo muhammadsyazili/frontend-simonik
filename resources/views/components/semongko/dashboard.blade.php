@@ -361,7 +361,7 @@
                                                 </div>
                                                 <div class="text-center reset" id="gauge-label-100"></div>
                                                 <p class="text-center small reset"><span class="badge badge-{{ $response->data->indicators->total->PPK_100_color_status }}">{{ $response->data->indicators->total->PPK_100_status }}</span></p>
-                                                <input type="hidden" id="PPK_100" value="{{ number_format($response->data->indicators->total->PPK_100, 2, '.', '') }}">
+                                                <input type="hidden" id="PPK_100" value="{{ $response->data->indicators->total->PPK_100->value->original }}">
                                                 <hr>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -371,13 +371,13 @@
                                                 </div>
                                                 <div class="text-center reset" id="gauge-label-110"></div>
                                                 <p class="text-center small reset"><span class="badge badge-{{ $response->data->indicators->total->PPK_110_color_status }}">{{ $response->data->indicators->total->PPK_110_status }}</span></p>
-                                                <input type="hidden" id="PPK_110" value="{{ number_format($response->data->indicators->total->PPK_110, 2, '.', '') }}">
+                                                <input type="hidden" id="PPK_110" value="{{ $response->data->indicators->total->PPK_110->value->original }}">
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
                                             <div class="row">
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2">
-                                                    <p class="text-center small reset">UNIT KERJA : {{ is_null(request()->query('unit')) ? '-' : cast_to_upper(request()->query('unit')) }} - TAHUN : {{ is_null(request()->query('tahun')) ? '-' : cast_to_upper(request()->query('tahun')) }} - BULAN : {{ is_null(request()->query('bulan')) ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }}</p>
+                                                    <p class="text-center small reset">UNIT KERJA : {{ cast_to_upper(request()->query('unit'), '-') }} - TAHUN : {{ cast_to_upper(request()->query('tahun'), '-') }} - BULAN : {{ is_null(request()->query('bulan')) ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }}</p>
                                                     <p class="text-center small reset"><span class="badge badge-danger">MASALAH : NKO < 95%</span> <span class="badge badge-warning">HATI-HATI : NKO &ge; 95% s.d < 100%</span> <span class="badge badge-success">BAIK : NKO &ge; 100%</span></p>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -385,7 +385,7 @@
                                                         <table class="table table-bordered table-sm" id="table">
                                                             <thead class="text-nowrap small">
                                                                 <tr>
-                                                                    <th class="text-center">Indikator</th>
+                                                                    <th class="text-center">INDIKATOR</th>
                                                                     <th class="text-center">PENCAPAIAN | STATUS</th>
                                                                 </tr>
                                                             </thead>
@@ -397,9 +397,7 @@
                                                                                 <p class="reset">{{ $indicator->indicator }} | <span class="badge badge-info">{{ $indicator->type }}</span> | Satuan: {{ $indicator->measure }} | Polaritas: <span class="badge badge-secondary">{!! $indicator->polarity !!}</span></p>
                                                                             </td>
                                                                             <td class="text-center {{ 'bg-'.$indicator->status_color }}">
-                                                                                @if (!is_null($indicator->achievement))
-                                                                                    <p class="font-weight-bold reset">{{ number_format($indicator->achievement, 2, ',', '') }} % | {{ $indicator->status }}</p>
-                                                                                @endif
+                                                                                <p class="font-weight-bold reset">{{ $indicator->achievement->value->showed }} % | {{ $indicator->status }}</p>
                                                                             </td>
                                                                         </tr>
                                                                     @endif

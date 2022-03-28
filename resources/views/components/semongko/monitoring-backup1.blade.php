@@ -396,13 +396,13 @@
                     <div class="card-header">
                         <h3 class="card-title">MONITORING
                             / LEVEL :
-                            {{ is_null(request()->query('level')) ? '-' : cast_to_upper(request()->query('level')) }}
+                            {{ cast_to_upper(request()->query('level'), '-') }}
                             / UNIT :
-                            {{ is_null(request()->query('unit')) ? '-' : cast_to_upper(request()->query('unit')) }}
+                            {{ cast_to_upper(request()->query('unit'), '-') }}
                             / TAHUN :
-                            {{ is_null(request()->query('tahun')) ? '-' : cast_to_upper(request()->query('tahun')) }}
+                            {{ cast_to_upper(request()->query('tahun'), '-') }}
                             / BULAN :
-                            {{ is_null(request()->query('bulan')) ? '-' : 's.d. '.cast_to_upper(request()->query('bulan')) }}
+                            {{ cast_to_upper(request()->query('bulan'), '-', 's.d. ') }}
                         </h3>
                     </div>
                     <!-- end : card-header -->

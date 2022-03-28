@@ -454,7 +454,7 @@
 
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                                 <p class="reset text-center small font-weight-bold">Left Result</p>
-                                                <p class="reset text-center small"><small>UNIT KERJA : {{ is_null(request()->query('unit_left')) ? '-' : cast_to_upper(request()->query('unit_left')) }} - TAHUN : {{ is_null(request()->query('tahun_left')) ? '-' : cast_to_upper(request()->query('tahun_left')) }} - BULAN : {{ is_null(request()->query('bulan_left')) ? '-' : 's.d. '.cast_to_upper(request()->query('bulan_left')) }}</small></p>
+                                                <p class="reset text-center small"><small>UNIT KERJA : {{ cast_to_upper(request()->query('unit_left'), '-') }} - TAHUN : {{ cast_to_upper(request()->query('tahun_left'), '-') }} - BULAN : {{ cast_to_upper(request()->query('bulan_left'), '-', 's.d. ') }}</small></p>
 
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered table-sm" id="table">
@@ -482,25 +482,19 @@
                                                                     {{ $response->data->indicators->left->selected_weight }}
                                                                 </td>
                                                                 <td class="text-center small">
-                                                                    {{ in_array(gettype($response->data->indicators->left->selected_target), ['double', 'integer']) ? number_format($response->data->indicators->left->selected_target, 2, ',', '') : $response->data->indicators->left->selected_target }}
+                                                                    {{ $response->data->indicators->left->selected_target->value->showed }}
                                                                 </td>
                                                                 <td class="text-center small">
-                                                                    {{ in_array(gettype($response->data->indicators->left->selected_realization), ['double', 'integer']) ? number_format($response->data->indicators->left->selected_realization, 2, ',', '') : $response->data->indicators->left->selected_realization }}
+                                                                    {{ $response->data->indicators->left->selected_realization->value->showed }}
                                                                 </td>
                                                                 <td class="text-center small">
-                                                                    @if (!is_null($response->data->indicators->left->capping_value_100))
-                                                                        <p class="font-weight-bold">{{ in_array(gettype($response->data->indicators->left->capping_value_100), ['double', 'integer']) ? number_format($response->data->indicators->left->capping_value_100, 2, ',', '').' %' : $response->data->indicators->left->capping_value_100 }}</p>
-                                                                    @endif
+                                                                    <p class="font-weight-bold">{{ $response->data->indicators->left->capping_value_100->value->showed }}</p>
                                                                 </td>
                                                                 <td class="text-center small">
-                                                                    @if (!is_null($response->data->indicators->left->capping_value_110))
-                                                                        <p class="font-weight-bold">{{ in_array(gettype($response->data->indicators->left->capping_value_110), ['double', 'integer']) ? number_format($response->data->indicators->left->capping_value_110, 2, ',', '').' %' : $response->data->indicators->left->capping_value_110 }}</p>
-                                                                    @endif
+                                                                    <p class="font-weight-bold">{{ $response->data->indicators->left->capping_value_110->value->showed }}</p>
                                                                 </td>
-                                                                <td class="text-center small {{ 'bg-'.$response->data->indicators->left->status_color }}">
-                                                                    @if (!is_null($response->data->indicators->left->achievement))
-                                                                        <p class="font-weight-bold reset">{{ in_array(gettype($response->data->indicators->left->achievement), ['double', 'integer']) ? number_format($response->data->indicators->left->achievement, 2, ',', '').' %' : $response->data->indicators->left->achievement }}</p>
-                                                                    @endif
+                                                                <td class="text-center small bg-{{ $response->data->indicators->left->status_color }}">
+                                                                    <p class="font-weight-bold reset">{{ $response->data->indicators->left->achievement->value->showed }}</p>
                                                                     <p class="reset">{{ $response->data->indicators->left->status }}</p>
                                                                 </td>
                                                             </tr>
@@ -511,7 +505,7 @@
 
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                                 <p class="reset text-center small font-weight-bold">Right Result</p>
-                                                <p class="reset text-center small"><small>UNIT KERJA : {{ is_null(request()->query('unit_right')) ? '-' : cast_to_upper(request()->query('unit_right')) }} - TAHUN : {{ is_null(request()->query('tahun_right')) ? '-' : cast_to_upper(request()->query('tahun_right')) }} - BULAN : {{ is_null(request()->query('bulan_right')) ? '-' : 's.d. '.cast_to_upper(request()->query('bulan_right')) }}</small></p>
+                                                <p class="reset text-center small"><small>UNIT KERJA : {{ cast_to_upper(request()->query('unit_right'), '-') }} - TAHUN : {{ cast_to_upper(request()->query('tahun_right'), '-') }} - BULAN : {{ cast_to_upper(request()->query('bulan_right'), '-', 's.d. ') }}</small></p>
 
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered table-sm" id="table">
@@ -539,25 +533,19 @@
                                                                     {{ $response->data->indicators->right->selected_weight }}
                                                                 </td>
                                                                 <td class="text-center small">
-                                                                    {{ in_array(gettype($response->data->indicators->right->selected_target), ['double', 'integer']) ? number_format($response->data->indicators->right->selected_target, 2, ',', '') : $response->data->indicators->right->selected_target }}
+                                                                    {{ $response->data->indicators->right->selected_target->value->showed }}
                                                                 </td>
                                                                 <td class="text-center small">
-                                                                    {{ in_array(gettype($response->data->indicators->right->selected_realization), ['double', 'integer']) ? number_format($response->data->indicators->right->selected_realization, 2, ',', '') : $response->data->indicators->right->selected_realization }}
+                                                                    {{ $response->data->indicators->right->selected_realization->value->showed }}
                                                                 </td>
                                                                 <td class="text-center small">
-                                                                    @if (!is_null($response->data->indicators->right->capping_value_100))
-                                                                        <p class="font-weight-bold">{{ in_array(gettype($response->data->indicators->right->capping_value_100), ['double', 'integer']) ? number_format($response->data->indicators->right->capping_value_100, 2, ',', '').' %' : $response->data->indicators->right->capping_value_100 }}</p>
-                                                                    @endif
+                                                                    <p class="font-weight-bold">{{ $response->data->indicators->right->capping_value_100->value->showed }}</p>
                                                                 </td>
                                                                 <td class="text-center small">
-                                                                    @if (!is_null($response->data->indicators->right->capping_value_110))
-                                                                        <p class="font-weight-bold">{{ in_array(gettype($response->data->indicators->right->capping_value_110), ['double', 'integer']) ? number_format($response->data->indicators->right->capping_value_110, 2, ',', '').' %' : $response->data->indicators->right->capping_value_110 }}</p>
-                                                                    @endif
+                                                                    <p class="font-weight-bold">{{ $response->data->indicators->right->capping_value_110->value->showed }}</p>
                                                                 </td>
                                                                 <td class="text-center small {{ 'bg-'.$response->data->indicators->right->status_color }}">
-                                                                    @if (!is_null($response->data->indicators->right->achievement))
-                                                                        <p class="font-weight-bold reset">{{ in_array(gettype($response->data->indicators->right->achievement), ['double', 'integer']) ? number_format($response->data->indicators->right->achievement, 2, ',', '').' %' : $response->data->indicators->right->achievement }}</p>
-                                                                    @endif
+                                                                    <p class="font-weight-bold reset">{{ $response->data->indicators->right->achievement->value->showed }}</p>
                                                                     <p class="reset">{{ $response->data->indicators->right->status }}</p>
                                                                 </td>
                                                             </tr>

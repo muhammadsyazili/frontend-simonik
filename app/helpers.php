@@ -23,7 +23,7 @@ function FDX_services($endpoint, $method, $data = [], $withToken = true)
         Http::withToken($token)->withHeaders(['X-User-Id' => Cookie::get('X-User-Id') ?? null])->$method("$host$endpoint", $data);
 }
 
-function cast_to_upper($value)
+function cast_to_upper($value, $default = '', $prefix = '', $postfix = '')
 {
-    return strtoupper(str_replace('-', ' ', $value));
+    return is_null($value) ? '-' : $prefix.strtoupper(str_replace('-', ' ', $value)).$postfix;
 }

@@ -365,7 +365,7 @@
 
                     <!-- card-header -->
                     <div class="card-header">
-                        <h3 class="card-title">KERTAS KERJA - INDIKATOR / LEVEL : {{ is_null(request()->query('level')) ? '-' : cast_to_upper(request()->query('level')) }} / UNIT : {{ is_null(request()->query('unit')) ? '-' : cast_to_upper(request()->query('unit')) }} / TAHUN : {{ is_null(request()->query('tahun')) ? '-' : cast_to_upper(request()->query('tahun')) }}</h3>
+                        <h3 class="card-title">KERTAS KERJA - INDIKATOR / LEVEL : {{ cast_to_upper(request()->query('level'), '-') }} / UNIT : {{ cast_to_upper(request()->query('unit'), '-') }} / TAHUN : {{ cast_to_upper(request()->query('tahun'), '-') }}</h3>
                     </div>
                     <!-- end : card-header -->
 
