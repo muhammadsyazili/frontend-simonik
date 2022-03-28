@@ -296,12 +296,5 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
         //comparing
         Route::get('/semongko/comparing', [App\Http\Controllers\Semongko\ComparingController::class, 'comparing'])
             ->name('semongko.comparing');
-
-        //export
-        Route::get('/semongko/export/index', [App\Http\Controllers\Semongko\ExportController::class, 'index'])
-            ->name('semongko.export.index');
-
-        Route::get('/semongko/export/{level}/{unit}/{tahun}', [App\Http\Controllers\Semongko\ExportController::class, 'export'])
-            ->name('semongko.export');
     });
 });
