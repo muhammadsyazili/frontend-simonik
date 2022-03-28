@@ -296,5 +296,14 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
         //comparing
         Route::get('/semongko/comparing', [App\Http\Controllers\Semongko\ComparingController::class, 'comparing'])
             ->name('semongko.comparing');
+
+        //setting host
+        Route::get('/semongko/host/edit', [App\Http\Controllers\Semongko\BackendHostController::class, 'edit'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.host.edit');
+
+        Route::put('/semongko/host', [App\Http\Controllers\Semongko\BackendHostController::class, 'update'])
+            ->middleware([\App\Http\Middleware\SEMONGKO\IsActive::class, \App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
+            ->name('semongko.host.update');
     });
 });

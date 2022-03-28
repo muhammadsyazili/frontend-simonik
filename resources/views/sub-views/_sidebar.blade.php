@@ -60,11 +60,38 @@
                 </ul>
             </li>
 
-            @if (request()->cookie('X-Role') === 'super-admin')
             <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link">
                     <i class="fas fa-circle nav-icon text-warning"></i>
-                    <p>Supporting <i class="right fas fa-angle-left"></i></p>
+                    <p>Visualization(s) <i class="right fas fa-angle-left"></i></p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('semongko.monitoring') }}" class="nav-link {{ (request()->segment(2) === 'monitoring') ? 'active' : '' }}">
+                            <i class="nav-icon far fa-circle text-warning"></i>
+                            <p>Monitoring</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('semongko.rangking') }}" class="nav-link {{ (request()->segment(2) === 'rangking') ? 'active' : '' }}">
+                            <i class="nav-icon far fa-circle text-warning"></i>
+                            <p>Ranking</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('semongko.comparing') }}" class="nav-link {{ (request()->segment(2) === 'comparing') ? 'active' : '' }}">
+                            <i class="nav-icon far fa-circle text-warning"></i>
+                            <p>Comparing</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            @if (request()->cookie('X-Role') === 'super-admin')
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-circle nav-icon text-warning"></i>
+                    <p>Supporting(s) <i class="right fas fa-angle-left"></i></p>
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
@@ -89,24 +116,22 @@
             </li>
             @endif
 
-            <li class="nav-item">
-                <a href="{{ route('semongko.monitoring') }}" class="nav-link {{ (request()->segment(2) === 'monitoring') ? 'active' : '' }}">
+            @if (request()->cookie('X-Role') === 'super-admin')
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
                     <i class="fas fa-circle nav-icon text-warning"></i>
-                    <p>Monitoring</p>
+                    <p>Setting(s) <i class="right fas fa-angle-left"></i></p>
                 </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('semongko.host.edit') }}" class="nav-link {{ in_array(request()->segment(2), ['hosts', 'host']) ? 'active' : '' }}">
+                        <i class="nav-icon far fa-circle text-warning"></i>
+                        <p>Backend Host</p>
+                        </a>
+                    </li>
+                </ul>
             </li>
-            <li class="nav-item">
-                <a href="{{ route('semongko.rangking') }}" class="nav-link {{ (request()->segment(2) === 'rangking') ? 'active' : '' }}">
-                    <i class="fas fa-circle nav-icon text-warning"></i>
-                    <p>Ranking</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('semongko.comparing') }}" class="nav-link">
-                    <i class="fas fa-circle nav-icon text-warning {{ (request()->segment(2) === 'comparing') ? 'active' : '' }}"></i>
-                    <p>Comparing</p>
-                </a>
-            </li>
+            @endif
         @endif
       </ul>
     </nav>
