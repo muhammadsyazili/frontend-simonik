@@ -126,7 +126,7 @@
                     <li class="nav-item">
                         <a href="{{ route('semongko.host.edit') }}" class="nav-link {{ in_array(request()->segment(2), ['hosts', 'host']) ? 'active' : '' }}">
                         <i class="nav-icon far fa-circle text-warning"></i>
-                        <p>Backend Host</p>
+                        <p>SEMONGKO Backend Host</p>
                         </a>
                     </li>
                 </ul>

@@ -4,7 +4,7 @@
 
 {{-- ========================================================== --}}
 @push('metadata')
-    <meta name="host" content="{{ env('HOST_SEMONGKO') }}">
+    <meta name="host" content="{{ SEMONGKO_backend_host() }}">
     <meta name="user" content="{{ request()->cookie('X-User-Id') }}">
 
     <meta name="id_left" content="{{ request()->query('id_left') }}">

@@ -4,7 +4,7 @@
 
 {{-- ========================================================== --}}
 @push('metadata')
-    <meta name="host" content="{{ env('HOST_SEMONGKO') }}">
+    <meta name="host" content="{{ SEMONGKO_backend_host() }}">
 @endpush
 
 {{-- ========================================================== --}}

@@ -4,7 +4,7 @@
 
 {{-- ========================================================== --}}
 @push('metadata')
-    <meta name="host" content="{{ env('HOST_SEMONGKO') }}">
+    <meta name="host" content="{{ SEMONGKO_backend_host() }}">
     <meta name="parent_id" content="{{ $response->data->unit->parent_id }}">
 @endpush
 
