@@ -26,7 +26,7 @@ function FDX_services($endpoint, $method, $data = [], $withToken = true)
 
 function cast_to_upper($value, $default = '', $prefix = '', $postfix = '')
 {
-    return is_null($value) ? '-' : $prefix . strtoupper(str_replace('-', ' ', $value)) . $postfix;
+    return is_null($value) ? $default : $prefix . strtoupper(str_replace('-', ' ', $value)) . $postfix;
 }
 
 function SEMONGKO_backend_host(): string
