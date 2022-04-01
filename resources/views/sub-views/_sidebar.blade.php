@@ -97,19 +97,19 @@
                     <li class="nav-item">
                         <a href="{{ route('semongko.user.index') }}" class="nav-link {{ in_array(request()->segment(2), ['users', 'user']) ? 'active' : '' }}">
                         <i class="nav-icon far fa-circle text-warning"></i>
-                        <p>User</p>
+                        <p>User Management</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('semongko.level.index') }}" class="nav-link {{ in_array(request()->segment(2), ['levels', 'level']) ? 'active' : '' }}">
                         <i class="nav-icon far fa-circle text-warning"></i>
-                        <p>Level</p>
+                        <p>Level Management</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('semongko.unit.index') }}" class="nav-link {{ in_array(request()->segment(2), ['units', 'unit']) ? 'active' : '' }}">
                         <i class="nav-icon far fa-circle text-warning"></i>
-                        <p>Unit Kerja</p>
+                        <p>Working Unit Management</p>
                         </a>
                     </li>
                 </ul>
@@ -126,7 +126,7 @@
                     <li class="nav-item">
                         <a href="{{ route('semongko.host.edit') }}" class="nav-link {{ in_array(request()->segment(2), ['hosts', 'host']) ? 'active' : '' }}">
                         <i class="nav-icon far fa-circle text-warning"></i>
-                        <p>SEMONGKO Backend Host</p>
+                        <p>Backend Host Setting</p>
                         </a>
                     </li>
                 </ul>
