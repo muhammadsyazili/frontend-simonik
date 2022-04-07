@@ -62,7 +62,7 @@
 @section('content')
     <div class="login-box">
         <div class="login-logo">
-            <img src="{{ asset('icon-brand.png') }}" alt="icon-brand" width="30%">
+            <img src="{{ asset('icon-brand-without-text.png') }}" alt="icon-brand-without-text" width="30%">
         </div>
 
         <div class="text-center font-weight-bold">

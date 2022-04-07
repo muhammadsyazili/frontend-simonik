@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-info elevation-4 sidebar-light-info">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-        <span class="brand-text font-weight-light text-center"><img src="{{ asset('icon-brand-without-image.png') }}" alt="Logo" width="75%"></span>
+        {{-- <span class="brand-text font-weight-light text-center"><img src="{{ asset('icon-brand-without-image.png') }}" alt="Logo" width="75%"></span> --}}
     </a>
 
   <!-- Sidebar -->
