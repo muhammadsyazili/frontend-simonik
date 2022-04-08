@@ -596,23 +596,23 @@
                                                                     </td>
                                                                     <td class="text-center">
                                                                         <p class="reset">{{ $indicator->selected_target->value->showed }}</p>
-                                                                        <p class="reset small text-info">({{ $indicator->selected_target->value->original }})</p>
+                                                                        {{-- <p class="reset small text-info">({{ $indicator->selected_target->value->original }})</p> --}}
                                                                     </td>
                                                                     <td class="text-center">
                                                                         <p class="reset">{{ $indicator->selected_realization->value->showed }}</p>
-                                                                        <p class="reset small text-info">({{ $indicator->selected_realization->value->original }})</p>
+                                                                        {{-- <p class="reset small text-info">({{ $indicator->selected_realization->value->original }})</p> --}}
                                                                     </td>
                                                                     <td class="text-center">
                                                                         <p class="reset font-weight-bold">{{ $indicator->capping_value_100->value->showed }}</p>
-                                                                        <p class="reset small text-info">({{ $indicator->capping_value_100->value->original }})</p>
+                                                                        {{-- <p class="reset small text-info">({{ $indicator->capping_value_100->value->original }})</p> --}}
                                                                     </td>
                                                                     <td class="text-center">
                                                                         <p class="reset font-weight-bold">{{ $indicator->capping_value_110->value->showed }}</p>
-                                                                        <p class="reset small text-info">({{ $indicator->capping_value_110->value->original }})</p>
+                                                                        {{-- <p class="reset small text-info">({{ $indicator->capping_value_110->value->original }})</p> --}}
                                                                     </td>
                                                                     <td class="text-center bg-{{ $indicator->status_color }}">
                                                                         <p class="reset font-weight-bold">{{ $indicator->achievement->value->showed }}</p>
-                                                                        <p class="reset small">({{ $indicator->achievement->value->original }})</p>
+                                                                        {{-- <p class="reset small">({{ $indicator->achievement->value->original }})</p> --}}
                                                                         <p class="reset">{{ $indicator->status }}</p>
                                                                     </td>
                                                                     <td class="text-center">
@@ -637,11 +637,11 @@
                                                                 <td></td>
                                                                 <td class="text-center">
                                                                     <p class="reset font-weight-bold">{{ $response->data->indicators->total->KPI_100->value->showed }}</p>
-                                                                    <p class="reset small">({{ $response->data->indicators->total->KPI_100->value->original }})</p>
+                                                                    {{-- <p class="reset small">({{ $response->data->indicators->total->KPI_100->value->original }})</p> --}}
                                                                 </td>
                                                                 <td class="text-center">
                                                                     <p class="reset font-weight-bold">{{ $response->data->indicators->total->KPI_110->value->showed }}</p>
-                                                                    <p class="reset small">({{ $response->data->indicators->total->KPI_110->value->original }})</p>
+                                                                    {{-- <p class="reset small">({{ $response->data->indicators->total->KPI_110->value->original }})</p> --}}
                                                                 </td>
                                                                 <td></td>
                                                                 <td></td>
@@ -653,11 +653,11 @@
                                                                 <td></td>
                                                                 <td class="text-center">
                                                                     <p class="reset font-weight-bold">{{ $response->data->indicators->total->PI_100->value->showed }}</p>
-                                                                    <p class="reset small">({{ $response->data->indicators->total->PI_100->value->original }})</p>
+                                                                    {{-- <p class="reset small">({{ $response->data->indicators->total->PI_100->value->original }})</p> --}}
                                                                 </td>
                                                                 <td class="text-center">
                                                                     <p class="reset font-weight-bold">{{ $response->data->indicators->total->PI_110->value->showed }}</p>
-                                                                    <p class="reset small">({{ $response->data->indicators->total->PI_110->value->original }})</p>
+                                                                    {{-- <p class="reset small">({{ $response->data->indicators->total->PI_110->value->original }})</p> --}}
                                                                 </td>
                                                                 <td></td>
                                                                 <td></td>
@@ -677,11 +677,11 @@
                                                                 <td></td>
                                                                 <td class="text-center">
                                                                     <p class="reset font-weight-bold">{{ $response->data->indicators->total->PK_100->value->showed }} %</p>
-                                                                    <p class="reset small">({{ $response->data->indicators->total->PK_100->value->original }})</p>
+                                                                    {{-- <p class="reset small">({{ $response->data->indicators->total->PK_100->value->original }})</p> --}}
                                                                 </td>
                                                                 <td class="text-center">
                                                                     <p class="reset font-weight-bold">{{ $response->data->indicators->total->PK_110->value->showed }} %</p>
-                                                                    <p class="reset small">({{ $response->data->indicators->total->PK_110->value->original }})</p>
+                                                                    {{-- <p class="reset small">({{ $response->data->indicators->total->PK_110->value->original }})</p> --}}
                                                                 </td>
                                                                 <td></td>
                                                                 <td></td>
@@ -693,11 +693,11 @@
                                                                 <td></td>
                                                                 <td class="text-center">
                                                                     <p class="reset font-weight-bold">{{ $response->data->indicators->total->PPK_100->value->showed }} %</p>
-                                                                    <p class="reset small">({{ $response->data->indicators->total->PPK_100->value->original }})</p>
+                                                                    {{-- <p class="reset small">({{ $response->data->indicators->total->PPK_100->value->original }})</p> --}}
                                                                 </td>
                                                                 <td class="text-center">
                                                                     <p class="reset font-weight-bold">{{ $response->data->indicators->total->PPK_110->value->showed }} %</p>
-                                                                    <p class="reset small">({{ $response->data->indicators->total->PPK_110->value->original }})</p>
+                                                                    {{-- <p class="reset small">({{ $response->data->indicators->total->PPK_110->value->original }})</p> --}}
                                                                 </td>
                                                                 <td></td>
                                                                 <td></td>
