@@ -1,7 +1,8 @@
 <aside class="main-sidebar sidebar-dark-info elevation-4 sidebar-light-info">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-        {{-- <span class="brand-text font-weight-light text-center"><img src="{{ asset('icon-brand-without-image.png') }}" alt="Logo" width="75%"></span> --}}
+        <img src="{{ asset('small-icon-brand.png') }}" alt="Brand Logo" class="brand-image">
+        <span class="brand-text font-weight-bold text-light">SEMONGKO</span>
     </a>
 
   <!-- Sidebar -->
@@ -9,7 +10,7 @@
     <!-- Sidebar User Panel -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
         <div class="image">
-            <img src="{{ asset('icon-brand-without-text.png') }}" alt="User Image">
+            <img src="{{ asset('user-icon.png') }}" alt="User Icon">
         </div>
         <div class="info">
             <a href="#" class="text-light d-block"><small><i class="fas fa-at"></i> {{ request()->cookie('X-Username') }}</small></a>
