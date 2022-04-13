@@ -184,7 +184,7 @@
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                                    <label class="small">Tipe <span class="text-danger">*</span></label>
+                                    <label class="small">Tipe Indikator <span class="text-danger">*</span></label>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
                                     <div class="form-group clearfix">
