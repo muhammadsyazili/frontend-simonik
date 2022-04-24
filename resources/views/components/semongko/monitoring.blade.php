@@ -535,7 +535,7 @@
                                                     <a class="reset" href="#table"><span class="badge badge-pill badge-info">Focus on table</span></a>
                                                 </div>
                                                 <div class="float-right">
-                                                    <a class="badge badge-pill badge-info" href="{{ route('semongko.monitoring.export', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun'),'bulan' => request()->query('bulan')]) }}">Download hasil monitoring (sesuai filter)</a>
+                                                    <a class="badge badge-pill badge-info" href="{{ route('semongko.exporting', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun'),'bulan' => request()->query('bulan')]) }}">Download hasil monitoring (sesuai filter)</a>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">

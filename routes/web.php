@@ -293,9 +293,6 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
         Route::get('/semongko/monitoring', [App\Http\Controllers\Semongko\MonitoringController::class, 'monitoring'])
             ->name('semongko.monitoring');
 
-        Route::get('/semongko/monitoring/{level}/{unit}/{tahun}/{bulan}/export', [App\Http\Controllers\Semongko\MonitoringController::class, 'export'])
-            ->name('semongko.monitoring.export');
-
         //rangking
         Route::get('/semongko/rangking', [App\Http\Controllers\Semongko\RangkingController::class, 'rangking'])
             ->name('semongko.rangking');
@@ -303,5 +300,9 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
         //comparing
         Route::get('/semongko/comparing', [App\Http\Controllers\Semongko\ComparingController::class, 'comparing'])
             ->name('semongko.comparing');
+
+        //exporting
+        Route::get('/semongko/exporting/{level}/{unit}/{tahun}/{bulan}', [App\Http\Controllers\Semongko\MonitoringController::class, 'exporting'])
+            ->name('semongko.exporting');
     });
 });

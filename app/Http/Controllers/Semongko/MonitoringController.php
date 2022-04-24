@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Semongko;
 
-use App\Exports\MonitoringExport;
+use App\Exports\Exporting;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -37,9 +37,9 @@ class MonitoringController extends Controller
         return view('components.semongko.monitoring', compact('response'));
     }
 
-    public function export($level, $unit, $tahun, $bulan)
+    public function exporting($level, $unit, $tahun, $bulan)
     {
-        $response = SEMONGKO_services('/monitoring/exporting', 'get', [
+        $response = SEMONGKO_services('/exporting', 'get', [
             'level' => $level,
             'unit' => $unit,
             'tahun' => $tahun,
@@ -55,6 +55,6 @@ class MonitoringController extends Controller
             return redirect()->back();
         }
 
-        return Excel::download(new MonitoringExport($response->object()->data->indicators, $bulan), "kertas-kerja@$level@$unit@$tahun@s.d.$bulan.xlsx", \Maatwebsite\Excel\Excel::XLSX);
+        return Excel::download(new Exporting($response->object()->data->indicators, $bulan), "kertas-kerja@$level@$unit@$tahun@s.d.$bulan.xlsx", \Maatwebsite\Excel\Excel::XLSX);
     }
 }

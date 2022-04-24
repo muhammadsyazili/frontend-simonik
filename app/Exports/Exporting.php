@@ -8,7 +8,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithCustomStartCell;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class MonitoringExport implements FromCollection, WithHeadings, WithCustomStartCell, ShouldAutoSize
+class Exporting implements FromCollection, WithHeadings, WithCustomStartCell, ShouldAutoSize
 {
     private $indicators;
     private $month;
