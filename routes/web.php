@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 */
 
 Route::get('/', function () {
-    return redirect()->route('semongko.dashboard.before');
+    return redirect()->route('semongko.dashboard');
 });
 
 //Login - Form
@@ -29,11 +29,18 @@ Route::post('/login', [App\Http\Controllers\AuthController::class, 'login'])
     ->name('login');
 
 Route::get('/dashboard', [App\Http\Controllers\Semongko\DashboardController::class, 'dashboard'])
-    ->name('semongko.dashboard.before');
+    ->name('semongko.dashboard');
 
 //Logout
 Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout'])
     ->name('logout');
+
+//setting host
+Route::get('/semongko/host/edit', [App\Http\Controllers\Semongko\SemongkoBackendHostController::class, 'edit'])
+    ->name('semongko.host.edit');
+
+Route::put('/semongko/setting/host', [App\Http\Controllers\Semongko\SemongkoBackendHostController::class, 'update'])
+    ->name('semongko.host.update');
 
 Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
 
@@ -297,13 +304,4 @@ Route::middleware([App\Http\Middleware\IsLogin::class])->group(function () {
         Route::get('/semongko/comparing', [App\Http\Controllers\Semongko\ComparingController::class, 'comparing'])
             ->name('semongko.comparing');
     });
-
-    //setting host
-    Route::get('/semongko/setting/host/edit', [App\Http\Controllers\Semongko\SemongkoBackendHostController::class, 'edit'])
-        ->middleware([\App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
-        ->name('semongko.host.edit');
-
-    Route::put('/semongko/setting/host', [App\Http\Controllers\Semongko\SemongkoBackendHostController::class, 'update'])
-        ->middleware([\App\Http\Middleware\SEMONGKO\IsSuperAdmin::class])
-        ->name('semongko.host.update');
 });

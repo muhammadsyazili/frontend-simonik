@@ -20,7 +20,6 @@ class MonitoringController extends Controller
                 'unit' => $request->query('unit'),
                 'tahun' => (int) $request->query('tahun'),
                 'bulan' => $request->query('bulan'),
-                'auth' => '1',
             ]);
 
             if ($response->clientError()) {
@@ -40,7 +39,7 @@ class MonitoringController extends Controller
 
     public function export($level, $unit, $tahun, $bulan)
     {
-        $response = SEMONGKO_services('/monitoring/export', 'get', [
+        $response = SEMONGKO_services('/monitoring/exporting', 'get', [
             'level' => $level,
             'unit' => $unit,
             'tahun' => $tahun,
@@ -56,6 +55,6 @@ class MonitoringController extends Controller
             return redirect()->back();
         }
 
-        return Excel::download(new MonitoringExport($response->object()->data->indicators, $bulan), "Kertas Kerja@$level@$unit@$tahun@s.d.$bulan.xlsx", \Maatwebsite\Excel\Excel::XLSX);
+        return Excel::download(new MonitoringExport($response->object()->data->indicators, $bulan), "kertas-kerja@$level@$unit@$tahun@s.d.$bulan.xlsx", \Maatwebsite\Excel\Excel::XLSX);
     }
 }

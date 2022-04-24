@@ -13,12 +13,11 @@ class DashboardController extends Controller
     {
         $response = null;
         if (!is_null($request->query('level')) && !is_null($request->query('unit')) && !is_null($request->query('tahun')) && !is_null($request->query('bulan'))) {
-            $response = SEMONGKO_services('/monitoring', 'get', [
+            $response = SEMONGKO_services('/dashboard', 'get', [
                 'level' => $request->query('level'),
                 'unit' => $request->query('unit'),
                 'tahun' => (int) $request->query('tahun'),
                 'bulan' => $request->query('bulan'),
-                'auth' => '0',
             ]);
 
             if ($response->clientError()) {

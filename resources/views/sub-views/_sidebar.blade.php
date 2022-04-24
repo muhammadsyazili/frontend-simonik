@@ -89,7 +89,7 @@
             </li>
 
             @if (request()->cookie('X-Role') === 'super-admin')
-            <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link">
                     <i class="fas fa-circle nav-icon text-warning"></i>
                     <p>Supporting(s) <i class="right fas fa-angle-left"></i></p>
@@ -111,23 +111,6 @@
                         <a href="{{ route('semongko.unit.index') }}" class="nav-link {{ in_array(request()->segment(2), ['units', 'unit']) ? 'active' : '' }}">
                         <i class="nav-icon far fa-circle text-warning"></i>
                         <p>Working Unit Management</p>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            @endif
-
-            @if (request()->cookie('X-Role') === 'super-admin')
-            <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                    <i class="fas fa-circle nav-icon text-warning"></i>
-                    <p>Setting(s) <i class="right fas fa-angle-left"></i></p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{ route('semongko.host.edit') }}" class="nav-link {{ in_array(request()->segment(2), ['hosts', 'host']) ? 'active' : '' }}">
-                        <i class="nav-icon far fa-circle text-warning"></i>
-                        <p>Backend Host Setting</p>
                         </a>
                     </li>
                 </ul>

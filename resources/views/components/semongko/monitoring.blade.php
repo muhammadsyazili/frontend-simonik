@@ -11,6 +11,9 @@
     <meta name="unit" content="{{ request()->query('unit') }}">
     <meta name="tahun" content="{{ request()->query('tahun') }}">
     <meta name="bulan" content="{{ request()->query('bulan') }}">
+
+    <meta name="PPK_100" content="{{ empty($response->data->indicators) ?: $response->data->indicators->total->PPK_100->value->original }}">
+    <meta name="PPK_110" content="{{ empty($response->data->indicators) ?: $response->data->indicators->total->PPK_110->value->original }}">
 @endpush
 
 {{-- ========================================================== --}}
@@ -22,8 +25,8 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> {{-- required --}}
 
-    <!-- Custom Style for Sidebar -->
     <style>
+        /* Bootstrap Custom Style for Sidebar */
         aside {
             color: #ffffff !important;
             background-color: #135b96 !important;
@@ -33,35 +36,27 @@
         aside .brand-link {
             background-color: #135b96 !important;
         }
+        /* End : Bootstrap Custom Style for Sidebar */
 
-    </style>
-    <!-- End : Custom Style for Sidebar -->
-
-    <!-- Custom Style for Navbar -->
-    <style>
+        /* Bootstrap Custom Style for Navbar */
         nav.main-header {
             color: #ffffff !important;
             background-color: #135b96 !important;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='540' height='450' viewBox='0 0 1080 900'%3E%3Cg fill-opacity='.1'%3E%3Cpolygon fill='%23444' points='90 150 0 300 180 300'/%3E%3Cpolygon points='90 150 180 0 0 0'/%3E%3Cpolygon fill='%23AAA' points='270 150 360 0 180 0'/%3E%3Cpolygon fill='%23DDD' points='450 150 360 300 540 300'/%3E%3Cpolygon fill='%23999' points='450 150 540 0 360 0'/%3E%3Cpolygon points='630 150 540 300 720 300'/%3E%3Cpolygon fill='%23DDD' points='630 150 720 0 540 0'/%3E%3Cpolygon fill='%23444' points='810 150 720 300 900 300'/%3E%3Cpolygon fill='%23FFF' points='810 150 900 0 720 0'/%3E%3Cpolygon fill='%23DDD' points='990 150 900 300 1080 300'/%3E%3Cpolygon fill='%23444' points='990 150 1080 0 900 0'/%3E%3Cpolygon fill='%23DDD' points='90 450 0 600 180 600'/%3E%3Cpolygon points='90 450 180 300 0 300'/%3E%3Cpolygon fill='%23666' points='270 450 180 600 360 600'/%3E%3Cpolygon fill='%23AAA' points='270 450 360 300 180 300'/%3E%3Cpolygon fill='%23DDD' points='450 450 360 600 540 600'/%3E%3Cpolygon fill='%23999' points='450 450 540 300 360 300'/%3E%3Cpolygon fill='%23999' points='630 450 540 600 720 600'/%3E%3Cpolygon fill='%23FFF' points='630 450 720 300 540 300'/%3E%3Cpolygon points='810 450 720 600 900 600'/%3E%3Cpolygon fill='%23DDD' points='810 450 900 300 720 300'/%3E%3Cpolygon fill='%23AAA' points='990 450 900 600 1080 600'/%3E%3Cpolygon fill='%23444' points='990 450 1080 300 900 300'/%3E%3Cpolygon fill='%23222' points='90 750 0 900 180 900'/%3E%3Cpolygon points='270 750 180 900 360 900'/%3E%3Cpolygon fill='%23DDD' points='270 750 360 600 180 600'/%3E%3Cpolygon points='450 750 540 600 360 600'/%3E%3Cpolygon points='630 750 540 900 720 900'/%3E%3Cpolygon fill='%23444' points='630 750 720 600 540 600'/%3E%3Cpolygon fill='%23AAA' points='810 750 720 900 900 900'/%3E%3Cpolygon fill='%23666' points='810 750 900 600 720 600'/%3E%3Cpolygon fill='%23999' points='990 750 900 900 1080 900'/%3E%3Cpolygon fill='%23999' points='180 0 90 150 270 150'/%3E%3Cpolygon fill='%23444' points='360 0 270 150 450 150'/%3E%3Cpolygon fill='%23FFF' points='540 0 450 150 630 150'/%3E%3Cpolygon points='900 0 810 150 990 150'/%3E%3Cpolygon fill='%23222' points='0 300 -90 450 90 450'/%3E%3Cpolygon fill='%23FFF' points='0 300 90 150 -90 150'/%3E%3Cpolygon fill='%23FFF' points='180 300 90 450 270 450'/%3E%3Cpolygon fill='%23666' points='180 300 270 150 90 150'/%3E%3Cpolygon fill='%23222' points='360 300 270 450 450 450'/%3E%3Cpolygon fill='%23FFF' points='360 300 450 150 270 150'/%3E%3Cpolygon fill='%23444' points='540 300 450 450 630 450'/%3E%3Cpolygon fill='%23222' points='540 300 630 150 450 150'/%3E%3Cpolygon fill='%23AAA' points='720 300 630 450 810 450'/%3E%3Cpolygon fill='%23666' points='720 300 810 150 630 150'/%3E%3Cpolygon fill='%23FFF' points='900 300 810 450 990 450'/%3E%3Cpolygon fill='%23999' points='900 300 990 150 810 150'/%3E%3Cpolygon points='0 600 -90 750 90 750'/%3E%3Cpolygon fill='%23666' points='0 600 90 450 -90 450'/%3E%3Cpolygon fill='%23AAA' points='180 600 90 750 270 750'/%3E%3Cpolygon fill='%23444' points='180 600 270 450 90 450'/%3E%3Cpolygon fill='%23444' points='360 600 270 750 450 750'/%3E%3Cpolygon fill='%23999' points='360 600 450 450 270 450'/%3E%3Cpolygon fill='%23666' points='540 600 630 450 450 450'/%3E%3Cpolygon fill='%23222' points='720 600 630 750 810 750'/%3E%3Cpolygon fill='%23FFF' points='900 600 810 750 990 750'/%3E%3Cpolygon fill='%23222' points='900 600 990 450 810 450'/%3E%3Cpolygon fill='%23DDD' points='0 900 90 750 -90 750'/%3E%3Cpolygon fill='%23444' points='180 900 270 750 90 750'/%3E%3Cpolygon fill='%23FFF' points='360 900 450 750 270 750'/%3E%3Cpolygon fill='%23AAA' points='540 900 630 750 450 750'/%3E%3Cpolygon fill='%23FFF' points='720 900 810 750 630 750'/%3E%3Cpolygon fill='%23222' points='900 900 990 750 810 750'/%3E%3Cpolygon fill='%23222' points='1080 300 990 450 1170 450'/%3E%3Cpolygon fill='%23FFF' points='1080 300 1170 150 990 150'/%3E%3Cpolygon points='1080 600 990 750 1170 750'/%3E%3Cpolygon fill='%23666' points='1080 600 1170 450 990 450'/%3E%3Cpolygon fill='%23DDD' points='1080 900 1170 750 990 750'/%3E%3C/g%3E%3C/svg%3E");
         }
+        /* End : Bootstrap Custom Style for Navbar */
 
-    </style>
-    <!-- End : Custom Style for Navbar -->
-
-    <!-- Custom Style for Content -->
-    <style>
+        /* Bootstrap Custom Style for Content */
         .canvas-container {
             display: flex;
             align-items: center;
             justify-content: center;
         }
-    </style>
-    <!-- End : Custom Style for Content -->
+        /* End : Bootstrap Custom Style for Content */
 
-    {{-- Table Header Fixed --}}
-    <style>
+        /* Table Header Fixed */
         .table-responsive {
-            height: 100vh;
+            max-height: 100vh;
             overflow: scroll;
         }
 
@@ -86,22 +81,16 @@
             top: 0;
             z-index: 10;
         }
+        /* End : Table Header Fixed */
 
-    </style>
-    {{-- End : Table Header Fixed --}}
-
-    <!-- Change Color Row Table on Click -->
-    <style>
+        /* Change Color Row Table on Click */
         .table tbody tr.highlight td {
             background-color: rgb(30, 41, 59);
             color: rgb(255, 255, 255);
         }
+        /* End : Change Color Row Table on Click */
 
-    </style>
-    <!-- End : Change Color Row Table on Click -->
-
-    {{-- Highcharts --}}
-    <style>
+        /* Highcharts Custom Style */
         .highcharts-figure,
         .highcharts-data-table table {
             widows: 100%;
@@ -143,7 +132,7 @@
         .highcharts-data-table tr:hover {
             background: #f1f7ff;
         }
-
+        /* End : Highcharts Custom Style */
     </style>
 @endpush
 
@@ -151,7 +140,6 @@
 
 @push('script')
     <!-- jQuery -->
-    {{-- <script src="{{ asset('template/plugins/jquery/jquery.min.js') }}"></script> --}} {{-- required --}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <!-- Popper -->
@@ -164,19 +152,30 @@
     <script src="{{ asset('template/dist/js/adminlte.min.js') }}"></script> {{-- required --}}
     <!-- AdminLTE For Demo Purposes -->
     <script src="{{ asset('template/dist/js/demo.js') }}"></script> {{-- required --}}
+    <!-- Gauge Chart -->
+    <script src="{{ asset('libraries/gauge-chart/gauge.min.js') }}"></script>
+    <!-- Highcharts -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-    {{-- Table Header Fixed --}}
     <script>
+        // Change Color Row Table on Click
+        $('#table').on('click', 'tbody tr', function(event) {
+            $(this).addClass('highlight').siblings().removeClass('highlight');
+        });
+        // End : Change Color Row Table on Click
+
+        // Table Header Fixed
         $(document).ready(function() {
             let firstheight = $('.first').height();
             $("thead tr.second th, thead tr.second td").css("top", firstheight);
         });
-    </script>
-    {{-- End : Table Header Fixed --}}
+        // End : Table Header Fixed
 
-    <!-- Gauge Chart -->
-    <script src="{{ asset('libraries/gauge-chart/gauge.min.js') }}"></script> {{-- required --}}
-    <script>
+        // Gauge Chart
         let opts = {
             angle: 0,
             lineWidth: 0.25,
@@ -221,7 +220,7 @@
         gauge100.minValue = 0;
         gauge100.maxValue = 200;
         gauge100.animationSpeed = 50;
-        gauge100.set(parseFloat($('#PPK_100').val()));
+        gauge100.set(parseFloat($('meta[name="PPK_100"]').attr('content')));
         gauge100.setTextField(document.getElementById("gauge-label-100"), 2);
 
         let target110 = document.getElementById('gauge-110');
@@ -229,17 +228,11 @@
         gauge110.minValue = 0;
         gauge110.maxValue = 200;
         gauge110.animationSpeed = 50;
-        gauge110.set(parseFloat($('#PPK_110').val()));
+        gauge110.set(parseFloat($('meta[name="PPK_110"]').attr('content')));
         gauge110.setTextField(document.getElementById("gauge-label-110"), 2);
-    </script>
+        // End : Gauge Chart
 
-    {{-- Highcharts --}}
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/series-label.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <script>
+        // Highcharts
         $('.chart').click(function() {
             let id = $(this).data("id");
             let prefix = $(this).data("prefix");
@@ -318,22 +311,15 @@
                 }
             });
         });
+        // End : Highcharts
     </script>
-
-    {{-- Change Color Row Table on Click --}}
-    <script>
-        $('#table').on('click', 'tbody tr', function(event) {
-            $(this).addClass('highlight').siblings().removeClass('highlight');
-        });
-    </script>
-    {{-- End : Change Color Row Table on Click --}}
 @endpush
 
 {{-- ========================================================== --}}
 
 @push('ajax-request')
-    {{-- Request Level & Unit --}}
     <script>
+        // Request Level & Unit
         $(document).ready(function() {
             levels();
             units($('meta[name="level"]').attr('content'));
@@ -409,6 +395,7 @@
                 });
             }
         }
+        // End : Request Level & Unit
     </script>
 @endpush
 
@@ -416,11 +403,11 @@
 
 @section('content')
     <div class="content-wrapper pt-3">
-        @if (session()->has('danger_message'))
-            @include('_alert-danger',['message' => session()->get('danger_message')])
-        @else
-            @if (session()->has('info_message'))
-                <div class="col-md-12">
+        <div class="col-md-12">
+            @if (session()->has('danger_message'))
+                @include('_alert-danger',['message' => session()->get('danger_message')])
+            @else
+                @if (session()->has('info_message'))
                     <div class="card bg-info">
                         <div class="card-header">
                             <h3 class="card-title">Info</h3>
@@ -428,19 +415,14 @@
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
-                            <!-- /.card-tools -->
                         </div>
-                        <!-- /.card-header -->
                         <div class="card-body">
                             @include('_alert-info',['message' => session()->get('info_message')])
                         </div>
-                        <!-- /.card-body -->
                     </div>
-                </div>
-            @endif
+                @endif
 
-            @if ($errors->any())
-                <div class="col-md-12">
+                @if ($errors->any())
                     <div class="card bg-danger">
                         <div class="card-header">
                             <h3 class="card-title">Alert</h3>
@@ -448,29 +430,20 @@
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
-                            <!-- /.card-tools -->
                         </div>
-                        <!-- /.card-header -->
                         <div class="card-body">
                             @foreach ($errors->all() as $errorV)
                                 <p class="small">{{ $errorV }}</p>
                             @endforeach
                         </div>
-                        <!-- /.card-body -->
                     </div>
-                </div>
-            @endif
+                @endif
 
-            {{-- section: table --}}
-            <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
-                    <!-- card-header -->
                     <div class="card-header">
                         <h3 class="card-title">MONITORING</h3>
                     </div>
-                    <!-- end : card-header -->
 
-                    <!-- card-body -->
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -537,6 +510,7 @@
                                         <div class="row">
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                                 <p class="reset text-center small">UNIT KERJA : {{ cast_to_upper(request()->query('unit'), '-') }} - TAHUN : {{ cast_to_upper(request()->query('tahun'), '-') }} - BULAN : {{ cast_to_upper(request()->query('bulan'), '-', 's.d. ') }}</p>
+                                                <hr>
                                                 <p class="reset text-center small"><span class="badge badge-danger">MASALAH : NKO < 95%</span> <span class="badge badge-warning">HATI-HATI : NKO &ge; 95% s.d < 100%</span> <span class="badge badge-success">BAIK : NKO &ge; 100%</span></p>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -546,7 +520,6 @@
                                                 </div>
                                                 <div class="text-center reset" id="gauge-label-100"></div>
                                                 <p class="text-center small reset"><span class="badge badge-{{ $response->data->indicators->total->PPK_100_color_status }}">{{ $response->data->indicators->total->PPK_100_status }}</span></p>
-                                                <input type="hidden" id="PPK_100" value="{{ $response->data->indicators->total->PPK_100->value->original }}">
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                                 <p class="text-center reset">NKO 110%</p>
@@ -555,7 +528,6 @@
                                                 </div>
                                                 <div class="text-center reset" id="gauge-label-110"></div>
                                                 <p class="text-center small reset"><span class="badge badge-{{ $response->data->indicators->total->PPK_110_color_status }}">{{ $response->data->indicators->total->PPK_110_status }}</span></p>
-                                                <input type="hidden" id="PPK_110" value="{{ $response->data->indicators->total->PPK_110->value->original }}">
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                                 <hr>
@@ -563,7 +535,7 @@
                                                     <a class="reset" href="#table"><span class="badge badge-pill badge-info">Focus on table</span></a>
                                                 </div>
                                                 <div class="float-right">
-                                                    <a class="badge badge-pill badge-info" href="{{ route('semongko.monitoring.export', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun'),'bulan' => request()->query('bulan')]) }}">Download Hasil Monitoring <span data-toggle="tooltip" data-placement="right" title="Sesuai filter"><i class="fas fa-info-circle"></i></span></a>
+                                                    <a class="badge badge-pill badge-info" href="{{ route('semongko.monitoring.export', ['level' => request()->query('level'),'unit' => request()->query('unit'),'tahun' => request()->query('tahun'),'bulan' => request()->query('bulan')]) }}">Download hasil monitoring (sesuai filter)</a>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -576,7 +548,7 @@
                                                                 <th class="text-center" rowspan="2">TARGET</th>
                                                                 <th class="text-center" rowspan="2">REALISASI</th>
                                                                 <th class="text-center" colspan="2">NILAI CAPPING</th>
-                                                                <th class="text-center" rowspan="2">PENCAPAIAN & STATUS <span data-toggle="tooltip" data-placement="right" title="MASALAH : PENCAPAIAN < 95%, HATI-HATI : PENCAPAIAN &ge; 95% s.d < 100%, BAIK : PENCAPAIAN &ge; 100%"><i class="fas fa-info-circle"></i></span></th>
+                                                                <th class="text-center" rowspan="2">PENCAPAIAN | STATUS <span data-toggle="tooltip" data-placement="right" title="🔴MASALAH : PENCAPAIAN < 95%, 🟡HATI-HATI : PENCAPAIAN &ge; 95% s.d < 100%, 🟢BAIK : PENCAPAIAN &ge; 100%"><i class="fas fa-info-circle"></i></span></th>
                                                                 <th class="text-center" rowspan="2">CHART</th>
                                                             </tr>
                                                             <tr class="second">
@@ -588,32 +560,26 @@
                                                             @foreach ($response->data->indicators->partials as $indicator)
                                                                 <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
                                                                     <td>
-                                                                        <p class="reset">{{ $indicator->indicator }} | <span class="badge badge-info">{{ $indicator->type }}</span> | Satuan: {{ $indicator->measure }}</p>
-                                                                        <p class="reset">Polaritas: <span class="badge badge-secondary">{!! $indicator->polarity !!}</span></p>
+                                                                        <p class="reset">{{ $indicator->indicator }} | <span class="badge badge-info">{{ $indicator->type }}</span></p>
+                                                                        <p class="reset">Satuan: {{ $indicator->measure }} | Polaritas: <span class="badge badge-secondary">{!! $indicator->polarity !!}</span></p>
                                                                     </td>
                                                                     <td class="text-center">
                                                                         <p>{{ $indicator->selected_weight }}</p>
                                                                     </td>
                                                                     <td class="text-center">
                                                                         <p class="reset">{{ $indicator->selected_target->value->showed }}</p>
-                                                                        {{-- <p class="reset small text-info">({{ $indicator->selected_target->value->original }})</p> --}}
                                                                     </td>
                                                                     <td class="text-center">
                                                                         <p class="reset">{{ $indicator->selected_realization->value->showed }}</p>
-                                                                        {{-- <p class="reset small text-info">({{ $indicator->selected_realization->value->original }})</p> --}}
                                                                     </td>
                                                                     <td class="text-center">
                                                                         <p class="reset font-weight-bold">{{ $indicator->capping_value_100->value->showed }}</p>
-                                                                        {{-- <p class="reset small text-info">({{ $indicator->capping_value_100->value->original }})</p> --}}
                                                                     </td>
                                                                     <td class="text-center">
                                                                         <p class="reset font-weight-bold">{{ $indicator->capping_value_110->value->showed }}</p>
-                                                                        {{-- <p class="reset small text-info">({{ $indicator->capping_value_110->value->original }})</p> --}}
                                                                     </td>
                                                                     <td class="text-center bg-{{ $indicator->status_color }}">
-                                                                        <p class="reset font-weight-bold">{{ $indicator->achievement->value->showed }}</p>
-                                                                        {{-- <p class="reset small">({{ $indicator->achievement->value->original }})</p> --}}
-                                                                        <p class="reset">{{ $indicator->status }}</p>
+                                                                        <p class="reset font-weight-bold">{{ $indicator->achievement->value->showed }} | {{ $indicator->status }}</p>
                                                                     </td>
                                                                     <td class="text-center">
                                                                         @if ($indicator->show_chart)
@@ -622,14 +588,6 @@
                                                                     </td>
                                                                 </tr>
                                                             @endforeach
-                                                            <tr>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                            </tr>
                                                             <tr class="bg-info">
                                                                 <td class="text-center">KEY PERFORMANCE INDIKATOR</td>
                                                                 <td></td>
@@ -637,11 +595,9 @@
                                                                 <td></td>
                                                                 <td class="text-center">
                                                                     <p class="reset font-weight-bold">{{ $response->data->indicators->total->KPI_100->value->showed }}</p>
-                                                                    {{-- <p class="reset small">({{ $response->data->indicators->total->KPI_100->value->original }})</p> --}}
                                                                 </td>
                                                                 <td class="text-center">
                                                                     <p class="reset font-weight-bold">{{ $response->data->indicators->total->KPI_110->value->showed }}</p>
-                                                                    {{-- <p class="reset small">({{ $response->data->indicators->total->KPI_110->value->original }})</p> --}}
                                                                 </td>
                                                                 <td></td>
                                                                 <td></td>
@@ -653,20 +609,10 @@
                                                                 <td></td>
                                                                 <td class="text-center">
                                                                     <p class="reset font-weight-bold">{{ $response->data->indicators->total->PI_100->value->showed }}</p>
-                                                                    {{-- <p class="reset small">({{ $response->data->indicators->total->PI_100->value->original }})</p> --}}
                                                                 </td>
                                                                 <td class="text-center">
                                                                     <p class="reset font-weight-bold">{{ $response->data->indicators->total->PI_110->value->showed }}</p>
-                                                                    {{-- <p class="reset small">({{ $response->data->indicators->total->PI_110->value->original }})</p> --}}
                                                                 </td>
-                                                                <td></td>
-                                                                <td></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
                                                                 <td></td>
                                                                 <td></td>
                                                             </tr>
@@ -677,11 +623,9 @@
                                                                 <td></td>
                                                                 <td class="text-center">
                                                                     <p class="reset font-weight-bold">{{ $response->data->indicators->total->PK_100->value->showed }} %</p>
-                                                                    {{-- <p class="reset small">({{ $response->data->indicators->total->PK_100->value->original }})</p> --}}
                                                                 </td>
                                                                 <td class="text-center">
                                                                     <p class="reset font-weight-bold">{{ $response->data->indicators->total->PK_110->value->showed }} %</p>
-                                                                    {{-- <p class="reset small">({{ $response->data->indicators->total->PK_110->value->original }})</p> --}}
                                                                 </td>
                                                                 <td></td>
                                                                 <td></td>
@@ -693,11 +637,9 @@
                                                                 <td></td>
                                                                 <td class="text-center">
                                                                     <p class="reset font-weight-bold">{{ $response->data->indicators->total->PPK_100->value->showed }} %</p>
-                                                                    {{-- <p class="reset small">({{ $response->data->indicators->total->PPK_100->value->original }})</p> --}}
                                                                 </td>
                                                                 <td class="text-center">
                                                                     <p class="reset font-weight-bold">{{ $response->data->indicators->total->PPK_110->value->showed }} %</p>
-                                                                    {{-- <p class="reset small">({{ $response->data->indicators->total->PPK_110->value->original }})</p> --}}
                                                                 </td>
                                                                 <td></td>
                                                                 <td></td>
@@ -712,15 +654,9 @@
                             </div>
                         </div>
                     </div>
-                    <!-- end : card-body -->
-
-                    <!-- card-footer -->
-                    <div class="card-footer clearfix"></div>
-                    <!-- end : card-footer -->
                 </div>
-            </div>
-            {{-- end section: table --}}
-        @endif
+            @endif
+        </div>
 
         <div class="modal fade" id="modal-xl">
             <div class="modal-dialog modal-xl">

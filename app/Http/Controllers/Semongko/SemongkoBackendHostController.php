@@ -28,24 +28,21 @@ class SemongkoBackendHostController extends Controller
     public function update(Request $request)
     {
         $attributes = [
-            'host' => ['required', 'string'],
+            'host' => ['required', 'url', 'string'],
         ];
 
         $messages = [
             'required' => ':attribute tidak boleh kosong.',
+            'url' => ':attribute format tidak valid.',
         ];
 
         $request->validate($attributes, $messages);
 
-        // Update Key
         $data['host'] = $request->post('host');
-
-        // Write File
         $jsonString = json_encode($data, JSON_PRETTY_PRINT);
-
         file_put_contents(storage_path("host/semongko_backend.json"), stripslashes($jsonString));
 
-        Session::flash('info_message', 'Backend Host Updated!');
-        return redirect()->route('semongko.host.edit');
+        Session::flash('info_message', 'updated !');
+        return redirect()->route('home');
     }
 }

@@ -52,7 +52,7 @@
     {{-- Table Header Fixed --}}
     <style>
         .table-responsive {
-            height: 100vh;
+            max-height: 100vh;
             overflow: scroll;
         }
 
@@ -72,7 +72,6 @@
 
 @push('script')
     <!-- jQuery -->
-    {{-- <script src="{{ asset('template/plugins/jquery/jquery.min.js') }}"></script> --}} {{-- required --}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <!-- Popper -->

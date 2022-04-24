@@ -11,10 +11,6 @@ class AuthController extends Controller
     public function loginForm()
     {
         if (CustomAuth::check()) {
-            //logging
-            $output = new \Symfony\Component\Console\Output\ConsoleOutput();
-            $output->writeln('login check success');
-
             return redirect()->route('home');
         }
         return view('login');
@@ -50,6 +46,6 @@ class AuthController extends Controller
     public function logout()
     {
         CustomAuth::destroy();
-        return redirect()->route('semongko.dashboard.before');
+        return redirect()->route('semongko.dashboard');
     }
 }
