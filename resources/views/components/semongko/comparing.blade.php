@@ -7,17 +7,17 @@
     <meta name="host" content="{{ SEMONGKO_backend_host() }}">
     <meta name="user" content="{{ request()->cookie('X-User-Id') }}">
 
-    <meta name="id_left" content="{{ request()->query('id_left') }}">
-    <meta name="level_left" content="{{ request()->query('level_left') }}">
-    <meta name="unit_left" content="{{ request()->query('unit_left') }}">
-    <meta name="tahun_left" content="{{ request()->query('tahun_left') }}">
-    <meta name="bulan_left" content="{{ request()->query('bulan_left') }}">
+    <meta name="id_kiri" content="{{ request()->query('id_kiri') }}">
+    <meta name="level_kiri" content="{{ request()->query('level_kiri') }}">
+    <meta name="unit_kiri" content="{{ request()->query('unit_kiri') }}">
+    <meta name="tahun_kiri" content="{{ request()->query('tahun_kiri') }}">
+    <meta name="bulan_kiri" content="{{ request()->query('bulan_kiri') }}">
 
-    <meta name="id_right" content="{{ request()->query('id_right') }}">
-    <meta name="level_right" content="{{ request()->query('level_right') }}">
-    <meta name="unit_right" content="{{ request()->query('unit_right') }}">
-    <meta name="tahun_right" content="{{ request()->query('tahun_right') }}">
-    <meta name="bulan_right" content="{{ request()->query('bulan_right') }}">
+    <meta name="id_kanan" content="{{ request()->query('id_kanan') }}">
+    <meta name="level_kanan" content="{{ request()->query('level_kanan') }}">
+    <meta name="unit_kanan" content="{{ request()->query('unit_kanan') }}">
+    <meta name="tahun_kanan" content="{{ request()->query('tahun_kanan') }}">
+    <meta name="bulan_kanan" content="{{ request()->query('bulan_kanan') }}">
 @endpush
 
 {{-- ========================================================== --}}
@@ -29,8 +29,8 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> {{-- required --}}
 
-    <!-- Custom Style for Sidebar -->
     <style>
+        /* Custom Style for Sidebar */
         aside {
             color: #ffffff !important;
             background-color: #135b96 !important;
@@ -40,30 +40,23 @@
         aside .brand-link {
             background-color: #135b96 !important;
         }
+        /* End : Custom Style for Sidebar */
 
-    </style>
-    <!-- End : Custom Style for Sidebar -->
-
-    <!-- Custom Style for Navbar -->
-    <style>
+        /* Custom Style for Navbar */
         nav.main-header {
             color: #ffffff !important;
             background-color: #135b96 !important;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='540' height='450' viewBox='0 0 1080 900'%3E%3Cg fill-opacity='.1'%3E%3Cpolygon fill='%23444' points='90 150 0 300 180 300'/%3E%3Cpolygon points='90 150 180 0 0 0'/%3E%3Cpolygon fill='%23AAA' points='270 150 360 0 180 0'/%3E%3Cpolygon fill='%23DDD' points='450 150 360 300 540 300'/%3E%3Cpolygon fill='%23999' points='450 150 540 0 360 0'/%3E%3Cpolygon points='630 150 540 300 720 300'/%3E%3Cpolygon fill='%23DDD' points='630 150 720 0 540 0'/%3E%3Cpolygon fill='%23444' points='810 150 720 300 900 300'/%3E%3Cpolygon fill='%23FFF' points='810 150 900 0 720 0'/%3E%3Cpolygon fill='%23DDD' points='990 150 900 300 1080 300'/%3E%3Cpolygon fill='%23444' points='990 150 1080 0 900 0'/%3E%3Cpolygon fill='%23DDD' points='90 450 0 600 180 600'/%3E%3Cpolygon points='90 450 180 300 0 300'/%3E%3Cpolygon fill='%23666' points='270 450 180 600 360 600'/%3E%3Cpolygon fill='%23AAA' points='270 450 360 300 180 300'/%3E%3Cpolygon fill='%23DDD' points='450 450 360 600 540 600'/%3E%3Cpolygon fill='%23999' points='450 450 540 300 360 300'/%3E%3Cpolygon fill='%23999' points='630 450 540 600 720 600'/%3E%3Cpolygon fill='%23FFF' points='630 450 720 300 540 300'/%3E%3Cpolygon points='810 450 720 600 900 600'/%3E%3Cpolygon fill='%23DDD' points='810 450 900 300 720 300'/%3E%3Cpolygon fill='%23AAA' points='990 450 900 600 1080 600'/%3E%3Cpolygon fill='%23444' points='990 450 1080 300 900 300'/%3E%3Cpolygon fill='%23222' points='90 750 0 900 180 900'/%3E%3Cpolygon points='270 750 180 900 360 900'/%3E%3Cpolygon fill='%23DDD' points='270 750 360 600 180 600'/%3E%3Cpolygon points='450 750 540 600 360 600'/%3E%3Cpolygon points='630 750 540 900 720 900'/%3E%3Cpolygon fill='%23444' points='630 750 720 600 540 600'/%3E%3Cpolygon fill='%23AAA' points='810 750 720 900 900 900'/%3E%3Cpolygon fill='%23666' points='810 750 900 600 720 600'/%3E%3Cpolygon fill='%23999' points='990 750 900 900 1080 900'/%3E%3Cpolygon fill='%23999' points='180 0 90 150 270 150'/%3E%3Cpolygon fill='%23444' points='360 0 270 150 450 150'/%3E%3Cpolygon fill='%23FFF' points='540 0 450 150 630 150'/%3E%3Cpolygon points='900 0 810 150 990 150'/%3E%3Cpolygon fill='%23222' points='0 300 -90 450 90 450'/%3E%3Cpolygon fill='%23FFF' points='0 300 90 150 -90 150'/%3E%3Cpolygon fill='%23FFF' points='180 300 90 450 270 450'/%3E%3Cpolygon fill='%23666' points='180 300 270 150 90 150'/%3E%3Cpolygon fill='%23222' points='360 300 270 450 450 450'/%3E%3Cpolygon fill='%23FFF' points='360 300 450 150 270 150'/%3E%3Cpolygon fill='%23444' points='540 300 450 450 630 450'/%3E%3Cpolygon fill='%23222' points='540 300 630 150 450 150'/%3E%3Cpolygon fill='%23AAA' points='720 300 630 450 810 450'/%3E%3Cpolygon fill='%23666' points='720 300 810 150 630 150'/%3E%3Cpolygon fill='%23FFF' points='900 300 810 450 990 450'/%3E%3Cpolygon fill='%23999' points='900 300 990 150 810 150'/%3E%3Cpolygon points='0 600 -90 750 90 750'/%3E%3Cpolygon fill='%23666' points='0 600 90 450 -90 450'/%3E%3Cpolygon fill='%23AAA' points='180 600 90 750 270 750'/%3E%3Cpolygon fill='%23444' points='180 600 270 450 90 450'/%3E%3Cpolygon fill='%23444' points='360 600 270 750 450 750'/%3E%3Cpolygon fill='%23999' points='360 600 450 450 270 450'/%3E%3Cpolygon fill='%23666' points='540 600 630 450 450 450'/%3E%3Cpolygon fill='%23222' points='720 600 630 750 810 750'/%3E%3Cpolygon fill='%23FFF' points='900 600 810 750 990 750'/%3E%3Cpolygon fill='%23222' points='900 600 990 450 810 450'/%3E%3Cpolygon fill='%23DDD' points='0 900 90 750 -90 750'/%3E%3Cpolygon fill='%23444' points='180 900 270 750 90 750'/%3E%3Cpolygon fill='%23FFF' points='360 900 450 750 270 750'/%3E%3Cpolygon fill='%23AAA' points='540 900 630 750 450 750'/%3E%3Cpolygon fill='%23FFF' points='720 900 810 750 630 750'/%3E%3Cpolygon fill='%23222' points='900 900 990 750 810 750'/%3E%3Cpolygon fill='%23222' points='1080 300 990 450 1170 450'/%3E%3Cpolygon fill='%23FFF' points='1080 300 1170 150 990 150'/%3E%3Cpolygon points='1080 600 990 750 1170 750'/%3E%3Cpolygon fill='%23666' points='1080 600 1170 450 990 450'/%3E%3Cpolygon fill='%23DDD' points='1080 900 1170 750 990 750'/%3E%3C/g%3E%3C/svg%3E");
         }
+        /* End : Custom Style for Navbar */
 
-    </style>
-    <!-- End : Custom Style for Navbar -->
-
-    {{-- Custom Style for Content --}}
-    <style>
+        /* Custom Style for Content */
         thead tr:nth-child(1) th, thead tr:nth-child(2) th {
             color: #ffffff !important;
             background-color: #135b96 !important;
         }
-
+        /* End : Custom Style for Content */
     </style>
-    {{-- End : Custom Style for Content --}}
 @endpush
 
 {{-- ========================================================== --}}
@@ -87,61 +80,61 @@
 {{-- ========================================================== --}}
 
 @push('ajax-request')
-    {{-- Request Level & Unit --}}
     <script>
+        // Request Level & Unit
         let host = $('meta[name="host"]').attr('content');
         let user = $('meta[name="user"]').attr('content');
 
         $(document).ready(function() {
-            levels('left');
-            levels('right')
+            levels('kiri');
+            levels('kanan')
 
-            units($('meta[name="level_left"]').attr('content'), 'left');
-            units($('meta[name="level_right"]').attr('content'), 'right');
+            units($('meta[name="level_kiri"]').attr('content'), 'kiri');
+            units($('meta[name="level_kanan"]').attr('content'), 'kanan');
 
-            indicators($('meta[name="level_left"]').attr('content'), $('meta[name="unit_left"]').attr('content'), $('meta[name="tahun_left"]').attr('content'), 'left');
-            indicators($('meta[name="level_right"]').attr('content'), $('meta[name="unit_right"]').attr('content'), $('meta[name="tahun_right"]').attr('content'), 'right');
+            indicators($('meta[name="level_kiri"]').attr('content'), $('meta[name="unit_kiri"]').attr('content'), $('meta[name="tahun_kiri"]').attr('content'), 'kiri');
+            indicators($('meta[name="level_kanan"]').attr('content'), $('meta[name="unit_kanan"]').attr('content'), $('meta[name="tahun_kanan"]').attr('content'), 'kanan');
 
-            $('select[name="bulan_left"] option').each(function() {
-                if ($(this).val() == $('meta[name="bulan_left"]').attr('content'))
+            $('select[name="bulan_kiri"] option').each(function() {
+                if ($(this).val() == $('meta[name="bulan_kiri"]').attr('content'))
                     $(this).attr("selected", "selected");
             });
-            $('input[name="tahun_left"]').val($('meta[name="tahun_left"]').attr('content'));
+            $('input[name="tahun_kiri"]').val($('meta[name="tahun_kiri"]').attr('content'));
 
-            $('select[name="bulan_right"] option').each(function() {
-                if ($(this).val() == $('meta[name="bulan_right"]').attr('content'))
+            $('select[name="bulan_kanan"] option').each(function() {
+                if ($(this).val() == $('meta[name="bulan_kanan"]').attr('content'))
                     $(this).attr("selected", "selected");
             });
-            $('input[name="tahun_right"]').val($('meta[name="tahun_right"]').attr('content'));
+            $('input[name="tahun_kanan"]').val($('meta[name="tahun_kanan"]').attr('content'));
         });
 
-        $('select[name="level_left"]').click(function() {
-            units($(this).val(), 'left');
+        $('select[name="level_kiri"]').click(function() {
+            units($(this).val(), 'kiri');
         });
-        $('select[name="level_right"]').click(function() {
-            units($(this).val(), 'right');
-        });
-
-        $('select[name="unit_left"]').click(function() {
-            indicators($('select[name="level_left"] option').filter(':selected').val(), $(this).val(), $('input[name="tahun_left"]').val(), 'left');
-        });
-        $('select[name="unit_right"]').click(function() {
-            indicators($('select[name="level_right"] option').filter(':selected').val(), $(this).val(), $('input[name="tahun_right"]').val(), 'right');
+        $('select[name="level_kanan"]').click(function() {
+            units($(this).val(), 'kanan');
         });
 
-        $('input[name="tahun_left"]').keyup(function() {
-            let selected_level = $('select[name="level_left"] option').filter(':selected').val();
-            let selected_unit = $('select[name="unit_left"] option').filter(':selected').val();
+        $('select[name="unit_kiri"]').click(function() {
+            indicators($('select[name="level_kiri"] option').filter(':selected').val(), $(this).val(), $('input[name="tahun_kiri"]').val(), 'kiri');
+        });
+        $('select[name="unit_kanan"]').click(function() {
+            indicators($('select[name="level_kanan"] option').filter(':selected').val(), $(this).val(), $('input[name="tahun_kanan"]').val(), 'kanan');
+        });
+
+        $('input[name="tahun_kiri"]').keyup(function() {
+            let selected_level = $('select[name="level_kiri"] option').filter(':selected').val();
+            let selected_unit = $('select[name="unit_kiri"] option').filter(':selected').val();
             let tahun_value = $(this).val();
 
-            indicators(selected_level, selected_unit, tahun_value, 'left');
+            indicators(selected_level, selected_unit, tahun_value, 'kiri');
         });
-        $('input[name="tahun_right"]').keyup(function() {
-            let selected_level = $('select[name="level_right"] option').filter(':selected').val();
-            let selected_unit = $('select[name="unit_right"] option').filter(':selected').val();
+        $('input[name="tahun_kanan"]').keyup(function() {
+            let selected_level = $('select[name="level_kanan"] option').filter(':selected').val();
+            let selected_unit = $('select[name="unit_kanan"] option').filter(':selected').val();
             let tahun_value = $(this).val();
 
-            indicators(selected_level, selected_unit, tahun_value, 'right');
+            indicators(selected_level, selected_unit, tahun_value, 'kanan');
         });
 
         function levels(position) {
@@ -243,6 +236,7 @@
                 });
             }
         }
+        // End : Request Level & Unit
     </script>
 @endpush
 
@@ -258,17 +252,13 @@
                     <div class="card bg-info">
                         <div class="card-header">
                             <h3 class="card-title">Info</h3>
-
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
-                            <!-- /.card-tools -->
                         </div>
-                        <!-- /.card-header -->
                         <div class="card-body">
                             @include('_alert-info',['message' => session()->get('info_message')])
                         </div>
-                        <!-- /.card-body -->
                     </div>
                 </div>
             @endif
@@ -278,33 +268,24 @@
                     <div class="card bg-danger">
                         <div class="card-header">
                             <h3 class="card-title">Alert</h3>
-
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                             </div>
-                            <!-- /.card-tools -->
                         </div>
-                        <!-- /.card-header -->
                         <div class="card-body">
                             @foreach ($errors->all() as $errorV)
                                 <p class="small">{{ $errorV }}</p>
                             @endforeach
                         </div>
-                        <!-- /.card-body -->
                     </div>
                 </div>
             @endif
 
-            {{-- section: table --}}
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
-                    <!-- card-header -->
                     <div class="card-header">
                         <h3 class="card-title">COMPARING</h3>
                     </div>
-                    <!-- end : card-header -->
-
-                    <!-- card-body -->
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -320,7 +301,7 @@
                                                         <span class="input-group-append">
                                                             <span class="input-group-text">Level</span>
                                                         </span>
-                                                        <select class="custom-select" name="level_left" data-intro="Pilih <strong>Level</strong>"></select>
+                                                        <select class="custom-select" name="level_kiri" data-intro="Pilih <strong>Level</strong>"></select>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -328,7 +309,7 @@
                                                         <span class="input-group-append">
                                                             <span class="input-group-text">Unit Kerja</span>
                                                         </span>
-                                                        <select class="custom-select" name="unit_left" data-intro="Pilih <strong>Unit Kerja</strong>"></select>
+                                                        <select class="custom-select" name="unit_kiri" data-intro="Pilih <strong>Unit Kerja</strong>"></select>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -336,7 +317,7 @@
                                                         <span class="input-group-append">
                                                             <span class="input-group-text">Tahun</span>
                                                         </span>
-                                                        <input type="text" class="form-control" name="tahun_left" data-intro="Isi <strong>Tahun</strong>" />
+                                                        <input type="text" class="form-control" name="tahun_kiri" data-intro="Isi <strong>Tahun</strong>" />
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -344,7 +325,7 @@
                                                         <span class="input-group-append">
                                                             <span class="input-group-text">Bulan</span>
                                                         </span>
-                                                        <select class="custom-select" name="bulan_left" data-intro="Pilih <strong>Bulan</strong>">
+                                                        <select class="custom-select" name="bulan_kiri" data-intro="Pilih <strong>Bulan</strong>">
                                                             <option value="jan">s.d. Jan</option>
                                                             <option value="feb">s.d. Feb</option>
                                                             <option value="mar">s.d. Mar</option>
@@ -365,7 +346,7 @@
                                                         <span class="input-group-append">
                                                             <span class="input-group-text">Indikator</span>
                                                         </span>
-                                                        <select class="custom-select" name="id_left" data-intro="Pilih <strong>Indikator</strong>"></select>
+                                                        <select class="custom-select" name="id_kiri" data-intro="Pilih <strong>Indikator</strong>"></select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -381,7 +362,7 @@
                                                         <span class="input-group-append">
                                                             <span class="input-group-text">Level</span>
                                                         </span>
-                                                        <select class="custom-select" name="level_right" data-intro="Pilih <strong>Level</strong>"></select>
+                                                        <select class="custom-select" name="level_kanan" data-intro="Pilih <strong>Level</strong>"></select>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -389,7 +370,7 @@
                                                         <span class="input-group-append">
                                                             <span class="input-group-text">Unit Kerja</span>
                                                         </span>
-                                                        <select class="custom-select" name="unit_right" data-intro="Pilih <strong>Unit Kerja</strong>"></select>
+                                                        <select class="custom-select" name="unit_kanan" data-intro="Pilih <strong>Unit Kerja</strong>"></select>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -397,7 +378,7 @@
                                                         <span class="input-group-append">
                                                             <span class="input-group-text">Tahun</span>
                                                         </span>
-                                                        <input type="text" class="form-control" name="tahun_right" data-intro="Isi <strong>Tahun</strong>" />
+                                                        <input type="text" class="form-control" name="tahun_kanan" data-intro="Isi <strong>Tahun</strong>" />
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -405,7 +386,7 @@
                                                         <span class="input-group-append">
                                                             <span class="input-group-text">Bulan</span>
                                                         </span>
-                                                        <select class="custom-select" name="bulan_right" data-intro="Pilih <strong>Bulan</strong>">
+                                                        <select class="custom-select" name="bulan_kanan" data-intro="Pilih <strong>Bulan</strong>">
                                                             <option value="jan">s.d. Jan</option>
                                                             <option value="feb">s.d. Feb</option>
                                                             <option value="mar">s.d. Mar</option>
@@ -426,7 +407,7 @@
                                                         <span class="input-group-append">
                                                             <span class="input-group-text">Indikator</span>
                                                         </span>
-                                                        <select class="custom-select" name="id_right" data-intro="Pilih <strong>Indikator</strong>"></select>
+                                                        <select class="custom-select" name="id_kanan" data-intro="Pilih <strong>Indikator</strong>"></select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -453,7 +434,7 @@
 
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                                 <p class="reset text-center small font-weight-bold">Left Result</p>
-                                                <p class="reset text-center small"><small>UNIT KERJA : {{ cast_to_upper(request()->query('unit_left'), '-') }} - TAHUN : {{ cast_to_upper(request()->query('tahun_left'), '-') }} - BULAN : {{ cast_to_upper(request()->query('bulan_left'), '-', 's.d. ') }}</small></p>
+                                                <p class="reset text-center small"><small>UNIT KERJA : {{ cast_to_upper(request()->query('unit_kiri'), '-') }} - TAHUN : {{ cast_to_upper(request()->query('tahun_kiri'), '-') }} - BULAN : {{ cast_to_upper(request()->query('bulan_kiri'), '-', 's.d. ') }}</small></p>
 
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered table-sm" id="table">
@@ -464,7 +445,7 @@
                                                                 <th class="text-center small" rowspan="2">TARGET</th>
                                                                 <th class="text-center small" rowspan="2">REALISASI</th>
                                                                 <th class="text-center small" colspan="2">NILAI CAPPING</th>
-                                                                <th class="text-center small" rowspan="2">PENCAPAIAN</th>
+                                                                <th class="text-center small" rowspan="2">PENCAPAIAN | STATUS</th>
                                                             </tr>
                                                             <tr>
                                                                 <th class="text-center small">100%</th>
@@ -474,8 +455,8 @@
                                                         <tbody class="small" id="myTable">
                                                             <tr>
                                                                 <td class="small">
-                                                                    <p class="reset">{{ $response->data->indicators->left->indicator }} | <span class="badge badge-info">{{ $response->data->indicators->left->type }}</span> | Satuan: {{ $response->data->indicators->left->measure }}</p>
-                                                                    <p class="reset">Polaritas: <span class="badge badge-secondary">{!! $response->data->indicators->left->polarity !!}</span></p>
+                                                                    <p class="reset">{{ $response->data->indicators->left->indicator }} | <span class="badge badge-info">{{ $response->data->indicators->left->type }}</span></p>
+                                                                    <p class="reset">Satuan: {{ $response->data->indicators->left->measure }} | Polaritas: <span class="badge badge-secondary">{!! $response->data->indicators->left->polarity !!}</span></p>
                                                                 </td>
                                                                 <td class="text-center small">
                                                                     {{ $response->data->indicators->left->selected_weight }}
@@ -493,8 +474,7 @@
                                                                     <p class="font-weight-bold">{{ $response->data->indicators->left->capping_value_110->value->showed }}</p>
                                                                 </td>
                                                                 <td class="text-center small bg-{{ $response->data->indicators->left->status_color }}">
-                                                                    <p class="font-weight-bold reset">{{ $response->data->indicators->left->achievement->value->showed }}</p>
-                                                                    <p class="reset">{{ $response->data->indicators->left->status }}</p>
+                                                                    <p class="font-weight-bold reset">{{ $response->data->indicators->left->achievement->value->showed }}% | {{ $response->data->indicators->left->status }}</p>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -504,7 +484,7 @@
 
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                                 <p class="reset text-center small font-weight-bold">Right Result</p>
-                                                <p class="reset text-center small"><small>UNIT KERJA : {{ cast_to_upper(request()->query('unit_right'), '-') }} - TAHUN : {{ cast_to_upper(request()->query('tahun_right'), '-') }} - BULAN : {{ cast_to_upper(request()->query('bulan_right'), '-', 's.d. ') }}</small></p>
+                                                <p class="reset text-center small"><small>UNIT KERJA : {{ cast_to_upper(request()->query('unit_kanan'), '-') }} - TAHUN : {{ cast_to_upper(request()->query('tahun_kanan'), '-') }} - BULAN : {{ cast_to_upper(request()->query('bulan_kanan'), '-', 's.d. ') }}</small></p>
 
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered table-sm" id="table">
@@ -515,7 +495,7 @@
                                                                 <th class="text-center small" rowspan="2">TARGET</th>
                                                                 <th class="text-center small" rowspan="2">REALISASI</th>
                                                                 <th class="text-center small" colspan="2">NILAI CAPPING</th>
-                                                                <th class="text-center small" rowspan="2">PENCAPAIAN</th>
+                                                                <th class="text-center small" rowspan="2">PENCAPAIAN | STATUS</th>
                                                             </tr>
                                                             <tr>
                                                                 <th class="text-center small">100%</th>
@@ -525,8 +505,8 @@
                                                         <tbody class="small" id="myTable">
                                                             <tr>
                                                                 <td class="small">
-                                                                    <p class="reset">{{ $response->data->indicators->right->indicator }} | <span class="badge badge-info">{{ $response->data->indicators->right->type }}</span> | Satuan: {{ $response->data->indicators->right->measure }}</p>
-                                                                    <p class="reset">Polaritas: <span class="badge badge-secondary">{!! $response->data->indicators->right->polarity !!}</span></p>
+                                                                    <p class="reset">{{ $response->data->indicators->right->indicator }} | <span class="badge badge-info">{{ $response->data->indicators->right->type }}</span></p>
+                                                                    <p class="reset">Satuan: {{ $response->data->indicators->right->measure }} | Polaritas: <span class="badge badge-secondary">{!! $response->data->indicators->right->polarity !!}</span></p>
                                                                 </td>
                                                                 <td class="text-center small">
                                                                     {{ $response->data->indicators->right->selected_weight }}
@@ -544,8 +524,7 @@
                                                                     <p class="font-weight-bold">{{ $response->data->indicators->right->capping_value_110->value->showed }}</p>
                                                                 </td>
                                                                 <td class="text-center small {{ 'bg-'.$response->data->indicators->right->status_color }}">
-                                                                    <p class="font-weight-bold reset">{{ $response->data->indicators->right->achievement->value->showed }}</p>
-                                                                    <p class="reset">{{ $response->data->indicators->right->status }}</p>
+                                                                    <p class="font-weight-bold reset">{{ $response->data->indicators->right->achievement->value->showed }}% | {{ $response->data->indicators->right->status }}</p>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -558,14 +537,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- end : card-body -->
-
-                    <!-- card-footer -->
-                    <div class="card-footer clearfix"></div>
-                    <!-- end : card-footer -->
                 </div>
             </div>
-            {{-- end section: table --}}
         @endif
     </div>
 @endsection

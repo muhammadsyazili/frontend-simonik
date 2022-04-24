@@ -12,13 +12,13 @@ class ComparingController extends Controller
     public function comparing(Request $request)
     {
         $response = null;
-        if (!is_null($request->query('id_left')) && !is_null($request->query('level_left')) && !is_null($request->query('unit_left')) && !is_null($request->query('tahun_left')) && !is_null($request->query('bulan_left')) && !is_null($request->query('id_right')) && !is_null($request->query('level_right')) && !is_null($request->query('unit_right')) && !is_null($request->query('tahun_right')) && !is_null($request->query('bulan_right'))) {
+        if (!is_null($request->query('id_kiri')) && !is_null($request->query('level_kiri')) && !is_null($request->query('unit_kiri')) && !is_null($request->query('tahun_kiri')) && !is_null($request->query('bulan_kiri')) && !is_null($request->query('id_kanan')) && !is_null($request->query('level_kanan')) && !is_null($request->query('unit_kanan')) && !is_null($request->query('tahun_kanan')) && !is_null($request->query('bulan_kanan'))) {
             $response = SEMONGKO_services('/comparing', 'get', [
-                'id_left' => $request->query('id_left'),
-                'bulan_left' => $request->query('bulan_left'),
+                'id_kiri' => $request->query('id_kiri'),
+                'bulan_kiri' => $request->query('bulan_kiri'),
 
-                'id_right' => $request->query('id_right'),
-                'bulan_right' => $request->query('bulan_right'),
+                'id_kanan' => $request->query('id_kanan'),
+                'bulan_kanan' => $request->query('bulan_kanan'),
             ]);
 
             if ($response->clientError()) {
