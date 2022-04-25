@@ -218,7 +218,7 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for password reset.
+     * Show the form for reset password.
      *
      * @param  string|int  $id
      * @param  string  $username
@@ -230,7 +230,7 @@ class UserController extends Controller
     }
 
     /**
-     * Password reset.
+     * Reset password.
      *
      * @param  string|int  $id
      * @return \Illuminate\Http\Response
@@ -253,7 +253,7 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for password change.
+     * Show the form for change password.
      *
      * @param  string|int  $id
      * @return \Illuminate\Http\Response
@@ -264,7 +264,7 @@ class UserController extends Controller
     }
 
     /**
-     * Password reset.
+     * Change password.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  string|int  $id
