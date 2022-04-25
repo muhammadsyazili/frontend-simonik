@@ -74,26 +74,26 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $attributes = [
-            'name' => ['required', 'string'],
+            'nama' => ['required', 'string'],
             'nip' => ['required', 'string'],
             'username' => ['required', 'string', 'alpha_dash'],
             'email' => ['required', 'string'],
-            'unit' => ['required', 'string'],
+            'unit_kerja' => ['required', 'string'],
         ];
 
         $messages = [
             'required' => ':attribute tidak boleh kosong.',
-            'alpha_dash' => ':attribute hanya boleh mengandung huruf, angka, dashes (-) and underscores (_).',
+            'alpha_dash' => ':attribute hanya boleh mengandung huruf, angka, dashes (-) dan underscores (_).',
         ];
 
         $request->validate($attributes, $messages);
 
         $data = [
-            'name' => $request->post('name'),
+            'nama' => $request->post('nama'),
             'nip' => $request->post('nip'),
             'username' => $request->post('username'),
             'email' => $request->post('email'),
-            'unit' => $request->post('unit'),
+            'unit_kerja' => $request->post('unit_kerja'),
         ];
 
         $response = SEMONGKO_services("/user", 'post', $data);
@@ -145,26 +145,26 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $attributes = [
-            'name' => ['required', 'string'],
+            'nama' => ['required', 'string'],
             'nip' => ['required', 'string'],
             'username' => ['required', 'string', 'alpha_dash'],
             'email' => ['required', 'string'],
-            'unit' => ['required', 'string'],
+            'unit_kerja' => ['required', 'string'],
         ];
 
         $messages = [
             'required' => ':attribute tidak boleh kosong.',
-            'alpha_dash' => ':attribute hanya boleh mengandung huruf, angka, dashes (-) and underscores (_).',
+            'alpha_dash' => ':attribute hanya boleh mengandung huruf, angka, dashes (-) dan underscores (_).',
         ];
 
         $request->validate($attributes, $messages);
 
         $data = [
-            'name' => $request->post('name'),
+            'nama' => $request->post('nama'),
             'nip' => $request->post('nip'),
             'username' => $request->post('username'),
             'email' => $request->post('email'),
-            'unit' => $request->post('unit'),
+            'unit_kerja' => $request->post('unit_kerja'),
         ];
 
         $response = SEMONGKO_services("/user/$id", 'put', $data);

@@ -227,7 +227,7 @@
                                                                 <th class="text-center">NKO 110% | STATUS</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody class="text-nowrap small" id="myTable">
+                                                        <tbody class="small" id="myTable">
                                                             @foreach ($response->data->units as $unit)
                                                                 <tr>
                                                                     <td class="text-center">

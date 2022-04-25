@@ -556,7 +556,7 @@
                                                                 <th class="text-center">110%</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody class="text-nowrap small" id="myTable">
+                                                        <tbody class="small" id="myTable">
                                                             @foreach ($response->data->indicators->partials as $indicator)
                                                                 <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
                                                                     <td>

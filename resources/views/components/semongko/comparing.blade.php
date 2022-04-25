@@ -438,7 +438,7 @@
 
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered table-sm" id="table">
-                                                        <thead class="small">
+                                                        <thead class="text-nowrap small">
                                                             <tr>
                                                                 <th class="text-center small" rowspan="2">INDIKATOR</th>
                                                                 <th class="text-center small" rowspan="2">BOBOT</th>
@@ -488,7 +488,7 @@
 
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered table-sm" id="table">
-                                                        <thead class="small">
+                                                        <thead class="text-nowrap small">
                                                             <tr>
                                                                 <th class="text-center small" rowspan="2">INDIKATOR</th>
                                                                 <th class="text-center small" rowspan="2">BOBOT</th>

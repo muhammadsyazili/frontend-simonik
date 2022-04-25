@@ -328,7 +328,7 @@
                                                             <th class="text-center">PENCAPAIAN | STATUS</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody class="text-nowrap small" id="myTable">
+                                                    <tbody class="small" id="myTable">
                                                         @foreach ($response->data->indicators->partials as $indicator)
                                                             @if (in_array($indicator->status_symbol, ['-1', '0'], true))
                                                                 <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
