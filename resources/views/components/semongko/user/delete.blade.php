@@ -1,6 +1,6 @@
 @extends('layouts/after-login')
 
-@section('title', 'Hapus :: User')
+@section('title', 'User Delete')
 
 {{-- ========================================================== --}}
 
