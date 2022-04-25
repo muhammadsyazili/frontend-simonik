@@ -320,6 +320,7 @@
                                             <p class="text-center small reset">UNIT KERJA : {{ cast_to_upper(request()->query('unit'), '-') }} - TAHUN : {{ cast_to_upper(request()->query('tahun'), '-') }} - BULAN : {{ cast_to_upper(request()->query('bulan'), '-', 's.d. ') }}</p>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                            <p class="small reset"><small><span class="text-danger">*</span> Data akan diperbarui setiap 60 menit sekali</small></p>
                                             <div class="table-responsive">
                                                 <table class="table table-bordered table-sm" id="table">
                                                     <thead class="text-nowrap small">
