@@ -1,6 +1,6 @@
 @extends('layouts/after-login')
 
-@section('title', 'Daftar Unit')
+@section('title', 'Daftar Unit Kerja')
 
 {{-- ========================================================== --}}
 
@@ -180,7 +180,7 @@
                                                 <th class="text-center">No</th>
                                                 <th class="text-center">Nama Unit Kerja</th>
                                                 <th class="text-center">Slug</th>
-                                                <th class="text-center">Turunan Dari Unit Kerja</th>
+                                                <th class="text-center">Parent Unit Kerja</th>
                                                 <th class="text-center">Level</th>
                                                 <th class="text-center"></th>
                                             </tr>

@@ -1,6 +1,6 @@
 @extends('layouts/after-login')
 
-@section('title', 'Tambah :: Unit')
+@section('title', 'Tambah :: Unit Kerja')
 
 {{-- ========================================================== --}}
 @push('metadata')
@@ -183,7 +183,7 @@
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small" for="dropdown-1">Turunan Dari Unit Kerja <span class="text-danger">*</span></label>
+                                        <label class="small" for="dropdown-1">Parent Unit Kerja <span class="text-danger">*</span></label>
                                         <select class="form-control form-control-sm" id="dropdown-1" name="parent_unit"></select>
                                     </div>
                                 </div>

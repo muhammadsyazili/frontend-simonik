@@ -180,7 +180,7 @@
                                                 <th class="text-center">No</th>
                                                 <th class="text-center">Nama Level</th>
                                                 <th class="text-center">Slug</th>
-                                                <th class="text-center">Turunan Dari Level</th>
+                                                <th class="text-center">Parent Level</th>
                                                 <th class="text-center"></th>
                                             </tr>
                                         </thead>

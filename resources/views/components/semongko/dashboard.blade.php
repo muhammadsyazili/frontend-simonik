@@ -321,17 +321,17 @@
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                             <p class="small reset"><small><span class="text-danger">*</span> Data akan diperbarui setiap 60 menit sekali</small></p>
-                                            <div class="table-responsive">
+                                            <div class="table-responsive" style="overflow: scroll; height: 80vh;">
                                                 <table class="table table-bordered table-sm" id="table">
                                                     <thead class="text-nowrap small">
                                                         <tr>
-                                                            <th class="text-center">INDIKATOR PERLU PERHATIAN</th>
+                                                            <th class="text-center">INDIKATOR</th>
                                                             <th class="text-center">PENCAPAIAN | STATUS</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody class="small" id="myTable">
                                                         @foreach ($response->data->indicators->partials as $indicator)
-                                                            @if (in_array($indicator->status_symbol, ['-1', '0'], true))
+                                                            @if (in_array($indicator->status_symbol, ['+0', '-0', '-1', '0', '+1'], true))
                                                                 <tr style="background-color: rgb({{ $indicator->bg_color->r }}, {{ $indicator->bg_color->g }}, {{ $indicator->bg_color->b }}); @if (($indicator->bg_color->r < 127.5) && ($indicator->bg_color->g < 127.5) && ($indicator->bg_color->b < 127.5)) color: white; @endif">
                                                                     <td>
                                                                         <p class="reset">{{ $indicator->indicator }} | <span class="badge badge-info">{{ $indicator->type }}</span> | Satuan: {{ $indicator->measure }} | Polaritas: <span class="badge badge-secondary">{!! $indicator->polarity !!}</span></p>

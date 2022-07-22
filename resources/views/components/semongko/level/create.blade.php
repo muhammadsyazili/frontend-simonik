@@ -127,7 +127,7 @@
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
-                                        <label class="small" for="dropdown-1">Turunan Dari Level <span class="text-danger">*</span></label>
+                                        <label class="small" for="dropdown-1">Parent Level <span class="text-danger">*</span></label>
                                         <select class="form-control form-control-sm" id="dropdown-1" name="parent_level">
                                             @foreach ($response->data->levels as $level)
                                                 <option value="{{ $level->slug }}">{{ $level->name }}</option>
